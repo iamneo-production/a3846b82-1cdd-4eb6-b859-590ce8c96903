@@ -96,6 +96,10 @@
     }
   },
   "cli": {
+<<<<<<< HEAD
+    "analytics": "a84bad98-5f9a-440e-b543-061ed4eafa73"
+=======
     "analytics": false
+>>>>>>> Project-Workspace-chennasandeepreddy
   }
 }
