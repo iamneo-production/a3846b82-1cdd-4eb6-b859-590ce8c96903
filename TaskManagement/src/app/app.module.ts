@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { NavComponent } from './nav/nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -29,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     NavComponent,
     SideNavComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
