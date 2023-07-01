@@ -17,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { ReportingComponent } from './reporting/reporting.component';
 
 
 
@@ -35,6 +36,7 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     LoginComponent,
     AssignTaskComponent,
     CreateTaskComponent,
+    ReportingComponent,
   ],
   imports: [
     BrowserModule,
