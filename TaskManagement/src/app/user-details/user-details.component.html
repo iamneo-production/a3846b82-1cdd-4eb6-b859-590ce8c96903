@@ -1,0 +1,30 @@
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div class="container-md p-3 my-3 border">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Status</th>
+        <th>Check tasks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+        <td><button (click)="UpdateUser(user.id)" class="btn btn-success">Update</button></td>
+        <td><button (click)="DeleteUser(user.id)" class="btn btn-warning">Delete</button></td>
+        <td>{{user.isdone}}</td>
+        <td><button (click)="GoToTask(user.id)" class="btn btn-primary">View Tasks</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
