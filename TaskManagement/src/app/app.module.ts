@@ -13,6 +13,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { NavComponent } from './nav/nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -25,6 +26,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     UserDetailsComponent,
     NavComponent,
     SideNavComponent,
+    FooterComponent,
    
 
 
