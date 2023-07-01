@@ -18,6 +18,13 @@ import { LoginComponent } from './login/login.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserserviceService } from './service/data/userservice.service';
+import {UserProfileService} from './service/profile/user-profile.service';
+
+
+
 
 
 
@@ -37,6 +44,7 @@ import { ReportingComponent } from './reporting/reporting.component';
     AssignTaskComponent,
     CreateTaskComponent,
     ReportingComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +52,11 @@ import { ReportingComponent } from './reporting/reporting.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [UserserviceService,
+    UserProfileService],
   bootstrap: [AppComponent]
 
 })
