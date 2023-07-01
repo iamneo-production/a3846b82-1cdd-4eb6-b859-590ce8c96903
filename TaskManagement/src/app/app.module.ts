@@ -15,6 +15,8 @@ import { NavComponent } from './nav/nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { AssignTaskComponent } from './assign-task/assign-task.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 
 
@@ -31,6 +33,8 @@ import { LoginComponent } from './login/login.component';
     SideNavComponent,
     FooterComponent,
     LoginComponent,
+    AssignTaskComponent,
+    CreateTaskComponent,
   ],
   imports: [
     BrowserModule,

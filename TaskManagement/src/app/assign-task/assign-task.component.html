@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="content">
+    <h3><em>Assign task</em></h3>
+    <br>
+    <form [formGroup]="assignTask" >
+        <div class="forms">
+        <!--task name-->
+            <label><strong>Task Name<span class="required-indicator">*</span></strong></label>
+            <input type="text" 
+             placeholder="Enter task name here..." 
+             class="form-control" 
+             id="taskName" 
+             formControlName="taskName" 
+             autocomplete="off"
+            >
+            <span style="color:red" *ngIf="taskName && taskName.invalid && taskName.touched">
+            Task name required!</span>
+            <pre></pre>
+      
+            <!--task description-->
+            <label><strong>Description<span class="required-indicator">*</span></strong></label>
+            <textarea placeholder="Enter task description here..." 
+             class="form-control" 
+             id="description" 
+             formControlName="taskDescription" 
+             autocomplete="off"
+            >
+            </textarea>
+            <span style="color:red" *ngIf="taskDescription && taskDescription.invalid && taskDescription.touched">
+            Task description required!</span>
+            <pre></pre>
+            <label><strong>Due Date<span class="required-indicator">*</span></strong></label>
+            <br>
+            <input type="date" 
+             [value]="TodayDate" 
+             [min]="minValue"
+             formControlName="dueDate" 
+            >
+            <pre></pre>
+      
+            <!--Status-->
+            <div class="">
+                <label><strong>Status<span class="required-indicator">*</span></strong></label>
+                <div class="form-control">
+                    <label class="radio-inline">
+                        <input type="radio" value="todo" formControlName="status">
+                        Todo
+                    </label>
+                    <span class="spacing"></span>
+                    <label class="radio-inline">
+                        <input type="radio" value="inprogress" formControlName="status">
+                        In-progress
+                    </label>
+                    <span class="spacing"></span>
+                    <label class="radio-inline">
+                        <input type="radio" value="done" formControlName="status">
+                        Done
+                    </label>
+                </div>
+
+                <pre></pre>
+            <!--priority-->
+            
+            <div>
+                <label><strong>Priority<span class="required-indicator">*</span></strong></label>
+                <div class="form-control" >
+                    <label class="radio-inline">
+                        <input type="radio" value="high"  formControlName="priorityOfTask">
+                        High
+                    </label>
+                    <span class="spacing"></span>
+                    <label class="radio-inline">
+                        <input type="radio" value="medium" formControlName="priorityOfTask">
+                        Medium
+                    </label>
+                    <span class="spacing"></span>
+                    <label class="radio-inline">
+                        <input type="radio" value="low"  formControlName="priorityOfTask">
+                        Low
+                    </label>
+                </div>
+            </div>
+            <pre></pre>
+                <div class="buttons">
+                    <button mat-raised-button class="btn btn-primary"
+                     [disabled]="assignTask.invalid"
+                     (click)="onSubmit()"
+                    >
+                    Done 
+                    </button> 
+          
+                    <button mat-raised-button class="btn btn-light" 
+                    style="margin-left: 30px;"
+                    (click)="onReset()"
+                    > 
+                    Reset
+                    </button>
+          
+                    <button mat-raised-button class="btn btn-light" 
+                     style="margin-left: 30px;"
+                     (click)="onCancel()"
+                    > 
+                     Cancel 
+                    </button>
+                </div>
+                <pre></pre>
+    </div>
