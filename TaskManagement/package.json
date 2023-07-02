@@ -24,9 +24,16 @@
     "angularx-flatpickr": "^7.3.0",
     "date-fns": "^2.30.0",
     "force": "^0.0.3",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.13.0",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "font-awesome": "^4.7.0",
+    "ngx-sweetalert2": "^0.2.7",
+    "sweetalert2": "^11.7.12"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.2",
