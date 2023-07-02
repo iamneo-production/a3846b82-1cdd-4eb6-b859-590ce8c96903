@@ -1,0 +1,30 @@
+<body>
+    <div class="container-md p-3 my-3 border">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>UserId</th>
+            <th>Username</th>
+            <th>TaskName</th>
+            <th>TaskDescription</th>
+            <th>Task_Duedate</th>
+            <th>Task_status</th>
+            <th>Action</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{task.id}}</td>
+            <td>{{task.username}}</td>
+            <td>{{task.task_name}}</td>
+            <td>{{task.task_description}}</td>
+            <td>{{task.task_duedate | date}}</td>
+            <td>{{task.task_status}}</td>
+            <td><button class="btn btn-success">Update</button></td>
+            <td><button class="btn btn-warning">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    
+    </div>
