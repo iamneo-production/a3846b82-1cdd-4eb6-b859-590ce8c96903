@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,6 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class SideNavComponent {
 
+  
+
   @Input() sideNavStatus: boolean=false;
+
+  constructor(public router:Router){
+  
+  }
 
 }
