@@ -3,13 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatButtonModule} from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserserviceService } from './service/data/userservice.service';
 import {UserProfileService} from './service/profile/user-profile.service';
-import { SidenavComponent } from './sidenav/sidenav.component';
+
 
 
 
@@ -61,18 +54,12 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ReportingComponent,
     CalendarComponent,
     ProfileComponent,
-    SidenavComponent
+ 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatButtonModule,
-    MatMenuModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
