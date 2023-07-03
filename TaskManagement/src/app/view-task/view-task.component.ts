@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent {
+  constructor(
+ 
+    private router :Router
+    
+    ){}
 
+    createTask(){
+    this.router.navigate(['createTask',-1])  
+  }
 }

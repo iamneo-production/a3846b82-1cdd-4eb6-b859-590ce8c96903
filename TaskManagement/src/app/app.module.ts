@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserserviceService } from './service/data/userservice.service';
 import {UserProfileService} from './service/profile/user-profile.service';
 import { ViewTaskComponent } from './view-task/view-task.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 
@@ -57,6 +64,7 @@ import { ViewTaskComponent } from './view-task/view-task.component';
     CalendarComponent,
     ProfileComponent,
     ViewTaskComponent,
+    SidenavComponent,
    
   ],
   imports: [
@@ -72,7 +80,13 @@ import { ViewTaskComponent } from './view-task/view-task.component';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory}),
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    MatMenuModule,
   ],
   providers: [UserserviceService,
     UserProfileService],
