@@ -1,1 +1,2 @@
-com/project/taskmanagement/TaskmanagementApplication.class
+com/project/model/Task.class
+TaskService.class
