@@ -18,6 +18,13 @@ import { LoginComponent } from './login/login.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './profile/profile.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserserviceService } from './service/data/userservice.service';
@@ -44,6 +51,7 @@ import {UserProfileService} from './service/profile/user-profile.service';
     AssignTaskComponent,
     CreateTaskComponent,
     ReportingComponent,
+    CalendarComponent,
     ProfileComponent
   ],
   imports: [
@@ -53,6 +61,12 @@ import {UserProfileService} from './service/profile/user-profile.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgbModalModule,
+    CommonModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory}),
     FontAwesomeModule
   ],
   providers: [UserserviceService,
