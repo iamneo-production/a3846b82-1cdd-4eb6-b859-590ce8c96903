@@ -17,8 +17,6 @@ import { VerificationComponent } from './verification/verification.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { SignupComponent } from './signup/signup.component';
-import { NavComponent } from './nav/nav.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
@@ -39,13 +37,6 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
 
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,8 +45,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     UserDetailsComponent,
     TaskDetailsComponent,
     SignupComponent,
-    NavComponent,
-    SideNavComponent,
     FooterComponent,
     LoginComponent,
     AssignTaskComponent,
@@ -63,8 +52,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ReportingComponent,
     CalendarComponent,
     ProfileComponent,
-    ViewTaskComponent,
     SidenavComponent,
+    ViewTaskComponent,
    
   ],
   imports: [
