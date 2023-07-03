@@ -7,9 +7,11 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = 
 [{path:"userdetails",component:UserDetailsComponent},
+{path:"events",component:CalendarComponent},
 {path:"taskdetails",component:TaskDetailsComponent},
 {path:"signup",component:SignupComponent},
 {path:"profile",component:ProfileComponent},
