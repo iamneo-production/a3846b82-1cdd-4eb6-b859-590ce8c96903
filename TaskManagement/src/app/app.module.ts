@@ -29,6 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserserviceService } from './service/data/userservice.service';
 import {UserProfileService} from './service/profile/user-profile.service';
+import { ViewTaskComponent } from './view-task/view-task.component';
+
 
 
 
@@ -54,7 +56,8 @@ import {UserProfileService} from './service/profile/user-profile.service';
     ReportingComponent,
     CalendarComponent,
     ProfileComponent,
- 
+    ViewTaskComponent,
+   
   ],
   imports: [
     BrowserModule,
