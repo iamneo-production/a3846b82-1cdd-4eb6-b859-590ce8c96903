@@ -17,10 +17,10 @@
           <tr *ngFor="let task of tasks">
             <td>{{task.id}}</td>
             <td>{{task.username}}</td>
-            <td>{{task.task_name}}</td>
-            <td>{{task.task_description}}</td>
-            <td>{{task.task_duedate | date}}</td>
-            <td>{{task.task_status}}</td>
+            <td>{{task.taskname}}</td>
+            <td>{{task.taskdescription}}</td>
+            <td>{{task.taskduedate | date}}</td>
+            <td>{{task.taskstatus}}</td>
             <td><button class="btn btn-success">Update</button></td>
             <td><button class="btn btn-warning">Delete</button></td>
           </tr>

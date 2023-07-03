@@ -14,17 +14,16 @@ main{
 }
 
 app-side-nav{
-    position:absolute;
+    position:fixed;
     left:0rem;
     width:60px;
     height: calc(100vh - 7rem) ;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     background-color:rgb(34, 34, 34,1);
-    border-top: 1px solid white;
     overflow-x:hidden;
     white-space: nowrap;
     transition: width 250ms ease-in , width 250ms ease-in;
-    border-bottom: 1px solid white;
+    border-bottom: 1 px solid white;
 }
 
 .app-side-nav-open{
