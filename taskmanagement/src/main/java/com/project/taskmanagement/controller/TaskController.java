@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import com.project.taskmanagement.service.TaskService;
 import java.util.List;
 import com.project.taskmanagement.model.Task;
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController
 public class TaskController {
 	@Autowired
