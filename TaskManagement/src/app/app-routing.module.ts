@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { SignupComponent } from './signup/signup.component';
@@ -11,6 +9,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
+import { AssignTaskComponent } from './assign-task/assign-task.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = 
 [{path:"userdetails",component:UserDetailsComponent},
@@ -22,7 +22,10 @@ const routes: Routes =
 {path:"report",component:ReportingComponent},
 {path:"create-task",component:CreateTaskComponent},
 {path:"view-task",component:ViewTaskComponent},
-{path:"**",component:UserDetailsComponent}];
+{path:"assign",component:AssignTaskComponent},
+{path:"verification",component:VerificationComponent},
+
+];
 
 
 @NgModule({
