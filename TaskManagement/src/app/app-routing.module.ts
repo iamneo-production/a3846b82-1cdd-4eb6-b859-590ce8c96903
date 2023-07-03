@@ -6,13 +6,15 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReportingComponent } from './reporting/reporting.component';
 
 const routes: Routes = 
-[{path:"**",component:UserDetailsComponent},
-{path:"userdetails",component:UserDetailsComponent},
+[{path:"userdetails",component:UserDetailsComponent},
 {path:"taskdetails",component:TaskDetailsComponent},
 {path:"signup",component:SignupComponent},
-{path:'profile',component:ProfileComponent}];
+{path:"profile",component:ProfileComponent},
+{path:"report",component:ReportingComponent},
+{path:"**",component:UserDetailsComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
