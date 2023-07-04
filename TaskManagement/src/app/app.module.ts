@@ -36,6 +36,7 @@ import {UserProfileService} from './service/profile/user-profile.service';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
