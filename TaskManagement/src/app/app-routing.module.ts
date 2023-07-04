@@ -11,6 +11,7 @@ import { CreateTaskComponent } from './create-task/create-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { VerificationComponent } from './verification/verification.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = 
 [{path:"userdetails",component:UserDetailsComponent},
@@ -24,6 +25,8 @@ const routes: Routes =
 {path:"view-task",component:ViewTaskComponent},
 {path:"assign",component:AssignTaskComponent},
 {path:"verification",component:VerificationComponent},
+{path:"home",component:HomeComponent},
+
 
 ];
 

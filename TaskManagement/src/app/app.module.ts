@@ -35,7 +35,8 @@ import { UserserviceService } from './service/data/userservice.service';
 import {UserProfileService} from './service/profile/user-profile.service';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { NgSelectModule } from '@ng-select/ng-select';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ProfileComponent,
     SidenavComponent,
     ViewTaskComponent,
+    HomeComponent,
    
   ],
   imports: [

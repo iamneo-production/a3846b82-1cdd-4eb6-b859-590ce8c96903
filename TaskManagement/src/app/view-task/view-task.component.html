@@ -24,14 +24,15 @@
             </tr>        
         </thead>
         <tbody>
-           <!---<tr *ngFor="let Todo of Todo">
-                <td>{{Todo.description}}</td>
-                <td>{{Todo.targetDate | date | uppercase}}</td>
-                <td>{{Todo.done}}</td>
+           <tr *ngFor="let Todo of Todo">
+                <td>{{Todo.taskName}}</td>
+                <td>{{Todo.taskDescription}}</td>
+                <td>{{Todo.priority}}</td>
+                <td>{{Todo.status}}</td>
+                <td>{{Todo.dueDate | date | uppercase}}</td>
                 <td><button  class="btn btn-success">Update</button></td>
                 <td><button class="btn btn-warning">Delete</button></td>
-            </tr>-->
+            </tr>
        </tbody>
     </table>
-
     </div>

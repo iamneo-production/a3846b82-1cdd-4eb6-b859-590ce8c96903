@@ -43,7 +43,7 @@
     <mat-sidenav-container>
     <mat-sidenav #sidenav opened="true" mode="side" >
     <mat-nav-list>
-    <a mat-list-item ><button mat-button><mat-icon>home</mat-icon>Home</button></a>
+    <a routerLink="/home" mat-list-item ><button mat-button><mat-icon>home</mat-icon>Home</button></a>
     <a routerLink="/profile" mat-list-item><button mat-button><mat-icon>account_circle</mat-icon>Profile</button></a>
     <a routerLink="/report" mat-list-item><button mat-button><mat-icon>leaderboard</mat-icon>Report</button></a>
     <a routerLink="/events" mat-list-item><button mat-button><mat-icon>event</mat-icon>Events</button></a>
@@ -56,8 +56,8 @@
       <router-outlet></router-outlet>
     </div>
     </mat-sidenav-content>
+    
     </mat-sidenav-container>
-
   
   </div> 
 
