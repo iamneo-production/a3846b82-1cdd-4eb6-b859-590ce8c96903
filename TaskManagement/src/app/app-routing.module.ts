@@ -22,12 +22,15 @@ const routes: Routes =
 {path:"profile",component:ProfileComponent},
 {path:"login",component:LoginComponent},
 {path:"report",component:ReportingComponent},
-{path:"create-task",component:CreateTaskComponent},
+{path:"tasks",component:CreateTaskComponent},
 {path:"view-task",component:ViewTaskComponent},
 {path:"assign",component:AssignTaskComponent},
 {path:"verification",component:VerificationComponent},
+{path:"home",component:HomeComponent},
+
 
 ];
+
 
 
 @NgModule({

@@ -1,0 +1,46 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-2">
+
+    <div class="side-nav-button p-3 me-2 text-light" (click)="SideNavToggle()">
+        <em class="fa-sharp fa-solid fa-bars"></em>
+    </div>
+    <a class="navbar-brand px-4" href="#">Task Management</a>
+
+        <div class="navbar-collapse">
+
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" routerLinkActive="active" role="button" data-bs-toggle="dropdown">Task</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" routerLink="/tasks">Create Task</a></li>
+                    <li><a class="dropdown-item" routerLink="/dtasks">View Task</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a routerLink="/dashboard" class="nav-link dropdown-toggle" routerLinkActive="active" role="button" data-bs-toggle="dropdown">Dashboard</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" routerLink="/dtasks">Tasks_details</a></li>
+                    <li><a class="dropdown-item" routerLink="/dusers">Users_details</a></li>
+                    <li><a class="dropdown-item" routerLink="/dsummary">Summary</a></li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <!--end side content --->
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Your Account
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Login</a></li>
+                        <li><a class="dropdown-item" href="#">Sign up</a></li>
+                    </ul>
+                </li>
+              
+        </ul>
+    
+    </nav>
+
+

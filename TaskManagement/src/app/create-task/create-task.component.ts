@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { AssignTaskComponent } from '../assign-task/assign-task.component';
-import { DataShareServiceService } from '../service/data-share-service.service';
+import { DataShareServiceService } from '../service/task/data-share-service.service';
 
 @Component({
   selector: 'app-create-task',
@@ -14,8 +13,8 @@ export class CreateTaskComponent implements OnInit {
 
   // Validations
   createTask = new FormGroup({
-    taskName:new FormControl('',[Validators.required,Validators.pattern(/[\S]/g)]),
-    taskDescription:new FormControl('',[Validators.required,Validators.pattern(/[\S]/g)]),
+    taskName:new FormControl('',[Validators.required,Validators.pattern(/\S/g)]),
+    taskDescription:new FormControl('',[Validators.required,Validators.pattern(/\S/g)]),
     status:new FormControl('',[Validators.required]),
     priorityOfTask:new FormControl('',[Validators.required]),
     dueDate:new FormControl('',[Validators.required]) ,
@@ -23,7 +22,8 @@ export class CreateTaskComponent implements OnInit {
   
 
   //For data tranfer from create-task  to assign-task comp
- 
+
+
 
   //Constructors
   constructor(
@@ -72,24 +72,34 @@ TodayDate : any;
 
   //data transfer
   task: any;
-  //done button functions
+  //done button method
   onSubmit(){ 
-    console.log(this.createTask.value) ;
+    
     if (this.createTask.valid) {
-      const data = this.createTask.value;
-     console.log('Form is valid');
-     // Create task and update task data in the shared service
-    this.shareData.addTaskData(this.task);
-   } 
+      const task = this.createTask.value;
+      console.log(task);
+    }
    }
    
-   //Reset button function
+   //Reset button method
    onReset(){
     this.createTask.reset();
   }
 
-  //Cancel button function
+  //Cancel button method
   onCancel(){
     this.location.back();
+  }
+
+  // Assign task
+  onAssignTask(){
+    if (this.createTask.valid) {
+      // Get the task 
+      const task = this.createTask.value;
+      // Set the task in the shared service
+      this.shareData.addTaskData(task); 
+      this.router.navigate(['/assign']);
+
+    } 
   }
 }
