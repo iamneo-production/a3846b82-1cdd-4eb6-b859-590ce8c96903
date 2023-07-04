@@ -1,177 +1,177 @@
 <div class="container">
-    <div class="content">
-    <h3><em>Assign task</em></h3>
-    <br>
-    <form [formGroup]="assignTask" >
-        <div class="forms">
-            <!--task name-->
-            <label><strong>Task Name<span class="required-indicator">*</span></strong></label>
-            <input type="text" 
-             placeholder="Enter task name here..." 
-             class="form-control" 
-             id="taskName" 
-             formControlName="taskName" 
-             autocomplete="off"
-             [value]="task?.taskName"
-            >
-            <span style="color:red" *ngIf="taskName && taskName.invalid && taskName.touched">
-            Task name required!</span>
-            <pre></pre>
+  <div class="content">
+  <h3><strong><em>Assign task</em></strong></h3>
+  <br>
+  <form [formGroup]="assignTask" >
+      <div class="forms">
+          <!--task name-->
+          <label><strong>Task Name<span class="required-indicator">*</span></strong></label>
+          <input type="text" 
+           placeholder="Enter task name here..." 
+           class="form-control" 
+           id="taskName" 
+           formControlName="taskName" 
+           autocomplete="off"
+           [value]="task?.taskName"
+          >
+          <span style="color:red" *ngIf="taskName && taskName.invalid && taskName.touched">
+          Task name required!</span>
+          <pre></pre>
 
-            <!--task description-->
-            <label><strong>Description<span class="required-indicator">*</span></strong></label>
-            <textarea placeholder="Enter task description here..." 
-             class="form-control" 
-             id="description" 
-             formControlName="taskDescription" 
-             autocomplete="off"
-             [value]="task?.taskDescription"
-            >
-            </textarea>
-            <span style="color:red" *ngIf="taskDescription && taskDescription.invalid && taskDescription.touched">
-            Task description required!</span>
-            <pre></pre>
-           
-            <label><strong>Due Date<span class="required-indicator">*</span></strong></label>
-            <br>
-            <input type="date" 
-             [value]="TodayDate" 
-             [min]="minValue"
-             formControlName="dueDate" 
-             [value]="task?.dueDate"
-            >
-            <pre></pre>
+          <!--task description-->
+          <label><strong>Description<span class="required-indicator">*</span></strong></label>
+          <textarea placeholder="Enter task description here..." 
+           class="form-control" 
+           id="description" 
+           formControlName="taskDescription" 
+           autocomplete="off"
+           [value]="task?.taskDescription"
+          >
+          </textarea>
+          <span style="color:red" *ngIf="taskDescription && taskDescription.invalid && taskDescription.touched">
+          Task description required!</span>
+          <pre></pre>
+         
+          <label><strong>Due Date<span class="required-indicator">*</span></strong></label>
+          <br>
+          <input type="date" 
+           [value]="TodayDate" 
+           [min]="minValue"
+           formControlName="dueDate" 
+           [value]="task?.dueDate"
+          >
+          <pre></pre>
 
-            <!--Status-->
-            <div>
-                <label><strong>Status<span class="required-indicator">*</span></strong></label>
-                <div class="form-control">
-                    <label class="radio-inline">
-                        <input type="radio" value="todo" formControlName="status" [checked]="task?.status === 'todo'">
-                        Todo
-                    </label>
-                    <span class="spacing"></span>
-                    <label class="radio-inline">
-                        <input type="radio" value="inprogress" formControlName="status" [checked]="task?.status === 'inprogress'">
-                        In-progress
-                    </label>
-                    <span class="spacing"></span>
-                    <label class="radio-inline">
-                        <input type="radio" value="done" formControlName="status" [checked]="task?.status === 'done'">
-                        Done
-                    </label>
-                </div>
-            </div>
-            <pre></pre>
-
-            <!--priority-->
-            
-            <div>
-                <label><strong>Priority<span class="required-indicator">*</span></strong></label>
-                <div class="form-control" >
-                    <label class="radio-inline">
-                        <input type="radio" value="high"  formControlName="priorityOfTask" [checked]="task?.priorityOfTask === 'high'">
-                        High
-                    </label>
-                    <span class="spacing"></span>
-                    <label class="radio-inline">
-                        <input type="radio" value="medium" formControlName="priorityOfTask" [checked]="task?.priorityOfTask === 'medium'">
-                        Medium
-                    </label>
-                    <span class="spacing"></span>
-                    <label class="radio-inline">
-                        <input type="radio" value="low"  formControlName="priorityOfTask" [checked]="task?.priorityOfTask === 'low'">
-                        Low
-                    </label>
-                </div>
-            </div>
-            <pre></pre>
-            <div>
-                <label>
-                    <strong><em>Create Team</em></strong>
+          <!--Status-->
+          <div>
+              <label><strong>Status<span class="required-indicator">*</span></strong></label>
+              <div class="form-control">
+                  <label class="radio-inline">
+                      <input type="radio" value="todo" formControlName="status" [checked]="task?.status === 'todo'">
+                      Todo
                   </label>
-                     <!--Team member--> 
-                     <div>
-                      <ng-select style="font-family: roboto" 
-                       [items]="teamMember" 
-                       bindLabel="userName" 
-                       bindValue="id" 
-                       (change)="onSelectionChange($event)"
-                       [multiple]="true" 
-                       [closeOnSelect]="false" 
-                       id="teamMem"
-                       placeholder="Team Member / Team Members" 
-                       formControlName="teamMem"
-                      > 
-                      <ng-option *ngFor="let teamMem of teamMember" [value]="teamMem">
-                        {{teamMem.userName}}
-                      </ng-option>
-                      </ng-select>
-                      <span style="color:red" *ngIf="teamMem && teamMem.touched && teamMem.invalid">
-                        Team Member is required! Please select atleast one team member.</span>
-                    </div>
-                  <div>
-    
-                    <!--preview button-->
-                      <button mat-button (click)="onClick()"> Preview </button>
-                      <pre></pre>
-    
-                      <!--table-->
-                      <div *ngIf="clicked">
-                          <table>
-                              <thead>
-                                <tr>
-                                  <th>Team Details</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td *ngFor="let item of teamLead">
-                                    {{item.userName}}
-                                    <span class="text-color">
-                                      <em>(Team Leader)</em>
-                                    </span>
-                                  </td>
-                                </tr>
-                                <tr *ngFor="let selectedMem of selectedMembers">
-                                <td>
-                                  {{ selectedMem.userName }}
+                  <span class="spacing"></span>
+                  <label class="radio-inline">
+                      <input type="radio" value="inprogress" formControlName="status" [checked]="task?.status === 'inprogress'">
+                      In-progress
+                  </label>
+                  <span class="spacing"></span>
+                  <label class="radio-inline">
+                      <input type="radio" value="done" formControlName="status" [checked]="task?.status === 'done'">
+                      Done
+                  </label>
+              </div>
+          </div>
+          <pre></pre>
+
+          <!--priority-->
+          
+          <div>
+              <label><strong>Priority<span class="required-indicator">*</span></strong></label>
+              <div class="form-control" >
+                  <label class="radio-inline">
+                      <input type="radio" value="high"  formControlName="priorityOfTask" [checked]="task?.priorityOfTask === 'high'">
+                      High
+                  </label>
+                  <span class="spacing"></span>
+                  <label class="radio-inline">
+                      <input type="radio" value="medium" formControlName="priorityOfTask" [checked]="task?.priorityOfTask === 'medium'">
+                      Medium
+                  </label>
+                  <span class="spacing"></span>
+                  <label class="radio-inline">
+                      <input type="radio" value="low"  formControlName="priorityOfTask" [checked]="task?.priorityOfTask === 'low'">
+                      Low
+                  </label>
+              </div>
+          </div>
+          <pre></pre>
+          <div>
+              <label>
+                  <strong><em>Create Team</em></strong>
+                </label>
+                   <!--Team member--> 
+                   <div>
+                    <ng-select style="font-family: roboto" 
+                     [items]="teamMember" 
+                     bindLabel="userName" 
+                     bindValue="id" 
+                     (change)="onSelectionChange($event)"
+                     [multiple]="true" 
+                     [closeOnSelect]="false" 
+                     id="teamMem"
+                     placeholder="Team Member / Team Members" 
+                     formControlName="teamMem"
+                    > 
+                    <ng-option *ngFor="let teamMem of teamMember" [value]="teamMem">
+                      {{teamMem.userName}}
+                    </ng-option>
+                    </ng-select>
+                    <span style="color:red" *ngIf="teamMem && teamMem.touched && teamMem.invalid">
+                      Team Member is required! Please select atleast one team member.</span>
+                  </div>
+                <div>
+  
+                  <!--preview button-->
+                    <button mat-button (click)="onClick()"> Preview </button>
+                    <pre></pre>
+  
+                    <!--table-->
+                    <div *ngIf="clicked">
+                        <table>
+                            <thead>
+                              <tr>
+                                <th>Team Details</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td *ngFor="let item of teamLead">
+                                  {{item.userName}}
                                   <span class="text-color">
-                                    <em>(Team Member)</em>
+                                    <em>(Team Leader)</em>
                                   </span>
                                 </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                      </div>
-                  </div>
+                              </tr>
+                              <tr *ngFor="let selectedMem of selectedMembers">
+                              <td>
+                                {{ selectedMem.userName }}
+                                <span class="text-color">
+                                  <em>(Team Member)</em>
+                                </span>
+                              </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
                 </div>
-              <pre></pre>
-              <div class="buttons">
-                <button mat-raised-button class="btn btn-primary"
-                 [disabled]="assignTask.invalid" type="submit"
-                 (click)="onSubmit()"
-                >
-                Done 
-                </button> 
-      
-                <button mat-raised-button class="btn btn-light" 
-                style="margin-left: 30px;"
-                (click)="onReset()"
-                type="button"
-                > 
-                Reset
-                </button>
-      
-                <button mat-raised-button class="btn btn-light" 
-                 style="margin-left: 30px;"
-                 type="button"
-                 (click)="onCancel()"
-                > 
-                 Cancel 
-                </button>
-            </div>
-        </div>
-        </form>
-    </div>
+              </div>
+            <pre></pre>
+            <div class="buttons">
+              <button mat-raised-button class="btn btn-primary"
+               [disabled]="assignTask.invalid" type="submit"
+               (click)="onSubmit()"
+              >
+              Done 
+              </button> 
+    
+              <button mat-raised-button class="btn btn-light" 
+              style="margin-left: 30px;"
+              (click)="onReset()"
+              type="button"
+              > 
+              Reset
+              </button>
+    
+              <button mat-raised-button class="btn btn-light" 
+               style="margin-left: 30px;"
+               type="button"
+               (click)="onCancel()"
+              > 
+               Cancel 
+              </button>
+          </div>
+      </div>
+      </form>
+  </div>
 </div> 
