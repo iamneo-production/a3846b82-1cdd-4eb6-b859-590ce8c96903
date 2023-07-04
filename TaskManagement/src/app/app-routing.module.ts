@@ -5,13 +5,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ReportingComponent } from './reporting/reporting.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
+import { AssignTaskComponent } from './assign-task/assign-task.component';
 
 const routes: Routes = 
-[{path:"**",component:UserDetailsComponent},
-{path:"userdetails",component:UserDetailsComponent},
+[{path:"userdetails",component:UserDetailsComponent},
+{path:"events",component:CalendarComponent},
 {path:"taskdetails",component:TaskDetailsComponent},
-{path:"signup",component:SignupComponent}];
+{path:"signup",component:SignupComponent},
+{path:"profile",component:ProfileComponent},
+{path:"report",component:ReportingComponent},
+{path:"tasks",component:CreateTaskComponent},
+{path:"assign",component:AssignTaskComponent},
+{path:"**",component:UserDetailsComponent},
 
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
