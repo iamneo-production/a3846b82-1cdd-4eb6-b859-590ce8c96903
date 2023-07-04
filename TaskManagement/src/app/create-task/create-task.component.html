@@ -1,6 +1,13 @@
+
+<div class="main-body" >
+    
+    <mat-toolbar color="primary">
+      <span > ✔ Create Task</span>
+      <span class="todo"></span>
+    </mat-toolbar>
+
 <div class="container">
     <div class="content">
-    <h3><strong><em>Create new task</em></strong></h3>
     <br>
     <form [formGroup]="createTask" (ngSubmit)="onSubmit()">
         <div class="forms">
@@ -113,7 +120,7 @@
             </div>
             <pre></pre>
             <!--Assign task navigation button-->
-        <div class="assign-btn">
+        <div class="assign-btn" >
             <button mat-button class="btn1"
             type="button"
             (click)="onAssignTask()"

@@ -26,6 +26,7 @@ const routes: Routes =
 {path:"assign",component:AssignTaskComponent},
 {path:"verification",component:VerificationComponent},
 {path:"home",component:HomeComponent},
+{path:"**",component:HomeComponent},
 
 
 ];
