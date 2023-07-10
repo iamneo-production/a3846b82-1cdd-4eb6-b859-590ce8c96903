@@ -19,6 +19,9 @@ public class Task {
 	private String username;
 	private boolean taskstatus;
 	
+    public Task(){
+        
+    }
 	
     public Task(String taskdescription, String taskname, Date taskduedate, Long id, String username,
             boolean taskstatus) {
