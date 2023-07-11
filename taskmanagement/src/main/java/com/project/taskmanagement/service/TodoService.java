@@ -4,11 +4,11 @@ package com.project.taskmanagement.service;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.project.taskmanagement.model.Todo;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TodoHardcodedService {
+public class TodoService {
 	
 	
 	
