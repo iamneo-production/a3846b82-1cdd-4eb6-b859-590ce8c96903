@@ -24,26 +24,30 @@ public class TodoController {
 	
    @Autowired 
    private TodoRepository todoRepository;
+
    
-   @GetMapping("/jpa/view-task")
+   @Autowired
+   public TodoService todoservice;
+   
+   @GetMapping("/view-task")
    public List<Todo> retrieveAllTodos(){
 	   return todoRepository.findAll();
 	   }
    
-	@GetMapping("/jpa/{taskName}/view-task/{id}")
+	@GetMapping("/{taskName}/view-task/{id}")
 	public Todo getTodoById (@PathVariable String taskName,@PathVariable Long id){
 		return todoRepository.findById(id).get();
 	
 	}
 	
 	
-	@GetMapping("/jpa/{taskName}/view-task")
+	@GetMapping("/{taskName}/view-task")
 	public Todo getTodoByTaskName (@PathVariable String taskName){
 		return todoRepository.findByTaskName(taskName).get(0);
 		
 	}
 	
-	@DeleteMapping("/jpa/{taskName}/view-task/{id}")
+	@DeleteMapping("/{taskName}/view-task/{id}")
 	public ResponseEntity<Void> deleteTodo(
 			@PathVariable String taskName, @PathVariable Long id) 
 	    {   	
@@ -53,7 +57,7 @@ public class TodoController {
 	}
 	
 	
-	@PutMapping ("/jpa/{taskName}/view-task/{id}")
+	@PutMapping ("/{taskName}/view-task/{id}")
 	public ResponseEntity<Todo> updateTodo(
 			@PathVariable String taskName,
 			@PathVariable Long id, @RequestBody Todo todo    
@@ -67,7 +71,7 @@ public class TodoController {
 	}
 	
 	
-	@PostMapping("/jpa/{taskName}/view-task")
+	@PostMapping("/{taskName}/view-task")
 	public ResponseEntity<Void> createTodo(
 			@PathVariable String taskName,
 			 @RequestBody Todo todo

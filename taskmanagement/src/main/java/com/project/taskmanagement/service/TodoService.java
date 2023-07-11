@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class TodoService {
 	
-	
-	
 	private static List<Todo> todos = new ArrayList<Todo>();
 	
     private static long idCounter=0;
@@ -45,20 +43,20 @@ public class TodoService {
     	
     }
     
-    //created delete method will return the deleted todo back
-	public Todo deleteById(long id) {  //long id -- the id which we want to pass in 'can delete using this specific id'
+   
+	public Todo deleteById(long id) { 
 		Todo todo =findById(id);
-		if(todo==null) return null;  //checking at this point 
-		if(todos.remove(todo)) {     //able to delete the todo using remove method it returns true or false
-		return todo;                 //if the todo removed successfully it will return the todo back
-	} 
-	return null;	                 //or it will return null
+		if(todo==null) return null;  
+		if(todos.remove(todo)) {     
+		return todo;  
+		}               
+	return null;	                 
 	}
 	
-//created a method for findById will return the todo back
+
 	
 	Todo findById(long id) {
-		for(Todo todo:todos) {        //iterated to all the todo's
+		for(Todo todo:todos) {       
 			if(todo.getId()==id) {
 				return todo;
 			}
