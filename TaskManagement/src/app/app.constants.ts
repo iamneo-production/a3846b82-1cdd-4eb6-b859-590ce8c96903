@@ -1,0 +1,1 @@
+export const TODO_JPA_API_URL="https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/jpa"
