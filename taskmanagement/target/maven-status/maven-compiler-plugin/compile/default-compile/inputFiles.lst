@@ -1,1 +1,5 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/TaskmanagementApplication.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TaskRepository.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java
