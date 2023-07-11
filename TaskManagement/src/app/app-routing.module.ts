@@ -14,7 +14,8 @@ import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = 
-[{path:"userdetails",component:UserDetailsComponent},
+[{path:"home",component:HomeComponent},
+{path:"userdetails",component:UserDetailsComponent},
 {path:"events",component:CalendarComponent},
 {path:"taskdetails",component:TaskDetailsComponent},
 {path:"signup",component:SignupComponent},
