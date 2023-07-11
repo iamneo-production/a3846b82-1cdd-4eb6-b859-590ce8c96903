@@ -16,8 +16,12 @@ export class TodoDataService {
     return this.http.get<Todo[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/view-task`);
   
    }
+   deleteTodo(taskName: any , id: any){
+    return this.http.delete(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/${taskName}/view-task/${id}`);
+  }
 
-
-
-  
+  updateTodo(taskName: any , id: any,todo: any){
+    return this.http.put(
+      `https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/${taskName}/view-task/${id}`,todo) ; 
+    }
 }
