@@ -1,17 +1,29 @@
 package com.project.taskmanagement.model;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Task {
 	private String taskdescription;
 	private String taskname;
 	private Date taskduedate;
-	private long id;
+
+    @Id
+    @GeneratedValue
+	private Long id;
 	private String username;
 	private boolean taskstatus;
 	
+    public Task(){
+        
+    }
 	
-    public Task(String taskdescription, String taskname, Date taskduedate, long id, String username,
+    public Task(String taskdescription, String taskname, Date taskduedate, Long id, String username,
             boolean taskstatus) {
         this.taskdescription = taskdescription;
         this.taskname = taskname;
@@ -38,10 +50,10 @@ public class Task {
     public void setTaskduedate(Date taskduedate) {
         this.taskduedate = taskduedate;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getUsername() {
@@ -71,6 +83,4 @@ public class Task {
 		Task other = (Task) obj;
 		return id == other.id;
 	}
-	
-	
 }
