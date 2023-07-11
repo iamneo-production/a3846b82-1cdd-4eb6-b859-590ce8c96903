@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataShareServiceService {
 
-  private data: any;
+  private taskData: any;
 
-  addTaskData(data: any) {
-    this.data = data;
-  }
+  addTaskData(task: any) {
+    this.taskData = task;  }
 
   getTaskData() {
-    return this.data;
+    return this.taskData;
   }
+
 }

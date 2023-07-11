@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { DataShareServiceService } from '../service/data-share-service.service';
+import { DataShareServiceService } from '../service/task/data-share-service.service';
+import { UserService } from '../service/task/user.service';
+import { userList } from '../service/task/user-list';
+import { User } from '../service/task/user';
 
 @Component({
   selector: 'app-assign-task',
@@ -13,6 +16,7 @@ export class AssignTaskComponent implements OnInit {
   
   //fetching data from create-new- task 
   task: any;
+  taskStatus: string = '';
   
  // Validations
  assignTask = new FormGroup({
@@ -21,17 +25,19 @@ export class AssignTaskComponent implements OnInit {
   status:new FormControl('',[Validators.required]),
   priorityOfTask:new FormControl('',[Validators.required]),
   dueDate:new FormControl('',[Validators.required]) ,
+  teamMem : new FormControl([],[Validators.required])
 });
 
 
 //For data tranfer from create-task  to assign-task comp
-
+teamMembers=[];
 
 //Constructors
 constructor(
   private location :Location,
   private route: ActivatedRoute,
-  private shareData:DataShareServiceService
+  private shareData:DataShareServiceService,
+  private userdetails:UserService
   ) { }
 
 //for date picker  
@@ -45,26 +51,51 @@ FinalDay:any;
 minValue : any;
 TodayDate : any;
 
+//for team
+teamLead !: User[];
+teamMember!:userList[] ;
+
 
 ngOnInit(): void {
-if(this.currentMonth<10){
-  this.FinalMonth ="0"+this.currentMonth;
-}
-else{
-  this.FinalMonth = this.currentMonth;
-}
 
-if(this.currentDay<10){
-  this.FinalDay = "0"+ this.currentDay;
-}
-else{
-  this.FinalDay = this.currentDay;
-}
-this.TodayDate = this.currentYear+"-"+ this.FinalMonth+"-"+this.FinalDay;
-this.minValue = this.TodayDate;
 
-// Retrieve task data from the shared service
-this.task = this.shareData.getTaskData();
+  // Date
+  if(this.currentMonth<10){
+    this.FinalMonth ="0"+this.currentMonth;
+  }
+  else{
+    this.FinalMonth = this.currentMonth;
+  }
+
+  if(this.currentDay<10){
+    this.FinalDay = "0"+ this.currentDay;
+  }
+  else{
+    this.FinalDay = this.currentDay;
+  }
+
+  //Date Format
+  this.TodayDate = this.currentYear+"-"+ this.FinalMonth+"-"+this.FinalDay;
+
+  //assigning the minimum value of date to present date 
+  this.minValue = this.TodayDate;
+
+  // Retrieve task data from the shared service
+  this.task = this.shareData.getTaskData();
+
+  // Populate the form fields with the task data
+  if (this.task) {
+    this.assignTask.patchValue(this.task);
+  }
+
+  //teamLeader is the cuurent user
+  this.teamLead=this.userdetails.getUserDetails();
+
+  //teamMember from user-list
+  this.teamMember= this.userdetails.getFriendList();
+
+  
+
 }
 
 get taskName(){
@@ -75,6 +106,28 @@ get taskDescription(){
   return this.assignTask.get('taskDescription')
 }
 
+get teamMem(){
+  return this.assignTask.get('teamMem')
+}
+
+get teamLeader(){
+  return this.assignTask.get('teamLeader')
+}
+
+//click function for preview button
+clicked:boolean=false;  // boolean value for click function
+onClick(){
+  this.clicked = !this.clicked;
+  console.log(this.clicked)
+}
+
+//selected team members --team details
+selectedMembers: any[] = [];
+
+onSelectionChange(event: any) {
+  this.selectedMembers = event;
+  console.log(event);
+}
 
 //done button functions
 onSubmit(){ 
@@ -94,6 +147,5 @@ onSubmit(){
 onCancel(){
   this.location.back();
 }
-
 
 }
