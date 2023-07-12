@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.project.taskmanagement.controller.User;
+import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
+import com.project.taskmanagement.service.UserService;
 
 
 @CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController
-public class UserResource {
+public class UserController {
 	
 	@Autowired
 	public UserService userservice;
