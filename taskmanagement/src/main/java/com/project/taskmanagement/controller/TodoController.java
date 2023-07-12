@@ -20,38 +20,38 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 
-@CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
+@CrossOrigin("https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController  
 public class TodoController {
 	
    @Autowired 
-   private TodoRepository todoRepository;
+   public TodoRepository todoRepository;
 
    
    @Autowired
    public TodoService todoservice;
    
-   @GetMapping("/view-task")
+   @GetMapping("/viewtask")
    public List<Todo> retrieveAllTodos(){
 	   return todoRepository.findAll();
 	   }
    
-	@GetMapping("/{taskName}/view-task/{id}")
-	public Todo getTodoById (@PathVariable String taskName,@PathVariable Long id){
+	@GetMapping("/{taskname}/viewtask/{id}")
+	public Todo getTodoById (@PathVariable String taskname,@PathVariable Long id){
 		return todoRepository.findById(id).get();
 	
 	}
 	
 	
-	@GetMapping("/{taskName}/view-task")
-	public Todo getTodoByTaskName (@PathVariable String taskName){
-		return todoRepository.findByTaskName(taskName).get(0);
+	@GetMapping("/{taskname}/viewtask")
+	public Todo getTodoByTaskname (@PathVariable String taskname){
+		return todoRepository.findByTaskname(taskname).get(0);
 		
 	}
 	
-	@DeleteMapping("/{taskName}/view-task/{id}")
+	@DeleteMapping("/{taskname}/viewtask/{id}")
 	public ResponseEntity<Void> deleteTodo(
-			@PathVariable String taskName, @PathVariable Long id) 
+			@PathVariable String taskname, @PathVariable Long id) 
 	    {   	
 		todoRepository.deleteById(id);
 		
@@ -59,9 +59,9 @@ public class TodoController {
 	}
 	
 	
-	@PutMapping ("/{taskName}/view-task/{id}")
+	@PutMapping ("/{taskname}/viewtask/{id}")
 	public ResponseEntity<Todo> updateTodo(
-			@PathVariable String taskName,
+			@PathVariable String taskname,
 			@PathVariable Long id, @RequestBody Todo todo    
 			 ){ 
 		
