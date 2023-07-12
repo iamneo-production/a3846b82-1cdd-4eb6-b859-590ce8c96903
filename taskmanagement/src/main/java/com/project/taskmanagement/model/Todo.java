@@ -5,18 +5,18 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
 
 @Entity
+@Table
 public class Todo {
 	
 	@Id
 	@GeneratedValue
-	
 	private Long id;
-	private String taskName;
-	private String taskDescription;
-	private Date targetDate;
+	private String taskname;
+	private String taskdescription;
+	private Date targetdate;
 	private Boolean priority;
 	private Boolean status;
 	
@@ -24,47 +24,53 @@ public class Todo {
     	
     }
 	
-    public Todo(Long id, String taskName, String taskDescription, Date targetDate, Boolean priority, Boolean status) {
-		super();
+
+	@Override
+	public String toString() {
+		return "Todo [id=" + id + ", priority=" + priority + ", status=" + status + ", targetdate=" + targetdate
+				+ ", taskdescription=" + taskdescription + ", taskname=" + taskname + "]";
+	}
+
+
+	public Todo(Long id, String taskname, String taskdescription, Date targetdate, Boolean priority, Boolean status) {
 		this.id = id;
-		this.taskName = taskName;
-		this.taskDescription = taskDescription;
-		this.targetDate = targetDate;
+		this.taskname = taskname;
+		this.taskdescription = taskdescription;
+		this.targetdate = targetdate;
 		this.priority = priority;
 		this.status = status;
-	} 
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTaskName() {
-		return taskName;
+	public String getTaskname() {
+		return taskname;
 	}
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
+	public void setTaskname(String taskname) {
+		this.taskname = taskname;
 	}
 
-	public String getTaskDescription() {
-		return taskDescription;
+	public String getTaskdescription() {
+		return taskdescription;
 	}
 
-	public void setTaskDescription(String taskDescription) {
-		this.taskDescription = taskDescription;
+	public void setTaskdescription(String taskdescription) {
+		this.taskdescription = taskdescription;
 	}
 
-	public Date getTargetDate() {
-		return targetDate;
+	public Date getTargetdate() {
+		return targetdate;
 	}
 
-	public void setTargetDate(Date targetDate) {
-		this.targetDate = targetDate;
+	public void setTargetdate(Date targetdate) {
+		this.targetdate = targetdate;
 	}
 
 	public Boolean getPriority() {
@@ -85,8 +91,12 @@ public class Todo {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,9 +106,12 @@ public class Todo {
 		if (getClass() != obj.getClass())
 			return false;
 		Todo other = (Todo) obj;
-		return id == other.id;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 	
-	 
-    
 }
