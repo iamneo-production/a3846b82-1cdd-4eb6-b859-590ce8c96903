@@ -14,7 +14,7 @@ import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = 
-[{path:"home",component:HomeComponent},
+[
 {path:"userdetails",component:UserDetailsComponent},
 {path:"events",component:CalendarComponent},
 {path:"taskdetails",component:TaskDetailsComponent},
@@ -27,6 +27,7 @@ const routes: Routes =
 {path:"assign",component:AssignTaskComponent},
 {path:"verification",component:VerificationComponent},
 {path:"home",component:HomeComponent},
+{path:"**",component:HomeComponent},
 
 
 ];
