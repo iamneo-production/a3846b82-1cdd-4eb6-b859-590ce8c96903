@@ -13,7 +13,7 @@ export class TodoDataService {
 
   retrieveAllTodos(){
 
-    return this.http.get<Todo[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/view-task`);
+    return this.http.get<Todo[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask`);
   
    }
    deleteTodo(taskName: any , id: any){

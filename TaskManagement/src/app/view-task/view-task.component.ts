@@ -6,11 +6,11 @@ import { TodoDataService } from '../service/todo/todo-data.service';
 export class Todo{
   constructor(
     public id: number,
-    public taskName :string,
-    public taskDescription :string,
+    public taskname :string,
+    public taskdescription :string,
     public status:boolean,
     public priority:boolean,
-    public dueDate:Date,
+    public targetdate:Date,
   
   ){
     

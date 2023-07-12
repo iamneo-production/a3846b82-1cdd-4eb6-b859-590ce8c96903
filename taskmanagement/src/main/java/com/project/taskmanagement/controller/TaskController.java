@@ -19,7 +19,7 @@ import com.project.taskmanagement.repository.TaskRepository;
 
 import com.project.taskmanagement.model.Task;
 
-@CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
+@CrossOrigin("https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController
 public class TaskController {
 	@Autowired
