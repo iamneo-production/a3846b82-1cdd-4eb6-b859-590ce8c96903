@@ -6,4 +6,10 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/UserService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Todo.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TodoService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TodoController.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TodoRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java

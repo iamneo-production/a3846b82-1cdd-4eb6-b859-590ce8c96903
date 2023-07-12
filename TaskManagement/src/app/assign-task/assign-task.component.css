@@ -1,7 +1,4 @@
-*{
-    background-color:rgb(233, 237, 237);
-    border-radius: 20px;
-   }
+
    
    h3{
        padding-top: 20px;
@@ -84,4 +81,12 @@ td {
 
 .content{
     width: 70%;
+}
+.main-body{
+    padding-top:20px ;
+    margin: 0 auto;
+    max-width: 1248px;
+}
+.todo{
+    flex: 1 1 auto;
 }

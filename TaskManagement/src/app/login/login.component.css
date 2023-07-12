@@ -81,7 +81,7 @@
   
   
   .text-input i {
-    color: slateblue;
+    color: #3f51b5;
   
   }
   .text-input .fa-user {
@@ -107,7 +107,7 @@
   transform: translateY(-50%);
   }
   ::placeholder {
-    color:slateblue;
+    color: #3f51b5;
   }
   
   .login-btn {
@@ -115,11 +115,11 @@
     height: 5vh;
     padding: 10px;
     color: white;
-    background: slateblue;
+    background: #3f51b5;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    margin-top: 60px;
+    margin-top: 30px;
     display: block;
     margin-bottom: 10px;
     margin-left:50px;
@@ -127,7 +127,7 @@
   
   a {
     font-size: 12px;
-    color: slateblue;
+    color: #3f51b5;
     cursor: pointer;
     user-select: none;
     text-decoration: none;
@@ -148,7 +148,7 @@
   }
   
   .create a{
-    color: slateblue;
+    color:  #3f51b5;
     margin-right:50px;
     margin-left: 30px;
     margin-bottom:50px;

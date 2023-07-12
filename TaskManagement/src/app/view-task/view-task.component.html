@@ -4,7 +4,7 @@
     <mat-toolbar color="primary">
       <span > ✔ Task List</span>
       <span class="todo"></span>
-      <button mat-raised-button ><a routerLink="/create-task" style="text-decoration: none; color: black;">
+      <button mat-raised-button (click)="addTodo()"><a  style="text-decoration: none; color: black;">
          ADD TASK</a>
       </button>
     </mat-toolbar>
@@ -30,8 +30,8 @@
                 <td>{{Todo.priority}}</td>
                 <td>{{Todo.status}}</td>
                 <td>{{Todo.dueDate | date | uppercase}}</td>
-                <td><button  class="btn btn-success">Update</button></td>
-                <td><button class="btn btn-warning">Delete</button></td>
+                <td><button (click)="updateTodo(Todo.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteTodo(Todo.id)" class="btn btn-warning">Delete</button></td>
             </tr>
        </tbody>
     </table>
