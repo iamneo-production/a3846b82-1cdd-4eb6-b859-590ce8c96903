@@ -1,3 +1,4 @@
+com/project/taskmanagement/TaskmanagementApplication.class
 com/project/taskmanagement/service/TodoService.class
 com/project/taskmanagement/model/Task.class
 com/project/taskmanagement/controller/TodoController.class

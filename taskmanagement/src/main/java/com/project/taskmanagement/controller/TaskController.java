@@ -47,19 +47,45 @@ public class TaskController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	@PutMapping("/dusers/{username}/dtasks/{id}")
-	public ResponseEntity<Task> updateTask(@PathVariable String username,
-			@PathVariable Long id,@RequestBody Task task){
-		Task taskUpdated=taskservice.save(task);
-		return new ResponseEntity<Task>(task,HttpStatus.OK);
-	}
+
 	
-	@PostMapping("/dusers/{username}/dtasks")
-	public ResponseEntity<Void> createTask(@PathVariable String username,@RequestBody Task task){
-		task.setUsername(username);
-		Task createdTask=taskservice.save(task);
-		///Get Uri of id
-		URI uri=ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTask.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-	}
+	 //Creating new task
+	 @PostMapping
+	 public ResponseEntity<Task> createTask(@RequestBody Task task) {
+		   // Retrieve the current user from the Authentication object
+		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		 String currentUsername = authentication.getName();
+ 
+		 // Assign the current user as the task assignee
+		 Optional<User> user = userRepository.findByName(currentUsername);
+		 if (user.isPresent()) {
+			 User assignee = user.get();
+			 task.setUser(assignee);
+ 
+			 // Set the current date
+			 LocalDate createdDate = LocalDate.now();
+			 task.setCreatedDate(createdDate);
+ 
+			 Task createdTask = taskService.createTask(task);
+			 return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
+		 } 
+		 
+		 else {
+			 // Handle the case when the user is not found
+			 return ResponseEntity.notFound().build();
+		 }
+	 }
+	 
+	 //Updating existing task
+	 @PutMapping("/{id}")
+	 public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
+		 Task existingTask = taskService.getTaskById(id);
+		 if (existingTask != null) {
+			 task.setId(id);
+			 Task updatedTask = taskService.updateTask(task);
+			 return new ResponseEntity<>(updatedTask, HttpStatus.OK);
+		 } else {
+			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		 }
+	 }
 }

@@ -17,7 +17,14 @@ public class Task {
     @GeneratedValue
 	private Long id;
 	private String username;
-	private boolean taskstatus;
+
+    @Enumerated(EnumType.STRING)
+	private TaskStatus status ;
+
+    @Enumerated(EnumType.STRING)
+	private Priority priority;
+	
+
 	
     public Task(){
         
