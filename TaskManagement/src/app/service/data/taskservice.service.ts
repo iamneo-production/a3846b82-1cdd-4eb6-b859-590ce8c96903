@@ -9,6 +9,6 @@ export class TaskserviceService {
   constructor(public http:HttpClient) { }
 
   retrieveTasks(){
-    return this.http.get<Task[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dtasks`)
+    return this.http.get<Task[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dtasks`)
   }
 }
