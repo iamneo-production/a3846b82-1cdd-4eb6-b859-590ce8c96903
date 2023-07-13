@@ -16,13 +16,13 @@ export class TodoDataService {
     return this.http.get<Todo[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask`);
   
    }
-   deleteTodo(taskName: any , id: any){
-    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/${taskName}/viewtask/${id}`);
+   deleteTodo(taskname: any , id: any){
+    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/${taskname}/viewtask/${id}`);
   }
 
-  updateTodo(taskName: any , id: any,todo: any){
+  updateTodo(taskname: any , id: any,todo: any){
     return this.http.put(
-      `https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/${taskName}/viewtask/${id}`,todo) ; 
+      `https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/${taskname}/viewtask/${id}`,todo) ; 
     }
 }
 
