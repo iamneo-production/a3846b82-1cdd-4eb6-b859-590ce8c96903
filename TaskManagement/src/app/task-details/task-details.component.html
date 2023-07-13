@@ -29,7 +29,7 @@
             <td>{{task.taskduedate | date}}</td>
             <td>{{task.taskstatus}}</td>
             <td><button class="btn btn-success">Update</button></td>
-            <td><button class="btn btn-warning" (click)="deleteTask(task.id)">Delete</button></td>
+            <td><button (click)="deleteTask(task.id)" class="btn btn-warning">Delete</button></td>
           </tr>
         </tbody>
       </table>
