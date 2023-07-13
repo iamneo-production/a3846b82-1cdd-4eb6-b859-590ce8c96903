@@ -62,9 +62,5 @@ export class ViewTaskComponent implements OnInit {
       this.router.navigate(['view-task',id]) 
       
     }
-    
   
-    addTodo(){
-      this.router.navigate(['view-task',-1])  
-    }
 }
