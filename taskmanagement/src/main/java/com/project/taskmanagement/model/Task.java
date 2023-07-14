@@ -5,9 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
-@Entity
-@Table
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="tasks")
 public class Task {
 	private String taskdescription;
 	private String taskname;
@@ -16,65 +26,19 @@ public class Task {
     @Id
     @GeneratedValue
 	private Long id;
-	private String username;
 
     @Enumerated(EnumType.STRING)
 	private TaskStatus status ;
 
     @Enumerated(EnumType.STRING)
 	private Priority priority;
-	
 
+	private LocalDate createdDate;
 	
-    public Task(){
-        
-    }
+    @ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
-    public Task(String taskdescription, String taskname, Date taskduedate, Long id, String username,
-            boolean taskstatus) {
-        this.taskdescription = taskdescription;
-        this.taskname = taskname;
-        this.taskduedate = taskduedate;
-        this.id = id;
-        this.username = username;
-        this.taskstatus = taskstatus;
-    }
-    public String getTaskdescription() {
-        return taskdescription;
-    }
-    public void setTaskdescription(String taskdescription) {
-        this.taskdescription = taskdescription;
-    }
-    public String getTaskname() {
-        return taskname;
-    }
-    public void setTaskname(String taskname) {
-        this.taskname = taskname;
-    }
-    public Date getTaskduedate() {
-        return taskduedate;
-    }
-    public void setTaskduedate(Date taskduedate) {
-        this.taskduedate = taskduedate;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public boolean isTaskstatus() {
-        return taskstatus;
-    }
-    public void setTaskstatus(boolean taskstatus) {
-        this.taskstatus = taskstatus;
-    }
     @Override
 	public int hashCode() {
 		return Objects.hash(id);

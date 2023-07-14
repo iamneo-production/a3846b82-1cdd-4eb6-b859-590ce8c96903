@@ -2,6 +2,9 @@ package com.project.taskmanagement.authentication;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,18 +12,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.springboot.model.Role;
-import com.example.springboot.model.Token;
-import com.example.springboot.model.TokenType;
-import com.example.springboot.model.User;
-import com.example.springboot.repository.TokenRepository;
-import com.example.springboot.repository.UserRepository;
-import com.example.springboot.service.JwtService;
+
+import com.project.taskmanagement.model.Role;
+import com.project.taskmanagement.model.Token;
+import com.project.taskmanagement.model.TokenType;
+import com.project.taskmanagement.model.User;
+import com.project.taskmanagement.repository.TokenRepository;
+import com.project.taskmanagement.repository.UserRepository;
+import com.project.taskmanagement.service.JwtService;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -121,3 +123,4 @@ public class AuthenticationService {
 	}
 
 }
+

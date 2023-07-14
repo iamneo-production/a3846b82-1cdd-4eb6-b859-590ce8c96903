@@ -48,4 +48,14 @@ public class TaskService {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+		//create new task
+		public Task createTask(Task task) {
+	        return taskRepository.save(task);
+	    }
+
+		//update task
+	    public Task updateTask(Task task) {
+	        return taskRepository.save(task);
+	    }
 }

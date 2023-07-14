@@ -1,63 +1,85 @@
 package com.project.taskmanagement.model;
-import java.util.Date;
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
+import java.util.Collection;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.Objects;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name="user")
 @Table(name="user")
-public class User {
+public class User implements UserDetails{
 
     @Id
     @GeneratedValue
 	private Long id;
-	private String username;
+	private String name;
 	private boolean isdone;
 	private String email;
-	private String role;
-	
-	public User(){
 
-    }
-	public User(Long id, String username, boolean isdone, String email, String role) {
-        this.id = id;
-        this.username = username;
-        this.isdone = isdone;
-        this.email = email;
-        this.role = role;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public boolean isIsdone() {
-        return isdone;
-    }
-    public void setIsdone(boolean isdone) {
-        this.isdone = isdone;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
-    }
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+	private Role role; 
+	
+	@OneToMany
+	private List<Token> token;
+	
+	@OneToMany(mappedBy="user")
+	private List<Task> tasks;
+
+    @Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of(new SimpleGrantedAuthority(role.name()));
+	}
+	@Override
+	public String getPassword() {
+		return password;
+	}
+	@Override
+	public String getUsername() {
+		return name;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
     @Override
     public int hashCode() {
         final int prime = 31;

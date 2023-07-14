@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.example.springboot.repository.UserRepository;
+import com.project.taskmanagement.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -45,3 +45,4 @@ public class ApplicationConfig {
 		return new BCryptPasswordEncoder();
 	}
 }
+

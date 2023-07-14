@@ -1,6 +1,6 @@
 package com.project.taskmanagement.authentication;
 
-import com.example.springboot.model.Role;
+import com.project.taskmanagement.model.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

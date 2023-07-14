@@ -1,5 +1,22 @@
 package com.project.taskmanagement.configuration;
 
+import static com.project.taskmanagement.model.Permission.ADMIN_CREATE;
+import static com.project.taskmanagement.model.Permission.ADMIN_DELETE;
+import static com.project.taskmanagement.model.Permission.ADMIN_READ;
+import static com.project.taskmanagement.model.Permission.ADMIN_UPDATE;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_READ;
+import static com.project.taskmanagement.model.Permission.USER_CREATE;
+import static com.project.taskmanagement.model.Permission.USER_DELETE;
+import static com.project.taskmanagement.model.Permission.USER_READ;
+import static com.project.taskmanagement.model.Permission.USER_UPDATE;
+import static com.project.taskmanagement.model.Role.ADMIN;
+import static com.project.taskmanagement.model.Role.TEAM_LEADER;
+import static com.project.taskmanagement.model.Role.USER;
+import static org.springframework.http.HttpMethod.DELETE;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -12,24 +29,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import lombok.RequiredArgsConstructor;
-
-import static com.example.springboot.model.Role.ADMIN;
-import static com.example.springboot.model.Role.USER;
-import static com.example.springboot.model.Role.TEAM_LEADER;
-import static org.springframework.http.HttpMethod.DELETE;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpMethod.PUT;
-import static com.example.springboot.model.Permission.ADMIN_CREATE;
-import static com.example.springboot.model.Permission.ADMIN_UPDATE;
-import static com.example.springboot.model.Permission.ADMIN_DELETE;
-import static com.example.springboot.model.Permission.ADMIN_READ;
-import static com.example.springboot.model.Permission.USER_CREATE;
-import static com.example.springboot.model.Permission.USER_READ;
-import static com.example.springboot.model.Permission.USER_UPDATE;
-import static com.example.springboot.model.Permission.USER_DELETE;
-import static com.example.springboot.model.Permission.TEAMLEADER_READ;
-
 
 @Configuration
 @EnableWebSecurity
@@ -46,18 +45,18 @@ public class WebSecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 		.csrf().disable()
-		.authorizeHttpRequests().requestMatchers("/auth/**").permitAll()
-		.requestMatchers("/users/**").hasAnyAuthority(ADMIN.name(),TEAM_LEADER.name())
-		.requestMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
-		.requestMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
-		.requestMatchers(POST,"/users/**").hasAuthority(ADMIN_CREATE.name())
-		.requestMatchers(DELETE,"/users/**").hasAuthority(ADMIN_DELETE.name())
+		.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
+		.antMatchers("/users/**").hasAnyAuthority(ADMIN.name(),TEAM_LEADER.name())
+		.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
+		.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
+		.antMatchers(POST,"/users/**").hasAuthority(ADMIN_CREATE.name())
+		.antMatchers(DELETE,"/users/**").hasAuthority(ADMIN_DELETE.name())
 		
-		.requestMatchers("/tasks/**").hasAnyAuthority(USER.name(),TEAM_LEADER.name())
-		.requestMatchers(GET,"/tasks").hasAnyAuthority(USER_READ.name(),TEAMLEADER_READ.name())
-		.requestMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_READ.name())
-		.requestMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_READ.name())
-		.requestMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_READ.name())
+		.antMatchers("/tasks/**").hasAnyAuthority(USER.name(),TEAM_LEADER.name())
+		.antMatchers(GET,"/tasks").hasAnyAuthority(USER_READ.name(),TEAMLEADER_READ.name())
+		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_READ.name())
+		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_READ.name())
+		.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_READ.name())
 
 		.anyRequest() 
 		.authenticated()
@@ -78,3 +77,4 @@ public class WebSecurityConfiguration {
 		return http.build();
 	}
 }
+

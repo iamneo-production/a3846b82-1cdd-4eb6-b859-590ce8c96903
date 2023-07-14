@@ -52,7 +52,7 @@ public class TaskController {
 	 //Creating new task
 	 @PostMapping
 	 public ResponseEntity<Task> createTask(@RequestBody Task task) {
-		   // Retrieve the current user from the Authentication object
+		 // Retrieving the current user from the Authentication object
 		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		 String currentUsername = authentication.getName();
  
@@ -62,7 +62,7 @@ public class TaskController {
 			 User assignee = user.get();
 			 task.setUser(assignee);
  
-			 // Set the current date
+			 // Set the current date for created date 
 			 LocalDate createdDate = LocalDate.now();
 			 task.setCreatedDate(createdDate);
  
