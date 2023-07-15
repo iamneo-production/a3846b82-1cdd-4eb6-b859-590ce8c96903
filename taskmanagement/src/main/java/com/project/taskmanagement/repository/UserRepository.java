@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import com.project.taskmanagement.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-    Optional<User> findByUsername(String username);
+    Optional<User> findByName(String name);
 }

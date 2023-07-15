@@ -1,5 +1,18 @@
 package com.project.taskmanagement.model;
 
+import static com.project.taskmanagement.model.Permission.ADMIN_CREATE;
+import static com.project.taskmanagement.model.Permission.ADMIN_DELETE;
+import static com.project.taskmanagement.model.Permission.ADMIN_READ;
+import static com.project.taskmanagement.model.Permission.ADMIN_UPDATE;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_CREATE;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_DELETE;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_READ;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_UPDATE;
+import static com.project.taskmanagement.model.Permission.USER_CREATE;
+import static com.project.taskmanagement.model.Permission.USER_DELETE;
+import static com.project.taskmanagement.model.Permission.USER_READ;
+import static com.project.taskmanagement.model.Permission.USER_UPDATE;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -8,20 +21,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import static com.example.springboot.model.Permission.ADMIN_CREATE;
-import static com.example.springboot.model.Permission.ADMIN_UPDATE;
-import static com.example.springboot.model.Permission.ADMIN_DELETE;
-import static com.example.springboot.model.Permission.ADMIN_READ;
-import static com.example.springboot.model.Permission.USER_CREATE;
-import static com.example.springboot.model.Permission.USER_READ;
-import static com.example.springboot.model.Permission.USER_UPDATE;
-import static com.example.springboot.model.Permission.USER_DELETE;
-import static com.example.springboot.model.Permission.TEAMLEADER_CREATE;
-import static com.example.springboot.model.Permission.TEAMLEADER_READ;
-import static com.example.springboot.model.Permission.TEAMLEADER_UPDATE;
-import static com.example.springboot.model.Permission.TEAMLEADER_DELETE;
-
 
 @RequiredArgsConstructor
 public enum Role {
@@ -71,3 +70,4 @@ public enum Role {
 		return authoroties;
 	}
 }
+

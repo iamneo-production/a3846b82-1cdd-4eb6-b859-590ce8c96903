@@ -10,11 +10,11 @@ public class UserService {
 	private static List<User> users=new ArrayList<>();
 		private static long idCounter=0;
 		
-		static {
+	/*	static {
             users.add(new User(++idCounter,"sandeep",false,"sandeep@gmail.com","dev"));
             users.add(new User(++idCounter,"chenna",false,"chenna@gmail.com","testing"));
             users.add(new User(++idCounter,"kaaki",false,"rev@gmail.com","fullstack"));
-        }
+        }*/
 		public List<User> findAll(){
             return users;
         }

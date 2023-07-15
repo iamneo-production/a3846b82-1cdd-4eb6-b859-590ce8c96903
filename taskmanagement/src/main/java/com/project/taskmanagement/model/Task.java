@@ -1,15 +1,17 @@
 package com.project.taskmanagement.model;
-import java.util.Date;
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 import java.time.LocalDate;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,39 +25,44 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name="tasks")
 public class Task {
-	private String taskdescription;
-	private String taskname;
-	private Date taskduedate;
-
-    @Id
-    @GeneratedValue
-	private Long id;
-
-    @Enumerated(EnumType.STRING)
+	
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(
+			name="task_name"
+			)
+	private String name;
+	
+	@Column(
+			name="task_description"
+			)
+	private String description; 
+	
+	@Column(
+			name="task_status"
+			)
+	@Enumerated(EnumType.STRING)
 	private TaskStatus status ;
-
-    @Enumerated(EnumType.STRING)
-	private Priority priority;
-
+	
+	@Column(
+			name="due_date"
+			)
+	private LocalDate dueDate;
+	
+	@Column(
+			name="created_date"
+			)
 	private LocalDate createdDate;
 	
-    @ManyToOne
+	@Enumerated(EnumType.STRING)
+	private Priority priority;
+	
+	
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	
-    @Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Task other = (Task) obj;
-		return id == other.id;
-	}
+
 }
+
