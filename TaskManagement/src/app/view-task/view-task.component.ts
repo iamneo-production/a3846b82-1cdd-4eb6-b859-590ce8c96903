@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
 
 
+
 export class Todo{
   constructor(
     public id: number,
@@ -11,6 +12,7 @@ export class Todo{
     public status:boolean,
     public priority:boolean,
     public targetdate:Date,
+    public teammember:string
   
   ){
     
@@ -30,6 +32,8 @@ export class ViewTaskComponent implements OnInit {
   Todo:Todo[] | undefined; 
   message: string | undefined;
  
+
+ 
   ngOnInit(){
     this.refreshTodos();
    
@@ -46,9 +50,8 @@ export class ViewTaskComponent implements OnInit {
   
     deleteTodo(id: any){
       console.log(`delete todo ${id}`)
-      this.todoService.deleteTodo('',id).subscribe(  
+      this.todoService.deleteTodo(id).subscribe(  
         response =>{
-          console.log(response);
           this.message=`Delete of Todo ${id} Successful!`
           this.refreshTodos();
   

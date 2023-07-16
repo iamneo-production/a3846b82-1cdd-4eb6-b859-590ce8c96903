@@ -9,6 +9,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +39,8 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 
 @NgModule({
@@ -57,6 +61,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SidenavComponent,
     ViewTaskComponent,
     HomeComponent,
+
    
   ],
   imports: [
@@ -79,7 +84,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MatListModule,
     MatButtonModule,
     MatMenuModule,
-    NgSelectModule
+    NgSelectModule,
+    MatPaginatorModule,
+    MatButtonToggleModule
+    
+
+    
+
   ],
   providers: [UserserviceService,
     UserProfileService],

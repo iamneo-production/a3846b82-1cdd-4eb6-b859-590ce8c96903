@@ -1,11 +1,15 @@
-
 <div class="main-body" >
-    
+  
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="Task List">Task List</mat-button-toggle>
+      <mat-button-toggle value="Assign Task List">Assign Task List</mat-button-toggle>
+    </mat-button-toggle-group>
+
     <mat-toolbar color="primary">
       <span > ✔ Task List</span>
       <span class="todo"></span>
       <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
-         ADD TASK</a>
+         ADD NEW TASK</a>
       </button>
     </mat-toolbar>
 <body>
@@ -20,7 +24,7 @@
                 <th>Status</th>
                 <th>Target Date</th>
                 <th>Action </th>
-                <th>Action</th>
+                
             </tr>        
         </thead>
         <tbody>
@@ -31,11 +35,66 @@
                 <td>{{Todo.priority}}</td>
                 <td>{{Todo.status}}</td>
                 <td>{{Todo.targetdate | date | uppercase}}</td>
-                
-                <td><button (click)="updateTodo(Todo.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteTodo(Todo.id)" class="btn btn-warning">Delete</button></td>
+                <td>
+                <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>  
+                <button mat-stroked-button><a routerLink="/tasks" class="nav-link" >Assign Task</a></button>
+              </td>
+      
             </tr>
        </tbody>
     </table>
     </div>
+</body>
+
+
+
+<div class="main-body" >
+    
+  <mat-toolbar color="primary">
+    <span > ✔ Assign List</span>
+    <span class="todo"></span>
+   
+  </mat-toolbar>
+<body>
+  <div class="container-md p-3 my-3 border">
+  <table class="table">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Task Name</th>
+              <th>Task Description</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Target Date</th>
+              <th>Team Members</th>
+              <th>Action </th>
+              
+          </tr>        
+      </thead>
+      <tbody>
+         <tr *ngFor="let Todo of Todo">
+          <td>{{Todo.id}}</td>
+              <td>{{Todo.taskname}}</td>
+              <td>{{Todo.taskdescription}}</td>
+              <td>{{Todo.priority}}</td>
+              <td>{{Todo.status}}</td>
+              <td>{{Todo.targetdate | date | uppercase}}</td>
+              <td>{{Todo.teammember}}</td>
+              <td>
+              <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
+                <mat-icon>delete</mat-icon>
+              </button>  
+              </td>  
+          </tr>
+     </tbody>
+  </table>
+  </div>
 </body>
