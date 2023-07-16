@@ -32,7 +32,14 @@ export class ViewTaskComponent implements OnInit {
   Todo:Todo[] | undefined; 
   message: string | undefined;
  
+  showTaskList = true;
+  showAssignTaskList = false;
 
+  // Function to toggle the visibility of the tables
+  toggleTables(showTaskList: boolean) {
+    this.showTaskList = showTaskList;
+    this.showAssignTaskList = !showTaskList;
+  }
  
   ngOnInit(){
     this.refreshTodos();
