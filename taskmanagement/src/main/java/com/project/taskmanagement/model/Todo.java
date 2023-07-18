@@ -17,7 +17,6 @@ public class Todo {
 	private String taskname;
 	private String taskdescription;
 	private Date targetdate;
-	private Boolean priority;
 	private Boolean status;
 	
     public Todo() {
@@ -27,17 +26,16 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", priority=" + priority + ", status=" + status + ", targetdate=" + targetdate
+		return "Todo [id=" + id + ",  status=" + status + ", targetdate=" + targetdate
 				+ ", taskdescription=" + taskdescription + ", taskname=" + taskname + "]";
 	}
 
 
-	public Todo(Long id, String taskname, String taskdescription, Date targetdate, Boolean priority, Boolean status) {
+	public Todo(Long id, String taskname, String taskdescription, Date targetdate, Boolean status) {
 		this.id = id;
 		this.taskname = taskname;
 		this.taskdescription = taskdescription;
 		this.targetdate = targetdate;
-		this.priority = priority;
 		this.status = status;
 	}
 
@@ -73,13 +71,6 @@ public class Todo {
 		this.targetdate = targetdate;
 	}
 
-	public Boolean getPriority() {
-		return priority;
-	}
-
-	public void setPriority(Boolean priority) {
-		this.priority = priority;
-	}
 
 	public Boolean getStatus() {
 		return status;

@@ -10,6 +10,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -90,7 +92,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatButtonToggleModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule
     
 
     

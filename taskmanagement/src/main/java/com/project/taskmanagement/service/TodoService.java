@@ -16,10 +16,10 @@ public class TodoService {
 	
 	static {
 		
-		todos.add(new Todo(++idCounter,"ui/ux","learn to design",new Date(),false, true));
-		todos.add(new Todo(++idCounter,"html","learn to create web",new Date(),true, true));
-		todos.add(new Todo(++idCounter,"css","learn to style web",new Date(),false, false));
-		todos.add(new Todo(++idCounter,"sql/db","learn to create db",new Date(),true, false));
+		todos.add(new Todo(++idCounter,"ui/ux","learn to design",new Date(), true));
+		todos.add(new Todo(++idCounter,"html","learn to create web",new Date(),true));
+		todos.add(new Todo(++idCounter,"css","learn to style web",new Date(), false));
+		todos.add(new Todo(++idCounter,"sql/db","learn to create db",new Date(),false));
 	}
 	
 	public List<Todo> findAll(){
