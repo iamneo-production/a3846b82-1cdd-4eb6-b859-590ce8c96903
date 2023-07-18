@@ -31,7 +31,46 @@ export class ViewTaskComponent implements OnInit {
  
   showTaskList = true;
   showAssignTaskList = false;
+
+  sortBy: string | undefined;
+  sortDirection: string | undefined;
+
+  // Properties for filtering
+  searchText: string = '';
   
+  
+  sortTable(property: string) {
+    if (this.sortBy === property) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortBy = property;
+      this.sortDirection = 'asc';
+    }
+
+    // Perform the sorting
+    this.Todo = this.Todo?.sort((a, b) => {
+      if (this.sortDirection === 'asc') {
+        return a[property] > b[property] ? 1 : -1;
+      } else {
+        return a[property] < b[property] ? 1 : -1;
+      }
+    });
+  }
+
+  applyFilter() {
+    const searchText = this.searchText.toLowerCase().trim();
+
+    if (searchText === '') {
+      this.refreshTodos(); // Reset the filter and show all todos
+    } else {
+      this.Todo = this.Todo?.filter(
+        (todo) =>
+          todo.taskname.toLowerCase().includes(searchText) ||
+          todo.taskdescription.toLowerCase().includes(searchText) ||
+          todo.teammember.toLowerCase().includes(searchText)
+      );
+    }
+  }
 
   toggleTables(showTaskList: boolean) {
     this.showTaskList = showTaskList;

@@ -58,13 +58,12 @@
     <table class="table">
       <thead>
           <tr>
-            <th>ID</th>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Status</th>
-            <th>Target Date</th>
-            <th>Team Members></th>
-            <th>Action </th>
+            <th (click)="sortTable('id')">ID</th>
+            <th (click)="sortTable('taskname')">Task Name</th>
+            <th (click)="sortTable('taskdescription')">Task Description</th>
+            <th (click)="sortTable('status')">Status</th>
+            <th (click)="sortTable('targetdate')">Target Date</th>
+            <th>Action</th>
           </tr>        
       </thead>
       <tbody>
@@ -85,6 +84,7 @@
               </td>  
           </tr>
      </tbody>
+    
   </table>
   </div>
 </body>
