@@ -40,6 +40,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -86,7 +88,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatMenuModule,
     NgSelectModule,
     MatPaginatorModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTableModule,
+    MatSortModule
     
 
     

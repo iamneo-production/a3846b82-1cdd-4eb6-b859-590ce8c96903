@@ -1,6 +1,8 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component ,OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 
 
@@ -24,7 +26,9 @@ export class Todo{
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
- 
+  
+  @ViewChild(MatSort) sort!: MatSort;
+  dataSource!: MatTableDataSource<Todo>;
 
   constructor( public todoService:TodoDataService,
     public router :Router){}
@@ -35,25 +39,27 @@ export class ViewTaskComponent implements OnInit {
   showTaskList = true;
   showAssignTaskList = false;
 
-  // Function to toggle the visibility of the tables
   toggleTables(showTaskList: boolean) {
     this.showTaskList = showTaskList;
     this.showAssignTaskList = !showTaskList;
   }
- 
+
   ngOnInit(){
     this.refreshTodos();
    
     }
   
-    refreshTodos(){
-      this.todoService.retrieveAllTodos().subscribe( 
+    refreshTodos() {
+      this.todoService.retrieveAllTodos().subscribe(
         response => {
           console.log(response);
-          this.Todo=response;
+          this.Todo = response;
+          this.dataSource = new MatTableDataSource(this.Todo);
+          this.dataSource.sort = this.sort;
         }
-       )
+      );
     }
+    
   
     deleteTodo(id: any){
       console.log(`delete todo ${id}`)
@@ -64,13 +70,13 @@ export class ViewTaskComponent implements OnInit {
   
         }
       )
-    }
-    
+    } 
   
     updateTodo(id: any){
       console.log(`update todo ${id}`)
       this.router.navigate(['view-task',id]) 
       
     }
-  
+
+    
 }

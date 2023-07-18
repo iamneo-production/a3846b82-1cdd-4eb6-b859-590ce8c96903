@@ -57,17 +57,17 @@
   </mat-toolbar>
 <body>
   <div class="container-md p-3 my-3 border" *ngIf="showAssignTaskList">
-  <table class="table">
+  <table class="table" mat-table [dataSource]="dataSource" matSort>
       <thead>
           <tr>
-              <th>ID</th>
-              <th>Task Name</th>
-              <th>Task Description</th>
-              <th>Priority</th>
-              <th>Status</th>
-              <th>Target Date</th>
-              <th>Team Members</th>
-              <th>Action </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Task Name</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Task Description</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Priority</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Target Date</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Team Members</th>
+            <th mat-header-cell *matHeaderCellDef>Action</th>          
               
           </tr>        
       </thead>
@@ -89,6 +89,7 @@
               </button>  
               </td>  
           </tr>
+          <tr mat-row *matRowDef="let todo of dataSource.data"></tr>
      </tbody>
   </table>
   </div>
