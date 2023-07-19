@@ -38,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
   // new User(3,'ravi','cab@gmail.com','software_developer')];
   DeleteUser(id:any){
     console.log(`delete Todo ${id}`)
-    this.userservice.deleteUser('sandeep',id).subscribe(
+    this.userservice.deleteUser(id).subscribe(
       response=>{
         console.log(response);
         this.message=`Deletion of User with ID ${id} successful`
