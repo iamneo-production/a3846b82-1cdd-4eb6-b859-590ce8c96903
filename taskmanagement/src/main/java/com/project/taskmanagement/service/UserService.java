@@ -2,6 +2,8 @@ package com.project.taskmanagement.service;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+
+import com.project.taskmanagement.model.Role;
 import com.project.taskmanagement.model.User;
 
 import org.springframework.stereotype.Service;
@@ -11,9 +13,9 @@ public class UserService {
 		private static long idCounter=0;
 		
 		static {
-            users.add(new User(++idCounter,"sandeep",false,"sandeep@gmail.com","dev"));
-            users.add(new User(++idCounter,"chenna",false,"chenna@gmail.com","testing"));
-            users.add(new User(++idCounter,"kaaki",false,"rev@gmail.com","fullstack"));
+            users.add(new User(++idCounter,"sandeep",false,"sandeep@gmail.com",Role.TEAMLEADER));
+            users.add(new User(++idCounter,"chenna",false,"chenna@gmail.com",Role.USER));
+            users.add(new User(++idCounter,"kaaki",false,"rev@gmail.com",Role.ADMIN));
         }
 		public List<User> findAll(){
             return users;

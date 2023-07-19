@@ -1,10 +1,8 @@
-/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TokenRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TaskRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/JwtService.java
-/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Token.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/User.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/UserRepository.java
-/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/JwtAuthFilter.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Role.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TodoRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java

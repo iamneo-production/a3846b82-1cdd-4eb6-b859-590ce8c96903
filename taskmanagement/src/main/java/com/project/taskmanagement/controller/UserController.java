@@ -1,7 +1,7 @@
 package com.project.taskmanagement.controller;
 import java.net.URI;
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,29 +36,28 @@ public class UserController {
 		return userrepository.findAll();
 //		return userservice.findAll();
 	}
-	@GetMapping("/dusers/{username}/tasks/{id}")
-	public User getTaskById(@PathVariable String username,@PathVariable Long id){
-		return userservice.findById(id);
+	@GetMapping("/dusers/{id}")
+	public User getUserById(@PathVariable Long id){
+		Optional <User> optionaluser=userrepository.findById(id);
+		return optionaluser.orElse(null);
 	}
-	
-	@DeleteMapping("/{username}/dusers/{id}")//We can either give success or no content-choosing
+	@DeleteMapping("/dusers/{id}")//We can either give success or no content-choosing
 	//Response entity enables us to get specific status back
-	public ResponseEntity<Void> deleteUser(@PathVariable String username,
-			@PathVariable long id){
-		User user=userservice.deleteById(id);
-		if(user!=null) {
+	public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+		if (userrepository.existsById(id)){
+			userrepository.deleteById(id);
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.notFound().build();
 	}
-	@PutMapping("/users/{username}/dusers/{id}")
+	@PutMapping("/dusers/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable String username,
 			@PathVariable long id,@RequestBody User user){
 		User userUpdated=userservice.save(user);
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 	}
 	
-	@PostMapping("/users/{username}/dusers")
+	@PostMapping("/dusers")
 	public ResponseEntity<Void> updateUser(@PathVariable String username,@RequestBody User user){
 		User createdUser=userservice.save(user);
 		///Get Uri of id
