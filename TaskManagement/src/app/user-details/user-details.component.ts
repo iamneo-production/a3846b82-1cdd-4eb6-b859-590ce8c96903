@@ -52,4 +52,7 @@ export class UserDetailsComponent implements OnInit {
   UpdateUser(id:any){
     this.router.navigate(['users'])
   }
+  addUser(){
+    this.router.navigate(['users',-1])
+  }
 }

@@ -61,7 +61,7 @@ export class CreateUserComponent implements OnInit {
         password: ''
       };
       console.log(userDetails);
-      this.userService.createUser(this.username,this.user)
+      this.userService.createUser(this.user)
         .subscribe(data => {
           console.log(data);
           this.router.navigate(['users']); // Navigate to the user list or any other page as needed
@@ -93,7 +93,7 @@ export class CreateUserComponent implements OnInit {
       };
   
       //getting task by id
-      this.userService.createUser(this.username,this.user)
+      this.userService.createUser(this.user)
         .subscribe(data => {
           console.log(data);
 
