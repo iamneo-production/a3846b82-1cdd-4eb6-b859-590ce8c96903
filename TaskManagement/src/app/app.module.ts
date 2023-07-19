@@ -37,6 +37,7 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 
 @NgModule({
@@ -51,13 +52,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     AssignTaskComponent,
     CreateTaskComponent,
+    CreateUserComponent,
     ReportingComponent,
     CalendarComponent,
     ProfileComponent,
     SidenavComponent,
     ViewTaskComponent,
-    HomeComponent,
-   
+    HomeComponent
   ],
   imports: [
     BrowserModule,

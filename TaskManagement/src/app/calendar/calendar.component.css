@@ -6,3 +6,14 @@
 .todo{
     flex: 1 1 auto;
 }
+.container {
+    width: 650px;
+}
+
+/* Custom CSS for table alignment */
+.custom-table {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}

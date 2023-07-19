@@ -12,6 +12,7 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = 
 [
@@ -23,6 +24,7 @@ const routes: Routes =
 {path:"login",component:LoginComponent},
 {path:"report",component:ReportingComponent},
 {path:"tasks",component:CreateTaskComponent},
+{path:"users",component:CreateUserComponent},
 {path:"view-task",component:ViewTaskComponent},
 {path:"assign",component:AssignTaskComponent},
 {path:"verification",component:VerificationComponent},

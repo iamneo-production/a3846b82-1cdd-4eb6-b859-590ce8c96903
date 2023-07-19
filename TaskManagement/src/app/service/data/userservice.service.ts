@@ -12,7 +12,16 @@ export class UserserviceService{
   retrieveUsers(){
     return this.http.get<User[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`)
   }
+  retrieveUserById(id:any){
+    return this.http.get<User[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
+  }
   deleteUser(username:any,id:any){
     return this.http.delete(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
+  }
+  updateUser(username:any,id:any,user:any){
+    return this.http.put(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${username}/users/${id}`,user)
+  }
+  createUser(username:any,user:any){
+    return this.http.post(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${username}/users`,user)
   }
 }
