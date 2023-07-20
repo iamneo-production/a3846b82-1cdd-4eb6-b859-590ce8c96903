@@ -37,8 +37,9 @@ export class CreateUserComponent implements OnInit {
 
   if (userIdFromRoute) {
     // Updating an existing user
-    this.userService.retrieveUserById(+userIdFromRoute).subscribe(
+    this.userService.retrieveUserById(userIdFromRoute).subscribe(
       (user:any) => {
+        this.user = user;
         // Prepopulate the form with the user details
         this.createUser.patchValue({
           username: user.username,
@@ -73,15 +74,25 @@ export class CreateUserComponent implements OnInit {
         username: this.createUser.value.username as string,
         role: this.createUser.value.role as Role,
         email: this.createUser.value.email as string,
-        id: 0,
+        id: this.user.id || 0,
         password: ''
       };
+  
       console.log(userDetails);
-      this.userService.createUser(userDetails)
-        .subscribe(data => {
+  
+      if (this.user.id) {
+        // Updating an existing user
+        this.userService.updateUser(this.user.id,userDetails).subscribe((data: User) => {
           console.log(data);
           this.router.navigate(['userdetails']); // Corrected route to the user board page
         });
+      } else {
+        // Creating a new user
+        this.userService.createUser(userDetails).subscribe((data: User) => {
+          console.log(data);
+          this.router.navigate(['userdetails']); // Corrected route to the user board page
+        });
+      }
     }
   }
   
@@ -98,5 +109,5 @@ export class CreateUserComponent implements OnInit {
   onCancel() {
     this.location.back();
   }
-  
+
 }

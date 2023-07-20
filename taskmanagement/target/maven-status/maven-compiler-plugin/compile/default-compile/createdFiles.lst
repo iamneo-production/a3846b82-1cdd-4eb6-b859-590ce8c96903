@@ -9,7 +9,6 @@ com/project/taskmanagement/repository/TaskRepository.class
 com/project/taskmanagement/model/Todo.class
 com/project/taskmanagement/controller/UserController.class
 com/project/taskmanagement/controller/TaskController.class
-com/project/taskmanagement/service/JwtService.class
 com/project/taskmanagement/service/UserService.class
 com/project/taskmanagement/model/User.class
 com/project/taskmanagement/service/TaskService.class
