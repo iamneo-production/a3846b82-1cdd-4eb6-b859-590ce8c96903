@@ -69,26 +69,4 @@ export class ViewTaskComponent implements OnInit {
       
     }
     
-    filteredTodos: Todo[] | undefined;
-
-    
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      if (!filterValue) {
-        this.filteredTodos = this.Todo; // If the filter is empty, show all tasks
-        return;
-      }
-    
-      const lowerCaseFilter = filterValue.toLowerCase();
-      this.filteredTodos = this.Todo?.filter((todo) => {
-        // Filter tasks based on taskname and taskdescription
-        
-        return (
-          todo.taskname.toLowerCase().includes(lowerCaseFilter) ||
-          todo.taskdescription.toLowerCase().includes(lowerCaseFilter)
-        );
-      });
-    }
-    
-    
 }

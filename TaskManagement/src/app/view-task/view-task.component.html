@@ -13,24 +13,19 @@
          ADD NEW TASK</a>
       </button>
     </mat-toolbar>
-
-    <mat-form-field appearance="fill" style="width: 100%;">
-      <mat-label>Filter Tasks</mat-label>
-      <input matInput (input)="applyFilter($event)" placeholder="Search tasks">
-    </mat-form-field>
-
 <body>
     <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
     <table class="table">
         <thead>
             <tr>
-            <th>ID</th>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Status</th>
-            <th>Target Date</th>
-            <th>Action </th>
-            </tr>       
+                <th>ID</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Status</th>
+                <th>Target Date</th>
+                <th>Action </th>
+                
+            </tr>        
         </thead>
         <tbody>
            <tr *ngFor="let Todo of Todo">

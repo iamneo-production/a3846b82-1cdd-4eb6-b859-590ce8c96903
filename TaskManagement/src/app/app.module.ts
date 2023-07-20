@@ -44,7 +44,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { FilterPipe } from './filter.pipe';
+
  
 
 
@@ -66,7 +66,7 @@ import { FilterPipe } from './filter.pipe';
     SidenavComponent,
     ViewTaskComponent,
     HomeComponent,
-    FilterPipe,
+
  
 
 
