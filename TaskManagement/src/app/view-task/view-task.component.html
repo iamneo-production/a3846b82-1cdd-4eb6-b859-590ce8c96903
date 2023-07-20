@@ -5,17 +5,49 @@
   </mat-button-toggle-group>
 
   <br><br>
-    <mat-toolbar color="primary" *ngIf="showTaskList">
-     
-      <span > ✔ Task List</span>
-      <span class="todo"></span>
-      <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
-         ADD NEW TASK</a>
-      </button>
-    </mat-toolbar>
+    
+  <mat-toolbar color="primary" *ngIf="showTaskList">
+    <span > ✔ Task List</span>
+    <span class="todo"></span>
+    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+       ADD NEW TASK</a>
+    </button>
+  </mat-toolbar>
+
 <body>
-    <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
+
+  <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
+
+    <div class="filter-search-section">
+    <!--Sorting-->
+      <mat-form-field>
+        <mat-label>Sort by</mat-label>
+        <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
+          <mat-option value="id">ID</mat-option>
+          <mat-option value="taskname">Task Name</mat-option>
+          <mat-option value="status">Status</mat-option>
+          <mat-option value="targetdate">Target Date</mat-option>
+        </mat-select>
+      </mat-form-field><br>
+      <!-- Filter by Status -->
+      <mat-form-field>
+        <mat-label>Filter by Status</mat-label>
+        <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
+          <mat-option [value]="'All'">All</mat-option>
+          <mat-option [value]="'Pending'">Pending</mat-option>
+          <mat-option [value]="'In Progress'">In Progress</mat-option>
+          <mat-option [value]="'Completed'">Completed</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- Search by Task Name -->
+      <mat-form-field>
+        <input matInput type="text" placeholder="Search Task Name" [(ngModel)]="searchTerm" (keyup)="searchTodos()">
+      </mat-form-field>
+    </div>
+   
+  
     <table class="table">
+      
         <thead>
             <tr>
                 <th>ID</th>
@@ -46,15 +78,30 @@
             </tr>
        </tbody>
     </table>
-    </div>
+  </div>
 </body>
+
  
   <mat-toolbar color="primary" *ngIf="showAssignTaskList">
     <span > ✔ Assign Task List</span>
     <span class="todo"></span>
   </mat-toolbar>
+  
 <body>
+
   <div class="container-md p-3 my-3 border" *ngIf="showAssignTaskList">
+
+    <mat-form-field>
+      <mat-label>Sort by</mat-label>
+      <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
+        <mat-option value="id">ID</mat-option>
+        <mat-option value="taskname">Task Name</mat-option>
+        <mat-option value="status">Status</mat-option>
+        <mat-option value="teammember">Team Members</mat-option>
+        <mat-option value="targetdate">Target Date</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <table class="table">
       <thead>
           <tr>

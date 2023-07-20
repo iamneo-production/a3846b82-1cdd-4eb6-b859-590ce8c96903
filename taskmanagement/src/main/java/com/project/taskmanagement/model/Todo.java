@@ -17,7 +17,7 @@ public class Todo {
 	private String taskname;
 	private String taskdescription;
 	private Date targetdate;
-	private Boolean status;
+	private String status;
 	
     public Todo() {
     	
@@ -31,7 +31,7 @@ public class Todo {
 	}
 
 
-	public Todo(Long id, String taskname, String taskdescription, Date targetdate, Boolean status) {
+	public Todo(Long id, String taskname, String taskdescription, Date targetdate, String status) {
 		this.id = id;
 		this.taskname = taskname;
 		this.taskdescription = taskdescription;
@@ -72,11 +72,11 @@ public class Todo {
 	}
 
 
-	public Boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
