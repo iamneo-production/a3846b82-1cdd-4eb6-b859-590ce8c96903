@@ -16,8 +16,7 @@
             <th>TaskDescription</th>
             <th>Task_Duedate</th>
             <th>Task_status</th>
-            <th>Action</th>
-            <th>Action</th>
+            <th>Check Tasks</th>
           </tr>
         </thead>
         <tbody>
@@ -28,8 +27,7 @@
             <td>{{task.taskdescription}}</td>
             <td>{{task.taskduedate | date}}</td>
             <td>{{task.taskstatus}}</td>
-            <td><button class="btn btn-success">Update</button></td>
-            <td><button (click)="deleteTask(task.id)" class="btn btn-warning">Delete</button></td>
+            <td><button class="btn btn-primary">View Task</button></td>
           </tr>
         </tbody>
       </table>
