@@ -1,6 +1,7 @@
 import { Component ,OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
+import { CoreService } from '../core/core.service';
 
 
 
@@ -25,7 +26,8 @@ export class Todo{
 export class ViewTaskComponent implements OnInit {
   
   constructor( public todoService:TodoDataService,
-    public router :Router){}
+    public router :Router,
+    public _coreService: CoreService){}
 
   Todo:Todo[] | undefined; 
   message: string | undefined;
@@ -62,6 +64,7 @@ export class ViewTaskComponent implements OnInit {
     console.log(`delete todo ${id}`);
     this.todoService.deleteTodo(id).subscribe((response) => {
       this.message = `Delete of Todo ${id} Successful!`;
+      this._coreService.openSnackBar('Task Deleted!!','done');
       this.refreshTodos();
     });
   }
