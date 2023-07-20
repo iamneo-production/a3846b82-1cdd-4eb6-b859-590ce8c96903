@@ -16,24 +16,22 @@ public class User {
     @GeneratedValue
 	private Long id;
 	private String username;
-	private Status isdone;
 	private String email;
 	private Role role;
 	
 	public User(){
 
     }
-    public User(Long id, String username, Status isdone, String email, Role role) {
+    public User(Long id, String username, String email, Role role) {
         this.id = id;
         this.username = username;
-        this.isdone = isdone;
         this.email = email;
         this.role = role;
     }
     
     @Override
     public String toString() {
-        return "User [email=" + email + ", id=" + id + ", isdone=" + isdone + ", role=" + role + ", username="
+        return "User [email=" + email + ", id=" + id + ", role=" + role + ", username="
                 + username + "]";
     }
     public Long getId() {
@@ -51,15 +49,6 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public Status isIsdone() {
-        return isdone;
-    }
-
-    public void setIsdone(Status isdone) {
-        this.isdone = isdone;
-    }
-
     public String getEmail() {
         return email;
     }

@@ -9,6 +9,5 @@ export var USER:User[]=[
     'password':'123456',
     'username':'user1',
     'role':Role.USER,
-    'isdone':Status.True
    }
 ]      

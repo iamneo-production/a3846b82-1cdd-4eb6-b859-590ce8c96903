@@ -13,4 +13,5 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TodoService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TodoController.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Status.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/UserService.java

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { User } from '../service/task/user';
 import { Role} from '../service/task/role';
 import { UserserviceService } from '../service/data/userservice.service';
@@ -21,7 +21,6 @@ export class CreateUserComponent implements OnInit {
   createUser = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
     role: new FormControl('', [Validators.required]),
-    isdone:new FormControl('',[Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     // Add more fields as needed, e.g., password, etc.
   });
@@ -29,17 +28,35 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private location: Location,
     private router: Router,
-    private userService:UserserviceService  // Inject your UserService here
+    private userService:UserserviceService,
+    private route:ActivatedRoute  // Inject your UserService here
   ) { }
 
   ngOnInit(): void {
+    const userIdFromRoute = this.route.snapshot.paramMap.get('id');
+
+  if (userIdFromRoute) {
+    // Updating an existing user
+    this.userService.retrieveUserById(+userIdFromRoute).subscribe(
+      (user:any) => {
+        // Prepopulate the form with the user details
+        this.createUser.patchValue({
+          username: user.username,
+          role: user.role,
+          email: user.email
+        });
+      },
+      (error: any) => {
+        console.log(error);
+        // Handle error (e.g., show an error message or navigate back)
+        this.router.navigate(['userdetails']);
+      }
+    );
+  }
   }
 
   get username() {
     return this.createUser.get('username');
-  }
-  get isdone(){
-    return this.createUser.get('isdone');
   }
   get roles() {
     return this.createUser.get('roles');
@@ -54,20 +71,21 @@ export class CreateUserComponent implements OnInit {
     if (this.createUser.valid) {
       const userDetails: User = {
         username: this.createUser.value.username as string,
-        isdone: this.createUser.value.isdone as Status,
         role: this.createUser.value.role as Role,
         email: this.createUser.value.email as string,
         id: 0,
         password: ''
       };
       console.log(userDetails);
-      this.userService.createUser(this.user)
+      this.userService.createUser(userDetails)
         .subscribe(data => {
           console.log(data);
-          this.router.navigate(['userdetails']); // Navigate to the user list or any other page as needed
+          this.router.navigate(['userdetails']); // Corrected route to the user board page
         });
     }
   }
+  
+  
   Roles = Object.values(Role);
   Status=Object.values(Status);
 
@@ -80,33 +98,5 @@ export class CreateUserComponent implements OnInit {
   onCancel() {
     this.location.back();
   }
-  onAssignUser() {
-    if (this.createUser.valid) {
-
-      //Task data
-      const userDetails: User = {
-        username: this.createUser.value.username as string,
-        isdone: this.createUser.value.isdone as Status,
-        email: this.createUser.value.email as string,
-        role: this.createUser.value.role as Role,
-        id: null,
-        password: ''
-      };
   
-      //getting task by id
-      this.userService.createUser(userDetails)
-        .subscribe(data => {
-          console.log(data);
-
-          //Get the task by id
-          //navigate to assign task by getting the id
-          const userId=(data as User).id;
-          this.router.navigate(['users',userId,'userdetails']); 
-        
-
-
-         
-        });
-    } 
-  }
 }

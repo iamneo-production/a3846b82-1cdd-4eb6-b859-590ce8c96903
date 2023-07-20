@@ -56,7 +56,6 @@ public class UserController {
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
             existingUser.setUsername(updatedUser.getUsername());
-            existingUser.setIsdone(updatedUser.isIsdone());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setRole(updatedUser.getRole());
 

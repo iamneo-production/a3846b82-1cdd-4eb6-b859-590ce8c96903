@@ -21,7 +21,7 @@ export class UserserviceService{
   updateUser(id:any,user:any){
     return this.http.put(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`,user)
   }
-  createUser(user: User): Observable<Object> {
+  createUser(user:any) {
     return this.http.post(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`, user);
   }
 }

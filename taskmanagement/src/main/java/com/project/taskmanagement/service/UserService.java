@@ -13,9 +13,9 @@ public class UserService {
 		private static long idCounter=0;
 		
 		static {
-            users.add(new User(++idCounter,"sandeep",Status.True,"sandeep@gmail.com",Role.TEAMLEADER));
-            users.add(new User(++idCounter,"chenna",Status.True,"chenna@gmail.com",Role.USER));
-            users.add(new User(++idCounter,"kaaki",Status.True,"rev@gmail.com",Role.ADMIN));
+            users.add(new User(++idCounter,"sandeep","sandeep@gmail.com",Role.TEAMLEADER));
+            users.add(new User(++idCounter,"chenna","chenna@gmail.com",Role.USER));
+            users.add(new User(++idCounter,"kaaki","rev@gmail.com",Role.ADMIN));
         }
 		public List<User> findAll(){
             return users;
