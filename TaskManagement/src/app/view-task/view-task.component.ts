@@ -1,7 +1,7 @@
 import { Component ,OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
-import { MatSelectChange } from '@angular/material/select';
+
 
 
 export class Todo{
@@ -32,10 +32,8 @@ export class ViewTaskComponent implements OnInit {
  
   showTaskList = true;
   showAssignTaskList = false;
-
   sortedBy: string = 'id';
-  
- 
+
 
   toggleTables(showTaskList: boolean) {
     this.showTaskList = showTaskList;
@@ -44,6 +42,7 @@ export class ViewTaskComponent implements OnInit {
 
   ngOnInit(){
     this.refreshTodos();
+    this.filterTodos();
    
     } 
  
@@ -72,27 +71,19 @@ export class ViewTaskComponent implements OnInit {
     this.router.navigate(['view-task', id]);
   }
 
-  // Method to filter tasks based on the selected status
   filterTodos() {
     if (!this.Todo) return; // Return if Todo is not initialized
-    if (this.selectedStatus === 'All') {
-      this.filteredTodo = this.Todo; // Show all tasks
+    if (this.selectedStatus === 'All' && !this.searchTerm) {
+      this.filteredTodo = this.Todo; // Show all tasks when no status and search term are applied
     } else {
-      this.filteredTodo = this.Todo.filter((todo) => todo.status === this.selectedStatus);
+      this.filteredTodo = this.Todo.filter((todo) => {
+        const statusFilter = this.selectedStatus === 'All' || todo.status === this.selectedStatus;
+        const searchFilter = !this.searchTerm || todo.taskname.toLowerCase().includes(this.searchTerm.toLowerCase());
+        return statusFilter && searchFilter;
+      });
     }
   }
 
-  // Method to search tasks based on the task name
-  searchTodos() {
-    if (!this.Todo) return; // Return if Todo is not initialized
-    if (this.searchTerm.trim() === '') {
-      this.filterTodos(); // Show filtered tasks if search term is empty
-    } else {
-      this.filteredTodo = this.Todo.filter((todo) =>
-        todo.taskname.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
-  }
 
   // Method to apply sorting
   sortTodos(sortBy: string) {
@@ -106,7 +97,6 @@ export class ViewTaskComponent implements OnInit {
   // Method to reset filtering and sorting
   resetFiltersAndSorting() {
     this.selectedStatus = 'All';
-    this.searchTerm = '';
     this.filterTodos();
     this.sortTodos('id'); // Default sorting by ID
   }
