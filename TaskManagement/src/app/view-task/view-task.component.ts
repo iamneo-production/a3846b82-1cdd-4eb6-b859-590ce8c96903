@@ -66,7 +66,7 @@ export class ViewTaskComponent implements OnInit {
     updateTodo(id: any){
       console.log(`update todo ${id}`)
       this.router.navigate(['view-task',id]) 
-      
+
     }
     
 }
