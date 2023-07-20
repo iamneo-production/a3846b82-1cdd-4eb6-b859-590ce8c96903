@@ -82,6 +82,7 @@ export class ViewTaskComponent implements OnInit {
       const lowerCaseFilter = filterValue.toLowerCase();
       this.filteredTodos = this.Todo?.filter((todo) => {
         // Filter tasks based on taskname and taskdescription
+        
         return (
           todo.taskname.toLowerCase().includes(lowerCaseFilter) ||
           todo.taskdescription.toLowerCase().includes(lowerCaseFilter)
