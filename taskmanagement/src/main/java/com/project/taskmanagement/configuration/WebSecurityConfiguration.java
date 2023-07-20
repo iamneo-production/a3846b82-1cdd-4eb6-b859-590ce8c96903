@@ -45,14 +45,16 @@ public class WebSecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 		.csrf().disable()
+		.cors()
+		.and()
 		.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
-		.antMatchers("/users/**").hasAnyAuthority(ADMIN.name(),TEAM_LEADER.name())
+		.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAM_LEADER.name())
 		.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
 		.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
 		.antMatchers(POST,"/users/**").hasAuthority(ADMIN_CREATE.name())
 		.antMatchers(DELETE,"/users/**").hasAuthority(ADMIN_DELETE.name())
 		
-		.antMatchers("/tasks/**").hasAnyAuthority(USER.name(),TEAM_LEADER.name())
+		.antMatchers("/tasks/**").hasAnyRole(USER.name(),TEAM_LEADER.name())
 		.antMatchers(GET,"/tasks").hasAnyAuthority(USER_READ.name(),TEAMLEADER_READ.name())
 		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_READ.name())
 		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_READ.name())
@@ -67,6 +69,7 @@ public class WebSecurityConfiguration {
 		.authenticationProvider(authenticationProvider)
 		.addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class)
 		.logout()
+		.logoutUrl("/auth/logout")
 		.addLogoutHandler(logoutHandler)
 		.logoutSuccessHandler(
 				(request,response,authentication)->

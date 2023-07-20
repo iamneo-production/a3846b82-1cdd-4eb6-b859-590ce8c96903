@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Token {
 
 	@Id
-	@GeneratedValue
+    @GeneratedValue()
 	private long id;
 	private String token;
 	@Enumerated(EnumType.STRING)

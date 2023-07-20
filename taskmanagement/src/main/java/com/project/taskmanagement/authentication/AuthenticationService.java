@@ -87,13 +87,23 @@ public class AuthenticationService {
 				);
 		var user = userRepository.findByName(request.getName())
 				.orElseThrow();
+		
+		 // Get user claims
+	    String name = user.getName();
+	    String email = user.getEmail();
+	    String role = user.getRole().name();
+	    
 		var jwtToken = jwtService.generateToken(user);
 		var refreshToken = jwtService.generateRefreshToken(user);
 		revokeAllUserToken(user);
 		saveUserToken(user,jwtToken);
+		
 		return AuthenticationResponse.builder()
 				.accessToken(jwtToken)
 				.refreshToken(refreshToken)
+				.username(name)
+				.email(email)
+				.role(role)
 				.build();
 	}
 

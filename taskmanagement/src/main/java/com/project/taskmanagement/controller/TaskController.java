@@ -32,12 +32,14 @@ public class TaskController {
 	
 	private final UserRepository userRepository;
 
+	//get all tasks
     @GetMapping  
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
+    //get task by id
     @GetMapping("/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         Task task = taskService.getTaskById(id);
@@ -51,7 +53,7 @@ public class TaskController {
     //Creating new task
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
-    	  // Retrieve the current user from the Authentication object
+        // Retrieve the current user from the Authentication object
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
 
