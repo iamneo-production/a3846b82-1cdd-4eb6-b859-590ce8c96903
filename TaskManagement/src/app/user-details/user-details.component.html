@@ -1,35 +1,70 @@
-<div class="main-body" >
-    
+<div class="main-body">
   <mat-toolbar color="primary">
-    <span > ✔ User Board</span>
+    <span>✔ User Board</span>
     <span class="todo"></span>
   </mat-toolbar>
 
-<div class="alert alert-success" *ngIf="message">{{message}}</div>
-<div class="container-md p-3 my-3 border">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Action</th>
-        <th>Action</th>
-        <th>Check tasks</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{user.id}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.role}}</td>
-        <td><button (click)="UpdateUser(user.id)" class="btn btn-success">Update</button></td>
-        <td><button (click)="DeleteUser(user.id)" class="btn btn-warning">Delete</button></td>
-        <td><button (click)="GoToTask(user.id)" class="btn btn-primary">View Tasks</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="alert alert-success" *ngIf="message">{{ message }}</div>
 
+  <div class="container-md p-3 my-3 border">
+    <!-- Sorting, Filtering, and Searching Options -->
+    <div class="options">
+      <div class="form-group row">
+        <label for="sortField" class="col-sm-2 col-form-label">Sort By:</label>
+        <div class="col-sm-4">
+          <select class="form-control" id="sortField" [(ngModel)]="sortField" (ngModelChange)="refreshUsers()">
+            <option value="id">ID</option>
+            <option value="username">Username</option>
+            <option value="email">Email</option>
+            <option value="role">Role</option>
+          </select>
+        </div>
+        <label for="sortDirection" class="col-sm-2 col-form-label">Sort Direction:</label>
+        <div class="col-sm-4">
+          <select class="form-control" id="sortDirection" [(ngModel)]="sortDirection" (ngModelChange)="refreshUsers()">
+            <option value="1">Ascending</option>
+            <option value="-1">Descending</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="filterRole" class="col-sm-2 col-form-label">Filter By Role:</label>
+        <div class="col-sm-4">
+          <select class="form-control" id="filterRole" [(ngModel)]="filterRole" (ngModelChange)="refreshUsers()">
+            <option value="">All Roles</option>
+            <option *ngFor="let role of Roles" [value]="role">{{ role }}</option>
+          </select>
+        </div>
+        <label for="searchText" class="col-sm-2 col-form-label">Search:</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="searchText" [(ngModel)]="searchText" (ngModelChange)="refreshUsers()">
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+          <th>Action</th>
+          <th>Check tasks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td><button (click)="UpdateUser(user.id)" class="btn btn-success">Update</button></td>
+          <td><button (click)="DeleteUser(user.id)" class="btn btn-warning">Delete</button></td>
+          <td><button (click)="GoToTask(user.id)" class="btn btn-primary">View Tasks</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

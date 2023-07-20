@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/service/data/userservice.service';
+import { Role } from '../service/task/role';
 
 export class User{
   constructor(
@@ -20,11 +21,19 @@ export class User{
 export class UserDetailsComponent implements OnInit {
   message: string | undefined;
   users: User[] | undefined;
+  sortField: string = 'id'; // Default sort field is 'id'
+  sortDirection: number = 1; // 1 for ascending, -1 for descending
 
+  // Filtering
+  filterRole: string = ''; // Default filter role is empty
+
+  // Searching
+  searchText: string = ''; // Default search text is empty
   constructor(public router: Router, private userservice: UserserviceService) {}
-
+  Roles = Object.values(Role);
   ngOnInit(): void {
     this.refreshUsers();
+
   }
   sortUsersById() {
     this.users.sort((a, b) => a.id - b.id);
@@ -32,11 +41,30 @@ export class UserDetailsComponent implements OnInit {
   refreshUsers() {
     this.userservice.retrieveUsers().subscribe((response) => {
       console.log(response);
-      this.users = response;
-      this.sortUsersById();
+
+      // Sort Users
+      response.sort((a, b) => {
+        const fieldValueA = a[this.sortField];
+        const fieldValueB = b[this.sortField];
+        return this.sortDirection * (fieldValueA < fieldValueB ? -1 : fieldValueA > fieldValueB ? 1 : 0);
+      });
+
+      // Filter Users
+      if (this.filterRole) {
+        this.users = response.filter((user) => user.role === this.filterRole);
+      } else {
+        this.users = response;
+      }
+
+      // Search Users
+      if (this.searchText) {
+        this.users = this.users.filter((user) =>
+          Object.values(user).some((fieldValue) => fieldValue.toString().toLowerCase().includes(this.searchText.toLowerCase()))
+        );
+      }
+
     });
   }
-
   DeleteUser(id: any) {
     console.log(`delete Todo ${id}`);
     this.userservice.deleteUser(id).subscribe((response) => {
