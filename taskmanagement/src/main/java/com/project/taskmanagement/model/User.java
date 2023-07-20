@@ -16,14 +16,14 @@ public class User {
     @GeneratedValue
 	private Long id;
 	private String username;
-	private boolean isdone;
+	private Status isdone;
 	private String email;
 	private Role role;
 	
 	public User(){
 
     }
-    public User(Long id, String username, boolean isdone, String email, Role role) {
+    public User(Long id, String username, Status isdone, String email, Role role) {
         this.id = id;
         this.username = username;
         this.isdone = isdone;
@@ -52,11 +52,11 @@ public class User {
         this.username = username;
     }
 
-    public boolean isIsdone() {
+    public Status isIsdone() {
         return isdone;
     }
 
-    public void setIsdone(boolean isdone) {
+    public void setIsdone(Status isdone) {
         this.isdone = isdone;
     }
 

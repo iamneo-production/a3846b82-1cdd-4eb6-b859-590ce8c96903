@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../service/task/user';
 import { Role} from '../service/task/role';
 import { UserserviceService } from '../service/data/userservice.service';
-
+import { Status } from '../service/task/Status';
 
 @Component({
   selector: 'app-create-user',
@@ -53,8 +53,8 @@ export class CreateUserComponent implements OnInit {
   onSubmit() {
     if (this.createUser.valid) {
       const userDetails: User = {
-        userName: this.createUser.value.username as string,
-        isdone: this.createUser.value.isdone as unknown as boolean,
+        username: this.createUser.value.username as string,
+        isdone: this.createUser.value.isdone as Status,
         role: this.createUser.value.role as Role,
         email: this.createUser.value.email as string,
         id: 0,
@@ -64,11 +64,12 @@ export class CreateUserComponent implements OnInit {
       this.userService.createUser(this.user)
         .subscribe(data => {
           console.log(data);
-          this.router.navigate(['users']); // Navigate to the user list or any other page as needed
+          this.router.navigate(['userdetails']); // Navigate to the user list or any other page as needed
         });
     }
   }
   Roles = Object.values(Role);
+  Status=Object.values(Status);
 
   // Reset button method
   onReset() {
@@ -84,8 +85,8 @@ export class CreateUserComponent implements OnInit {
 
       //Task data
       const userDetails: User = {
-        userName: this.createUser.value.username as string,
-        isdone: this.createUser.value.isdone as unknown as boolean,
+        username: this.createUser.value.username as string,
+        isdone: this.createUser.value.isdone as Status,
         email: this.createUser.value.email as string,
         role: this.createUser.value.role as Role,
         id: null,
@@ -93,20 +94,19 @@ export class CreateUserComponent implements OnInit {
       };
   
       //getting task by id
-      this.userService.createUser(this.user)
+      this.userService.createUser(userDetails)
         .subscribe(data => {
           console.log(data);
 
           //Get the task by id
-          const userId = (data as User).id; 
-
           //navigate to assign task by getting the id
-          this.router.navigate(['users', userId]); 
+          const userId=(data as User).id;
+          this.router.navigate(['users',userId,'userdetails']); 
         
 
 
          
         });
-    }
+    } 
   }
 }

@@ -26,15 +26,12 @@
                     <label for="isdone"><strong>Is Done<span class="required-indicator">*</span></strong></label>
                 </div>
                 <div class="isdone-radio-group">
-                    <div class="isdone-radio">
-                        <input type="radio" id="isdoneTrue" value="true" formControlName="isdone">
-                        <label for="isdoneTrue">True</label>
-                    </div>
-                    <div class="isdone-radio">
-                        <input type="radio" id="isdoneFalse" value="false" formControlName="isdone">
-                        <label for="isdoneFalse">False</label>
+                    <div *ngFor="let done of Status">
+                        <input type="radio" [id]="done" [value]="done" formControlName="isdone">
+                        <label [for]="done">{{ done }}</label>
                     </div>
                 </div>
+                
 
                 <!--Role-->
                 <div>

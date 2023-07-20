@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/user-details/user-details.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,6 @@ import { User } from 'src/app/user-details/user-details.component';
 export class UserserviceService{
 
   constructor(private http:HttpClient) {}
-
   retrieveUsers(){
     return this.http.get<User[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`)
   }
@@ -21,7 +21,7 @@ export class UserserviceService{
   updateUser(id:any,user:any){
     return this.http.put(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`,user)
   }
-  createUser(user:any){
-    return this.http.post(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`,user)
+  createUser(user: User): Observable<Object> {
+    return this.http.post(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`, user);
   }
 }

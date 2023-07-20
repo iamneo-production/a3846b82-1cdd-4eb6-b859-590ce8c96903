@@ -30,19 +30,18 @@ public class UserController {
     @Autowired
     public UserRepository userrepository;
 
-	
 	@GetMapping("/dusers")
 	public List<User> returnAll(){
 		return userrepository.findAll();
-//		return userservice.findAll();
 	}
+
 	@GetMapping("/dusers/{id}")
 	public User getUserById(@PathVariable Long id){
-		Optional <User> optionaluser=userrepository.findById(id);
+		Optional<User> optionaluser = userrepository.findById(id);
 		return optionaluser.orElse(null);
 	}
-	@DeleteMapping("/dusers/{id}")//We can either give success or no content-choosing
-	//Response entity enables us to get specific status back
+
+	@DeleteMapping("/dusers/{id}")
 	public ResponseEntity<Void> deleteUser(@PathVariable Long id){
 		if (userrepository.existsById(id)){
 			userrepository.deleteById(id);
@@ -50,19 +49,31 @@ public class UserController {
 		}
 		return ResponseEntity.notFound().build();
 	}
+
 	@PutMapping("/dusers/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable String username,
-			@PathVariable long id,@RequestBody User user){
-		User userUpdated=userservice.save(user);
-		return new ResponseEntity<User>(user,HttpStatus.OK);
-	}
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+        Optional<User> optionalUser = userrepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User existingUser = optionalUser.get();
+            existingUser.setUsername(updatedUser.getUsername());
+            existingUser.setIsdone(updatedUser.isIsdone());
+            existingUser.setEmail(updatedUser.getEmail());
+            existingUser.setRole(updatedUser.getRole());
+
+            User userUpdated = userrepository.save(existingUser);
+            return ResponseEntity.ok(userUpdated);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 	
 	@PostMapping("/dusers")
-	public ResponseEntity<Void> updateUser(@PathVariable String username,@RequestBody User user){
-		User createdUser=userservice.save(user);
-		///Get Uri of id
-		URI uri=ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdUser.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-	}
+    public ResponseEntity<Void> createUser(@RequestBody User user) {
+        User createdUser = userrepository.save(user);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(createdUser.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 }
+
 

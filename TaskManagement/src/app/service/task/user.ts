@@ -1,11 +1,12 @@
 import { Role } from "./role";
+import { Status } from './Status';
 
 export class User {
     id! : number;
-    userName! : string;
+    username! : string;
     email! : string;
     password!:string;
     role!:Role;
-    isdone!:boolean;
+    isdone!:Status;
 }
 
