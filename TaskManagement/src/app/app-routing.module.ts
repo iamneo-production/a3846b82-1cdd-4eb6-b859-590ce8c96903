@@ -7,9 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './login/login.component';
-import { CreateTaskComponent } from './create-task/create-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
-import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 
@@ -22,9 +20,7 @@ const routes: Routes =
 {path:"profile",component:ProfileComponent},
 {path:"login",component:LoginComponent},
 {path:"report",component:ReportingComponent},
-{path:"tasks",component:CreateTaskComponent},
-{path:"view-task",component:ViewTaskComponent},
-{path:"assign",component:AssignTaskComponent},
+{path:"dashboard",component:ViewTaskComponent},
 {path:"verification",component:VerificationComponent},
 {path:"home",component:HomeComponent},
 {path:"**",component:HomeComponent},

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -19,8 +19,6 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { SignupComponent } from './signup/signup.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import { AssignTaskComponent } from './assign-task/assign-task.component';
-import { CreateTaskComponent } from './create-task/create-task.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
@@ -37,6 +35,17 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ViewTaskTLComponent } from './teamLeader/view-task-tl/view-task-tl.component';
+import { UpdateStatusTLComponent } from './teamLeader/update-status-tl/update-status-tl.component';
+import { UpdateStatusComponent } from './user/update-status/update-status.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AssignTaskComponent } from './teamLeader/assign-task/assign-task.component';
+import { CreateTaskTLComponent } from './teamLeader/create-task-tl/create-task-tl.component';
+import { UpdateTaskTLComponent } from './teamLeader/update-task-tl/update-task-tl.component';
+import { CreateTaskComponent } from './user/create-task/create-task.component';
+import { UpdateTaskComponent } from './user/update-task/update-task.component';
+import { ViewComponent } from './user/view/view.component';
+import { AuthInterceptor } from './auth_guard/auth.interceptor';
 
 
 @NgModule({
@@ -49,14 +58,23 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SignupComponent,
     FooterComponent,
     LoginComponent,
-    AssignTaskComponent,
-    CreateTaskComponent,
     ReportingComponent,
     CalendarComponent,
     ProfileComponent,
     SidenavComponent,
     ViewTaskComponent,
     HomeComponent,
+    ViewTaskTLComponent,
+    UpdateStatusTLComponent,
+    UpdateStatusComponent,
+    ForbiddenComponent,
+    AssignTaskComponent,
+    CreateTaskTLComponent,
+    UpdateTaskTLComponent,
+    CreateTaskComponent,
+    UpdateTaskComponent,
+    ViewComponent,
+    
    
   ],
   imports: [
@@ -82,7 +100,16 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgSelectModule
   ],
   providers: [UserserviceService,
-    UserProfileService],
+    UserProfileService,
+   
+    //Http interceptors
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass :AuthInterceptor,
+      multi:true
+    }
+  
+  ],
   bootstrap: [AppComponent]
 
 })
