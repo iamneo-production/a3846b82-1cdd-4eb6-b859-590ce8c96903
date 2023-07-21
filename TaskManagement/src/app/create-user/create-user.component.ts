@@ -19,7 +19,7 @@ export class CreateUserComponent implements OnInit {
 
   // Validations
   createUser = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
+    name: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
     role: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     // Add more fields as needed, e.g., password, etc.
@@ -42,7 +42,7 @@ export class CreateUserComponent implements OnInit {
         this.user = user;
         // Prepopulate the form with the user details
         this.createUser.patchValue({
-          username: user.name,
+          name: user.name,
           role: user.role,
           email: user.email
         });
@@ -56,7 +56,7 @@ export class CreateUserComponent implements OnInit {
   }
   }
 
-  get username() {
+  get name() {
     return this.createUser.get('username');
   }
   get roles() {
@@ -71,7 +71,7 @@ export class CreateUserComponent implements OnInit {
   onSubmit() {
     if (this.createUser.valid) {
       const userDetails: User = {
-        username: this.createUser.value.username as string,
+        name: this.createUser.value.name as string,
         role: this.createUser.value.role as Role,
         email: this.createUser.value.email as string,
         id: this.user.id || 0,

@@ -5,10 +5,10 @@
       <form [formGroup]="createUser">
         <div class="forms">
           <!--user name-->
-          <label for="username"><strong>Username<span class="required-indicator">*</span></strong></label>
-          <input type="text" placeholder="Enter username here..." class="form-control" id="username"
-            formControlName="username" autocomplete="off">
-          <span style="color:red" *ngIf="username && username.invalid && username.touched">
+          <label for="name"><strong>Username<span class="required-indicator">*</span></strong></label>
+          <input type="text" placeholder="Enter username here..." class="form-control" id="name"
+            formControlName="name" autocomplete="off">
+          <span style="color:red" *ngIf="name && name.invalid && name.touched">
             User name required!</span>
           <pre></pre>
   
