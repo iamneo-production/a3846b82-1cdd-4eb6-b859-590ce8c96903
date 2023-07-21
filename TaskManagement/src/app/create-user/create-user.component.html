@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="content">
+      <h3><strong><em>Create new user</em></strong></h3>
+      <br>
+      <form [formGroup]="createUser">
+        <div class="forms">
+          <!--user name-->
+          <label for="username"><strong>Username<span class="required-indicator">*</span></strong></label>
+          <input type="text" placeholder="Enter username here..." class="form-control" id="username"
+            formControlName="username" autocomplete="off">
+          <span style="color:red" *ngIf="username && username.invalid && username.touched">
+            User name required!</span>
+          <pre></pre>
+  
+          <!--Email-->
+          <label for="email"><strong>Email<span class="required-indicator">*</span></strong></label>
+          <input type="email" placeholder="Enter your email here..." class="form-control" id="email"
+            formControlName="email" autocomplete="off">
+          <span style="color:red" *ngIf="email && email.invalid && email.touched">
+            Email required!</span>
+          <pre></pre>
+  
+          <!--Role-->
+          <div>
+            <label for="role"><strong>Role<span class="required-indicator">*</span></strong></label>
+            <div *ngFor="let role of Roles">
+              <input type="radio" [id]="role" [value]="role" formControlName="role">
+              <label [for]="role">{{ role }}</label>
+            </div>
+          </div>
+          <pre></pre>
+  
+          <pre></pre>
+          <!--Buttons-->
+          <div class="buttons">
+            <button mat-raised-button class="btn btn-primary" type="submit" (click)="onSubmit()">
+              Done
+            </button>
+  
+            <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" (click)="onReset()"
+              type="button">
+              Reset
+            </button>
+  
+            <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" type="button"
+              (click)="onCancel()">
+              Cancel
+            </button>
+          </div>
+          <pre></pre>
+          <!--Assign task navigation button-->
+        </div>
+      </form>
+    </div>
+  </div>
+  

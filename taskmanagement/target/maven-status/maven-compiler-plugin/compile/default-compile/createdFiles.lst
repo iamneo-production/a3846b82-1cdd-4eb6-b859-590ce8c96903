@@ -16,6 +16,11 @@ com/project/taskmanagement/model/TaskStatus.class
 com/project/taskmanagement/repository/TokenRepository.class
 com/project/taskmanagement/authentication/RegisterRequest$RegisterRequestBuilder.class
 com/project/taskmanagement/authentication/AuthenticationController.class
+com/project/taskmanagement/model/Status.class
+com/project/taskmanagement/TaskmanagementApplication.class
+com/project/taskmanagement/service/TodoService.class
+com/project/taskmanagement/security/SpringSecurityConfiguration.class
+com/project/taskmanagement/model/Role.class
 com/project/taskmanagement/model/Task.class
 com/project/taskmanagement/controller/TodoController.class
 com/project/taskmanagement/authentication/RegisterRequest.class

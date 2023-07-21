@@ -61,11 +61,10 @@
 </h3>
 
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered custom-table">
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Starts at</th>
                 <th>Ends at</th>
                 <th>Remove</th>
             </tr>
@@ -85,10 +84,6 @@
                     <input type="color" ngModel="event.color.secondary" (change)="refresh.next()" />
 
                 </td>-->
-                <td>
-                    <input class="form-control" type="text" [(ngModel)]="event.start" (ngModelChange)="refresh.next()" />
-                 
-                </td>
                 <td>
                     <input class="form-control" type="text" [(ngModel)]="event.end" (ngModelChange)="refresh.next()" />
                     

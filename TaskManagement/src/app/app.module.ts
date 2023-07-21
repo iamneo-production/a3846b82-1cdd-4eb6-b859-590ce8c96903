@@ -46,6 +46,7 @@ import { CreateTaskComponent } from './user/create-task/create-task.component';
 import { UpdateTaskComponent } from './user/update-task/update-task.component';
 import { ViewComponent } from './user/view/view.component';
 import { AuthInterceptor } from './auth_guard/auth.interceptor';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 
 @NgModule({
@@ -58,6 +59,9 @@ import { AuthInterceptor } from './auth_guard/auth.interceptor';
     SignupComponent,
     FooterComponent,
     LoginComponent,
+    AssignTaskComponent,
+    CreateTaskComponent,
+    CreateUserComponent,
     ReportingComponent,
     CalendarComponent,
     ProfileComponent,

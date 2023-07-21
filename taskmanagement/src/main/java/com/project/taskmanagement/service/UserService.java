@@ -2,6 +2,8 @@ package com.project.taskmanagement.service;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import com.project.taskmanagement.model.Status;
+import com.project.taskmanagement.model.Role;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
 

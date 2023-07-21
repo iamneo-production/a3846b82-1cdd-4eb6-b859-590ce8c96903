@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/service/data/userservice.service';
+import { Role } from '../service/task/role';
+
 export class User{
   constructor(
     public id:number,
     public username: string,
     public email :string,
-    public isdone:boolean,
     public role:string,
   ){
     
@@ -18,39 +19,77 @@ export class User{
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-  message:string | undefined;
-  constructor(public router:Router,private userservice:UserserviceService){
+  message: string | undefined;
+  users: User[] | undefined;
+  sortField: string = 'id'; // Default sort field is 'id'
+  sortDirection: number = 1; // 1 for ascending, -1 for descending
 
-  }
+  // Filtering
+  filterRole: string = ''; // Default filter role is empty
+
+  // Searching
+  searchText: string = ''; // Default search text is empty
+redirect: any;
+  constructor(public router: Router, private userservice: UserserviceService) {}
+  Roles = Object.values(Role);
   ngOnInit(): void {
-    this.refreshUsers()
-  }
-  refreshUsers(){
-    this.userservice.retrieveUsers().subscribe(
-      response=>{
-        console.log(response)
-        this.users=response
-      }
-    )
-  }
-  users:User[] | undefined
-  // Users=[new User(1,'sandeep','abc@gmail.com','software_developer'),
-  // new User(2,'revanth','bac@gmail.com','software_developer'),
-  // new User(3,'ravi','cab@gmail.com','software_developer')];
-  DeleteUser(id:any){
-    console.log(`delete Todo ${id}`)
-    this.userservice.deleteUser('sandeep',id).subscribe(
-      response=>{
-        console.log(response);
-        this.message=`Deletion of User with ID ${id} successful`
-        this.refreshUsers()
-      }
-    )
-  }
-  GoToTask(id:any){
+    this.refreshUsers();
 
   }
-  UpdateUser(id:any){
-    this.router.navigate(['users'])
+  sortUsersById() {
+    this.users.sort((a, b) => a.id - b.id);
+  }
+  refreshUsers() {
+    this.userservice.retrieveUsers().subscribe((response) => {
+      console.log(response);
+
+      // Sort Users
+      response.sort((a, b) => {
+        const fieldValueA = a[this.sortField];
+        const fieldValueB = b[this.sortField];
+        return this.sortDirection * (fieldValueA < fieldValueB ? -1 : fieldValueA > fieldValueB ? 1 : 0);
+      });
+      
+      // Assign IDs in ascending order starting from 1
+      this.users = response.map((user, index) => {
+        return { ...user, id: index + 1 };
+      });
+
+
+      // Filter Users
+      if (this.filterRole) {
+        this.users = response.filter((user) => user.role === this.filterRole);
+      } else {
+        this.users = response;
+      }
+
+      // Search Users
+      if (this.searchText) {
+        this.users = this.users.filter((user) =>
+          Object.values(user).some((fieldValue) => fieldValue.toString().toLowerCase().includes(this.searchText.toLowerCase()))
+        );
+      }
+
+    });
+  }
+  DeleteUser(id: any) {
+    console.log(`delete Todo ${id}`);
+    this.userservice.deleteUser(id).subscribe((response) => {
+      console.log(response);
+      this.message = `Deletion of User with ID ${id} successful`;
+      this.refreshUsers();
+    });
+  }
+
+  GoToTask(id: any) {
+    // You can implement the logic for navigating to the task page here if needed
+  }
+
+  UpdateUser(id: any) {
+    this.router.navigate(['users', { id: id }]);
+  }
+
+  addUser() {
+    this.router.navigate(['users', { id: -1 }]);
   }
 }

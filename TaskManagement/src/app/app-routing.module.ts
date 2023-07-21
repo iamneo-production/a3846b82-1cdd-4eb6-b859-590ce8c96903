@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = 
 [
@@ -20,7 +21,8 @@ const routes: Routes =
 {path:"profile",component:ProfileComponent},
 {path:"login",component:LoginComponent},
 {path:"report",component:ReportingComponent},
-{path:"dashboard",component:ViewTaskComponent},
+{path:"users",component:CreateUserComponent},
+{path:"view-task",component:ViewTaskComponent},
 {path:"verification",component:VerificationComponent},
 {path:"home",component:HomeComponent},
 {path:"**",component:HomeComponent},
