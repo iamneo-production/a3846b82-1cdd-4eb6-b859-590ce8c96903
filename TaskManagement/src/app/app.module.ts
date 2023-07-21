@@ -71,13 +71,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SidenavComponent,
     ViewTaskComponent,
     HomeComponent,
-  
-
-
- 
-
-
-   
+     
   ],
   imports: [
     BrowserModule,

@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
 import { CoreService } from '../core/core.service';
 
-
-
 export class Todo{
   constructor(
     public id: number,
@@ -106,5 +104,3 @@ export class ViewTaskComponent implements OnInit {
   // Initialize the filteredTodo with the Todo
   filteredTodo: Todo[] | undefined;
 }
-  
-
