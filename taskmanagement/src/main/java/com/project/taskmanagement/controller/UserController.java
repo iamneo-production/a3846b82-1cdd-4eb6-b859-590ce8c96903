@@ -54,7 +54,7 @@ public class UserController {
         Optional<User> optionalUser = userrepository.findById(id);
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
-            existingUser.setUsername(updatedUser.getUsername());
+            existingUser.setName(updatedUser.getName());
             existingUser.setEmail(updatedUser.getEmail());
             existingUser.setRole(updatedUser.getRole());
 
