@@ -3,7 +3,7 @@ import { Status } from './Status';
 
 export class User {
     id! : number;
-    username! : string;
+    name! : string;
     email! : string;
     password!:string;
     role!:Role;

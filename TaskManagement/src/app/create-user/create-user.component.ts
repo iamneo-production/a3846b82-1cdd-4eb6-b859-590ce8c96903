@@ -42,7 +42,7 @@ export class CreateUserComponent implements OnInit {
         this.user = user;
         // Prepopulate the form with the user details
         this.createUser.patchValue({
-          username: user.username,
+          username: user.name,
           role: user.role,
           email: user.email
         });
