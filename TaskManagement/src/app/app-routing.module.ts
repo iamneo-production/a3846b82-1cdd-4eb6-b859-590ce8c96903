@@ -8,10 +8,11 @@ import { ReportingComponent } from './reporting/reporting.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
-import { ViewTaskComponent } from './view-task/view-task.component';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
+import { ViewTaskComponent } from './view-task/view-task.component';
+
 
 const routes: Routes = 
 [
@@ -23,8 +24,8 @@ const routes: Routes =
 {path:"login",component:LoginComponent},
 {path:"report",component:ReportingComponent},
 {path:"tasks",component:CreateTaskComponent},
-{path:"view-task",component:ViewTaskComponent},
 {path:"assign",component:AssignTaskComponent},
+{path:"view-task",component:ViewTaskComponent},
 {path:"verification",component:VerificationComponent},
 {path:"home",component:HomeComponent},
 {path:"**",component:HomeComponent},

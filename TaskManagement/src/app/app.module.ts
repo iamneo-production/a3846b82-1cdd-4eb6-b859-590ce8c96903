@@ -49,6 +49,7 @@ import { HomeComponent } from './home/home.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
+
  
 
 
@@ -70,6 +71,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SidenavComponent,
     ViewTaskComponent,
     HomeComponent,
+  
 
 
  

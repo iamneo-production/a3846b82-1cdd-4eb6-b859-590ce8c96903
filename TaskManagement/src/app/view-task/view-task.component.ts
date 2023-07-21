@@ -87,7 +87,6 @@ export class ViewTaskComponent implements OnInit {
     }
   }
 
-
   // Method to apply sorting
   sortTodos(sortBy: string) {
     this.sortedBy = sortBy;
