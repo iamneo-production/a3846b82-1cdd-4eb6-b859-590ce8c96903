@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="content">
+        <h3><strong><em>Assign task</em></strong></h3>
+        <br>
+        <form [formGroup]="assignTask" (ngSubmit)="onSubmit()">
+            <div class="forms">
+                <!--task name-->
+                <label for="taskName"><strong>Task Name</strong></label>
+                <input type="text" placeholder="Enter task name here..." 
+                    class="form-control" id="taskName"
+                    formControlName="taskName" autocomplete="off"
+                    [readonly]="true">
+                <pre></pre>
+
+                <!--task description-->
+                <label for="description"><strong>Description</strong></label>
+                <textarea placeholder="Enter task description here..." 
+                    class="form-control" id="description"
+                    formControlName="taskDescription" autocomplete="off"
+                    [readonly]="true">
+                 </textarea>
+                <pre></pre>
+
+                <!--due date-->
+                <label for="dueDate"><strong>Due Date</strong></label>
+                <br>
+                <input type="date" id="dueDate" formControlName="dueDate"
+                [value]="assignTask.get('dueDate')?.value"
+                [readonly]="true">
+                <pre></pre>
+
+                <!--Status-->
+                <div>
+                    <label for="status"><strong>Status</strong></label>
+                    <div *ngFor="let status of taskStatuses">
+                        <input type="radio" [id]="status" 
+                          [value]="status" formControlName="status"
+                          [readonly]="true">
+                        <label [for]="status">{{ status }}</label>
+                    </div>
+                </div>
+                <pre></pre>
+
+                <!--priority-->
+                <div>
+                    <label for="priority"><strong>Priority</strong></label>
+                    <div *ngFor="let priority of taskPriority">
+                        <input type="radio" [id]="priority" [value]="priority" 
+                        formControlName="priorityOfTask"
+                        [readonly]="true">
+                        <label [for]="priority">{{ priority }}</label>
+                    </div>
+                </div>
+                <pre></pre>
+                <div>
+                    <label>
+                        <b><i>Add members</i></b>
+                      </label>
+                         <!--Team member--> 
+                         <div>
+                          <ng-select style="font-family: roboto" 
+                           [items]="teamMember" 
+                           bindLabel="userName" 
+                           bindValue="id" 
+                           (change)="onSelectionChange($event)"
+                           [multiple]="true" 
+                           [closeOnSelect]="false" 
+                           id="teamMem"
+                           placeholder="Team Member / Team Members" 
+                           formControlName="teamMem"
+                          > 
+                          <ng-option *ngFor="let user of teamMember" [value]="user">
+                            {{user.userName}}
+                          </ng-option>
+                          </ng-select>
+                          <span style="color:red" *ngIf="teamMem && teamMem.touched && teamMem.invalid">
+                            Team Member is required! Please select atleast one team member.</span>
+                        </div>
+                    </div>
+
+                <!--Buttons-->
+                <div class="buttons">
+                    <button mat-raised-button class="btn btn-primary" type="submit">
+                        Update
+                    </button>
+                    <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" type="button"
+                        (click)="onCancel()">
+                        Cancel
+                    </button>
+                </div>
+                <pre></pre>
+            </div>
+        </form>
+    </div>
+</div>

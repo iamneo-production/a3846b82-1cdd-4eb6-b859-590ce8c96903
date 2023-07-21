@@ -19,17 +19,17 @@ import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
 import com.project.taskmanagement.service.UserService;
 
+import lombok.RequiredArgsConstructor;
 
-@CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 	
-	@Autowired
-	public UserService userservice;
+	public final UserService userservice;
 	
-    @Autowired
-    public UserRepository userrepository;
+    public final UserRepository userrepository;
 
+	
 	
 	@GetMapping("/dusers")
 	public List<User> returnAll(){

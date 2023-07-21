@@ -3,21 +3,36 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import com.project.taskmanagement.model.User;
+import com.project.taskmanagement.repository.UserRepository;
+
 
 import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+
 @Service
+@RequiredArgsConstructor
 public class UserService {
+
+    private final UserRepository userRepository;
+
 	private static List<User> users=new ArrayList<>();
 		private static long idCounter=0;
 		
-		static {
+	/*	static {
             users.add(new User(++idCounter,"sandeep",false,"sandeep@gmail.com","dev"));
             users.add(new User(++idCounter,"chenna",false,"chenna@gmail.com","testing"));
             users.add(new User(++idCounter,"kaaki",false,"rev@gmail.com","fullstack"));
-        }
+        }*/
 		public List<User> findAll(){
             return users;
         }
+
+        public List<User> getAllUsers() {
+	        return userRepository.findAll();
+	    }
+	
         public User save(User user) {
             if(user.getId()==-1 || user.getId()==0) {
                 user.setId(++idCounter);
