@@ -48,7 +48,7 @@ public enum Role {
 					)
 			),
 	
-	TEAM_LEADER(
+	TEAMLEADER(
 			Set.of(
 					TEAMLEADER_READ,
 					TEAMLEADER_UPDATE,

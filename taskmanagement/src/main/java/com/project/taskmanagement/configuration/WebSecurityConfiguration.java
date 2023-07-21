@@ -5,12 +5,15 @@ import static com.project.taskmanagement.model.Permission.ADMIN_DELETE;
 import static com.project.taskmanagement.model.Permission.ADMIN_READ;
 import static com.project.taskmanagement.model.Permission.ADMIN_UPDATE;
 import static com.project.taskmanagement.model.Permission.TEAMLEADER_READ;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_CREATE;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_DELETE;
+import static com.project.taskmanagement.model.Permission.TEAMLEADER_UPDATE;
 import static com.project.taskmanagement.model.Permission.USER_CREATE;
 import static com.project.taskmanagement.model.Permission.USER_DELETE;
 import static com.project.taskmanagement.model.Permission.USER_READ;
 import static com.project.taskmanagement.model.Permission.USER_UPDATE;
 import static com.project.taskmanagement.model.Role.ADMIN;
-import static com.project.taskmanagement.model.Role.TEAM_LEADER;
+import static com.project.taskmanagement.model.Role.TEAMLEADER;
 import static com.project.taskmanagement.model.Role.USER;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
@@ -48,17 +51,17 @@ public class WebSecurityConfiguration {
 		.cors()
 		.and()
 		.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
-		.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAM_LEADER.name())
+		.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAMLEADER.name())
 		.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
 		.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
 		.antMatchers(POST,"/users/**").hasAuthority(ADMIN_CREATE.name())
 		.antMatchers(DELETE,"/users/**").hasAuthority(ADMIN_DELETE.name())
 		
-		.antMatchers("/tasks/**").hasAnyRole(USER.name(),TEAM_LEADER.name())
+		.antMatchers("/tasks/**").hasAnyRole(USER.name(),TEAMLEADER.name())
 		.antMatchers(GET,"/tasks").hasAnyAuthority(USER_READ.name(),TEAMLEADER_READ.name())
-		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_READ.name())
-		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_READ.name())
-		.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_READ.name())
+		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_UPDATE.name())
+		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_CREATE.name())
+		.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_DELETE.name())
 
 		.anyRequest() 
 		.authenticated()
