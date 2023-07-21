@@ -92,6 +92,7 @@ export class CreateUserComponent implements OnInit {
           console.log(data);
           this.router.navigate(['userdetails']); // Corrected route to the user board page
         });
+        this.createUser.reset();
       }
     }
   }

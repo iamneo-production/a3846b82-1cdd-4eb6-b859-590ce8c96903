@@ -29,6 +29,7 @@ export class UserDetailsComponent implements OnInit {
 
   // Searching
   searchText: string = ''; // Default search text is empty
+redirect: any;
   constructor(public router: Router, private userservice: UserserviceService) {}
   Roles = Object.values(Role);
   ngOnInit(): void {
@@ -48,6 +49,12 @@ export class UserDetailsComponent implements OnInit {
         const fieldValueB = b[this.sortField];
         return this.sortDirection * (fieldValueA < fieldValueB ? -1 : fieldValueA > fieldValueB ? 1 : 0);
       });
+      
+      // Assign IDs in ascending order starting from 1
+      this.users = response.map((user, index) => {
+        return { ...user, id: index + 1 };
+      });
+
 
       // Filter Users
       if (this.filterRole) {
