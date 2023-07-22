@@ -24,7 +24,6 @@ import com.project.taskmanagement.service.TaskService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/tasks")
 @RequiredArgsConstructor
 public class TaskController {
 
@@ -33,14 +32,14 @@ public class TaskController {
 	private final UserRepository userRepository;
 
 	//get all tasks
-    @GetMapping  
+    @GetMapping("/dtasks")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     //get task by id
-    @GetMapping("/{id}")
+    @GetMapping("dtasks/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         Task task = taskService.getTaskById(id);
         if (task != null) {
