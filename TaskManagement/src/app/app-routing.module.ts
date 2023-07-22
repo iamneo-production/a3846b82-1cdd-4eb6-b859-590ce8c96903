@@ -11,24 +11,24 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
-const routes: Routes = 
-[
-{path:"userdetails",component:UserDetailsComponent},
-{path:"events",component:CalendarComponent},
-{path:"taskdetails",component:TaskDetailsComponent},
-{path:"signup",component:SignupComponent},
-{path:"profile",component:ProfileComponent},
-{path:"login",component:LoginComponent},
-{path:"report",component:ReportingComponent},
-{path:"users",component:CreateUserComponent},
-{path:"view-task",component:ViewTaskComponent},
-{path:"verification",component:VerificationComponent},
-{path:"home",component:HomeComponent},
-{path:"**",component:HomeComponent},
+const routes: Routes =
+  [
+    { path: "userdetails", component: UserDetailsComponent },
+    { path: "events", component: CalendarComponent },
+    { path: "taskdetails", component: TaskDetailsComponent },
+    { path: "signup", component: SignupComponent },
+    { path: "profile", component: ProfileComponent },
+    { path: "login", component: LoginComponent },
+    { path: "report", component: ReportingComponent },
+    { path: "users", component: CreateUserComponent },
+    { path: "view-task", component: ViewTaskComponent },
+    { path: "verification", component: VerificationComponent },
+    { path: "home", component: HomeComponent },
+    { path: "**", component: HomeComponent },
 
-
-];
+  ];
 
 
 
