@@ -15,6 +15,7 @@ import { Task } from 'src/app/service/service/task';
   styleUrls: ['./update-status.component.css']
 })
 export class UpdateStatusComponent {
+
   //task
   task: Task = new Task();
 
@@ -37,6 +38,9 @@ export class UpdateStatusComponent {
 
   //selected members
   selectedMembers: User[] = [];
+
+  //For data tranfer from create-task  to assign-task comp
+
 
   //Constructors
   constructor(
@@ -141,5 +145,6 @@ export class UpdateStatusComponent {
   onCancel() {
     this.location.back();
   }
+
 
 }

@@ -12,6 +12,9 @@ import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { UpdateTaskComponent } from './user/update-task/update-task.component';
+import { ViewComponent } from './user/view/view.component';
+import { UpdateStatusComponent } from './user/update-status/update-status.component';
 
 const routes: Routes =
   [
@@ -25,7 +28,11 @@ const routes: Routes =
     { path: "users", component: CreateUserComponent },
     { path: "view-task", component: ViewTaskComponent },
     { path: "verification", component: VerificationComponent },
-    { path: "home", component: HomeComponent },
+    { path: "home", component: HomeComponent },   
+   // { path: "tasks/:id/update", component:UpdateTaskComponent},
+   // { path: "tasks/:id/view", component:ViewComponent},
+   // { path: "tasks/:id/status", component:UpdateStatusComponent},
+   // {path: "unauthorized", component:ForbiddenComponent},
     { path: "**", component: HomeComponent },
 
   ];

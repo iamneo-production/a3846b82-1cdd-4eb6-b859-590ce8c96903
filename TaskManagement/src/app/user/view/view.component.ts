@@ -62,14 +62,24 @@ export class ViewComponent {
       //get task by id is subscribed to data
       this.tskService.getTaskById(this.id).subscribe((task: Task) => {
         this.task = task;
+        this.dataTransfer();
       });
     });
   }
+
+  dataTransfer() {
+    this.viewTask.patchValue({
+      taskName: this.task.name,
+      taskDescription: this.task.description,
+      status: this.task.status,
+      priorityOfTask: this.task.priority,
+      dueDate: this.task.dueDate,
+    });
+  }
+
 
   //Cancel button method
   onCancel() {
     this.location.back();
   }
-
-
 }

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="content">
-        <h3><strong><em>Create new task</em></strong></h3>
+        <h3 class="capitalized"><strong><em>{{task.name}}</em></strong></h3>
         <br>
         <form [formGroup]="viewTask"  >
             <div class="forms">
@@ -25,9 +25,7 @@
                     <!--due date-->
                     <label for="dueDate"><strong>Due Date</strong></label>
                     <br>
-                    <input type="date" id="dueDate" formControlName="dueDate"
-                    [value]="viewTask.get('dueDate')?.value"
-                    [readonly]="true">
+                    <input type="text" id="dueDate" formControlName="dueDate" [readonly]="true">
                     <pre></pre>
     
                     <!--Status-->

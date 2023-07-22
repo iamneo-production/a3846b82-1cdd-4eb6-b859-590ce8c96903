@@ -39,13 +39,15 @@ export class UpdateTaskComponent {
   //selected members
   selectedMembers: User[] = [];
 
+  //For data tranfer from create-task  to assign-task comp
+
+
   //Constructors
   constructor(
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
-    private taskService: TaskServiceService,
-    private userService: UserService
+    private taskService: TaskServiceService
   ) { }
 
   //for date picker  
@@ -138,9 +140,13 @@ export class UpdateTaskComponent {
     }
   }
 
+  //Reset button method
+  onReset() {
+    this.updateTask.reset();
+  }
+
   //Cancel button method
   onCancel() {
     this.location.back();
   }
-
 }
