@@ -1,7 +1,7 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TokenRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TaskRepository.java
-/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/JwtService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationResponse.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/JwtService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Role.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Permission.java
@@ -11,8 +11,8 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationController.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Status.java
-/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/UserService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/JwtAuthFilter.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/UserService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Token.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/CorsConfig.java
@@ -27,7 +27,7 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/TaskmanagementApplication.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Todo.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/UserController.java
-/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TodoService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/RegisterRequest.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TodoService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/ApplicationConfig.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/TokenType.java

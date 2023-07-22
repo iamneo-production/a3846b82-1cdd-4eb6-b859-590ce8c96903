@@ -16,6 +16,12 @@ import { ViewTaskComponent } from './view-task/view-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
 import { CreateTaskComponent } from './user/create-task/create-task.component';
+import { CreateTaskTLComponent } from './teamLeader/create-task-tl/create-task-tl.component';
+import { ViewTaskTLComponent } from './teamLeader/view-task-tl/view-task-tl.component';
+import { UpdateTaskTLComponent } from './teamLeader/update-task-tl/update-task-tl.component';
+import { UpdateStatusTLComponent } from './teamLeader/update-status-tl/update-status-tl.component';
+import { AssignTaskComponent } from './teamLeader/assign-task/assign-task.component';
+import { authGuard } from './auth_guard/auth.guard';
 
 const routes: Routes =
   [
@@ -31,11 +37,26 @@ const routes: Routes =
     { path: "verification", component: VerificationComponent },
     { path: "home", component: HomeComponent },   
     {path : "tasks", component:CreateTaskComponent},
-   // { path: "tasks/:id/update", component:UpdateTaskComponent},
-   // { path: "tasks/:id/view", component:ViewComponent},
-   // { path: "tasks/:id/status", component:UpdateStatusComponent},
-   // {path: "unauthorized", component:ForbiddenComponent},
+  // { path: "tasks/:id/update", component:UpdateTaskComponent},
+  // { path: "tasks/:id/view", component:ViewComponent},
+  //  { path: "tasks/:id/status", component:UpdateStatusComponent},
+   //{path: "unauthorized", component:ForbiddenComponent},
     { path: "**", component: HomeComponent },
+
+    //TEAMLEADER
+    {path: 'tasks',component:CreateTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+    {path:'tasks/:id/view', component:ViewTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+    {path:'tasks/:id/update', component:UpdateTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+    {path:'tasks/:id/status', component:UpdateStatusTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+    {path:'tasks/:id/view', component:ViewTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+    {path:'tasks/:id/assign', component:AssignTaskComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+  
+    //USER
+    {path: 'task' ,component:CreateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
+    {path:'task/:id/view', component:ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
+    {path:'task/:id/update', component:UpdateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
+    {path:'task/:id/status', component:UpdateStatusComponent,canActivate:[authGuard],data:{role:['USER']}},
+    {path:'task/:id/view', component:ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
 
   ];
 

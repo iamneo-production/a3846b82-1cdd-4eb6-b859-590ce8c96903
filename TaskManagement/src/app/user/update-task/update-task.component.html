@@ -2,63 +2,72 @@
     <div class="content">
         <h3><strong><em>Update task</em></strong></h3>
         <br>
-        <form [formGroup]="updateTask"  (ngSubmit)="onSubmit()">
+        <form [formGroup]="updateTask" (ngSubmit)="onSubmit()">
             <div class="forms">
                 <!--task name-->
                 <label for="taskName"><strong>Task Name</strong></label>
-                <input type="text" placeholder="Enter task name here..." class="form-control" id="taskName"
-                    formControlName="taskName" autocomplete="off">
-                <span style="color:red" *ngIf="taskName && taskName.invalid && taskName.touched">
-                    Task name required!</span>
+                <input type="text" placeholder="Enter task name here..." 
+                    class="form-control" id="taskName"
+                    formControlName="taskName" autocomplete="off"
+                    >
+                    <span style="color:red" *ngIf="taskName && taskName.invalid && taskName.touched">
+                        Task name required!</span>
                 <pre></pre>
 
                 <!--task description-->
                 <label for="description"><strong>Description</strong></label>
-                <textarea placeholder="Enter task description here..." class="form-control" id="description"
-                    formControlName="taskDescription" autocomplete="off">
+                <textarea placeholder="Enter task description here..." 
+                    class="form-control" id="description"
+                    formControlName="taskDescription" autocomplete="off"
+                    >
+                    <span style="color:red" *ngIf="taskDescription && taskDescription.invalid && taskDescription.touched">
+                        Task description required!</span>
                  </textarea>
-                <span style="color:red" *ngIf="taskDescription && taskDescription.invalid && taskDescription.touched">
-                    Task description required!</span>
                 <pre></pre>
 
                 <!--due date-->
                 <label for="dueDate"><strong>Due Date</strong></label>
                 <br>
-                <input type="date" id="dueDate" [value]="TodayDate" [min]="minValue" formControlName="dueDate">
+                <input type="date" id="dueDate" formControlName="dueDate"
+                [value]="updateTask.get('dueDate')?.value"
+                >
                 <pre></pre>
+
                 <!--Status-->
                 <div>
                     <label for="status"><strong>Status</strong></label>
                     <div *ngFor="let status of taskStatuses">
-                        <div *ngFor="let status of taskStatuses">
-                            <input type="radio" [id]="status" [value]="status" formControlName="status">
-                            <label [for]="status">{{ status }}</label>
-                        </div>
+                        <input type="radio" [id]="status" 
+                          [value]="status" formControlName="status"
+                        >
+                        <label [for]="status">{{ status }}</label>
                     </div>
-                    <pre></pre>
-
-                    <!--priority-->
-                    <div>
-                        <label for="priority"><strong>Priority</strong></label>
-                        <div *ngFor="let priority of taskPriority">
-                            <input type="radio" [id]="priority" [value]="priority" formControlName="priorityOfTask">
-                            <label [for]="priority">{{ priority }}</label>
-                        </div>
-                    </div>
-                    <pre></pre>
-
-                    <!--Buttons-->
-                    <div class="buttons">
-                        <button mat-raised-button class="btn btn-primary" type="submit">
-                            Update
-                        </button>
-                        <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" type="button"
-                            (click)="onCancel()">
-                            Cancel
-                        </button>
-                    </div>
-                    <pre></pre>
                 </div>
+                <pre></pre>
+
+                <!--priority-->
+                <div>
+                    <label for="priority"><strong>Priority</strong></label>
+                    <div *ngFor="let priority of taskPriority">
+                        <input type="radio" [id]="priority" [value]="priority" 
+                        formControlName="priorityOfTask"
+                    >
+                        <label [for]="priority">{{ priority }}</label>
+                    </div>
+                </div>
+                <pre></pre>
+                
+                <!--Buttons-->
+                <div class="buttons">
+                    <button mat-raised-button class="btn btn-primary" type="submit">
+                        Update
+                    </button>
+                    <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" type="button"
+                        (click)="onCancel()">
+                        Cancel
+                    </button>
+                </div>
+                <pre></pre>
             </div>
         </form>
     </div>
