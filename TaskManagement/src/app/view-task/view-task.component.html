@@ -54,6 +54,7 @@
                 <th>Task Name</th>
                 <th>Task Description</th>
                 <th>Status</th>
+                <th>Priority</th>
                 <th>Target Date</th>
                 <th>Action </th>
                 
@@ -65,6 +66,7 @@
                 <td>{{Todo.taskname}}</td>
                 <td>{{Todo.taskdescription}}</td>
                 <td>{{Todo.status}}</td>
+                <td>{{Todo.priority}}</td>
                 <td>{{Todo.targetdate | date | uppercase}}</td>
                 <td>
                 <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
@@ -72,6 +74,9 @@
                 </button>
                 <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                   <mat-icon>delete</mat-icon>
+                </button>  
+                <button mat-icon-button color="primary">
+                  <mat-icon>visibility</mat-icon>
                 </button>  
                 <button mat-stroked-button><a routerLink="/assign" class="nav-link" >Assign Task</a></button>
               </td>
@@ -126,6 +131,7 @@
             <th>Task Name</th>
             <th>Task Description</th>
             <th>Status</th>
+            <th>Priority</th>
             <th>Target Date</th>
             <th>Team Members</th>
             <th>Action </th>
@@ -137,6 +143,7 @@
               <td>{{Todo.taskname}}</td>
               <td>{{Todo.taskdescription}}</td>
               <td>{{Todo.status}}</td>
+              <td>{{Todo.priority}}</td>
               <td>{{Todo.targetdate | date | uppercase}}</td>
               <td>{{Todo.teammember}}</td>
               <td>
@@ -145,6 +152,9 @@
               </button>
               <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                 <mat-icon>delete</mat-icon>
+              </button>  
+              <button mat-icon-button color="primary">
+                <mat-icon>visibility</mat-icon>
               </button>  
               </td>  
           </tr>

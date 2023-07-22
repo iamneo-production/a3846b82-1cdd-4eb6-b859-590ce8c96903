@@ -9,6 +9,7 @@ export class Todo{
     public taskname :string,
     public taskdescription :string,
     public status:string,
+    public priority:string,
     public targetdate:Date,
     public teammember:string
   
