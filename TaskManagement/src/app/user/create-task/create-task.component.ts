@@ -17,111 +17,111 @@ import { UserService } from 'src/app/service/service/user.service';
 })
 export class CreateTaskComponent implements OnInit {
 
-  //task
-  task :Task = new Task();
+ //task
+ task :Task = new Task();
   
 
-  // Validations
-  createTask = new FormGroup({
-    taskName: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
-    taskDescription: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
-    status: new FormControl('', [Validators.required]),
-    priorityOfTask: new FormControl('', [Validators.required]),
-    dueDate: new FormControl('', [Validators.required]),
-  });
+ // Validations
+ createTask = new FormGroup({
+   taskName: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
+   taskDescription: new FormControl('', [Validators.required, Validators.pattern(/\S/g)]),
+   status: new FormControl('', [Validators.required]),
+   priorityOfTask: new FormControl('', [Validators.required]),
+   dueDate: new FormControl('', [Validators.required]),
+ });
 
 
-  //task status from enum
-  taskStatuses = Object.values(TaskStatus);
+ //task status from enum
+ taskStatuses = Object.values(TaskStatus);
 
-  //priority from enum
-  taskPriority = Object.values(Priority);
+ //priority from enum
+ taskPriority = Object.values(Priority);
 
-  //selected members
-  selectedMembers: User[]=[];
-  id !: number | null;
-
-
-
-  //Constructors
-  constructor(
-    private location: Location,
-    private router: Router,
-    private taskService : TaskServiceService,
-    public userService:UserService
-  ) { }
-
-  //for date picker  
-  date1 = new Date();
-  currentYear = this.date1.getUTCFullYear();
-  currentMonth = this.date1.getUTCMonth() + 1;
-  currentDay = this.date1.getUTCDate();
-
-  FinalMonth: any;
-  FinalDay: any;
-  minValue: any;
-  TodayDate: any;
+ //selected members
+ selectedMembers: User[]=[];
+ id !: number | null;
 
 
-  ngOnInit(): void {
 
-    if (this.currentMonth < 10) {
-      this.FinalMonth = "0" + this.currentMonth;
-    }
-    else {
-      this.FinalMonth = this.currentMonth;
-    }
+ //Constructors
+ constructor(
+   private location: Location,
+   private router: Router,
+   private taskService : TaskServiceService,
+   public userService:UserService
+ ) { }
 
-    if (this.currentDay < 10) {
-      this.FinalDay = "0" + this.currentDay;
-    }
-    else {
-      this.FinalDay = this.currentDay;
-    }
-    this.TodayDate = this.currentYear + "-" + this.FinalMonth + "-" + this.FinalDay;
-    this.minValue = this.TodayDate;
-  }
+ //for date picker  
+ date1 = new Date();
+ currentYear = this.date1.getUTCFullYear();
+ currentMonth = this.date1.getUTCMonth() + 1;
+ currentDay = this.date1.getUTCDate();
 
-  get taskName() {
-    return this.createTask.get('taskName')
-  }
+ FinalMonth: any;
+ FinalDay: any;
+ minValue: any;
+ TodayDate: any;
 
-  get taskDescription() {
-    return this.createTask.get('taskDescription')
-  }
-  
-  //done button method
-  onSubmit() {
 
-    if (this.createTask.valid) {
-      const taskDetails : Task = {
-        name: this.createTask.value.taskName as string,
-        description: this.createTask.value.taskDescription as string,
-        status: this.createTask.value.status as TaskStatus,
-        priority: this.createTask.value.priorityOfTask as Priority,
-        dueDate: this.createTask.value.dueDate as unknown as Date,
-        user: null,
-        id:null,
-        createdDate: null,
-      };
-      
+ ngOnInit(): void {
+
+   if (this.currentMonth < 10) {
+     this.FinalMonth = "0" + this.currentMonth;
+   }
+   else {
+     this.FinalMonth = this.currentMonth;
+   }
+
+   if (this.currentDay < 10) {
+     this.FinalDay = "0" + this.currentDay;
+   }
+   else {
+     this.FinalDay = this.currentDay;
+   }
+   this.TodayDate = this.currentYear + "-" + this.FinalMonth + "-" + this.FinalDay;
+   this.minValue = this.TodayDate;
+ }
+
+ get taskName() {
+   return this.createTask.get('taskName')
+ }
+
+ get taskDescription() {
+   return this.createTask.get('taskDescription')
+ }
+ 
+ //done button method
+ onSubmit() {
+
+   if (this.createTask.valid) {
+     const taskDetails : Task = {
+       name: this.createTask.value.taskName as string,
+       description: this.createTask.value.taskDescription as string,
+       status: this.createTask.value.status as TaskStatus,
+       priority: this.createTask.value.priorityOfTask as Priority,
+       dueDate: this.createTask.value.dueDate as unknown as Date,
+       user: null,
+       id:null,
+       createdDate: null,
+     };
      
-      console.log(taskDetails);
-      this.taskService.createTask(taskDetails)
-      .subscribe((data:any) => {
-          this.router.navigate(['tasks']); 
-      });
-    }
-  }
+    
+     console.log(taskDetails);
+     this.taskService.createTask(taskDetails)
+     .subscribe((data:any) => {
+         this.router.navigate(['dashboard']); 
+     });
+   }
+ }
 
-  //Reset button method
-  onReset() {
-    this.createTask.reset();
-  }
+ //Reset button method
+ onReset() {
+   this.createTask.reset();
+ }
 
-  //Cancel button method
-  onCancel() {
-    this.location.back();
-  }
+ //Cancel button method
+ onCancel() {
+   this.location.back();
+ }
 
 }

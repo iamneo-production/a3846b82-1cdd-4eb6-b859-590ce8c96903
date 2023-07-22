@@ -15,6 +15,7 @@ import { ReportingComponent } from './reporting/reporting.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { VerificationComponent } from './verification/verification.component';
 import { HomeComponent } from './home/home.component';
+import { CreateTaskComponent } from './user/create-task/create-task.component';
 
 const routes: Routes =
   [
@@ -29,6 +30,7 @@ const routes: Routes =
     { path: "view-task", component: ViewTaskComponent },
     { path: "verification", component: VerificationComponent },
     { path: "home", component: HomeComponent },   
+    {path : "tasks", component:CreateTaskComponent},
    // { path: "tasks/:id/update", component:UpdateTaskComponent},
    // { path: "tasks/:id/view", component:ViewComponent},
    // { path: "tasks/:id/status", component:UpdateStatusComponent},
