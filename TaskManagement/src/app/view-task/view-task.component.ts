@@ -9,6 +9,7 @@ export class Todo{
     public taskname :string,
     public taskdescription :string,
     public status:string,
+    public priority:string,
     public targetdate:Date,
     public teammember:string
   
@@ -69,7 +70,7 @@ export class ViewTaskComponent implements OnInit {
 
   updateTodo(id: any) {
     console.log(`update todo ${id}`);
-    this.router.navigate(['view-task', id]);
+    this.router.navigate(['todo', id]);
   }
 
   filterTodos() {

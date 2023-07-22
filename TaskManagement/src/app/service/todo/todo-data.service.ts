@@ -21,7 +21,7 @@ export class TodoDataService {
     return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask/${id}`);
   }
 
-  updateTodo(taskname: any , id: any,todo: any){
+  updateTodo(id: any,todo: any){
     return this.http.put(
       `https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask/id`,todo) ; 
     }
