@@ -9,6 +9,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +59,10 @@ import { AuthInterceptor } from './auth_guard/auth.interceptor';
 import { CreateUserComponent } from './create-user/create-user.component';
 
 
+
+ 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +94,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
     ViewComponent,
     
    
+     
   ],
   imports: [
     BrowserModule,
@@ -101,7 +116,20 @@ import { CreateUserComponent } from './create-user/create-user.component';
     MatListModule,
     MatButtonModule,
     MatMenuModule,
-    NgSelectModule
+    NgSelectModule,
+    MatPaginatorModule,
+    MatButtonToggleModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatSnackBarModule
+    
+
+    
+
   ],
   providers: [UserserviceService,
     UserProfileService,

@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
-import { SignupComponent } from './signup/signup.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ReportingComponent } from './reporting/reporting.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { LoginComponent } from './login/login.component';
-import { ViewTaskComponent } from './view-task/view-task.component';
-import { VerificationComponent } from './verification/verification.component';
-import { HomeComponent } from './home/home.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UpdateTaskComponent } from './user/update-task/update-task.component';
 import { ViewComponent } from './user/view/view.component';
 import { UpdateStatusComponent } from './user/update-status/update-status.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { ReportingComponent } from './reporting/reporting.component';
+import { ViewTaskComponent } from './view-task/view-task.component';
+import { VerificationComponent } from './verification/verification.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes =
   [

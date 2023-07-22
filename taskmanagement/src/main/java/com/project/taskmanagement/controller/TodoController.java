@@ -49,9 +49,9 @@ public class TodoController {
 		
 	}
 	
-	@DeleteMapping("/{taskname}/viewtask/{id}")
+	@DeleteMapping("/viewtask/{id}")
 	public ResponseEntity<Void> deleteTodo(
-			@PathVariable String taskname, @PathVariable Long id) 
+			 @PathVariable Long id) 
 	    {   	
 		todoRepository.deleteById(id);
 		
