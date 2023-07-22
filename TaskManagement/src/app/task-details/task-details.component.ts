@@ -4,10 +4,10 @@ import { TaskserviceService } from '/home/coder/project/workspace/TaskManagement
 export interface Task {
   id: number;
   username: string;
-  taskname: string;
-  taskdescription: string;
-  taskduedate: Date;
-  taskstatus: boolean;
+  name: string;
+  description: string;
+  dueDate: Date;
+  status: boolean;
 }
 
 @Component({

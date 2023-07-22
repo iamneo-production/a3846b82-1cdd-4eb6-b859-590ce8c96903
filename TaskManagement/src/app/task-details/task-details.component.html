@@ -23,10 +23,10 @@
         <tr *ngFor="let task of tasks">
           <td>{{ task.id }}</td>
           <td>{{ task.username }}</td>
-          <td>{{ task.taskname }}</td>
-          <td>{{ task.taskdescription }}</td>
-          <td>{{ task.taskduedate | date }}</td>
-          <td>{{ task.taskstatus }}</td>
+          <td>{{ task.name }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.dueDate | date }}</td>
+          <td>{{ task.status }}</td>
           <td><button class="btn btn-primary">View Task</button></td>
         </tr>
       </tbody>
