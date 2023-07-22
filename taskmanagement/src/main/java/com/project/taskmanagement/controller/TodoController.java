@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
-
-@CrossOrigin("https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController  
 public class TodoController {
 	
