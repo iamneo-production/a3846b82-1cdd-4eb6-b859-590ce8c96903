@@ -26,7 +26,6 @@ const routes: Routes =
     { path: "view-task", component: ViewTaskComponent },
     { path: "verification", component: VerificationComponent },
     { path: "home", component: HomeComponent },
-    { path: "unauthorized", component: ForbiddenComponent },
     { path: "**", component: HomeComponent },
 
   ];
