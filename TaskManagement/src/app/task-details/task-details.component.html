@@ -2,35 +2,34 @@
     
   <mat-toolbar color="primary">
     <span > ✔ Task Board</span>
-    <span class="todo"></span>
+    <span class="task"></span>
   </mat-toolbar>
 <div class="alert alert-success" *ngIf="message">{{message}}</div>
 <body>
-    <div class="container-md p-3 my-3 border">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>UserId</th>
-            <th>Username</th>
-            <th>TaskName</th>
-            <th>TaskDescription</th>
-            <th>Task_Duedate</th>
-            <th>Task_status</th>
-            <th>Check Tasks</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let task of tasks">
-            <td>{{task.id}}</td>
-            <td>{{task.username}}</td>
-            <td>{{task.taskname}}</td>
-            <td>{{task.taskdescription}}</td>
-            <td>{{task.taskduedate | date}}</td>
-            <td>{{task.taskstatus}}</td>
-            <td><button class="btn btn-primary">View Task</button></td>
-          </tr>
-        </tbody>
-      </table>
-    
-    </div>
+  <div class="container-md p-3 my-3 border">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>UserId</th>
+          <th>Username</th>
+          <th>TaskName</th>
+          <th>TaskDescription</th>
+          <th>Task_Duedate</th>
+          <th>Task_status</th>
+          <th>Check Tasks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.id }}</td>
+          <td>{{ task.username }}</td>
+          <td>{{ task.name }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.dueDate | date }}</td>
+          <td>{{ task.status }}</td>
+          <td><button class="btn btn-primary">View Task</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>

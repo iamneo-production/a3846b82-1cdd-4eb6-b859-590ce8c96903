@@ -13,7 +13,7 @@ export class TodoDataService {
     public http:HttpClient) {}
 
   retrieveAllTodos(){
-
+    
     return this.http.get<Todo[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask`);
   
    }
