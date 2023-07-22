@@ -16,11 +16,10 @@ export class UserService {
   );
 
   constructor(private httpClient: HttpClient,
-    private userAuth: UserAuthService)
-   { }
+    private userAuth: UserAuthService) { }
 
   public login(LoginData: any) {
-    return this.httpClient.post("http://localhost:8080/auth/authenticate", LoginData, { headers: this.requestHeader });
+    return this.httpClient.post("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/auth/authenticate", LoginData, { headers: this.requestHeader });
   }
 
   //roles
@@ -29,12 +28,12 @@ export class UserService {
   public matchRoles(allowedRoles: string[]): boolean {
     const userRole = this.userAuth.getRoles();
 
-    return allowedRoles.some(role => userRole.includes(role));  
+    return allowedRoles.some(role => userRole.includes(role));
   }
 
- 
-  getUserList(): Observable<User[]>{ 
-    return this.httpClient.get<User[]>("http://localhost:8080/api/users");
+
+  getUserList(): Observable<User[]> {
+    return this.httpClient.get<User[]>("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/users");
   }
 
 }

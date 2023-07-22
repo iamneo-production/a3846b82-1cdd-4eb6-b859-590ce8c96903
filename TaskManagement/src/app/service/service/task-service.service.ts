@@ -8,7 +8,7 @@ import { Task } from './task';
 })
 export class TaskServiceService {
 
-  private baseUrl : String = "";
+  private baseUrl : String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,7 +24,4 @@ export class TaskServiceService {
     return this.httpClient.put(`${this.baseUrl}/${id}`, task);
   }
 
-  getTasks(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.baseUrl}`);
-  }
 }

@@ -23,10 +23,17 @@ export class Todo{
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
+TewTaskodo: any;
+updateStatus(arg0: number) {
+throw new Error('Method not implemented.');
+}
+  
+  taskId:string;
   
   constructor( public todoService:TodoDataService,
     public router :Router,
-    public _coreService: CoreService){}
+    public _coreService: CoreService,
+    ){}
 
   Todo:Todo[] | undefined; 
   message: string | undefined;
@@ -68,9 +75,14 @@ export class ViewTaskComponent implements OnInit {
     });
   }
 
-  updateTodo(id: any) {
-    console.log(`update todo ${id}`);
-    this.router.navigate(['todo', id]);
+  updateTodo(taskId: any) {
+    console.log(`update todo ${taskId}`);
+    this.router.navigate((['task',taskId, 'update']));
+  }
+
+  viewTask(taskId: any) {
+    console.log(`update todo ${taskId}`);
+    this.router.navigate((['task',taskId, 'view']));
   }
 
   filterTodos() {

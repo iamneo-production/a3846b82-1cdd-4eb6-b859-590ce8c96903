@@ -44,7 +44,8 @@ export class ViewTaskTLComponent {
      private router: Router,
      private route: ActivatedRoute,
      private userService: UserService,
-     private tskService: TaskServiceService
+     private tskService: TaskServiceService,
+     
    ) { }
   
   
