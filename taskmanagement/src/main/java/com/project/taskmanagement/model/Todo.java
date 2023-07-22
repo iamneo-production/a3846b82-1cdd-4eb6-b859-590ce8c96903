@@ -18,6 +18,7 @@ public class Todo {
 	private String taskdescription;
 	private Date targetdate;
 	private String status;
+	private String priority;
 	
     public Todo() {
     	
@@ -26,17 +27,18 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ",  status=" + status + ", targetdate=" + targetdate
+		return "Todo [id=" + id + ", priority=" + priority + ", status=" + status + ", targetdate=" + targetdate
 				+ ", taskdescription=" + taskdescription + ", taskname=" + taskname + "]";
 	}
 
 
-	public Todo(Long id, String taskname, String taskdescription, Date targetdate, String status) {
+	public Todo(Long id, String taskname, String taskdescription, Date targetdate, String status,String priority) {
 		this.id = id;
 		this.taskname = taskname;
 		this.taskdescription = taskdescription;
 		this.targetdate = targetdate;
 		this.status = status;
+		this.priority=priority;
 	}
 
 	public Long getId() {
@@ -78,6 +80,15 @@ public class Todo {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
 	}
 
 	@Override
