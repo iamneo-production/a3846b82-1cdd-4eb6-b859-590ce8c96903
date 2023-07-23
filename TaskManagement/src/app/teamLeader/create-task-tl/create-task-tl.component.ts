@@ -8,7 +8,11 @@ import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
 import { UserService } from 'src/app/service/service/user.service';
+<<<<<<< HEAD
 import { Todo } from 'src/app/view-task/view-task.component';
+=======
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
+>>>>>>> main
 
 @Component({
   selector: 'app-create-task-tl',
@@ -18,8 +22,13 @@ import { Todo } from 'src/app/view-task/view-task.component';
 export class CreateTaskTLComponent {
 
   //task
+<<<<<<< HEAD
   task :Task = new Task();
    
+=======
+  task: Task = new Task();
+
+>>>>>>> main
 
   // Validations
   createTask = new FormGroup({
@@ -38,7 +47,7 @@ export class CreateTaskTLComponent {
   taskPriority = Object.values(Priority);
 
   //selected members
-  selectedMembers: User[]=[];
+  selectedMembers: User[] = [];
   id !: number | null;
 
 
@@ -47,8 +56,8 @@ export class CreateTaskTLComponent {
   constructor(
     private location: Location,
     private router: Router,
-    private taskService : TaskServiceService,
-    public userService:UserService
+    // private shareData: DataShareServiceService,
+    private taskService: TodoDataService
   ) { }
 
   //for date picker  
@@ -96,35 +105,35 @@ export class CreateTaskTLComponent {
   toggle() {
     this.assign = !this.assign;
   }
-  
-  taskId !:number;
+
+  taskId !: number;
 
   //done button method
   onSubmit() {
 
     if (this.createTask.valid) {
-      const taskDetails : Task = {
+      const taskDetails: Task = {
         name: this.createTask.value.taskName as string,
         description: this.createTask.value.taskDescription as string,
         status: this.createTask.value.status as TaskStatus,
         priority: this.createTask.value.priorityOfTask as Priority,
         dueDate: this.createTask.value.dueDate as unknown as Date,
         user: null,
-        id:null,
+        id: null,
         createdDate: null,
         teamMembers: this.assign ? null : this.selectedMembers
       };
-      
-     
+
+
       console.log(taskDetails);
       this.taskService.createTask(taskDetails)
-      .subscribe((data:any) => {
-        if (this.assign) {
-          this.taskId = data.id;
-          console.log(this.taskId);
-          this.router.navigate(['tasks',this.taskId, 'assign']); 
-        }
-      });
+        .subscribe((data: any) => {
+          if (this.assign) {
+            this.taskId = data.id;
+            console.log(this.taskId);
+            this.router.navigate(['tasks', this.taskId, 'assign']);
+          }
+        });
     }
   }
 
@@ -142,6 +151,5 @@ export class CreateTaskTLComponent {
   onAssignTask() {
     this.assign = true;
   }
-
 
 }

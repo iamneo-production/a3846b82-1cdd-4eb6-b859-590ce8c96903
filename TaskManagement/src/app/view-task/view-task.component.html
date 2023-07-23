@@ -1,7 +1,7 @@
 <div class="main-body" >
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle value="Task List" (click)="toggleTables(true)">Task List</mat-button-toggle>
-    <mat-button-toggle value="Assign Task List" (click)="toggleTables(false)">Assign Task List</mat-button-toggle>
+    <mat-button-toggle value="Task List" (click)="toggleTables(true)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Task List</mat-button-toggle>
+    <mat-button-toggle value="Assign Task List" (click)="toggleTables(false)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Assign Task List</mat-button-toggle>
   </mat-button-toggle-group>
 
   <br><br>
@@ -9,7 +9,7 @@
   <mat-toolbar color="primary" *ngIf="showTaskList">
     <span > ✔ Task List</span>
     <span class="todo"></span>
-    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+    <button mat-raised-button><a (click)="createNewTask()" class="nav-link" style="text-decoration: none; color: black;">
        ADD NEW TASK</a>
     </button>
   </mat-toolbar>
@@ -51,7 +51,6 @@
       
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Task Name</th>
                 <th>Task Description</th>
                 <th>Status</th>
@@ -63,13 +62,15 @@
         </thead>
         <tbody>
            <tr *ngFor="let Todo of filteredTodo">
-            <td>{{Todo.id}}</td>
-                <td>{{Todo.taskname}}</td>
-                <td>{{Todo.taskdescription}}</td>
+                <td>{{Todo.name}}</td>
+                <td>{{Todo.description}}</td>
                 <td>{{Todo.status}}</td>
                 <td>{{Todo.priority}}</td>
-                <td>{{Todo.targetdate | date | uppercase}}</td>
+                <td>{{Todo.dueDate | date | uppercase}}</td>
                 <td>
+                  <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
                 <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                   <mat-icon>edit</mat-icon>
                 </button>
@@ -79,10 +80,10 @@
                 <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                   <mat-icon>delete</mat-icon>
                 </button>  
-                <button mat-icon-button color="primary">
+                <button mat-icon-button color="primary" (click)="viewTask(Todo.id)">
                   <mat-icon>visibility</mat-icon>
                 </button>  
-                <button mat-stroked-button><a routerLink="/assign" class="nav-link" >Assign Task</a></button>
+                <button mat-stroked-button (click)="assignTask(Todo.id)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Assign Task</button>
               </td>
             </tr>
        </tbody>
@@ -90,10 +91,14 @@
   </div>
 </body>
 
+<div *ngIf="userService.matchRoles(['TEAMLEADER'])">
  
-  <mat-toolbar color="primary" *ngIf="showAssignTaskList">
+  <mat-toolbar color="primary" *ngIf="showAssignTaskList ">
     <span > ✔ Assign Task List</span>
     <span class="todo"></span>
+    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+      ADD NEW TASK</a>
+   </button>
   </mat-toolbar>
   
 <body>
@@ -132,7 +137,6 @@
     <table class="table">
       <thead>
           <tr>
-            <th>ID</th>
             <th>Task Name</th>
             <th>Task Description</th>
             <th>Status</th>
@@ -144,14 +148,17 @@
       </thead>
       <tbody>
          <tr *ngFor="let Todo of filteredTodo">
-          <td>{{Todo.id}}</td>
-              <td>{{Todo.taskname}}</td>
-              <td>{{Todo.taskdescription}}</td>
+              <td>{{Todo.name}}</td>
+              <td>{{Todo.description}}</td>
               <td>{{Todo.status}}</td>
               <td>{{Todo.priority}}</td>
-              <td>{{Todo.targetdate | date | uppercase}}</td>
-              <td>{{Todo.teammember}}</td>
+              <td>{{Todo.dueDate | date | uppercase}}</td>
+              <td>{{Todo.teamMembers}}</td>
+             
               <td>
+                <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
               <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                 <mat-icon>edit</mat-icon>
               </button>
@@ -159,11 +166,12 @@
                 <mat-icon>delete</mat-icon>
               </button>  
               <button mat-icon-button color="primary">
-                <mat-icon>visibility</mat-icon>
+                <mat-icon  (click)="viewTask(Todo.id)"> visibility</mat-icon>
               </button>  
               </td>  
           </tr>
      </tbody>
   </table>
-  </div>
+</div>
+  
 </body>

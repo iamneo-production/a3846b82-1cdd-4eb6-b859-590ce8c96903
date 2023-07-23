@@ -3,6 +3,7 @@ package com.project.taskmanagement.controller;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.security.Principal;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +16,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 
 import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
 import com.project.taskmanagement.service.TaskService;
+import com.project.taskmanagement.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,19 +31,30 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TaskController {
 
-	private final TaskService taskService;
-	
-	private final UserRepository userRepository;
+    private final TaskService taskService;
 
-	//get all tasks
-    @GetMapping("/dtasks")
+    private final UserRepository userRepository;
+
+    /* get all tasks
+    @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }*/
+
+    //@GetMapping("/tasks/{userId}")
+    @GetMapping("/tasks")
+    public ResponseEntity<List<Task>> getTasksByUserId(@AuthenticationPrincipal User authenticatedUser) {
+        // List<Task> tasks = taskService.getTasksByUserId(userId);
+       // return new ResponseEntity<>(tasks, HttpStatus.OK);
+       long userId = authenticatedUser.getId();
+       List<Task> tasks = taskService.getTasksByUserId(userId);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
-    //get task by id
-    @GetMapping("dtasks/{id}")
+
+    // get task by id
+    @GetMapping("tasks/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         Task task = taskService.getTaskById(id);
         if (task != null) {
@@ -49,8 +64,8 @@ public class TaskController {
         }
     }
 
-    //Creating new task
-    @PostMapping
+    // Creating new task
+    @PostMapping("/tasks")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         // Retrieve the current user from the Authentication object
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -68,16 +83,16 @@ public class TaskController {
 
             Task createdTask = taskService.createTask(task);
             return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
-        } 
-        
+        }
+
         else {
             // Handle the case when the user is not found
             return ResponseEntity.notFound().build();
         }
     }
-    
-    //Updating existing task
-    @PutMapping("/{id}")
+
+    // Updating existing task
+    @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         Task existingTask = taskService.getTaskById(id);
         if (existingTask != null) {
@@ -88,5 +103,5 @@ public class TaskController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
 }

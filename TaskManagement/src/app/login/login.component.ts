@@ -31,6 +31,7 @@ export class LoginComponent {
 
         this.usertAuth.setRoles(response.role);
         this.usertAuth.setToken(response.access_token);
+        
 
         //roles based auth
         let role: string = response.role;
@@ -39,7 +40,7 @@ export class LoginComponent {
           this.router.navigate(['/admin']);
         }
         else if(role==='TEAMLEADER'){
-          this.router.navigate(['/tasks']);
+          this.router.navigate(['/dashboard']);
         }
         else{
           this.router.navigate(['/dashboard']);
