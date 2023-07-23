@@ -20,7 +20,7 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { TodoDataService } from '../service/todo/todo-data.service';
-import { Todo } from 'src/app/view-task/view-task.component';
+import { Task } from 'src/app/view-task/view-task.component';
 
 @Component({
   selector: 'app-calendar',
@@ -76,13 +76,15 @@ export class CalendarComponent implements OnInit {
     this.retrieveAllTodos();
   }
 
+  userId:number;
+  
   retrieveAllTodos() {
-    this.todoService.retrieveAllTodos().subscribe(
-      (todos: Todo[]) => {
+    this.todoService.retrieveAllTodos(this.userId).subscribe(
+      (todos: Task[]) => {
         this.events = todos.map((todo) => ({
-          title: todo.taskname,
-          start: new Date(todo.targetdate),
-          end: new Date(this.datePipe.transform(todo.targetdate, 'yyyy-MM-dd')), // Keep the end property as a Date object
+          title: todo.name,
+          start: new Date(todo.dueDate),
+          end: new Date(this.datePipe.transform(todo.dueDate, 'yyyy-MM-dd')), // Keep the end property as a Date object
           actions: this.actions,
           resizable: {
             beforeStart: true,
