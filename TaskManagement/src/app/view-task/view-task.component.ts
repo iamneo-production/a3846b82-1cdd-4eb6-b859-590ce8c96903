@@ -146,3 +146,5 @@ TewTaskodo: any;
 
 
 
+export { Task };
+
