@@ -15,7 +15,7 @@ import { CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
 })
 export class CalendarComponent implements OnInit{
   ngOnInit(): void {
-
+    
   }
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
 
