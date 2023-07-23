@@ -17,6 +17,7 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Token.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/CorsConfig.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/User.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AdminData.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/LogoutService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/UserRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
