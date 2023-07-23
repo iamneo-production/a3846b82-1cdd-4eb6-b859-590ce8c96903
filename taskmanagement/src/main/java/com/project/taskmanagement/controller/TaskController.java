@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 
 import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.User;
@@ -30,7 +32,6 @@ import lombok.RequiredArgsConstructor;
 public class TaskController {
 
     private final TaskService taskService;
-    private final UserService userService;
 
     private final UserRepository userRepository;
 
@@ -41,10 +42,13 @@ public class TaskController {
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }*/
 
-    @GetMapping("/tasks/{userId}")
-   // @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Task>> getTasksByUserId(@PathVariable long userId) {
-        List<Task> tasks = taskService.getTasksByUserId(userId);
+    //@GetMapping("/tasks/{userId}")
+    @GetMapping("/tasks")
+    public ResponseEntity<List<Task>> getTasksByUserId(@AuthenticationPrincipal User authenticatedUser) {
+        // List<Task> tasks = taskService.getTasksByUserId(userId);
+       // return new ResponseEntity<>(tasks, HttpStatus.OK);
+       long userId = authenticatedUser.getId();
+       List<Task> tasks = taskService.getTasksByUserId(userId);
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 

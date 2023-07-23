@@ -14,9 +14,10 @@ export class TodoDataService {
 
   private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io";
 
-  retrieveAllTodos(userId: number) {
+  retrieveAllTodos(userId) {
     return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
   }
+
   deleteTodo(id: any) {
     return this.http.delete(`${this.baseUrl}/tasks`);
   }
