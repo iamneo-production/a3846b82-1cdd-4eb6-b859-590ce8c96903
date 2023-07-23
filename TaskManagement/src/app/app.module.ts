@@ -57,7 +57,7 @@ import { UpdateTaskComponent } from './user/update-task/update-task.component';
 import { ViewComponent } from './user/view/view.component';
 import { AuthInterceptor } from './auth_guard/auth.interceptor';
 import { CreateUserComponent } from './create-user/create-user.component';
-
+import { DatePipe } from '@angular/common';
 
 
  
@@ -131,9 +131,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     
 
   ],
-  providers: [UserserviceService,
+  providers: [DatePipe,UserserviceService,
     UserProfileService,
-   
     //Http interceptors
     {
       provide:HTTP_INTERCEPTORS,
