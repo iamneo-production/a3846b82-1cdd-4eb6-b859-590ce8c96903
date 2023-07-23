@@ -57,7 +57,7 @@
                 <th>Status</th>
                 <th>Priority</th>
                 <th>Target Date</th>
-                <th>Action </th>
+                <th>Actions </th>
                 
             </tr>        
         </thead>
@@ -72,6 +72,9 @@
                 <td>
                 <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                   <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                  <mat-icon>update</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                   <mat-icon>delete</mat-icon>
@@ -136,7 +139,7 @@
             <th>Priority</th>
             <th>Target Date</th>
             <th>Team Members</th>
-            <th>Action </th>
+            <th>Actions </th>
           </tr>        
       </thead>
       <tbody>
