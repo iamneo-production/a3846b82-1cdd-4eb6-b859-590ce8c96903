@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import {
   startOfDay,
   endOfDay,
@@ -61,13 +62,14 @@ export class CalendarComponent implements OnInit {
 
   refresh = new Subject<void>();
 
-  events: CalendarEvent[] = [];
+  events: CalendarEvent<any>[] = [];
 
   activeDayIsOpen: boolean = true;
 
   constructor(
     private modalService: NgbModal,
-    private todoService: TodoDataService
+    private todoService: TodoDataService,
+    private datePipe: DatePipe 
   ) {}
 
   ngOnInit(): void {
@@ -80,6 +82,7 @@ export class CalendarComponent implements OnInit {
         this.events = todos.map((todo) => ({
           title: todo.taskname,
           start: new Date(todo.targetdate),
+          end: new Date(this.datePipe.transform(todo.targetdate, 'yyyy-MM-dd')), // Keep the end property as a Date object
           actions: this.actions,
           resizable: {
             beforeStart: true,
