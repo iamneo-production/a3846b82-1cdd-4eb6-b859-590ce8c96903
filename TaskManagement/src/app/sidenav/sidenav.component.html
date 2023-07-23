@@ -1,5 +1,5 @@
 <div class="wrapper">
-
+<div>
   <mat-toolbar class="nav" color="primary">
     <mat-toolbar-row>
       <button *ngIf="isLoggedIn()" (click)="sidenav.toggle();" mat-icon-button>
@@ -11,6 +11,7 @@
       <span class="example-spacer"></span>
 
       <!--<button mat-button [matMenuTriggerFor]="afterMenu">Task</button>-->
+      
       <button mat-button>
         <a routerLink="/dashboard" class="nav-link" mat-list-item *ngIf="isLoggedIn()"><button mat-button>Dashboard</button></a>
       </button>
@@ -64,6 +65,7 @@
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
+  </div>
 
   <mat-sidenav-container >
     <mat-sidenav #sidenav opened="true" mode="side" >

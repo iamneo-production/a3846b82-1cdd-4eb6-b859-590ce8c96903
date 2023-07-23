@@ -24,7 +24,7 @@ export class TodoDataService {
   createTask(task: Task): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, task);
   }
-
+ 
   getTaskById(id: number) {
     return this.http.get<Task>(`${this.baseUrl}/${id}`);
   }
