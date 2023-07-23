@@ -57,10 +57,10 @@ const routes: Routes =
     //{path: 'task' ,component:CreateTaskComponent},
 
     {path: 'task' ,component:CreateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
-    {path:'task/:id/view', component:ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
+   // {path:'task/:id/', component:ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
     {path:'task/:id/update', component:UpdateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
     {path:'task/:id/status', component:UpdateStatusComponent,canActivate:[authGuard],data:{role:['USER']}},
-    {path:'task/:id/view', component:ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
+    {path:'task/:id/view', component:ViewComponent,canActivate:[authGuard],data:{role:['USER']}},
     //{ path: "view-task", component: ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']} },*/
     { path: "dashboard", component: ViewTaskComponent}
   ];

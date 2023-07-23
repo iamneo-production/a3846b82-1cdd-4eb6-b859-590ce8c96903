@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
 import { CoreService } from '../core/core.service';
 import { Task } from '../service/service/task';
+import { UserService } from '../service/service/user.service';
 
 @Component({
   selector: 'app-view-task',
@@ -11,15 +12,14 @@ import { Task } from '../service/service/task';
 })
 export class ViewTaskComponent implements OnInit {
 TewTaskodo: any;
-updateStatus(arg0: number) {
-throw new Error('Method not implemented.');
-}
+
   
   taskId:string;
   
   constructor( public todoService:TodoDataService,
     public router :Router,
     public _coreService: CoreService,
+    public userService:UserService
     ){}
 
   Todo:Task[] | undefined; 
@@ -65,6 +65,11 @@ throw new Error('Method not implemented.');
   updateTodo(id: any) {
     console.log(`update todo ${id}`);
     this.router.navigate((['task',id, 'update']));
+  }
+
+  updateStatus(id: any) {
+    console.log(`update todo ${id}`);
+    this.router.navigate((['task',id, 'status']));
   }
 
   viewTask(id: number) {
