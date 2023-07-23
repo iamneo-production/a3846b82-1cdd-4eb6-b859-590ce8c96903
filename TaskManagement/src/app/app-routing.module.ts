@@ -40,8 +40,8 @@ const routes: Routes =
     { path: "users", component: CreateUserComponent },
 
     //USER AND TEAMLEADER
-   // { path: "events", component: CalendarComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
-   // { path: "report", component: ReportingComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']}},
+    { path: "events", component: CalendarComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
+    { path: "report", component: ReportingComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']}},
 
 
    // TEAMLEADER
