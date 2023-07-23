@@ -26,10 +26,7 @@
                 <!--due date-->
                 <label for="dueDate"><strong>Due Date</strong></label>
                 <br>
-                <input type="date" id="dueDate" formControlName="dueDate"
-                [value]="updateStatus.get('dueDate')?.value"
-                [readOnly]="true"
-                >
+                <input type="text" id="dueDate" formControlName="dueDate" [readonly]="true">
                 <pre></pre>
 
                 <!--Status-->

@@ -43,10 +43,10 @@ TewTaskodo: any;
  
   selectedStatus: string = 'All';
   searchTerm: string = '';
-
+  userId:number;
   
   refreshTodos() {
-    this.todoService.retrieveAllTodos().subscribe((response) => {
+    this.todoService.retrieveAllTodos(this.userId).subscribe((response) => {
       console.log(response);
       this.Todo = response;
       this.filterTodos(); // Apply initial filtering
@@ -64,22 +64,37 @@ TewTaskodo: any;
 
   updateTodo(id: any) {
     console.log(`update todo ${id}`);
-    this.router.navigate((['task',id, 'update']));
-  }
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks',id, 'update']));
+    }
+    else{
+      this.router.navigate((['task',id, 'update']));
+    }  }
 
   updateStatus(id: any) {
     console.log(`update todo ${id}`);
-    this.router.navigate((['task',id, 'status']));
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks',id, 'status']));
+    }
+    else{
+      this.router.navigate((['task',id, 'status']));
+    }
   }
 
-  viewTask(id: number) {
+  viewTask(id: number) { 
     console.log(`View todo ${id}`);
-    this.router.navigate((['task',id, 'view']));
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks',id, 'view']));
+    }
+    else{
+      this.router.navigate((['task',id, 'view']));
+    }
+   
   }
 
   assignTask(id: any) {
     console.log(`update todo ${id}`);
-    this.router.navigate((['task',id, 'assign']));
+    this.router.navigate((['tasks',id, 'assign']));
   }
 
   filterTodos() {
@@ -113,6 +128,20 @@ TewTaskodo: any;
 
   // Initialize the filteredTodo with the Todo
   filteredTodo: Task[] | undefined;
+
+  //create task
+  createNewTask(){
+
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks']));
+    }
+    else{
+      this.router.navigate(['task']);
+    }
+
+  }
+
+
 }
 
 

@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
 
+  private currentUser: any;
+
+
   constructor() { }
+
+  
+  
 
   public setRoles(role:[]){
     localStorage.setItem('role',JSON.stringify(role));
@@ -27,6 +34,28 @@ export class UserAuthService {
     return localStorage.getItem('access_token')
   }
 
+  //set email
+  public setEmail(email:string){
+    localStorage.setItem('email',email);
+  }
+
+  //get email
+  public getEmail():string | null {
+    return localStorage.getItem('email');
+  }
+
+  //get id
+  public getUserId(): number | null{
+    const userIdString = localStorage.getItem('userId') ;
+      return JSON.parse(userIdString) ;
+  }
+
+  //setId
+  public setUserId(userId: number | null ): void{
+    localStorage.setItem('userId',JSON.stringify(userId));
+  }
+
+
   //clear method -- to clear the local storage
   public clear(){
     localStorage.clear();
@@ -37,4 +66,7 @@ export class UserAuthService {
     return this.getRoles() && this.getToken();
   }
 
+  
 }
+
+

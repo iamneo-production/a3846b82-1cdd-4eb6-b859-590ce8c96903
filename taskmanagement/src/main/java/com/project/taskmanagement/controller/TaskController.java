@@ -3,6 +3,7 @@ package com.project.taskmanagement.controller;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.security.Principal;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,25 +21,35 @@ import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
 import com.project.taskmanagement.service.TaskService;
+import com.project.taskmanagement.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
 public class TaskController {
- 
-	private final TaskService taskService;
-	
-	private final UserRepository userRepository;
 
-	//get all tasks
+    private final TaskService taskService;
+    private final UserService userService;
+
+    private final UserRepository userRepository;
+
+    /* get all tasks
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }*/
+
+    @GetMapping("/tasks/{userId}")
+   // @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Task>> getTasksByUserId(@PathVariable long userId) {
+        List<Task> tasks = taskService.getTasksByUserId(userId);
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
-    //get task by id
+
+    // get task by id
     @GetMapping("tasks/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         Task task = taskService.getTaskById(id);
@@ -49,7 +60,7 @@ public class TaskController {
         }
     }
 
-    //Creating new task
+    // Creating new task
     @PostMapping("/tasks")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         // Retrieve the current user from the Authentication object
@@ -68,15 +79,15 @@ public class TaskController {
 
             Task createdTask = taskService.createTask(task);
             return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
-        } 
-        
+        }
+
         else {
             // Handle the case when the user is not found
             return ResponseEntity.notFound().build();
         }
     }
-    
-    //Updating existing task
+
+    // Updating existing task
     @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         Task existingTask = taskService.getTaskById(id);
@@ -88,5 +99,5 @@ public class TaskController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
 }

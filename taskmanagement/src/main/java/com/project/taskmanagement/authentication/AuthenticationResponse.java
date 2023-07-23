@@ -27,6 +27,9 @@ public class AuthenticationResponse {
 
     @JsonProperty("refresh_token")
     private String refreshToken;
+
+    @JsonProperty("userId")
+    private long userId;
     
     
     public String getUsername() {

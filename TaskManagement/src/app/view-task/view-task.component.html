@@ -1,7 +1,7 @@
 <div class="main-body" >
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle value="Task List" (click)="toggleTables(true)">Task List</mat-button-toggle>
-    <mat-button-toggle value="Assign Task List" (click)="toggleTables(false)">Assign Task List</mat-button-toggle>
+    <mat-button-toggle value="Task List" (click)="toggleTables(true)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Task List</mat-button-toggle>
+    <mat-button-toggle value="Assign Task List" (click)="toggleTables(false)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Assign Task List</mat-button-toggle>
   </mat-button-toggle-group>
 
   <br><br>
@@ -9,7 +9,7 @@
   <mat-toolbar color="primary" *ngIf="showTaskList">
     <span > ✔ Task List</span>
     <span class="todo"></span>
-    <button mat-raised-button><a routerLink="/task" class="nav-link" style="text-decoration: none; color: black;">
+    <button mat-raised-button><a (click)="createNewTask()" class="nav-link" style="text-decoration: none; color: black;">
        ADD NEW TASK</a>
     </button>
   </mat-toolbar>
@@ -90,8 +90,9 @@
   </div>
 </body>
 
+<div *ngIf="userService.matchRoles(['TEAMLEADER'])">
  
-  <mat-toolbar color="primary" *ngIf="showAssignTaskList && userService.matchRoles(['TEAMLEADER'])">
+  <mat-toolbar color="primary" *ngIf="showAssignTaskList ">
     <span > ✔ Assign Task List</span>
     <span class="todo"></span>
     <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
@@ -172,5 +173,6 @@
           </tr>
      </tbody>
   </table>
-  </div>
+</div>
+  
 </body>

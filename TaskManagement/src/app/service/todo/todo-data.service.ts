@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../service/task';
 import { Observable } from 'rxjs';
 
@@ -12,25 +12,26 @@ export class TodoDataService {
   constructor(
     public http: HttpClient) { }
 
-  private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/tasks";
+  private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io";
 
-  retrieveAllTodos() {
-    return this.http.get<Task[]>(`${this.baseUrl}`);
+  retrieveAllTodos(userId: number) {
+    return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
   }
   deleteTodo(id: any) {
-    return this.http.delete(`${this.baseUrl}`);
+    return this.http.delete(`${this.baseUrl}/tasks`);
   }
 
   createTask(task: Task): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, task);
+    return this.http.post(`${this.baseUrl}/tasks`, task);
   }
  
   getTaskById(id: number) {
-    return this.http.get<Task>(`${this.baseUrl}/${id}`);
+    return this.http.get<Task>(`${this.baseUrl}/tasks/${id}`);
   }
 
   updateTask(id: number, task: Task): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`, task);
+    return this.http.put(`${this.baseUrl}/tasks/${id}`, task);
   }
+
 }
 
