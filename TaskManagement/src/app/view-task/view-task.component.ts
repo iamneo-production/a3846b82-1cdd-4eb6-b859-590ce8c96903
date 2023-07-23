@@ -2,21 +2,8 @@ import { Component ,OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
 import { CoreService } from '../core/core.service';
+import { Task } from '../service/service/task';
 
-export class Todo{
-  constructor(
-    public id: number,
-    public taskname :string,
-    public taskdescription :string,
-    public status:string,
-    public priority:string,
-    public targetdate:Date,
-    public teammember:string
-  
-  ){
-    
-  }
-}
 @Component({
   selector: 'app-view-task',
   templateUrl: './view-task.component.html',
@@ -35,7 +22,7 @@ throw new Error('Method not implemented.');
     public _coreService: CoreService,
     ){}
 
-  Todo:Todo[] | undefined; 
+  Todo:Task[] | undefined; 
   message: string | undefined;
  
   showTaskList = true;
@@ -75,14 +62,18 @@ throw new Error('Method not implemented.');
     });
   }
 
-  updateTodo(taskId: any) {
-    console.log(`update todo ${taskId}`);
-    this.router.navigate((['task',taskId, 'update']));
+  updateTodo(id: any) {
+    console.log(`update todo ${id}`);
+    this.router.navigate((['task',id, 'update']));
   }
 
-  viewTask(taskId: any) {
-    console.log(`update todo ${taskId}`);
-    this.router.navigate((['task',taskId, 'view']));
+  viewTask(id: any) {
+    console.log(`update todo ${id}`);
+    this.router.navigate((['task',id, 'view']));
+  }
+  assignTask(id: any) {
+    console.log(`update todo ${id}`);
+    this.router.navigate((['task',id, 'assign']));
   }
 
   filterTodos() {
@@ -92,7 +83,7 @@ throw new Error('Method not implemented.');
     } else {
       this.filteredTodo = this.Todo.filter((todo) => {
         const statusFilter = this.selectedStatus === 'All' || todo.status === this.selectedStatus;
-        const searchFilter = !this.searchTerm || todo.taskname.toLowerCase().includes(this.searchTerm.toLowerCase());
+        const searchFilter = !this.searchTerm || todo.name.toLowerCase().includes(this.searchTerm.toLowerCase());
         return statusFilter && searchFilter;
       });
     }
@@ -102,7 +93,7 @@ throw new Error('Method not implemented.');
   sortTodos(sortBy: string) {
     this.sortedBy = sortBy;
     if (!this.Todo) return; // Return if Todo is not initialized
-    this.Todo.sort((a: Todo, b: Todo) => {
+    this.Todo.sort((a: Task, b: Task) => {
       return a[sortBy] > b[sortBy] ? 1 : -1;
     });
   }
@@ -115,7 +106,7 @@ throw new Error('Method not implemented.');
   }
 
   // Initialize the filteredTodo with the Todo
-  filteredTodo: Todo[] | undefined;
+  filteredTodo: Task[] | undefined;
 }
 
 

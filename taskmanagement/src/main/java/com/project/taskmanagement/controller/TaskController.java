@@ -26,20 +26,20 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class TaskController {
-
+ 
 	private final TaskService taskService;
 	
 	private final UserRepository userRepository;
 
 	//get all tasks
-    @GetMapping("/dtasks")
+    @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     //get task by id
-    @GetMapping("dtasks/{id}")
+    @GetMapping("tasks/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         Task task = taskService.getTaskById(id);
         if (task != null) {

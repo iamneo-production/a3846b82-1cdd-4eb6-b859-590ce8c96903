@@ -8,6 +8,7 @@ import { TaskStatus } from 'src/app/service/service/TaskStatus';
 import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 
 @Component({
   selector: 'app-view',
@@ -43,7 +44,7 @@ export class ViewComponent {
    private router: Router,
    private route: ActivatedRoute,
    private userService: UserService,
-   private tskService: TaskServiceService
+   private taskService: TodoDataService
  ) { }
 
 
@@ -60,7 +61,7 @@ export class ViewComponent {
     this.id = +params['id'];
 
     //get task by id is subscribed to data
-    this.tskService.getTaskById(this.id).subscribe((task: Task) => {
+    this.taskService.getTaskById(this.id).subscribe((task: Task) => {
       this.task = task;
       this.dataTransfer();
     });

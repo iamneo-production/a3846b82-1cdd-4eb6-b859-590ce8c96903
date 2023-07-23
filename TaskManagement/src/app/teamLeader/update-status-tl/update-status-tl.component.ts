@@ -8,6 +8,7 @@ import { TaskStatus } from 'src/app/service/service/TaskStatus';
 import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 
 @Component({
   selector: 'app-update-status-tl',
@@ -47,7 +48,7 @@ export class UpdateStatusTLComponent {
    private location: Location,
    private router: Router,
    private route: ActivatedRoute,
-   private taskService : TaskServiceService,
+   private taskService : TodoDataService,
    private userService:UserService
  ) { }
 

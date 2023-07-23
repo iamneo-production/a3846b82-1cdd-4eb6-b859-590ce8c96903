@@ -8,6 +8,7 @@ import { TaskStatus } from 'src/app/service/service/TaskStatus';
 import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 
 
 @Component({
@@ -47,8 +48,8 @@ export class UpdateTaskComponent {
    private location: Location,
    private router: Router,
    private route: ActivatedRoute,
-   private taskService : TaskServiceService,
-   private userService:UserService
+   private userService:UserService,
+   private taskService:TodoDataService
  ) { }
 
  //for date picker  

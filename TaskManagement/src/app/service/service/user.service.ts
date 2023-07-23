@@ -22,6 +22,10 @@ export class UserService {
     return this.httpClient.post("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/auth/authenticate", LoginData, { headers: this.requestHeader });
   }
 
+  registerUser(SignupData: any): Observable<any> {
+    return this.httpClient.post<any>(`https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/auth/register`, SignupData);
+  }
+
   //roles
   useRole: any
 
@@ -33,7 +37,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/users");
+    return this.httpClient.get<User[]>("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/dusers");
   }
 
 }

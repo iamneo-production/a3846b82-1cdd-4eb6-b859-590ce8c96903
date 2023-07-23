@@ -8,6 +8,7 @@ import { TaskStatus } from 'src/app/service/service/TaskStatus';
 import { Priority } from 'src/app/service/service/Priority';
 import { UserService } from 'src/app/service/service/user.service';
 import { TaskServiceService } from 'src/app/service/service/task-service.service';
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 
 @Component({
   selector: 'app-assign-task',
@@ -48,7 +49,7 @@ export class AssignTaskComponent {
    private router: Router,
    private route: ActivatedRoute,
    private userService: UserService,
-   private tskService: TaskServiceService
+   private taskService: TodoDataService
  ) { }
 
 
@@ -61,7 +62,7 @@ export class AssignTaskComponent {
  
  getTaskById(): void {
    //to populate data 
-   this.tskService.getTaskById(this.id).subscribe(
+   this.taskService.getTaskById(this.id).subscribe(
      (task: Task) => {
        // Set the form values
        this.assignTask.patchValue({
@@ -120,7 +121,7 @@ export class AssignTaskComponent {
    };
    console.log(taskDetails);
    console.log("task updated")
-   this.tskService.updateTask(this.id,taskDetails)
+   this.taskService.updateTask(this.id,taskDetails)
      .subscribe(data => {
        console.log(data);
        this.router.navigate(['']);

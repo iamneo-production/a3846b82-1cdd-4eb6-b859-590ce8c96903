@@ -9,7 +9,7 @@
   <mat-toolbar color="primary" *ngIf="showTaskList">
     <span > ✔ Task List</span>
     <span class="todo"></span>
-    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+    <button mat-raised-button><a routerLink="/task" class="nav-link" style="text-decoration: none; color: black;">
        ADD NEW TASK</a>
     </button>
   </mat-toolbar>
@@ -64,11 +64,11 @@
         <tbody>
            <tr *ngFor="let Todo of filteredTodo">
             <td>{{Todo.id}}</td>
-                <td>{{Todo.taskname}}</td>
-                <td>{{Todo.taskdescription}}</td>
+                <td>{{Todo.name}}</td>
+                <td>{{Todo.description}}</td>
                 <td>{{Todo.status}}</td>
                 <td>{{Todo.priority}}</td>
-                <td>{{Todo.targetdate | date | uppercase}}</td>
+                <td>{{Todo.dueDate | date | uppercase}}</td>
                 <td>
                   <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
                     <mat-icon>edit</mat-icon>
@@ -79,10 +79,10 @@
                 <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                   <mat-icon>delete</mat-icon>
                 </button>  
-                <button mat-icon-button color="primary">
-                  <mat-icon><a [routerLink]="['/task', taskId, 'view']" routerLinkActive="router-link-active" >visibility</a></mat-icon>
+                <button mat-icon-button color="primary" (click)="viewTask(Todo.id)">
+                  <mat-icon>visibility</mat-icon>
                 </button>  
-                <button mat-stroked-button><a routerLink="/assign" class="nav-link" >Assign Task</a></button>
+                <button mat-stroked-button (click)="assignTask(Todo.id)">Assign Task</button>
               </td>
             </tr>
        </tbody>
@@ -94,6 +94,9 @@
   <mat-toolbar color="primary" *ngIf="showAssignTaskList">
     <span > ✔ Assign Task List</span>
     <span class="todo"></span>
+    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+      ADD NEW TASK</a>
+   </button>
   </mat-toolbar>
   
 <body>
@@ -145,12 +148,12 @@
       <tbody>
          <tr *ngFor="let Todo of filteredTodo">
           <td>{{Todo.id}}</td>
-              <td>{{Todo.taskname}}</td>
-              <td>{{Todo.taskdescription}}</td>
+              <td>{{Todo.name}}</td>
+              <td>{{Todo.description}}</td>
               <td>{{Todo.status}}</td>
               <td>{{Todo.priority}}</td>
-              <td>{{Todo.targetdate | date | uppercase}}</td>
-              <td>{{Todo.teammember}}</td>
+              <td>{{Todo.dueDate | date | uppercase}}</td>
+              <td>{{Todo.teamMembers}}</td>
              
               <td>
                 <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">

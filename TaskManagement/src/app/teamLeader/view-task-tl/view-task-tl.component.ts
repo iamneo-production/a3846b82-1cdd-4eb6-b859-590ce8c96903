@@ -8,6 +8,7 @@ import { UserService } from 'src/app/service/service/user.service';
 import { TaskServiceService } from 'src/app/service/service/task-service.service';
 import { TaskStatus } from 'src/app/service/service/TaskStatus';
 import { Priority } from 'src/app/service/service/Priority';
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 
 @Component({
   selector: 'app-view-task-tl',
@@ -44,8 +45,7 @@ export class ViewTaskTLComponent {
      private router: Router,
      private route: ActivatedRoute,
      private userService: UserService,
-     private tskService: TaskServiceService,
-     
+     private tskService: TodoDataService
    ) { }
   
   

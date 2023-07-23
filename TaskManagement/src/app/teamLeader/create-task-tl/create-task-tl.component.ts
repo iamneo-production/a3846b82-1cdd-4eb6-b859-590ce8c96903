@@ -8,6 +8,7 @@ import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
 import { UserService } from 'src/app/service/service/user.service';
+import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 
 @Component({
   selector: 'app-create-task-tl',
@@ -47,7 +48,7 @@ export class CreateTaskTLComponent {
     private location: Location,
     private router: Router,
     // private shareData: DataShareServiceService,
-    private taskService: TaskServiceService
+    private taskService: TodoDataService
   ) { }
 
   //for date picker  
