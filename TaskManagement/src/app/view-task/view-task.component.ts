@@ -67,10 +67,11 @@ throw new Error('Method not implemented.');
     this.router.navigate((['task',id, 'update']));
   }
 
-  viewTask(id: any) {
-    console.log(`update todo ${id}`);
+  viewTask(id: number) {
+    console.log(`View todo ${id}`);
     this.router.navigate((['task',id, 'view']));
   }
+
   assignTask(id: any) {
     console.log(`update todo ${id}`);
     this.router.navigate((['task',id, 'assign']));

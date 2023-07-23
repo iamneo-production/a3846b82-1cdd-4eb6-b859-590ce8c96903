@@ -50,7 +50,7 @@ public class TaskController {
     }
 
     //Creating new task
-    @PostMapping
+    @PostMapping("/tasks")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         // Retrieve the current user from the Authentication object
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -77,7 +77,7 @@ public class TaskController {
     }
     
     //Updating existing task
-    @PutMapping("/{id}")
+    @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         Task existingTask = taskService.getTaskById(id);
         if (existingTask != null) {
