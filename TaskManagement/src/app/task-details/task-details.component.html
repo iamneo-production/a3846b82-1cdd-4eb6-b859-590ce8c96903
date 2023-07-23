@@ -4,7 +4,7 @@
     <span > ✔ Task Board</span>
     <span class="todo"></span>
   </mat-toolbar>
-
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
 <body>
     <div class="container-md p-3 my-3 border">
       <table class="table">
@@ -29,7 +29,7 @@
             <td>{{task.taskduedate | date}}</td>
             <td>{{task.taskstatus}}</td>
             <td><button class="btn btn-success">Update</button></td>
-            <td><button class="btn btn-warning">Delete</button></td>
+            <td><button (click)="deleteTask(task.id)" class="btn btn-warning">Delete</button></td>
           </tr>
         </tbody>
       </table>

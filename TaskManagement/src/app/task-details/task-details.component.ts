@@ -19,6 +19,7 @@ export class Task{
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit{
+  message:any;
   constructor(public taskservice :TaskserviceService){
 
   }
@@ -30,6 +31,14 @@ export class TaskDetailsComponent implements OnInit{
     this.taskservice.retrieveTasks().subscribe(
       response=>{
         this.tasks=response
+      }
+    )
+  }
+  deleteTask(id:any){
+    this.taskservice.deleteTask(id).subscribe(
+      response=>{
+        this.message=`Deletion of Task ${id} successful`
+        this.refreshTasks()
       }
     )
   }

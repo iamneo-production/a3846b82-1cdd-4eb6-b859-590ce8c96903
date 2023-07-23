@@ -1,6 +1,7 @@
 package com.project.taskmanagement.controller;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import com.project.taskmanagement.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ import com.project.taskmanagement.repository.TaskRepository;
 
 import com.project.taskmanagement.model.Task;
 
-@CrossOrigin("https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
+@CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController
 public class TaskController {
 	@Autowired
@@ -32,16 +33,16 @@ public class TaskController {
 	public List<Task> retrieveAllTasks(){
 		return taskrepository.findAll();
 	}
-	@GetMapping("dusers/{username}/dtasks/{id}")
-	public Task getTaskById(@PathVariable String username,@PathVariable Long id){
-		return taskrepository.findById(id).get();
+	@GetMapping("/dtasks/{id}")
+	public Task getTaskById(@PathVariable Long id){
+		Optional <Task> optionaltask=taskrepository.findById(id);
+		return optionaltask.orElse(null);
 	}
-	@DeleteMapping("/{username}/dtasks/{id}")//We can either give success or no content-choosing
+	@DeleteMapping("/dtasks/{id}")//We can either give success or no content-choosing
 	//Response entity enables us to get specific status back
-	public ResponseEntity<Void> deleteTask(@PathVariable String username,
-			@PathVariable Long id){
-		Task task=taskservice.deleteById(id);
-		if(task!=null) {
+	public ResponseEntity<Void> deleteTask(@PathVariable Long id){
+		if (taskrepository.existsById(id)){
+			taskrepository.deleteById(id);
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.notFound().build();

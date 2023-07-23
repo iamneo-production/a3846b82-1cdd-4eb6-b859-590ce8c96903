@@ -6,11 +6,11 @@ import { TodoDataService } from '../service/todo/todo-data.service';
 export class Todo{
   constructor(
     public id: number,
-    public taskName :string,
-    public taskDescription :string,
+    public taskname :string,
+    public taskdescription :string,
     public status:boolean,
     public priority:boolean,
-    public dueDate:Date,
+    public targetdate:Date,
   
   ){
     
@@ -22,12 +22,45 @@ export class Todo{
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
+ 
 
   constructor( public todoService:TodoDataService,
     public router :Router){}
 
   Todo:Todo[] | undefined; 
-
-  ngOnInit(){ }
-
+  message: string | undefined;
+ 
+  ngOnInit(){
+    this.refreshTodos();
+   
+    }
+  
+    refreshTodos(){
+      this.todoService.retrieveAllTodos().subscribe( 
+        response => {
+          console.log(response);
+          this.Todo=response;
+        }
+       )
+    }
+  
+    deleteTodo(id: any){
+      console.log(`delete todo ${id}`)
+      this.todoService.deleteTodo('',id).subscribe(  
+        response =>{
+          console.log(response);
+          this.message=`Delete of Todo ${id} Successful!`
+          this.refreshTodos();
+  
+        }
+      )
+    }
+    
+  
+    updateTodo(id: any){
+      console.log(`update todo ${id}`)
+      this.router.navigate(['view-task',id]) 
+      
+    }
+  
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 
@@ -9,19 +9,27 @@ import { of } from 'rxjs';
 })
 export class UserProfileService {
 
+  private apiUrl = 'https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io';
+
   constructor(private http: HttpClient) { }
 
-  getUserDetails(): Observable<any> {
-    // Implement the logic to retrieve user details
-    // This could be an HTTP request or retrieving from storage
-    // For now, let's return a dummy data
-    return of({
-      firstName: 'Tony',
-      lastName: 'Stark',
-      username: 'tonystark',
-      email: 'tony@example.com',
-      password: 'Abc@1234589',
-    });
+  getUserDetails(userId:any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/${userId}`);
   }
 
+  getUserImage(userId: any): Observable<Blob> {
+    const imageUrl = `${this.apiUrl}/${userId}/image`;
+    return this.http.get(imageUrl, { responseType: 'blob' });
+  }
+
+  updateUserDetails(userId: any, formData: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/edit/${userId}`, formData);
+  }
+
+  /*deleteUserImage(userId: string): Observable<any> {
+    const url = `${this.apiUrl}/delete/${userId}/image`;
+    return this.http.delete(url);
+  }*/
+
+  
 }
