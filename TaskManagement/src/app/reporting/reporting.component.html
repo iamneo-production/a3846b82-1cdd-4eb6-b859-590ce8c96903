@@ -1,59 +1,66 @@
-
-<div class="main-body" >
-    <mat-toolbar color="primary">
-      <span > ✔ Report </span>
-      <span class="todo"></span>
-    </mat-toolbar>
-<br>
-<br>
-    <div class="row">
-        <div class="column">
-            <div class="card">
-                <div class="container">
-                    <h2 class="title">Completed Tasks</h2>
-                    <h1 class="completed"></h1>
-                    <h1 class="completed">64</h1>
-                    <p><button class="button" [routerLink] = "['/taskmanagement/completed']">View Completed Tasks</button></p>
-                </div>
-            </div>
-        </div>
-
-        
-
-        <div class="column">
-            <div class="card">
-                <div class="container">
-                    <h2 class="title">Pending Tasks</h2>
-                    <h1 class="pending"></h1>
-                    <h1 class="pending">23</h1>
-                    <p><button class="button" [routerLink] = "['/taskmanagement/pending']">View Pending Tasks</button></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="card">
-                <div class="container">
-                    <h2 class="title">On Progress Tasks</h2>
-                    <h1 class="progress"></h1>
-                    <h1 class="progress">16</h1>
-                    <p><button class="button" [routerLink] = "['/taskmanagement/onprogress']">View On Progress Tasks</button></p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="column">
-            <div class="card">
-                <div class="container">
-                    <h2 class="title">Overdue Tasks</h2>
-                    <h1 class="overdue"></h1>
-                    <h1 class="overdue">5</h1>
-                    <p><button class="button" [routerLink] = "['/taskmanagement/overdue']">View Overdue Tasks</button></p>
-                </div>
-            </div>
-        </div>
+<div>
+    <h1>Performance Report</h1>
+  
+    <!-- Task Completion Rate -->
+    <div>
+      <h3>Task Completion Rate</h3>
+      <div class="chart-container">
+        <canvas #taskCompletionRateChart width="400" height="200"></canvas>
+      </div>
     </div>
-
-
-
-
+  
+    <!-- Task Completion Time -->
+    <div>
+      <h3>Task Completion Time</h3>
+      <div class="chart-container">
+        <canvas #taskCompletionTimeChart width="400" height="200"></canvas>
+      </div>
+    </div>
+  
+    <!-- Task Success Rate -->
+    <div>
+      <h3>Task Success Rate</h3>
+      <div class="chart-container">
+        <canvas #taskSuccessRateChart width="400" height="200"></canvas>
+      </div>
+    </div>
+  
+    <!-- User Engagement -->
+    <div>
+      <h3>User Engagement</h3>
+      <!-- Implement user engagement visualizations here -->
+    </div>
+  
+    <!-- User Progression -->
+    <div>
+      <h3>User Progression</h3>
+      <!-- Implement user progression chart here -->
+    </div>
+  
+    <!-- Error Rate -->
+    <div>
+      <h3>Error Rate</h3>
+      <div class="chart-container">
+        <canvas #errorRateChart width="400" height="200"></canvas>
+      </div>
+    </div>
+  
+    <!-- Feedback and Ratings -->
+    <div>
+      <h3>Feedback and Ratings</h3>
+      <!-- Implement feedback and ratings section here -->
+    </div>
+  
+    <!-- User Comparison -->
+    <div>
+      <h3>User Comparison</h3>
+      <!-- Implement user comparison chart here -->
+    </div>
+  
+    <!-- Task Complexity Analysis -->
+    <div>
+      <h3>Task Complexity Analysis</h3>
+      <!-- Implement task complexity analysis chart here -->
+    </div>
+  </div>
+  
