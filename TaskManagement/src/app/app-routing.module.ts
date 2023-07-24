@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UpdateTaskComponent } from './user/update-task/update-task.component';
@@ -21,6 +20,7 @@ import { UpdateTaskTLComponent } from './teamLeader/update-task-tl/update-task-t
 import { UpdateStatusTLComponent } from './teamLeader/update-status-tl/update-status-tl.component';
 import { AssignTaskComponent } from './teamLeader/assign-task/assign-task.component';
 import { authGuard } from './auth_guard/auth.guard';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes =
   [   
@@ -36,6 +36,7 @@ const routes: Routes =
    // { path: "adminDashboard", component: UserDetailsComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
     //{ path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
      { path: "users", component: CreateUserComponent},
+     { path: "adminDashboard", component: UserDetailsComponent},
 
     //TEAMLEADER AND USER
     { path: "events", component: CalendarComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
