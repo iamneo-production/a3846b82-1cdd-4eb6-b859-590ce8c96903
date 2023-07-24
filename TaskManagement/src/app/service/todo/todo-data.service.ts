@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Todo } from 'src/app/view-task/view-task.component';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Task } from '../service/task';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,20 +10,29 @@ import { Todo } from 'src/app/view-task/view-task.component';
 export class TodoDataService {
 
   constructor(
-    public http:HttpClient) {}
+    public http: HttpClient) { }
 
-  retrieveAllTodos(){
-    
-    return this.http.get<Todo[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/viewtask`);
-  
-   }
-   deleteTodo( id: any){
-    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask/${id}`);
+  private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io";
+
+  retrieveAllTodos(userId) {
+    return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
   }
 
-  updateTodo(id: any,todo: any){
-    return this.http.put(
-      `https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask/id`,todo) ; 
-    }
+  deleteTodo(id: any) {
+    return this.http.delete(`${this.baseUrl}/tasks`);
+  }
+
+  createTask(task: Task): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/tasks`, task);
+  }
+ 
+  getTaskById(id: number) {
+    return this.http.get<Task>(`${this.baseUrl}/tasks/${id}`);
+  }
+
+  updateTask(id: number, task: Task): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/tasks/${id}`, task);
+  }
+
 }
 

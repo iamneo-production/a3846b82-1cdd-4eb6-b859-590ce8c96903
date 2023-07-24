@@ -48,12 +48,24 @@ public class AuthenticationService {
 				.role(request.getRole() != null ? request.getRole() : Role.USER)
 				.build();
 		var savedUser = userRepository.save(user);
+
+		Long userId = savedUser.getId();
+		String username = savedUser.getName();
+		String email = savedUser.getEmail();
+
+		String role = savedUser.getRole().name();
+
+
 		var jwtToken = jwtService.generateToken(user);
 		var refreshToken = jwtService.generateRefreshToken(user);
 		saveUserToken(savedUser, jwtToken);
 		return AuthenticationResponse.builder()
 				.accessToken(jwtToken)
 				.refreshToken(refreshToken)
+				.username(username)
+				.email(email)
+				.userId(userId)
+				.role(role)
 				.build();
 	}
 
@@ -92,6 +104,8 @@ public class AuthenticationService {
 	    String name = user.getName();
 	    String email = user.getEmail();
 	    String role = user.getRole().name();
+
+		Long userId = user.getId();
 	    
 		var jwtToken = jwtService.generateToken(user);
 		var refreshToken = jwtService.generateRefreshToken(user);
@@ -104,6 +118,7 @@ public class AuthenticationService {
 				.username(name)
 				.email(email)
 				.role(role)
+				.userId(userId)
 				.build();
 	}
 

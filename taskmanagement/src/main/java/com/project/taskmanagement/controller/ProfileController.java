@@ -42,8 +42,8 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
-    @Autowired
-    private ProfileRepository profileRepository;
+    //@Autowired
+    //private ProfileRepository profileRepository;
 
     @Value("${upload.path}")
     private String uploadPath;

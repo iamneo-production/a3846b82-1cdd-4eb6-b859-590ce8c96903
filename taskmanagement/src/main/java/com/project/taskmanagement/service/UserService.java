@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.project.taskmanagement.model.Status;
 import com.project.taskmanagement.model.Role;
 import com.project.taskmanagement.model.User;
+import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.repository.UserRepository;
 
 
@@ -64,4 +65,5 @@ public class UserService {
             // TODO Auto-generated method stub
             return null;
         }
+        
     }

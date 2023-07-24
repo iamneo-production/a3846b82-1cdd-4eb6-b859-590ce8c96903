@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.taskmanagement.model.Profile;
 import com.project.taskmanagement.repository.ProfileRepository;
-
+import com.project.taskmanagement.repository.UserRepository;
 
 
 @Service
