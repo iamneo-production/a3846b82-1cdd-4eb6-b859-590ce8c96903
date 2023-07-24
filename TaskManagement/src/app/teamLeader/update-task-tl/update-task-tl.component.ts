@@ -116,8 +116,8 @@ export class UpdateTaskTLComponent {
       priority: this.assignTask.value.priorityOfTask as Priority,
       dueDate: typeof this.assignTask.value.dueDate === 'string' ? new Date(this.assignTask.value.dueDate) : null,
       user: null,
-      id: this.id,
-      createdDate: null,
+      id: this.id, 
+      createdDate: null, 
       teamMembers: this.selectedMembers
     };
     console.log(taskDetails);

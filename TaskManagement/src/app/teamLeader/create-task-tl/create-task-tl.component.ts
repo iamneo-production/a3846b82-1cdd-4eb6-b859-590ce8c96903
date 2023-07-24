@@ -124,6 +124,9 @@ export class CreateTaskTLComponent {
             console.log(this.taskId);
             this.router.navigate(['tasks', this.taskId, 'assign']);
           }
+          else{
+            this.router.navigate(['tasks']);
+          }
         });
     }
   }
@@ -141,6 +144,10 @@ export class CreateTaskTLComponent {
   // Assign task
   onAssignTask() {
     this.assign = true;
+  }
+
+  onDone(){
+    this.router.navigate(['tasks']);
   }
 
 }

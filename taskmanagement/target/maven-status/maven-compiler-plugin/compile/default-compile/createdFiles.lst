@@ -15,6 +15,7 @@ com/project/taskmanagement/model/Token.class
 com/project/taskmanagement/authentication/AuthenticationResponse$AuthenticationResponseBuilder.class
 com/project/taskmanagement/model/TaskStatus.class
 com/project/taskmanagement/model/Status.class
+main/java/com/project/taskmanagement/admin/AdminData.class
 com/project/taskmanagement/repository/TokenRepository.class
 com/project/taskmanagement/authentication/RegisterRequest$RegisterRequestBuilder.class
 com/project/taskmanagement/authentication/AuthenticationController.class
