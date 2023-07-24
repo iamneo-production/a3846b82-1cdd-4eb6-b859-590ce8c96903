@@ -2,16 +2,15 @@ package main.java.com.project.taskmanagement.admin;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import com.project.taskmanagement.model.Role;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
-
+import org.springframework.stereotype.Component;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Component 
+@Component
 public class AdminData implements CommandLineRunner{
 
 	private final PasswordEncoder passwordEncoder;
