@@ -33,9 +33,9 @@ const routes: Routes =
     { path: "forbidden", component:ForbiddenComponent},
 
     //ADMIN
-   // { path: "adminDashboard", component: UserDetailsComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
-    //{ path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
-     { path: "users", component: CreateUserComponent},
+     { path: "adminDashboard", component: UserDetailsComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
+    { path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
+     //{ path: "users", component: CreateUserComponent},
 
     //TEAMLEADER AND USER
     { path: "events", component: CalendarComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
