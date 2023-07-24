@@ -23,7 +23,11 @@ export class UserService {
   }
 
   registerUser(SignupData: any): Observable<any> {
+<<<<<<< HEAD
     return this.httpClient.post<any>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/auth/register`, SignupData);
+=======
+    return this.httpClient.post<any>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.i/auth/register`, SignupData);
+>>>>>>> main
   }
 
   //roles
@@ -37,7 +41,11 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
+<<<<<<< HEAD
     return this.httpClient.get<User[]>("https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers");
+=======
+    return this.httpClient.get<User[]>("https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.ip/dusers");
+>>>>>>> main
   }
 
 }
