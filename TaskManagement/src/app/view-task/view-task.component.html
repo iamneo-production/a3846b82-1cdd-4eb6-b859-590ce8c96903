@@ -27,7 +27,7 @@
           <mat-option value="taskname">Task Name</mat-option>
           <mat-option value="status">Status</mat-option>
           <mat-option value="priority">Priority</mat-option>
-          <mat-option value="targetdate">Target Date</mat-option>
+          <mat-option value="duedate">Due Date</mat-option>
         </mat-select>
       </mat-form-field >
       <!-- Filter by Status -->
@@ -54,7 +54,7 @@
                 <th>Task Description</th>
                 <th>Status</th>
                 <th>Priority</th>
-                <th>Target Date</th>
+                <th>Due Date</th>
                 <th>Actions </th>
                 
             </tr>        
@@ -67,7 +67,7 @@
                 <td>{{Todo.priority}}</td>
                 <td>{{Todo.dueDate | date | uppercase}}</td>
                 <td>
-                  <button type="button" class="btn btn-light" (click)="updateStatus(Todo.id)">Update Status</button>
+                  <button mat-stroked-button (click)="updateStatus(Todo.id)">Update Status</button>
 
                 <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                   <mat-icon>edit</mat-icon>
@@ -110,7 +110,7 @@
             <mat-option value="taskname">Task Name</mat-option>
             <mat-option value="status">Status</mat-option>
             <mat-option value="priority">Priority</mat-option>
-            <mat-option value="targetdate">Target Date</mat-option>
+            <mat-option value="duedate">Due Date</mat-option>
             <mat-option value="teammember">Team Members</mat-option>
           </mat-select>
         </mat-form-field >
@@ -136,7 +136,7 @@
             <th>Task Description</th>
             <th>Status</th>
             <th>Priority</th>
-            <th>Target Date</th>
+            <th>Due Date</th>
             <th>Team Members</th>
             <th>Actions </th>
           </tr>        
@@ -151,7 +151,9 @@
               <td>{{Todo.teamMembers}}</td>
              
               <td>
-                <button type="button" class="btn btn-primary" (click)="updateStatus(Todo.id)">Update Status</button>
+               
+                <button mat-stroked-button (click)="updateStatus(Todo.id)">Update Status</button>
+               
               <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                 <mat-icon>edit</mat-icon>
               </button>
