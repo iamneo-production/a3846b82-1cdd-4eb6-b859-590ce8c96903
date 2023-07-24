@@ -146,4 +146,8 @@ export class CreateTaskTLComponent {
     this.assign = true;
   }
 
+  onDone(){
+    this.router.navigate(['tasks']);
+  }
+
 }
