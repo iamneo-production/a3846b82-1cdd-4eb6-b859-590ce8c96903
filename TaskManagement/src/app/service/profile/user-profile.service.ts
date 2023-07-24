@@ -26,10 +26,10 @@ export class UserProfileService {
     return this.http.put(`${this.apiUrl}/edit/${userId}`, formData);
   }
 
-  /*deleteUserImage(userId: string): Observable<any> {
+  deleteUserImage(userId: string): Observable<any> {
     const url = `${this.apiUrl}/delete/${userId}/image`;
     return this.http.delete(url);
-  }*/
+  }
 
   
 }

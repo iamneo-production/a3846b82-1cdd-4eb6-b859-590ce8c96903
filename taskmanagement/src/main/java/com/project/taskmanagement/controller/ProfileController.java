@@ -48,10 +48,10 @@ public class ProfileController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping("/")
-    public Iterable<Profile> getUser() {
+    //@GetMapping("/")
+    /*public Iterable<Profile> getUser() {
         return profileService.listAll();
-    }
+    }*/
     
     
    @GetMapping("/user/{id}")

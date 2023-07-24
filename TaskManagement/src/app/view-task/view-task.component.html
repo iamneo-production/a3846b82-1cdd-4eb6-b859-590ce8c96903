@@ -1,41 +1,166 @@
-
 <div class="main-body" >
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="Task List" (click)="toggleTables(true)">Task List</mat-button-toggle>
+    <mat-button-toggle value="Assign Task List" (click)="toggleTables(false)">Assign Task List</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <br><br>
     
-    <mat-toolbar color="primary">
-      <span > ✔ Task List</span>
-      <span class="todo"></span>
-      <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
-         ADD TASK</a>
-      </button>
-    </mat-toolbar>
+  <mat-toolbar color="primary" *ngIf="showTaskList">
+    <span > ✔ Task List</span>
+    <span class="todo"></span>
+    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+       ADD NEW TASK</a>
+    </button>
+  </mat-toolbar>
+
 <body>
-    <div class="container-md p-3 my-3 border">
+
+  <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
+
+    <div class="row">
+    <!--Sorting-->
+      <mat-form-field >
+        <mat-label>Sort by</mat-label>
+        <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
+          <mat-option value="id">ID</mat-option>
+          <mat-option value="taskname">Task Name</mat-option>
+          <mat-option value="status">Status</mat-option>
+          <mat-option value="priority">Priority</mat-option>
+          <mat-option value="targetdate">Target Date</mat-option>
+        </mat-select>
+      </mat-form-field >
+      <!-- Filter by Status -->
+      <mat-form-field >
+        <mat-label>Filter by Status</mat-label>
+        <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
+          <mat-option [value]="'All'">All</mat-option>
+          <mat-option [value]="'Pending'">Pending</mat-option>
+          <mat-option [value]="'Todo'">Todo</mat-option>
+          <mat-option [value]="'InProgress'">InProgress</mat-option>
+          <mat-option [value]="'Completed'">Completed</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Search" [(ngModel)]="searchTerm" (input)="filterTodos()">
+      </mat-form-field>
+    </div>
+   
     <table class="table">
+      
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Task Name</th>
                 <th>Task Description</th>
-                <th>Priority</th>
                 <th>Status</th>
+                <th>Priority</th>
                 <th>Target Date</th>
                 <th>Action </th>
-                <th>Action</th>
+                
             </tr>        
         </thead>
         <tbody>
-           <tr *ngFor="let Todo of Todo">
+           <tr *ngFor="let Todo of filteredTodo">
             <td>{{Todo.id}}</td>
                 <td>{{Todo.taskname}}</td>
                 <td>{{Todo.taskdescription}}</td>
-                <td>{{Todo.priority}}</td>
                 <td>{{Todo.status}}</td>
+                <td>{{Todo.priority}}</td>
                 <td>{{Todo.targetdate | date | uppercase}}</td>
-                
-                <td><button (click)="updateTodo(Todo.id)" class="btn btn-success">Update</button></td>
-                <td><button (click)="deleteTodo(Todo.id)" class="btn btn-warning">Delete</button></td>
+                <td>
+                <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>  
+                <button mat-icon-button color="primary">
+                  <mat-icon>visibility</mat-icon>
+                </button>  
+                <button mat-stroked-button><a routerLink="/assign" class="nav-link" >Assign Task</a></button>
+              </td>
             </tr>
        </tbody>
     </table>
-    </div>
+  </div>
+</body>
+
+ 
+  <mat-toolbar color="primary" *ngIf="showAssignTaskList">
+    <span > ✔ Assign Task List</span>
+    <span class="todo"></span>
+  </mat-toolbar>
+  
+<body>
+
+  <div class="container-md p-3 my-3 border" *ngIf="showAssignTaskList">
+ 
+    <div class="row">
+      <!--Sorting-->
+        <mat-form-field>
+          <mat-label>Sort by</mat-label>
+          <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
+            <mat-option value="id">ID</mat-option>
+            <mat-option value="taskname">Task Name</mat-option>
+            <mat-option value="status">Status</mat-option>
+            <mat-option value="priority">Priority</mat-option>
+            <mat-option value="targetdate">Target Date</mat-option>
+            <mat-option value="teammember">Team Members</mat-option>
+          </mat-select>
+        </mat-form-field >
+        <!-- Filter by Status -->
+        <mat-form-field >
+          <mat-label>Filter by Status</mat-label>
+          <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
+            <mat-option [value]="'All'">All</mat-option>
+            <mat-option [value]="'Pending'">Pending</mat-option>
+            <mat-option [value]="'Todo'">Todo</mat-option>
+            <mat-option [value]="'InProgress'">InProgress</mat-option>
+            <mat-option [value]="'Completed'">Completed</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Search" [(ngModel)]="searchTerm" (input)="filterTodos()">
+        </mat-form-field>
+      </div>
+
+    <table class="table">
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Target Date</th>
+            <th>Team Members</th>
+            <th>Action </th>
+          </tr>        
+      </thead>
+      <tbody>
+         <tr *ngFor="let Todo of filteredTodo">
+          <td>{{Todo.id}}</td>
+              <td>{{Todo.taskname}}</td>
+              <td>{{Todo.taskdescription}}</td>
+              <td>{{Todo.status}}</td>
+              <td>{{Todo.priority}}</td>
+              <td>{{Todo.targetdate | date | uppercase}}</td>
+              <td>{{Todo.teammember}}</td>
+              <td>
+              <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
+                <mat-icon>delete</mat-icon>
+              </button>  
+              <button mat-icon-button color="primary">
+                <mat-icon>visibility</mat-icon>
+              </button>  
+              </td>  
+          </tr>
+     </tbody>
+  </table>
+  </div>
 </body>

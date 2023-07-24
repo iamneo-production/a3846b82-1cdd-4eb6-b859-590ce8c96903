@@ -1,7 +1,11 @@
+import { Role } from "./role";
+import { Status } from './Status';
+
 export class User {
     id! : number;
-    userName! : string;
+    name! : string;
     email! : string;
     password!:string;
+    role!:Role;
 }
 

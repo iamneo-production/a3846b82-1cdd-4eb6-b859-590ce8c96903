@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 import { UserProfileService } from '../service/profile/user-profile.service';
+import { UserAuthService } from '../service/service/user-auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,7 @@ export class ProfileComponent {
 
   user: any = {};
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private UserProfileService:UserProfileService) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private UserProfileService:UserProfileService, private userAuthService: UserAuthService) {}
 
   ngOnInit() {
     this.loadUserDetails();
@@ -138,16 +139,20 @@ export class ProfileComponent {
   }
 
   loadUserDetails() {
-    this.UserProfileService.getUserDetails(this.userId).subscribe({
-      next: (response) => {
-        this.user = response;
-        this.loadUserImage(); // Load the user image
-        
-      },
-      error: (error) => {
-        console.error('Error fetching user details:', error);
-      }
-    });
+    const userId = this.userAuthService.getUserId();
+    if (userId) {
+      this.UserProfileService.getUserDetails(userId).subscribe({
+        next: (response) => {
+          this.user = response;
+          this.loadUserImage(); // Load the user image
+        },
+        error: (error) => {
+          console.error('Error fetching user details:', error);
+        }
+      });
+    } else {
+      console.error('User ID not found in local storage.');
+    }
   }
 
   loadUserImage() {

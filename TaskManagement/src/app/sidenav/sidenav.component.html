@@ -2,63 +2,83 @@
 
   <mat-toolbar class="nav" color="primary">
     <mat-toolbar-row>
-            <button (click) ="sidenav.toggle();" mat-icon-button>
-            <mat-icon>menu</mat-icon>
-          </button>
-          <span>TASK MANAGEMENT PORTAL</span>
-          
+      <button *ngIf="isLoggedIn()" (click)="sidenav.toggle();" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>TASK MANAGEMENT PORTAL</span>
 
-      <span class="example-spacer"></span>    
-      
-<button mat-button [matMenuTriggerFor]="afterMenu">Task</button>
-<mat-menu #afterMenu="matMenu" xPosition="after">
+
+      <span class="example-spacer"></span>
+
+      <!--<button mat-button [matMenuTriggerFor]="afterMenu">Task</button>-->
+      <button mat-button>
+        <a routerLink="/dashboard" class="nav-link" mat-list-item *ngIf="isLoggedIn()"><button mat-button>Dashboard</button></a>
+      </button>
+
+      <button mat-button>
+        <a routerLink="/login"  class="nav-link" mat-list-item *ngIf="!isLoggedIn()"><button mat-button>Login</button></a>
+      </button>
+      <button mat-button>
+        <a routerLink="/signup" class="nav-link" mat-list-item *ngIf="!isLoggedIn()"><button
+            mat-button>Signup</button></a>
+      </button>
+
+      <!--
+      <mat-menu #afterMenu="matMenu" xPosition="after">
+        <a routerLink="/tasks" class="nav-link" mat-list-item><button mat-button>Create Task</button></a>
+        
   <a routerLink="/tasks" class="nav-link" mat-list-item><button mat-button>Create Task</button></a>
   <a routerLink="/view-task" class="nav-link" mat-list-item><button mat-button>View Task</button></a>
+  <a routerLink="/users" class="nav-link" mat-list-item><button mat-button>Create User</button></a>
 </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="menu">Dashboard</button>
-<mat-menu #menu="matMenu">
-<a routerLink="/userdetails" class="nav-link" mat-list-item><button  mat-button>UserBoard</button></a>
-<a routerLink="/taskdetails" class="nav-link" mat-list-item><button  mat-button>TaskBoard</button></a>
-<a routerLink="/summary" class="nav-link" mat-list-item><button  mat-button>Summary</button></a>
-</mat-menu>
-   
-<button  mat-icon-button>
-  <mat-icon>notifications</mat-icon>
-</button>
+      </mat-menu>
 
-<button  mat-icon-button  >
-<mat-icon>share</mat-icon>
-</button>
+      <button mat-button [matMenuTriggerFor]="menu">Dashboard</button>
+      <mat-menu #menu="matMenu">
+        <a routerLink="/userdetails" class="nav-link" mat-list-item><button mat-button>UserBoard</button></a>
+        <a routerLink="/taskdetails" class="nav-link" mat-list-item><button mat-button>TaskBoard</button></a>
+        <a routerLink="/summary" class="nav-link" mat-list-item><button mat-button>Summary</button></a>
+      </mat-menu>-->
 
-<button  mat-icon-button [matMenuTriggerFor]="beforeMenu">
-  <mat-icon>account_circle</mat-icon></button>
-  <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <a routerLink="signup" mat-list-item><button  mat-button>Create Account</button></a>
-    <a  routerLink="login" mat-list-item><button  mat-button>User Login</button></a>
-    </mat-menu>
+      <button mat-icon-button *ngIf="isLoggedIn()">
+        <mat-icon>notifications</mat-icon>
+      </button>
+
+      <!-- <button mat-icon-button>
+        <mat-icon>share</mat-icon>
+      </button>-->
+      
+      <!--account icon-->
+      <button mat-icon-button [matMenuTriggerFor]="beforeMenu" *ngIf="isLoggedIn()">
+        <mat-icon>account_circle</mat-icon></button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <a routerLink="/profile" mat-list-item>
+        <button mat-button>Account</button></a>
+        <a routerLink="/logout" mat-list-item>
+        <button mat-button (click)="logout()">Logout</button></a>
+      </mat-menu>
     </mat-toolbar-row>
-    </mat-toolbar>
-  
-    <mat-sidenav-container>
+  </mat-toolbar>
+
+  <mat-sidenav-container >
     <mat-sidenav #sidenav opened="true" mode="side" >
-    <mat-nav-list>
-    <a routerLink="/home" mat-list-item ><button mat-button><mat-icon>home</mat-icon>Home</button></a>
-    <a routerLink="/profile" mat-list-item><button mat-button><mat-icon>account_circle</mat-icon>Profile</button></a>
-    <a routerLink="/report" mat-list-item><button mat-button><mat-icon>leaderboard</mat-icon>Report</button></a>
-    <a routerLink="/events" mat-list-item><button mat-button><mat-icon>event</mat-icon>Events</button></a>
-    <a routerLink="verification" mat-list-item><button mat-button><mat-icon>help</mat-icon>Support</button></a>
-    <a mat-list-item><button mat-button><mat-icon>logout</mat-icon>Logout</button></a>
-    </mat-nav-list>
+      <mat-nav-list *ngIf="isLoggedIn()">
+        <a routerLink="/home" mat-list-item><button mat-button><mat-icon>home</mat-icon>Home</button></a>
+        <a routerLink="/profile" mat-list-item><button
+            mat-button><mat-icon>account_circle</mat-icon>Profile</button></a>
+        <a routerLink="/report" mat-list-item><button mat-button><mat-icon>leaderboard</mat-icon>Report</button></a>
+        <a routerLink="/events" mat-list-item><button mat-button><mat-icon>event</mat-icon>Events</button></a>
+        <a routerLink="verification" mat-list-item><button mat-button><mat-icon>help</mat-icon>Support</button></a>
+        <a mat-list-item><button mat-button><mat-icon>logout</mat-icon>Logout</button></a>
+      </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-     <div style="height: 88vh;">
-      <router-outlet></router-outlet>
-    </div>
+      <div style="height: 88vh;">
+        <router-outlet></router-outlet>
+      </div>
     </mat-sidenav-content>
-    
-    </mat-sidenav-container>
-  
-  </div> 
 
-  
+  </mat-sidenav-container>
+
+</div>

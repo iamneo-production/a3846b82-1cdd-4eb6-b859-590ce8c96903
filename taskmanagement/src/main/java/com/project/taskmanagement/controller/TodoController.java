@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
-
-@CrossOrigin("https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io")
 @RestController  
 public class TodoController {
 	
@@ -49,9 +47,9 @@ public class TodoController {
 		
 	}
 	
-	@DeleteMapping("/{taskname}/viewtask/{id}")
+	@DeleteMapping("/viewtask/{id}")
 	public ResponseEntity<Void> deleteTodo(
-			@PathVariable String taskname, @PathVariable Long id) 
+			 @PathVariable Long id) 
 	    {   	
 		todoRepository.deleteById(id);
 		
@@ -59,9 +57,8 @@ public class TodoController {
 	}
 	
 	
-	@PutMapping ("/{taskname}/viewtask/{id}")
+	@PutMapping ("/viewtask/{id}")
 	public ResponseEntity<Todo> updateTodo(
-			@PathVariable String taskname,
 			@PathVariable Long id, @RequestBody Todo todo    
 			 ){ 
 		

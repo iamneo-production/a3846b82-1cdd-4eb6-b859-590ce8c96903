@@ -1,65 +1,92 @@
 package com.project.taskmanagement.controller;
-import java.net.URI;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import com.project.taskmanagement.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.project.taskmanagement.repository.TaskRepository;
 
 import com.project.taskmanagement.model.Task;
+import com.project.taskmanagement.model.User;
+import com.project.taskmanagement.repository.UserRepository;
+import com.project.taskmanagement.service.TaskService;
 
-@CrossOrigin("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 public class TaskController {
-	@Autowired
-	public TaskRepository taskrepository;
 
-    @Autowired
-    public TaskService taskservice;
+	private final TaskService taskService;
 	
-	@GetMapping("/dtasks")
-	public List<Task> retrieveAllTasks(){
-		return taskrepository.findAll();
-	}
-	@GetMapping("/dtasks/{id}")
-	public Task getTaskById(@PathVariable Long id){
-		Optional <Task> optionaltask=taskrepository.findById(id);
-		return optionaltask.orElse(null);
-	}
-	@DeleteMapping("/dtasks/{id}")//We can either give success or no content-choosing
-	//Response entity enables us to get specific status back
-	public ResponseEntity<Void> deleteTask(@PathVariable Long id){
-		if (taskrepository.existsById(id)){
-			taskrepository.deleteById(id);
-			return ResponseEntity.noContent().build();
-		}
-		return ResponseEntity.notFound().build();
-	}
-	@PutMapping("/dusers/{username}/dtasks/{id}")
-	public ResponseEntity<Task> updateTask(@PathVariable String username,
-			@PathVariable Long id,@RequestBody Task task){
-		Task taskUpdated=taskservice.save(task);
-		return new ResponseEntity<Task>(task,HttpStatus.OK);
-	}
-	
-	@PostMapping("/dusers/{username}/dtasks")
-	public ResponseEntity<Void> createTask(@PathVariable String username,@RequestBody Task task){
-		task.setUsername(username);
-		Task createdTask=taskservice.save(task);
-		///Get Uri of id
-		URI uri=ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTask.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-	}
+	private final UserRepository userRepository;
+
+	//get all tasks
+    @GetMapping("/dtasks")
+    public ResponseEntity<List<Task>> getAllTasks() {
+        List<Task> tasks = taskService.getAllTasks();
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
+    //get task by id
+    @GetMapping("dtasks/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
+        Task task = taskService.getTaskById(id);
+        if (task != null) {
+            return new ResponseEntity<>(task, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //Creating new task
+    @PostMapping
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        // Retrieve the current user from the Authentication object
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+
+        // Assign the current user as the task assignee
+        Optional<User> user = userRepository.findByName(currentUsername);
+        if (user.isPresent()) {
+            User assignee = user.get();
+            task.setUser(assignee);
+
+            // Set the current date
+            LocalDate createdDate = LocalDate.now();
+            task.setCreatedDate(createdDate);
+
+            Task createdTask = taskService.createTask(task);
+            return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
+        } 
+        
+        else {
+            // Handle the case when the user is not found
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    //Updating existing task
+    @PutMapping("/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
+        Task existingTask = taskService.getTaskById(id);
+        if (existingTask != null) {
+            task.setId(id);
+            Task updatedTask = taskService.updateTask(task);
+            return new ResponseEntity<>(updatedTask, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
 }

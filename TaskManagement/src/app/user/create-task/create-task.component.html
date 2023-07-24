@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="content">
+        <h3><strong><em>Create new task</em></strong></h3>
+        <br>
+        <form [formGroup]="createTask" (ngSubmit)="onSubmit()" >
+            <div class="forms">
+                <!--task name-->
+                <label for="taskName"><strong>Task Name<span class="required-indicator">*</span></strong></label>
+                <input type="text" placeholder="Enter task name here..." class="form-control" id="taskName"
+                    formControlName="taskName" autocomplete="off">
+                <span style="color:red" *ngIf="taskName && taskName.invalid && taskName.touched">
+                    Task name required!</span>
+                <pre></pre>
+
+                <!--task description-->
+                <label for="description"><strong>Description<span class="required-indicator">*</span></strong></label>
+                <textarea placeholder="Enter task description here..." class="form-control" id="description"
+                    formControlName="taskDescription" autocomplete="off">
+                 </textarea>
+                <span style="color:red" *ngIf="taskDescription && taskDescription.invalid && taskDescription.touched">
+                    Task description required!</span>
+                <pre></pre>
+
+                <!--due date-->
+                <label for="dueDate"><strong>Due Date<span class="required-indicator">*</span></strong></label>
+                <br>
+                <input type="date" id="dueDate" [value]="TodayDate" [min]="minValue" formControlName="dueDate">
+                <pre></pre>
+
+                <!--Status-->
+                <div>
+                    <label for="status"><strong>Status<span class="required-indicator">*</span></strong></label>
+                    <div *ngFor="let status of taskStatuses">
+                        <input type="radio" [id]="status" [value]="status" formControlName="status">
+                        <label [for]="status">{{ status }}</label>
+                    </div>
+                </div>
+                <pre></pre>
+
+                <!--priority-->
+                <div>
+                    <label for="priority"><strong>Priority<span class="required-indicator">*</span></strong></label>
+                    <div *ngFor="let priority of taskPriority">
+                        <input type="radio" [id]="priority" [value]="priority" formControlName="priorityOfTask">
+                        <label [for]="priority">{{ priority }}</label>
+                    </div> 
+                </div>
+                <pre></pre>
+
+                <!--Buttons-->
+                <div class="buttons">
+                    <button mat-raised-button class="btn btn-primary" [disabled]="createTask.invalid" type="submit">
+                        Done
+                    </button>
+
+                    <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" (click)="onReset()"
+                        type="button">
+                        Reset
+                    </button>
+
+                    <button mat-raised-button class="btn btn-light" style="margin-left: 30px;" type="button"
+                        (click)="onCancel()">
+                        Cancel
+                    </button>
+                </div>
+                <pre></pre>
+            </div>
+        </form>
+    </div>
+</div>

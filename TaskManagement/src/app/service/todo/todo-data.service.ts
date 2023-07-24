@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Todo } from 'src/app/view-task/view-task.component';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,17 +13,17 @@ export class TodoDataService {
     public http:HttpClient) {}
 
   retrieveAllTodos(){
-
-    return this.http.get<Todo[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask`);
+    
+    return this.http.get<Todo[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/viewtask`);
   
    }
-   deleteTodo(taskname: any , id: any){
-    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/${taskname}/viewtask/${id}`);
+   deleteTodo( id: any){
+    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask/${id}`);
   }
 
-  updateTodo(taskname: any , id: any,todo: any){
+  updateTodo(id: any,todo: any){
     return this.http.put(
-      `https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/${taskname}/viewtask/${id}`,todo) ; 
+      `https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/viewtask/id`,todo) ; 
     }
 }
 
