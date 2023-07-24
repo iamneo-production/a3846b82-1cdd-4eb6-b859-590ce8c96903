@@ -1,0 +1,82 @@
+*{
+    background-color:white;
+    border-radius: 20px;
+   }
+   
+   h3{
+       padding-top: 20px;
+       text-align: center;
+   }
+   
+   .forms{
+       padding-left:50px ;
+       padding-right: 50px;
+   }
+   
+   table {
+       border-collapse: collapse;
+      
+     }
+   
+   th {
+       color: #333;
+       padding: 10px;
+       text-align: center; 
+       background-color: white;
+   }
+   
+   td {
+       border-bottom: 1px solid white;
+       padding: 10px;
+   }
+   
+   .text-color{
+       color: #6c6c6c;
+   }
+   
+   .required-indicator{
+       color: red;
+   }
+   
+   .content{
+       width: 70%;
+   }
+   .container{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding-bottom: 20px;
+     
+   }
+   
+   .spacing{
+       margin-right: 10px;
+   }
+   
+   .assign-btn{
+       display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   
+   .btn1{
+       width: 40%;
+       background-color: blue;
+   }
+   
+   .isdone-label {
+    margin-bottom: 10px;
+  }
+  
+  .isdone-radio-group {
+    display: flex;
+  }
+  
+  .isdone-radio {
+    margin-right: 10px;
+  }
+  
+  .isdone-radio input[type="radio"] {
+    margin-right: 5px;
+  }

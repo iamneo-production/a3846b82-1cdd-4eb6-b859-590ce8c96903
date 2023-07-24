@@ -13,36 +13,33 @@
   <div class="container">
     <img src="assets/imaglogin/Page r.jpg">
     <div class="login">
-      <h1 class="title"><b>Login</b></h1>
+      <h1 class="title"><strong>Login</strong></h1>
+      
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <input type="text"
+        ngModule
+        name="name"
+        id="name"
+        [(ngModel)]="formdata.name"
+        placeholder="Username"
+        class="form-control mb-3" >
 
-     <form #f="ngForm" novalidate (ngSubmit)="f.form.valid&&onSubmit()">
+        <input type="password"
+        ngModule
+        name="password"
+        id="password"
+        [(ngModel)]="formdata.password"
+        placeholder="Password"
+        class="form-control mb-3">
 
-        <div class="text-input">
-          <i class="fa-solid fa-user"></i>
-          <input  type="text" placeholder="Username" pattern="[a-zA-Z0-9_]{7,}" name="name" [(ngModel)]="formdata.name" #name="ngModel" required>
-          <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']">
-            Name is required.
-          </span>
-        </div>
-
-        <div class="text-input">
-          <i class="fa-solid fa-lock"></i>
-          <input  type="password" placeholder="Password" name="password" [(ngModel)]="formdata.password" #password="ngModel" required minlength="6" >
-          <span class="text-danger" *ngIf="this.submit&&password.errors?.['required']">
-            password is required.
-          </span>
-          <span class="text-danger" *ngIf="this.submit&&password.errors?.['minlength']">
-            password should be atleast 6 characters long.
-          </span>
-
-        </div>
-
-        <button class="login-btn" (click)="submit=true">LOGIN </button>
-        <a href="#" class="forgot"><b>Forgot Username/Password?</b></a>
-      </form>
-
+        <input type="submit"
+         value="Login"
+         class="btn btn-outline-primary form-control"
+        >
+      </form> 
+<br>
       <div class="create">
-        <a routerLink="/Register"><b>New User? Sign Up</b></a>
+        <a ><strong>New User? Sign Up</strong></a>
       </div>
     </div>
   </div>

@@ -1,0 +1,19 @@
+.main-body{
+    padding-top:20px ;
+    margin: 0 auto;
+    max-width: 1248px;
+}
+.todo{
+    flex: 1 1 auto;
+}
+mat-button-toggle-group {
+  margin-left: 12px;
+}
+mat-form-field{
+  width: 33%;
+  
+}
+row{
+  display: flex;
+  gap: 5px;
+}
