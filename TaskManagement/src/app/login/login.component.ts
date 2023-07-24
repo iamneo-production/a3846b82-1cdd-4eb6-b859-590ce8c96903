@@ -21,7 +21,7 @@ export class LoginComponent {
   ngOnInit(): void {
       
   }
-
+ 
   onSubmit(form:any){
     this.userService.login(form.value).subscribe(
       (response:any)=>{
@@ -31,16 +31,18 @@ export class LoginComponent {
 
         this.usertAuth.setRoles(response.role);
         this.usertAuth.setToken(response.access_token);
+        this.usertAuth.setUserId(response.userId);
+        
 
         //roles based auth
         let role: string = response.role;
 
         if(role==='ADMIN'){
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/adminDashboard']);
         }
-        else if(role==='TEAMLEADER'){
-          this.router.navigate(['/tasks']);
-        }
+      /*else if(role==='TEAMLEADER'){
+          this.router.navigate(['/dashboard']);
+        }*/
         else{
           this.router.navigate(['/dashboard']);
         }

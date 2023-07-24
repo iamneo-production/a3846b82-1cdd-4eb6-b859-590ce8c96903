@@ -25,7 +25,7 @@ export class SidenavComponent implements OnInit {
     const confirmation = confirm("Do you want to logout?");
     if (confirmation) {
       this.userAuth.clear();
-      this.router.navigate(['']);
+      this.router.navigate(['home']);
     }
   }
 

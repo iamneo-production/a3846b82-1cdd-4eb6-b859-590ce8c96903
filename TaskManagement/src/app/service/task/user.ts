@@ -1,5 +1,4 @@
 import { Role } from "./role";
-import { Status } from './Status';
 
 export class User {
     id! : number;
@@ -8,4 +7,3 @@ export class User {
     password!:string;
     role!:Role;
 }
-

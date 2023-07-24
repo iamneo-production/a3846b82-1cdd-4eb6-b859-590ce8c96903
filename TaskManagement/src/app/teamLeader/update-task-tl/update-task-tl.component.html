@@ -2,7 +2,7 @@
     <div class="content">
         <h3><strong><em>Assign task</em></strong></h3>
         <br>
-        <form [formGroup]="updateTask" (ngSubmit)="onSubmit()">
+        <form [formGroup]="assignTask" (ngSubmit)="onSubmit()">
             <div class="forms">
                 <!--task name-->
                 <label for="taskName"><strong>Task Name</strong></label>
@@ -25,7 +25,7 @@
                 <label for="dueDate"><strong>Due Date</strong></label>
                 <br>
                 <input type="date" id="dueDate" formControlName="dueDate"
-                [value]="updateTask.get('dueDate')?.value"
+                [value]="assignTask.get('dueDate')?.value"
                 [readonly]="true">
                 <pre></pre>
 
@@ -60,7 +60,7 @@
                          <div>
                           <ng-select style="font-family: roboto" 
                            [items]="teamMember" 
-                           bindLabel="userName" 
+                           bindLabel="name" 
                            bindValue="id" 
                            (change)="onSelectionChange($event)"
                            [multiple]="true" 

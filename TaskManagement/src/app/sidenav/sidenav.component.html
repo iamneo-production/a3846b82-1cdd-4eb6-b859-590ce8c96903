@@ -1,5 +1,5 @@
 <div class="wrapper">
-
+<div>
   <mat-toolbar class="nav" color="primary">
     <mat-toolbar-row>
       <button *ngIf="isLoggedIn()" (click)="sidenav.toggle();" mat-icon-button>
@@ -11,10 +11,15 @@
       <span class="example-spacer"></span>
 
       <!--<button mat-button [matMenuTriggerFor]="afterMenu">Task</button>-->
+      
       <button mat-button>
         <a routerLink="/dashboard" class="nav-link" mat-list-item *ngIf="isLoggedIn()"><button mat-button>Dashboard</button></a>
+      </button> 
+      <button mat-button>
+        <a routerLink="/home" class="nav-link" mat-list-item ><button
+            mat-button> Home</button></a>
       </button>
-
+ 
       <button mat-button>
         <a routerLink="/login"  class="nav-link" mat-list-item *ngIf="!isLoggedIn()"><button mat-button>Login</button></a>
       </button>
@@ -55,11 +60,11 @@
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <a routerLink="/profile" mat-list-item>
         <button mat-button>Account</button></a>
-        <a routerLink="/logout" mat-list-item>
-        <button mat-button (click)="logout()">Logout</button></a>
+        <button mat-button (click)="logout()">Logout</button>
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
+  </div>
 
   <mat-sidenav-container >
     <mat-sidenav #sidenav opened="true" mode="side" >
@@ -70,7 +75,7 @@
         <a routerLink="/report" mat-list-item><button mat-button><mat-icon>leaderboard</mat-icon>Report</button></a>
         <a routerLink="/events" mat-list-item><button mat-button><mat-icon>event</mat-icon>Events</button></a>
         <a routerLink="verification" mat-list-item><button mat-button><mat-icon>help</mat-icon>Support</button></a>
-        <a mat-list-item><button mat-button><mat-icon>logout</mat-icon>Logout</button></a>
+        <a mat-list-item><button mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</button></a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
