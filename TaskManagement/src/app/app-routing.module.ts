@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { TaskDetailsComponent } from './task-details/task-details.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UpdateTaskComponent } from './user/update-task/update-task.component';
@@ -25,19 +24,19 @@ import { authGuard } from './auth_guard/auth.guard';
 
 const routes: Routes =
   [   
-
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: "home", component: HomeComponent },
-    { path: "signup", component: SignupComponent },
+    { path: "signup", component: SignupComponent }, 
     { path: "profile", component: ProfileComponent },
     { path: "login", component: LoginComponent },
     { path: "verification", component: VerificationComponent },
     { path: "forbidden", component:ForbiddenComponent},
 
     //ADMIN
-    { path: "adminDashboard", component: UserDetailsComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
-    { path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
-    
+   // { path: "adminDashboard", component: UserDetailsComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
+    //{ path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
+     { path: "users", component: CreateUserComponent},
+
     //TEAMLEADER AND USER
     { path: "events", component: CalendarComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
     { path: "report", component: ReportingComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']}},
