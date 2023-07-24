@@ -19,7 +19,7 @@ export class TodoDataService {
   }
 
   deleteTodo(id: any) {
-    return this.http.delete(`${this.baseUrl}/tasks`);
+    return this.http.delete(`${this.baseUrl}/tasks/${id}`);
   }
 
   createTask(task: Task): Observable<Object> {

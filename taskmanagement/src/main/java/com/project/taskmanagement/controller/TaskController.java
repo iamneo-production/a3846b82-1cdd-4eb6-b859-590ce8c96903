@@ -62,7 +62,7 @@ public class TaskController {
             return new ResponseEntity<>(task, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        } 
     }
 
     // Creating new task
@@ -92,7 +92,42 @@ public class TaskController {
         }
     }
 
-    // Updating existing task
+    // Creating new task
+    @PutMapping("/tasks/{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
+        Task existingTask = taskService.getTaskById(id);
+        if (existingTask != null) {
+            task.setId(id);
+        
+        // Retrieve the current user from the Authentication object
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+
+        // Assign the current user as the task assignee
+        Optional<User> user = userRepository.findByName(currentUsername);
+        if (user.isPresent()) {
+            User assignee = user.get();
+            task.setUser(assignee);
+
+            // Set the current date
+            LocalDate createdDate = LocalDate.now();
+            task.setCreatedDate(createdDate);
+
+            Task updateTask = taskService.updateTask(task);
+            return new ResponseEntity<>(updateTask, HttpStatus.OK);
+        }
+
+        else {
+            // Handle the case when the user is not found
+            return ResponseEntity.notFound().build();
+        }
+    }
+    else {
+        return ResponseEntity.notFound().build();
+    }
+}
+
+    /* Updating existing task
     @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         Task existingTask = taskService.getTaskById(id);
@@ -103,8 +138,8 @@ public class TaskController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
-
+    } */
+ 
     @DeleteMapping("/tasks/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         Task existingTask = taskService.getTaskById(id);

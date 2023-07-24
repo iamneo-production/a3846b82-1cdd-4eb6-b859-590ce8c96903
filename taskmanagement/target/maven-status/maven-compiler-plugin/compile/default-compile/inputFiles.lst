@@ -2,6 +2,7 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TaskRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationResponse.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/JwtService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/admin/AdminData.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Role.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Permission.java

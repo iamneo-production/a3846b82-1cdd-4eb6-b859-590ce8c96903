@@ -44,7 +44,8 @@ public class User implements UserDetails{
 	
 	@Column(
 			name="user_name",
-			nullable=false
+			nullable=false,
+			unique = true
 		)
 	private String name;
 	
