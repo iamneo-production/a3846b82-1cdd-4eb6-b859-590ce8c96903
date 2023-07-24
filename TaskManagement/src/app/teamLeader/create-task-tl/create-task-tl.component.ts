@@ -8,11 +8,7 @@ import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
 import { UserService } from 'src/app/service/service/user.service';
-<<<<<<< HEAD
-import { Todo } from 'src/app/view-task/view-task.component';
-=======
 import { TodoDataService } from 'src/app/service/todo/todo-data.service';
->>>>>>> main
 
 @Component({
   selector: 'app-create-task-tl',
@@ -22,13 +18,8 @@ import { TodoDataService } from 'src/app/service/todo/todo-data.service';
 export class CreateTaskTLComponent {
 
   //task
-<<<<<<< HEAD
-  task :Task = new Task();
-   
-=======
   task: Task = new Task();
 
->>>>>>> main
 
   // Validations
   createTask = new FormGroup({
