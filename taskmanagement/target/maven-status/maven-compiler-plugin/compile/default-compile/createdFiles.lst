@@ -1,7 +1,7 @@
 com/project/taskmanagement/service/LogoutService.class
+com/project/taskmanagement/service/TodoService.class
 com/project/taskmanagement/security/SpringSecurityConfiguration.class
 com/project/taskmanagement/TaskmanagementApplication.class
-com/project/taskmanagement/service/TodoService.class
 com/project/taskmanagement/model/Role.class
 com/project/taskmanagement/model/Todo.class
 com/project/taskmanagement/model/Token$TokenBuilder.class
@@ -33,8 +33,8 @@ com/project/taskmanagement/service/JwtService.class
 com/project/taskmanagement/service/UserService.class
 com/project/taskmanagement/model/Permission.class
 com/project/taskmanagement/model/Priority.class
-com/project/taskmanagement/configuration/CorsConfig.class
 com/project/taskmanagement/service/TaskService.class
+com/project/taskmanagement/configuration/CorsConfig.class
 com/project/taskmanagement/authentication/AuthenticationService.class
 com/project/taskmanagement/model/User$UserBuilder.class
 com/project/taskmanagement/repository/TodoRepository.class
