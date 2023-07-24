@@ -62,7 +62,7 @@ public class TaskController {
             return new ResponseEntity<>(task, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        } 
     }
 
     // Creating new task
