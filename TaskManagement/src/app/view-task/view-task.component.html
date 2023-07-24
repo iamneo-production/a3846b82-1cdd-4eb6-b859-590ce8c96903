@@ -68,15 +68,12 @@
                 <td>{{Todo.priority}}</td>
                 <td>{{Todo.dueDate | date | uppercase}}</td>
                 <td>
-                  <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
-                    <mat-icon>edit</mat-icon>
-                  </button>
+                  <button type="button" class="btn btn-success" (click)="updateStatus(Todo.id)">Update Status</button>
+
                 <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                   <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
-                  <mat-icon>update</mat-icon>
-                </button>
+          
                 <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                   <mat-icon>delete</mat-icon>
                 </button>  
@@ -156,9 +153,7 @@
               <td>{{Todo.teamMembers}}</td>
              
               <td>
-                <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
-                <mat-icon>edit</mat-icon>
-              </button>
+                <button type="button" class="btn btn-success" (click)="updateStatus(Todo.id)">Update Status</button>
               <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                 <mat-icon>edit</mat-icon>
               </button>
