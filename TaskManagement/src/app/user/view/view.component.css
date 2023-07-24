@@ -1,5 +1,5 @@
 *{
-    background-color:rgb(233, 237, 237);
+  
     border-radius: 20px;
    }
    
@@ -47,6 +47,17 @@
      align-items: center;
      flex-direction: column;
      padding-bottom: 20px;
+     width: 65vw;
+     height: 80vh;
+     display: grid;
+     grid-template-columns: 100%;
+     grid-template-areas: "login";
+     border-radius: 5px;
+     background: white;
+     overflow: hidden;
+     margin-bottom: 20px;
+     text-align: center;
+     color:rgba(87, 84, 84, 0.99);
      
    }
    
