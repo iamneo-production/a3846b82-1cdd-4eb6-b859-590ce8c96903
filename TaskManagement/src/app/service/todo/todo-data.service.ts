@@ -11,7 +11,6 @@ export class TodoDataService {
 
   constructor(
     public http: HttpClient) { }
-
   private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io";
 
   retrieveAllTodos(userId) {
