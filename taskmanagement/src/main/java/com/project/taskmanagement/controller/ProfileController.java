@@ -36,7 +36,6 @@ import org.springframework.core.io.UrlResource;
 
 
 @RestController
-@CrossOrigin("https://8081-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io")
 public class ProfileController {
 
     @Autowired
@@ -66,20 +65,20 @@ public class ProfileController {
     
 
     @PutMapping("/edit/{id}")
-    public Profile updateProfile(@PathVariable("id") long id,
-                       @RequestParam(value = "file", required = false) MultipartFile file,
-                       @RequestParam("firstname") String firstname,
+    public Profile updateImage(@PathVariable("id") long id,
+                       @RequestParam(value = "file", required = false) MultipartFile file
+                       /*@RequestParam("firstname") String firstname,
                        @RequestParam("lastname") String lastname,
                        @RequestParam("username") String username,
                        @RequestParam("email") String email,
-                       @RequestParam("password") String password) throws IOException {
+                       @RequestParam("password") String password*/) throws IOException {
         Profile existingUser = profileService.getUserById(id);
         if (existingUser != null) {
-            existingUser.setFirstname(firstname);
+            /*existingUser.setFirstname(firstname);
             existingUser.setLastname(lastname);
             existingUser.setUsername(username);
             existingUser.setEmail(email);
-            existingUser.setPassword(password);
+            existingUser.setPassword(password);*/
 
             if (file != null && !file.isEmpty()) {
                 String fileName = StringUtils.cleanPath(file.getOriginalFilename());
