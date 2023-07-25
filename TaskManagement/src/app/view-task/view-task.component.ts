@@ -29,7 +29,6 @@ export class ViewTaskComponent implements OnInit {
   showAssignTaskList = false;
   sortedBy: string = 'id';
 
-
   toggleTables(showTaskList: boolean) {
     this.showTaskList = showTaskList;
     this.showAssignTaskList = !showTaskList;
@@ -49,7 +48,7 @@ export class ViewTaskComponent implements OnInit {
     this.todoService.retrieveAllTodos(this.userId).subscribe((response) => {
       console.log(response);
       this.Todo = response;
-      this.filterTodos(); // Apply initial filtering
+      this.filterTodos(); 
     });
   }
 
@@ -113,7 +112,7 @@ export class ViewTaskComponent implements OnInit {
   // Method to apply sorting
   sortTodos(sortBy: string) {
     this.sortedBy = sortBy;
-    if (!this.Todo) return; // Return if Todo is not initialized
+    if (!this.Todo) return; 
     this.Todo.sort((a: Task, b: Task) => {
       return a[sortBy] > b[sortBy] ? 1 : -1;
     });
@@ -123,7 +122,7 @@ export class ViewTaskComponent implements OnInit {
   resetFiltersAndSorting() {
     this.selectedStatus = 'All';
     this.filterTodos();
-    this.sortTodos('id'); // Default sorting by ID
+    this.sortTodos('id'); 
   }
 
   // Initialize the filteredTodo with the Todo
