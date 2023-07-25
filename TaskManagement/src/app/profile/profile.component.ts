@@ -95,9 +95,6 @@ export class ProfileComponent {
       if (result.isConfirmed) {
         this.sendPutRequest();
         console.log(this.user);
-        setTimeout(() => {
-          location.reload(); // Refresh the browser after a delay
-        }, 2000);
         
       } else if (result.isDenied) {
         this.isEditMode = false;
@@ -172,45 +169,35 @@ export class ProfileComponent {
     });
   }
 
-  /*removeImage(): void {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'This will remove the current image.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Remove',
-      cancelButtonText: 'Cancel'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.userService.deleteUserImage(this.user.id).subscribe({
-          next: () => {
-            // Image deleted successfully
-            this.user.image = null;
-            this.imagePath = null;
-            this.loadUserDetails(); 
-            // Save the changes by calling the saveChanges method or updating the necessary data
-            // this.saveChanges(); // Call your saveChanges method or update the necessary data
-          },
-          error: (error) => {
-            // Handle error
-            console.error(error);
-          }
-        });
-      }
-    });
-  }*/
+  
   
   sendPutRequest() {
+    const userToUpdate = {
+      name: this.user.name,
+      email: this.user.email,
+      password: this.user.password,
+      role: this.user.role
+    };
+  
+    this.Userservice.updateUser(this.user.id, userToUpdate).subscribe({
+      next: (response) => {
+        console.log('User details updated successfully');
+        Swal.fire('Saved successfully!', '', 'success');
+        this.loadUserDetails(); // Reload user details after successful update
+      },
+      error: (error) => {
+        console.error('Error updating user details:', error);
+      },
+    });
+  }
+
+  
+
+  storeImage() {
     const formData = new FormData();
     formData.append('file', this.imagePath);
   
-    formData.append('firstname', this.user.firstname);
-    formData.append('lastname', this.user.lastname);
-    formData.append('username', this.user.username);
-    formData.append('email', this.user.email);
-    formData.append('password', this.user.password);
-  
-    this.Userservice.updateUser('userId', formData).subscribe({
+    this.UserProfileService.updateUserImage('userId', formData).subscribe({
       next: (response) => {
         console.log('User details updated successfully');
         Swal.fire('Saved successfully!', '', 'success');
@@ -221,6 +208,7 @@ export class ProfileComponent {
       },
     });
   }
+  
         
   
 }

@@ -13,16 +13,16 @@ export class UserProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getUserDetails(userId:any): Observable<any> {
+ /* getUserDetails(userId:any): Observable<any> {
     return this.http.get(`${this.apiUrl}/user/${userId}`);
-  }
+  }*/
 
   getUserImage(userId: any): Observable<Blob> {
     const imageUrl = `${this.apiUrl}/${userId}/image`;
     return this.http.get(imageUrl, { responseType: 'blob' });
   }
 
-  updateUserDetails(userId: any, formData: FormData): Observable<any> {
+  updateUserImage(userId: any, formData: FormData): Observable<any> {
     return this.http.put(`${this.apiUrl}/edit/${userId}`, formData);
   }
 

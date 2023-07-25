@@ -22,53 +22,9 @@
 	</natures>
 	<filteredResources>
 		<filter>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			<id>1688207820979</id>
-=======
-			<id>1688200507524</id>
->>>>>>> main
-=======
-			<id>1688379185943</id>
->>>>>>> main
-=======
-			<id>1688378820822</id>
-<<<<<<< HEAD
-			<id>1688208644694</id>
-=======
-			<id>1688356619167</id>
->>>>>>> 2a574307acec4604b3fb9ca0c210808adee72dac
->>>>>>> main
-=======
-
-			<id>1688201954204</id>
-
-			<id>1688378820822</id>
-
->>>>>>> main
-=======
-			<id>1690089983568</id>
->>>>>>> main
-=======
-=======
->>>>>>> main
-			<id>1690041545433</id>
-=======
-			<id>1690089983568</id>
->>>>>>> 7dc2ff75d651a8882b9fbdea03b5a8ea867fa286
-<<<<<<< HEAD
->>>>>>> main
-=======
-=======
-			<id>1682926057735</id>
->>>>>>> 1af929c (reset)
->>>>>>> main
-			<name></name>
+		
+		<id>1690121725869</id>
+		
 			<type>30</type>
 			<matcher>
 				<id>org.eclipse.core.resources.regexFilterMatcher</id>

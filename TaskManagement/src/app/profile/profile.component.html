@@ -7,7 +7,7 @@
   <div class="image-container">
     <h2>PROFILE</h2>
     <div class="profile-picture">
-      <img [src]="getUserImageUrl()" title="Profile Picture" height="150px" width="150px" />
+      <img [src]="getUserImageUrl()" title="Profile Picture" height="150px" width="150px" alt="image" />
 
       <input type="file" id="image" style="display: none"  (change)="onSelect($event)" >
       <label class="uploadbtn" for="image">
@@ -24,33 +24,7 @@
 
   <form #myForm="ngForm" class="form-container">
     <div class="form-column">
-      <div class="form-group">
-        <label for="firstname">
-          <fa-icon [icon]="faUser"></fa-icon> First Name:
-        </label>
-
-        <div class="user-field">
-          <input type="text" name="firstname" class="form-control" [(ngModel)]="user.firstname" required
-            [disabled]="!isEditMode" #firstNameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
-            minlength="2" maxlength="30"
-            [ngClass]="{ 'is-invalid': firstNameField.invalid && (firstNameField.touched || firstNameField.dirty) }">
-        </div>
-
-        <div *ngIf="firstNameField.invalid && (firstNameField.touched || !firstNameField.touched)" class="text-danger">
-          <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('required')">
-            First Name is required.
-          </ng-container>
-          <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('pattern')">
-            Enter a valid First Name.
-          </ng-container>
-          <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('minlength')">
-            First Name should be at least 2 characters long.
-          </ng-container>
-          <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('maxlength')">
-            First Name cannot exceed 30 characters.
-          </ng-container>
-        </div>
-      </div>
+      
 
 
       <div class="form-group">
@@ -77,6 +51,27 @@
           </ng-container>
           <ng-container *ngIf="usernameField.errors?.hasOwnProperty('maxlength')">
             User Name cannot exceed 30 characters.
+          </ng-container>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">
+          <fa-icon [icon]="faEnvelope"></fa-icon> Email ID:
+        </label>
+        <div class="email">
+          <input type="email" name="email" class="form-control" [(ngModel)]="user.email" required [disabled]="!isEditMode"
+            #emailField="ngModel"
+            pattern="[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}"
+            [ngClass]="{ 'is-invalid': emailField.invalid && (emailField.touched || emailField.dirty) }">
+        </div>
+        <div *ngIf="emailField.invalid && (emailField.touched || !emailField.touched)" class="text-danger">
+          <ng-container *ngIf="emailField.errors?.hasOwnProperty('required')">
+            Email is required.
+          </ng-container>
+          <ng-container *ngIf="emailField.errors?.hasOwnProperty('pattern')">
+            Enter a valid Email ID.
           </ng-container>
         </div>
       </div>
@@ -111,54 +106,27 @@
     </div>
 
     <div class="form-column">
+     
       <div class="form-group">
-        <label for="lastName">
-          <fa-icon [icon]="faUser"></fa-icon> Last Name:
+        <label for="role">
+          <fa-icon [icon]="faUser"></fa-icon> Role:
         </label>
-
         <div class="user-field">
-          <input type="text" name="lastname" class="form-control" [(ngModel)]="user.lastname" required
-            [disabled]="!isEditMode" #lastNameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="2"
-            maxlength="30"
-            [ngClass]="{ 'is-invalid': lastNameField.invalid && (lastNameField.touched || lastNameField.dirty) }">
+          <select name="role" class="form-control" [(ngModel)]="user.role" required [disabled]="!isEditMode" #userField="ngModel">
+            <option value="user">User</option>
+            <option value="teamlead">Team Lead</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
-
-        <div *ngIf="lastNameField.invalid && (lastNameField.touched || !lastNameField.touched)" class="text-danger">
-          <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('required')">
-            Last Name is required.
-          </ng-container>
-          <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('pattern')">
-            Enter a valid Last Name.
-          </ng-container>
-          <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('minlength')">
-            Last Name should be at least 2 characters long.
-          </ng-container>
-          <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('maxlength')">
-            Last Name cannot exceed 30 characters.
+        <div *ngIf="userField.invalid && (userField.touched || !userField.touched)" class="text-danger">
+          <ng-container *ngIf="userField.errors?.hasOwnProperty('required')">
+            Role is required.
           </ng-container>
         </div>
       </div>
 
 
-      <div class="form-group">
-        <label for="email">
-          <fa-icon [icon]="faEnvelope"></fa-icon> Email ID:
-        </label>
-        <div class="email">
-          <input type="email" name="email" class="form-control" [(ngModel)]="user.email" required [disabled]="!isEditMode"
-            #emailField="ngModel"
-            pattern="[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}"
-            [ngClass]="{ 'is-invalid': emailField.invalid && (emailField.touched || emailField.dirty) }">
-        </div>
-        <div *ngIf="emailField.invalid && (emailField.touched || !emailField.touched)" class="text-danger">
-          <ng-container *ngIf="emailField.errors?.hasOwnProperty('required')">
-            Email is required.
-          </ng-container>
-          <ng-container *ngIf="emailField.errors?.hasOwnProperty('pattern')">
-            Enter a valid Email ID.
-          </ng-container>
-        </div>
-      </div>
+      
 
       <div class="form-group" *ngIf="isEditMode">
         <label for="confirmPassword">
