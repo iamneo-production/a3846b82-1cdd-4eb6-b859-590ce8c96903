@@ -1,4 +1,9 @@
-h2{
-    color: blue;
-    text-decoration: underline;
+
+.main-body{
+    padding-top:20px ;
+    margin: 0 auto;
+    max-width: 1248px;
+}
+.task{
+    flex: 1 1 auto;
 }
