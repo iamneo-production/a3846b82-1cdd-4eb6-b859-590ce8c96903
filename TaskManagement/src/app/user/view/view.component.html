@@ -1,7 +1,8 @@
+<br><br>
 <div class="container">
     <div class="content">
-        <h3 class="capitalized"><strong><em>{{task.name}}</em></strong></h3>
-        <br>
+        <h1 class="capitalized"><strong>{{task.name}}</strong></h1>
+     
         <form [formGroup]="viewTask"  >
             <div class="forms">
                 <div class="forms">
@@ -25,7 +26,7 @@
                     <!--due date-->
                     <label for="dueDate"><strong>Due Date</strong></label>
                     <br>
-                    <input type="text" id="dueDate" formControlName="dueDate" [readonly]="true">
+                   <input type="text" id="dueDate" formControlName="dueDate" [readonly]="true">
                     <pre></pre>
     
                     <!--Status-->

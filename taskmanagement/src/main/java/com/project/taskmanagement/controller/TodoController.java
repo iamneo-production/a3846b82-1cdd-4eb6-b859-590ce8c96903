@@ -57,9 +57,8 @@ public class TodoController {
 	}
 	
 	
-	@PutMapping ("/{taskname}/viewtask/{id}")
+	@PutMapping ("/viewtask/{id}")
 	public ResponseEntity<Todo> updateTodo(
-			@PathVariable String taskname,
 			@PathVariable Long id, @RequestBody Todo todo    
 			 ){ 
 		

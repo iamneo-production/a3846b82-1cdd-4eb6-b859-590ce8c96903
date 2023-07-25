@@ -30,6 +30,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -50,19 +53,19 @@ public class WebSecurityConfiguration {
 		.csrf().disable()
 		.cors()
 		.and()
-		.authorizeHttpRequests().antMatchers("/**").permitAll()
-		//.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
-		//.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAMLEADER.name())
-		//.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
-	//	.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
-		//.antMatchers(POST,"/users/**").hasAuthority(ADMIN_CREATE.name())
-		//.antMatchers(DELETE,"/users/**").hasAuthority(ADMIN_DELETE.name())
+		//.authorizeHttpRequests().antMatchers("/**").permitAll()
+		.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
+		.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAMLEADER.name())
+		.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
+		.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
+		.antMatchers(POST,"/users/**").hasAuthority(ADMIN_CREATE.name())
+     	.antMatchers(DELETE,"/users/**").hasAuthority(ADMIN_DELETE.name())
 		
-		//.antMatchers("/tasks/**").hasAnyRole(USER.name(),TEAMLEADER.name())
-		//.antMatchers(GET,"/tasks").hasAnyAuthority(USER_READ.name(),TEAMLEADER_READ.name())
-		//.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_UPDATE.name())
-		//.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_CREATE.name())
-		//.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_DELETE.name())
+		.antMatchers("/tasks/**").hasAnyRole(USER.name(),TEAMLEADER.name())
+		.antMatchers(GET,"/tasks").hasAnyAuthority(USER_READ.name(),TEAMLEADER_READ.name())
+		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_UPDATE.name())
+		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_CREATE.name())
+		.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_DELETE.name())
 
 		.anyRequest() 
 		.authenticated()
@@ -83,5 +86,6 @@ public class WebSecurityConfiguration {
 		
 		return http.build();
 	}
+
 }
 

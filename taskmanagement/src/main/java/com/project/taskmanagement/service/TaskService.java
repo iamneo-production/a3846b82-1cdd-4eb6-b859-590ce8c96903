@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.project.taskmanagement.model.Task;
+import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.TaskRepository;
 
 
@@ -19,6 +22,14 @@ public class TaskService {
 	        this.taskRepository = taskRepository;
 	    }
 
+		public List<Task> getTasksByUserId(long userId) {
+		//	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		//	String task = authentication.getTasksByUserId();
+			return taskRepository.findByUserId(userId);
+		}
+
+		
+		
 	    public List<Task> getAllTasks() {
 	        return taskRepository.findAll();
 	    }
@@ -38,6 +49,7 @@ public class TaskService {
 	    public void deleteTask(Long id) {
 	        taskRepository.deleteById(id);
 	    }
+
 	
 }
 

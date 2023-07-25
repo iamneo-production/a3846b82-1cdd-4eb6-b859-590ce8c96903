@@ -1,6 +1,7 @@
+<br><br>
 <div class="container">
     <div class="content">
-        <h3><strong><em>Create new task</em></strong></h3>
+        <H1> <strong>✔ Create New Task</strong></H1>
         <br>
         <form [formGroup]="createTask" (ngSubmit)="onSubmit()" >
             <div class="forms">
@@ -49,7 +50,7 @@
 
                 <!--Buttons-->
                 <div class="buttons">
-                    <button mat-raised-button class="btn btn-primary" [disabled]="createTask.invalid" type="submit">
+                    <button mat-raised-button class="btn btn-primary" [disabled]="createTask.invalid" type="submit" (click)="onDone()">
                         Done
                     </button>
 
@@ -66,7 +67,7 @@
                 <pre></pre>
                 <!--Assign task navigation button-->
                 <div class="assign-btn">
-                    <button mat-button class="btn1" type="button" (click)="onAssignTask()" *ngIf="!assign">
+                    <button mat-button class="btn1" type="button" (click)="onAssignTask()" >
                         Assign Task
                     </button>
                 </div>

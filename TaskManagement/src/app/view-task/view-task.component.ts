@@ -2,32 +2,27 @@ import { Component ,OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoDataService } from '../service/todo/todo-data.service';
 import { CoreService } from '../core/core.service';
+import { Task } from '../service/service/task';
+import { UserService } from '../service/service/user.service';
 
-export class Todo{
-  constructor(
-    public id: number,
-    public taskname :string,
-    public taskdescription :string,
-    public status:string,
-    public targetdate:Date,
-    public teammember:string
-  
-  ){
-    
-  }
-}
 @Component({
   selector: 'app-view-task',
   templateUrl: './view-task.component.html',
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
+TewTaskodo: any;
+
+  
+  taskId:string;
   
   constructor( public todoService:TodoDataService,
     public router :Router,
-    public _coreService: CoreService){}
+    public _coreService: CoreService,
+    public userService:UserService
+    ){}
 
-  Todo:Todo[] | undefined; 
+  Todo:Task[] | undefined; 
   message: string | undefined;
  
   showTaskList = true;
@@ -48,10 +43,10 @@ export class ViewTaskComponent implements OnInit {
  
   selectedStatus: string = 'All';
   searchTerm: string = '';
-
-  
+  userId:number;
+   
   refreshTodos() {
-    this.todoService.retrieveAllTodos().subscribe((response) => {
+    this.todoService.retrieveAllTodos(this.userId).subscribe((response) => {
       console.log(response);
       this.Todo = response;
       this.filterTodos(); // Apply initial filtering
@@ -69,7 +64,37 @@ export class ViewTaskComponent implements OnInit {
 
   updateTodo(id: any) {
     console.log(`update todo ${id}`);
-    this.router.navigate(['view-task', id]);
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks',id, 'update']));
+    }
+    else{
+      this.router.navigate((['task',id, 'update']));
+    }  }
+
+  updateStatus(id: any) {
+    console.log(`update todo ${id}`);
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks',id, 'status']));
+    }
+    else{
+      this.router.navigate((['task',id, 'status']));
+    }
+  }
+
+  viewTask(id: number) { 
+    console.log(`View todo ${id}`);
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks',id, 'view']));
+    }
+    else{
+      this.router.navigate((['task',id, 'view']));
+    }
+   
+  }
+
+  assignTask(id: any) {
+    console.log(`update todo ${id}`);
+    this.router.navigate((['tasks',id, 'assign']));
   }
 
   filterTodos() {
@@ -79,7 +104,7 @@ export class ViewTaskComponent implements OnInit {
     } else {
       this.filteredTodo = this.Todo.filter((todo) => {
         const statusFilter = this.selectedStatus === 'All' || todo.status === this.selectedStatus;
-        const searchFilter = !this.searchTerm || todo.taskname.toLowerCase().includes(this.searchTerm.toLowerCase());
+        const searchFilter = !this.searchTerm || todo.name.toLowerCase().includes(this.searchTerm.toLowerCase());
         return statusFilter && searchFilter;
       });
     }
@@ -89,7 +114,7 @@ export class ViewTaskComponent implements OnInit {
   sortTodos(sortBy: string) {
     this.sortedBy = sortBy;
     if (!this.Todo) return; // Return if Todo is not initialized
-    this.Todo.sort((a: Todo, b: Todo) => {
+    this.Todo.sort((a: Task, b: Task) => {
       return a[sortBy] > b[sortBy] ? 1 : -1;
     });
   }
@@ -102,8 +127,23 @@ export class ViewTaskComponent implements OnInit {
   }
 
   // Initialize the filteredTodo with the Todo
-  filteredTodo: Todo[] | undefined;
+  filteredTodo: Task[] | undefined;
+
+  //create task
+  createNewTask(){
+
+    if(this.userService.matchRoles(['TEAMLEADER'])){
+      this.router.navigate((['tasks']));
+    }
+    else{
+      this.router.navigate(['task']);
+    }
+
+  }
+
+
 }
 
 
 
+export { Task };
