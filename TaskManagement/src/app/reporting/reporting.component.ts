@@ -1,172 +1,83 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Chart, ChartOptions } from 'chart.js';
-import { Todo } from '../view-task/view-task.component';
-import { User } from '../user-details/user-details.component';
-import { UserserviceService } from '../service/data/userservice.service';
-import { TodoDataService } from '../service/todo/todo-data.service';
+import { Task } from '../task-details/task-details.component';
+import { TaskserviceService } from '../service/data/taskservice.service';
+
 
 @Component({
   selector: 'app-reporting',
   templateUrl: './reporting.component.html',
   styleUrls: ['./reporting.component.css']
 })
-export class ReportingComponent implements OnInit, AfterViewInit {
-  todos: Todo[] = [];
-  users: User[] = [];
+export class ReportingComponent implements OnInit {
+  completedTaskCount: number;
+  todoTaskCount: number;
+  inProgressTaskCount: number;
+  doneTaskCount: number;
+  tasks: Task[] = [];
 
-  @ViewChild('taskCompletionRateChart') taskCompletionRateChartRef: ElementRef;
-  @ViewChild('taskCompletionTimeChart') taskCompletionTimeChartRef: ElementRef;
-  @ViewChild('taskSuccessRateChart') taskSuccessRateChartRef: ElementRef;
-  @ViewChild('errorRateChart') errorRateChartRef: ElementRef;
-
-  constructor(
-    private userService: UserserviceService,
-    private todoService: TodoDataService
-  ) {}
+  constructor(private taskService: TaskserviceService) {}
 
   ngOnInit(): void {
-    this.loadTodos();
-    this.loadUsers();
+    this.loadTasks();
+    this.getCompletedTaskCount();
+    this.getTodoTaskCount();
+    this.getInProgressTaskCount();
+    this.getDoneTaskCount();
   }
 
-  ngAfterViewInit(): void {
-    this.createTaskCompletionRateChart();
-    this.createTaskSuccessRateChart();
-    this.createErrorRateChart();
-  }
-
-  loadTodos() {
-    this.todoService.retrieveAllTodos().subscribe(todos => {
-      this.todos = todos;
-    });
-  }
-
-  loadUsers() {
-    this.userService.retrieveUsers().subscribe(users => {
-      this.users = users;
-    });
-  }
-
-  // Task Completion Rate Chart
-  createTaskCompletionRateChart(): void {
-    const completionRates = this.users.map(user => this.getCompletionRate(user));
-    const labels = this.users.map(user => user.name);
-
-    const ctx = this.taskCompletionRateChartRef.nativeElement.getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Completion Rate',
-          data: completionRates,
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1
-        }]
+  loadTasks() {
+    this.taskService.retrieveTasks().subscribe(
+      (tasks: Task[]) => {
+        this.tasks = tasks;
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
+      (error) => {
+        console.error('Error fetching tasks:', error);
       }
-    });
+    );
   }
 
-  // Task Completion Time Chart
-  // Task Success Rate Chart
-  createTaskSuccessRateChart(): void {
-    const successRates = this.users.map(user => this.getSuccessRate(user));
-    const labels = this.users.map(user => user.name);
-
-    const ctx = this.taskSuccessRateChartRef.nativeElement.getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Success Rate',
-          data: successRates,
-          backgroundColor: 'rgba(255, 159, 64, 0.2)',
-          borderColor: 'rgba(255, 159, 64, 1)',
-          borderWidth: 1
-        }]
+  getCompletedTaskCount(): void {
+    this.taskService.getCompletedTaskCount().subscribe(
+      (count: number) => {
+        this.completedTaskCount = count;
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
+      (error) => {
+        console.error('Error fetching completed task count:', error);
       }
-    });
+    );
   }
 
-  // Error Rate Chart
-  createErrorRateChart(): void {
-    const errorCounts = this.users.map(user => this.getErrorCount(user));
-    const labels = this.users.map(user => user.name);
-
-    const ctx = this.errorRateChartRef.nativeElement.getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Error Count',
-          data: errorCounts,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        }]
+  getTodoTaskCount(): void {
+    this.taskService.getTodoTaskCount().subscribe(
+      (count: number) => {
+        this.todoTaskCount = count;
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+      (error) => {
+        console.error('Error fetching Todo task count:', error);
       }
-    });
+    );
   }
 
-  // Rest of the functions to calculate metrics
-
-  getCompletedTasks(user: User): number {
-    return this.todos.filter(todo => todo.status === 'completed' && todo.id === user.id).length;
+  getInProgressTaskCount(): void {
+    this.taskService.getInProgressTaskCount().subscribe(
+      (count: number) => {
+        this.inProgressTaskCount = count;
+      },
+      (error) => {
+        console.error('Error fetching Inprogress task count:', error);
+      }
+    );
   }
 
-  getTotalTasks(user: User): number {
-    return this.todos.filter(todo => todo.id === user.id).length;
-  }
-
-  getCompletionRate(user: User): number {
-    const totalTasks = this.getTotalTasks(user);
-    if (totalTasks === 0) {
-      return 0;
-    }
-    return (this.getCompletedTasks(user) / totalTasks) * 100;
-  }
-
-  // Task Success Rate
-  getAttemptedTasks(user: User): number {
-    return this.todos.filter(todo => todo.id === user.id).length;
-  }
-
-  getSuccessRate(user: User): number {
-    const attemptedTasks = this.getAttemptedTasks(user);
-    if (attemptedTasks === 0) {
-      return 0;
-    }
-    return (this.getCompletedTasks(user) / attemptedTasks) * 100;
-  }
-
-  // Error Rate
-  getErrorCount(user: User): number {
-    return this.todos.filter(todo => todo.status === 'error' && todo.id === user.id).length;
+  getDoneTaskCount(): void {
+    this.taskService.getDoneTaskCount().subscribe(
+      (count: number) => {
+        this.doneTaskCount = count;
+      },
+      (error) => {
+        console.error('Error fetching Done task count:', error);
+      }
+    );
   }
 }
