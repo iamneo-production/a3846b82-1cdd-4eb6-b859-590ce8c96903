@@ -11,28 +11,41 @@ export class TodoDataService {
 
   constructor(
     public http: HttpClient) { }
-                            
-  private baseUrl: String = "https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io";
+                          
 
-  retrieveAllTodos(userId) {
-    return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
+  retrieveAllTodos(userId){
+    return this.http.get<Task[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks`)
   }
-
-  deleteTodo(id: any) {
-    return this.http.delete(`${this.baseUrl}/tasks/${id}`);
+  deleteTodo(id:any){
+    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks/${id}`)
   }
-
-  createTask(task: Task): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/tasks`, task);
+  updateTask(id:number,task: Task){
+    return this.http.put(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks/${id}`, task)
   }
- 
   getTaskById(id: number) {
-    return this.http.get<Task>(`${this.baseUrl}/tasks/${id}`);
+    return this.http.get(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks/${id}`);
   }
-
-  updateTask(id: number, task: Task): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/tasks/${id}`, task);
+  createTask(task: Task) {
+    return this.http.post(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks`, task);
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

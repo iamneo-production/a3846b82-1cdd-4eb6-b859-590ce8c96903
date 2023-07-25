@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Chart, ChartOptions } from 'chart.js';
 import { Task } from '../task-details/task-details.component';
 import { TaskserviceService } from '../service/data/taskservice.service';
 

@@ -11,30 +11,30 @@ export class TaskserviceService {
   constructor(public http: HttpClient) { }
 
   retrieveTasks() {
-    return this.http.get<Task[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dtasks`);
+    return this.http.get<Task[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dtasks`);
   }
 
   retrieveTaskById(id: any) {
-    return this.http.get<Task[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dtasks/${id}`);
+    return this.http.get<Task[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dtasks/${id}`);
   }
 
   deleteTask(id: any) {
-    return this.http.delete(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dtasks/${id}`);
+    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dtasks/${id}`);
   }
 
   getCompletedTaskCount(): Observable<number> {
-    return this.http.get<number>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/completed-count`);
+    return this.http.get<number>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/completed-count`);
   }
 
   getTodoTaskCount(): Observable<number> {
-    return this.http.get<number>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/todo-count`);
+    return this.http.get<number>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/todo-count`);
   }
 
   getInProgressTaskCount(): Observable<number> {
-    return this.http.get<number>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/inprogress-count`);
+    return this.http.get<number>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/inprogress-count`);
   }
 
   getDoneTaskCount(): Observable<number> {
-    return this.http.get<number>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/done-count`);
+    return this.http.get<number>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/done-count`);
   }
 }
