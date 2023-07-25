@@ -11,7 +11,7 @@ import { UserService } from '../service/service/user.service';
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
-TewTaskodo: any;
+
 
   
   taskId:string;
