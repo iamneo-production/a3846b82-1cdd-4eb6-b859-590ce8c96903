@@ -13,10 +13,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-public class CorsConfig implements WebMvcConfigurer{
-	
+public class CorsConfig implements WebMvcConfigurer {
+
 	private static final String GET = "GET";
-	private static final String PUT = "PUT";	
+	private static final String PUT = "PUT";
 	private static final String POST = "POST";
 	private static final String DELETE = "DELETE";
 
@@ -37,8 +37,8 @@ public class CorsConfig implements WebMvcConfigurer{
 	        configuration.setAllowedHeaders(Arrays.asList("*")); 
 	        configuration.setAllowCredentials(true); 
 
-	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	        source.registerCorsConfiguration("/**", configuration);
-	        return source;
-	    }
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 }
