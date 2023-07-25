@@ -8,7 +8,7 @@ import { Task } from './task';
 })
 export class TaskServiceService {
 
-  private baseUrl : String = "https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks";
+  private baseUrl : String = "https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/tasks";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,3 +25,5 @@ export class TaskServiceService {
   }
 
 }
+//INSERT INTO tasks (task_name, task_description, task_status, due_date, created_date)
+//VALUES ('Task Name', 'Task Description', 'IN_PROGRESS', '2023-07-25', '2023-07-24');
