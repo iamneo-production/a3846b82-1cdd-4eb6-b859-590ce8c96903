@@ -102,9 +102,7 @@ export class AssignTaskComponent {
 
   onSelectionChange(event: any) {
     this.selectedMembers = event;
-    this.assignTask.get('teamMem')?.setValue(this.selectedMembers);
     console.log(event);
-    console.log(this.selectedMembers);
   }
 
   //done button method

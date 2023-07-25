@@ -70,7 +70,6 @@ public class Task {
 	@JsonIgnore
 	private User user;
 	
-	
 	@ManyToMany
     @JoinTable(
         name = "team_member",
@@ -79,6 +78,5 @@ public class Task {
     )
 	@JsonIgnore
     private Set<User> teamMembers;
-
 }
 

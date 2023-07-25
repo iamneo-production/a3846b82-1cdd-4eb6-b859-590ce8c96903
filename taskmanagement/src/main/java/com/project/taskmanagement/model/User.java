@@ -72,7 +72,6 @@ public class User implements UserDetails{
 	private List<Task> tasks;
 	
 	@ManyToMany(mappedBy = "teamMembers")
-	@JsonIgnore
 	private Set<Task> task;
 	
 	@Override

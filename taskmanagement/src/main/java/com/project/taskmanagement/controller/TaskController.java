@@ -39,23 +39,23 @@ public class TaskController {
 
     private final TaskRepository taskRepository;
 
-    /* get all tasks
-    @GetMapping("/tasks")
-    public ResponseEntity<List<Task>> getAllTasks() {
-        List<Task> tasks = taskService.getAllTasks();
-        return new ResponseEntity<>(tasks, HttpStatus.OK);
-    }*/
+    /*
+     * get all tasks
+     * 
+     * @GetMapping("/tasks") public ResponseEntity<List<Task>> getAllTasks() {
+     * List<Task> tasks = taskService.getAllTasks(); return new
+     * ResponseEntity<>(tasks, HttpStatus.OK); }
+     */
 
-    //@GetMapping("/tasks/{userId}")
+    // @GetMapping("/tasks/{userId}")
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getTasksByUserId(@AuthenticationPrincipal User authenticatedUser) {
         // List<Task> tasks = taskService.getTasksByUserId(userId);
-       // return new ResponseEntity<>(tasks, HttpStatus.OK);
-       long userId = authenticatedUser.getId();
-       List<Task> tasks = taskService.getTasksByUserId(userId);
+        // return new ResponseEntity<>(tasks, HttpStatus.OK);
+        long userId = authenticatedUser.getId();
+        List<Task> tasks = taskService.getTasksByUserId(userId);
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
-
 
     // get task by id
     @GetMapping("/tasks/{id}")
@@ -65,7 +65,7 @@ public class TaskController {
             return new ResponseEntity<>(task, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } 
+        }
     }
 
     // Creating new task
@@ -85,6 +85,7 @@ public class TaskController {
             LocalDate createdDate = LocalDate.now();
             task.setCreatedDate(createdDate);
 
+
             Task createdTask = taskService.createTask(task);
             return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
         }
@@ -101,48 +102,45 @@ public class TaskController {
         Task existingTask = taskService.getTaskById(id);
         if (existingTask != null) {
             task.setId(id);
-        
-        // Retrieve the current user from the Authentication object
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUsername = authentication.getName();
 
-        // Assign the current user as the task assignee
-        Optional<User> user = userRepository.findByName(currentUsername);
-        if (user.isPresent()) {
-            User assignee = user.get();
-            task.setUser(assignee);
+            // Retrieve the current user from the Authentication object
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentUsername = authentication.getName();
 
-            // Set the current date
-            LocalDate createdDate = LocalDate.now();
-            task.setCreatedDate(createdDate);
+            // Assign the current user as the task assignee
+            Optional<User> user = userRepository.findByName(currentUsername);
+            if (user.isPresent()) {
+                User assignee = user.get();
+                task.setUser(assignee);
 
-            Task updateTask = taskService.updateTask(task);
-            return new ResponseEntity<>(updateTask, HttpStatus.OK);
-        }
+                // Set the current date
+                LocalDate createdDate = LocalDate.now();
+                task.setCreatedDate(createdDate);
 
-        else {
-            // Handle the case when the user is not found
+                Task updateTask = taskService.updateTask(task);
+                return new ResponseEntity<>(updateTask, HttpStatus.OK);
+            }
+
+            else {
+                // Handle the case when the user is not found
+                return ResponseEntity.notFound().build();
+            }
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
-    else {
-        return ResponseEntity.notFound().build();
-    }
-}
 
-    /* Updating existing task
-    @PutMapping("/tasks/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
-        Task existingTask = taskService.getTaskById(id);
-        if (existingTask != null) {
-            task.setId(id);
-            Task updatedTask = taskService.updateTask(task);
-            return new ResponseEntity<>(updatedTask, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    } */
- 
+    /*
+     * Updating existing task
+     * 
+     * @PutMapping("/tasks/{id}") public ResponseEntity<Task>
+     * updateTask(@PathVariable Long id, @RequestBody Task task) { Task existingTask
+     * = taskService.getTaskById(id); if (existingTask != null) { task.setId(id);
+     * Task updatedTask = taskService.updateTask(task); return new
+     * ResponseEntity<>(updatedTask, HttpStatus.OK); } else { return new
+     * ResponseEntity<>(HttpStatus.NOT_FOUND); } }
+     */
+
     @DeleteMapping("/tasks/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         Task existingTask = taskService.getTaskById(id);
@@ -153,6 +151,7 @@ public class TaskController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping("/todo-count")
     public Long getTodoTaskCount() {
         return taskRepository.countByStatus(TaskStatus.TODO);
@@ -169,11 +168,11 @@ public class TaskController {
     public Long getDoneTaskCount() {
         return taskRepository.countByStatus(TaskStatus.DONE);
     }
-    
+
     // Count Completed tasks (Equivalent to the existing method)
     @GetMapping("/completed-count")
     public Long getCompletedTaskCount() {
         return taskRepository.count();
     }
-    
+
 }
