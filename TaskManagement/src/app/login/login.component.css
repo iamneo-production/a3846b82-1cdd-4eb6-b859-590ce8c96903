@@ -53,20 +53,11 @@
   
   }
   
-  .create {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 40px;
-  }
+.signup{
+      cursor: pointer;
+      color: blue;
+}
   
-  .create a{
-    color: slateblue;
-    margin-right:50px;
-    margin-left: 30px;
-    margin-bottom:50px;
-  
-  }
   
   @media (min-width: 768px) {
     .container {
