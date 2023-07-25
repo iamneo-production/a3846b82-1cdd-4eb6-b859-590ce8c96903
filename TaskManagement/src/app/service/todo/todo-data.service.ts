@@ -26,8 +26,8 @@ export class TodoDataService {
     return this.http.get(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks/${id}`);
   }
   createTask(task: Task) {
-    return this.http.post(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks`, task);
-  }
+    return this.http.post(``, task);
+  }https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks
 }
 
 
