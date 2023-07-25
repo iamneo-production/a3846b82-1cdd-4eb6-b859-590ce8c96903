@@ -27,7 +27,7 @@
           <mat-option value="taskname">Task Name</mat-option>
           <mat-option value="status">Status</mat-option>
           <mat-option value="priority">Priority</mat-option>
-          <mat-option value="targetdate">Target Date</mat-option>
+          <mat-option value="duedate">Due Date</mat-option>
         </mat-select>
       </mat-form-field >
       <!-- Filter by Status -->
@@ -35,10 +35,9 @@
         <mat-label>Filter by Status</mat-label>
         <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
           <mat-option [value]="'All'">All</mat-option>
-          <mat-option [value]="'Pending'">Pending</mat-option>
-          <mat-option [value]="'Todo'">Todo</mat-option>
-          <mat-option [value]="'InProgress'">InProgress</mat-option>
-          <mat-option [value]="'Completed'">Completed</mat-option>
+          <mat-option [value]="'DONE'">DONE</mat-option>
+          <mat-option [value]="'TODO'">TODO</mat-option>
+          <mat-option [value]="'IN_PROGRESS'">IN_PROGRESS</mat-option>
         </mat-select>
       </mat-form-field>
   
@@ -55,8 +54,8 @@
                 <th>Task Description</th>
                 <th>Status</th>
                 <th>Priority</th>
-                <th>Target Date</th>
-                <th>Action </th>
+                <th>Due Date</th>
+                <th>Actions </th>
                 
             </tr>        
         </thead>
@@ -68,12 +67,12 @@
                 <td>{{Todo.priority}}</td>
                 <td>{{Todo.dueDate | date | uppercase}}</td>
                 <td>
-                  <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
-                    <mat-icon>edit</mat-icon>
-                  </button>
+                  <button mat-stroked-button (click)="updateStatus(Todo.id)">Update Status</button>
+
                 <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                   <mat-icon>edit</mat-icon>
                 </button>
+          
                 <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
                   <mat-icon>delete</mat-icon>
                 </button>  
@@ -111,7 +110,7 @@
             <mat-option value="taskname">Task Name</mat-option>
             <mat-option value="status">Status</mat-option>
             <mat-option value="priority">Priority</mat-option>
-            <mat-option value="targetdate">Target Date</mat-option>
+            <mat-option value="duedate">Due Date</mat-option>
             <mat-option value="teammember">Team Members</mat-option>
           </mat-select>
         </mat-form-field >
@@ -120,10 +119,9 @@
           <mat-label>Filter by Status</mat-label>
           <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
             <mat-option [value]="'All'">All</mat-option>
-            <mat-option [value]="'Pending'">Pending</mat-option>
-            <mat-option [value]="'Todo'">Todo</mat-option>
-            <mat-option [value]="'InProgress'">InProgress</mat-option>
-            <mat-option [value]="'Completed'">Completed</mat-option>
+            <mat-option [value]="'DONE'">DONE</mat-option>
+            <mat-option [value]="'TODO'">TODO</mat-option>
+            <mat-option [value]="'IN_PROGRESS'">IN_PROGRESS</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -138,9 +136,9 @@
             <th>Task Description</th>
             <th>Status</th>
             <th>Priority</th>
-            <th>Target Date</th>
+            <th>Due Date</th>
             <th>Team Members</th>
-            <th>Action </th>
+            <th>Actions </th>
           </tr>        
       </thead>
       <tbody>
@@ -153,9 +151,9 @@
               <td>{{Todo.teamMembers}}</td>
              
               <td>
-                <button mat-icon-button  color="primary" (click)="updateStatus(Todo.id)">
-                <mat-icon>edit</mat-icon>
-              </button>
+               
+                <button mat-stroked-button (click)="updateStatus(Todo.id)">Update Status</button>
+               
               <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
                 <mat-icon>edit</mat-icon>
               </button>

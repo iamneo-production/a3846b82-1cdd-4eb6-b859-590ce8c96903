@@ -1,9 +1,4 @@
-* {
-    background-color: rgb(233, 237, 237);
-    border-radius: 20px;
-}
-
-h3 {
+h1 {
     padding-top: 20px;
     text-align: center;
 }
@@ -48,6 +43,13 @@ td {
     align-items: center;
     flex-direction: column;
     padding-bottom: 20px;
+    width: 50vw;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 100%;
+    border-radius: 5px;
+    background: white;
+    overflow: hidden;
 
 }
 
@@ -64,8 +66,4 @@ td {
 .btn1 {
     width: 40%;
     background-color: blue;
-}
-
-.capitalized {
-    text-transform: uppercase;
 }

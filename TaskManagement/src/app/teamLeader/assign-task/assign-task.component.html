@@ -1,6 +1,8 @@
+<br>
+<br>
 <div class="container">
     <div class="content">
-        <h3><strong><em>Assign task</em></strong></h3>
+        <H1> <strong>✔ Assign Task</strong></H1>
         <br>
         <form [formGroup]="assignTask" (ngSubmit)="onSubmit()">
             <div class="forms">
@@ -69,6 +71,7 @@
                            placeholder="Team Member / Team Members" 
                            formControlName="teamMem"
                           > 
+                          <br>
                           <ng-option *ngFor="let user of teamMember" [value]="user">
                             {{user.userName}}
                           </ng-option>
@@ -77,7 +80,9 @@
                             Team Member is required! Please select atleast one team member.</span>
                         </div>
                     </div>
-
+<br>
+<br>
+<br>
                 <!--Buttons-->
                 <div class="buttons">
                     <button mat-raised-button class="btn btn-primary" type="submit">

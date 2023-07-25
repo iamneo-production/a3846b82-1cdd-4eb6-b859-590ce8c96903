@@ -60,7 +60,7 @@
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <a routerLink="/profile" mat-list-item>
         <button mat-button>Account</button></a>
-        <button mat-button (click)="logout()">Logout</button>
+        <a (click)="logout()" mat-list-item><button mat-button>Logout</button></a>
       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
