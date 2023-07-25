@@ -15,7 +15,7 @@ export class TaskserviceService {
   }
 
   retrieveTaskById(id: any) {
-    return this.http.get<Task[]>(`hhttps://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dtasks/${id}`);
+    return this.http.get<Task[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dtasks/${id}`);
   }
 
   deleteTask(id: any) {
