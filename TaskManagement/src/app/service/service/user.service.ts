@@ -37,7 +37,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>("https://https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/dusers");
+    return this.httpClient.get<User[]>("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/dusers");
   }
 
 }
