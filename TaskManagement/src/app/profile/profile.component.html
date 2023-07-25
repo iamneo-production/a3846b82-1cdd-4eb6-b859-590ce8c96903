@@ -28,28 +28,28 @@
 
 
       <div class="form-group">
-        <label for="username">
+        <label for="name">
           <fa-icon [icon]="faUser"></fa-icon> User Name:
         </label>
 
         <div class="user-field">
-          <input type="text" name="username" class="form-control" [(ngModel)]="user.username" required
-            [disabled]="!isEditMode" #usernameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="6"
+          <input type="text" name="name" class="form-control" [(ngModel)]="user.name" required
+            [disabled]="!isEditMode" #nameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="6"
             maxlength="30"
-            [ngClass]="{ 'is-invalid': usernameField.invalid && (usernameField.touched || usernameField.dirty) }">
+            [ngClass]="{ 'is-invalid': nameField.invalid && (nameField.touched || nameField.dirty) }">
         </div>
 
-        <div *ngIf="usernameField.invalid && (usernameField.touched || !usernameField.touched)" class="text-danger">
-          <ng-container *ngIf="usernameField.errors?.hasOwnProperty('required')">
+        <div *ngIf="nameField.invalid && (nameField.touched || !nameField.touched)" class="text-danger">
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('required')">
             User Name is required.
           </ng-container>
-          <ng-container *ngIf="usernameField.errors?.hasOwnProperty('pattern')">
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('pattern')">
             Enter a valid User Name.
           </ng-container>
-          <ng-container *ngIf="usernameField.errors?.hasOwnProperty('minlength')">
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('minlength')">
             User Name should be at least 6 characters long.
           </ng-container>
-          <ng-container *ngIf="usernameField.errors?.hasOwnProperty('maxlength')">
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('maxlength')">
             User Name cannot exceed 30 characters.
           </ng-container>
         </div>
@@ -108,14 +108,14 @@
     <div class="form-column">
      
       <div class="form-group">
-        <label for="role">
+        <label for="Role">
           <fa-icon [icon]="faUser"></fa-icon> Role:
         </label>
         <div class="user-field">
-          <select name="role" class="form-control" [(ngModel)]="user.role" required [disabled]="!isEditMode" #userField="ngModel">
-            <option value="user">User</option>
-            <option value="teamlead">Team Lead</option>
-            <option value="admin">Admin</option>
+          <select name="Role" class="form-control" [(ngModel)]="user.role" required [disabled]="!isEditMode" #userField="ngModel">
+            <option value="USER">User</option>
+            <option value="TEAMLEADER">Team Lead</option>
+            <option value="ADMIN">Admin</option>
           </select>
         </div>
         <div *ngIf="userField.invalid && (userField.touched || !userField.touched)" class="text-danger">

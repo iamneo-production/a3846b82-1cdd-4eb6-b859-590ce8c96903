@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 })
 export class UserProfileService {
 
-  private apiUrl = 'https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io';
+  public apiUrl = 'https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io';
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,10 @@ export class UserProfileService {
     return this.http.get(`${this.apiUrl}/user/${userId}`);
   }*/
 
+ /* getUserImage(userId: any): Observable<Blob> {
+    const imageUrl = `${this.apiUrl}/${userId}/image`;
+    return this.http.get(imageUrl, { responseType: 'blob' });
+  }*/
   getUserImage(userId: any): Observable<Blob> {
     const imageUrl = `${this.apiUrl}/${userId}/image`;
     return this.http.get(imageUrl, { responseType: 'blob' });

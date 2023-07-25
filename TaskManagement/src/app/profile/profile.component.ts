@@ -8,6 +8,7 @@ import { UserProfileService } from '../service/profile/user-profile.service';
 import { UserAuthService } from '../service/service/user-auth.service';
 import { User } from '../user-details/user-details.component'; 
 import { UserserviceService } from '../service/data/userservice.service'; 
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -32,7 +33,7 @@ export class ProfileComponent {
 
   user: any = {};
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private UserProfileService:UserProfileService, private userAuthService: UserAuthService,private Userservice:UserserviceService) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private UserProfileService:UserProfileService, private userAuthService: UserAuthService,private Userservice:UserserviceService,private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.loadUserDetails();
@@ -55,12 +56,15 @@ export class ProfileComponent {
   
   
 
-  getUserImageUrl() {
-    if (this.imagePath) {
-      return URL.createObjectURL(this.imagePath);
-    } else if (this.user.image) {
+  getUserImageUrl() :SafeUrl {
+    if (this.user && this.user.imagePath) {
+      const imageUrl = `${this.UserProfileService.apiUrl}/${this.user.imagePath}`;
+      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+    }
+    else if (this.user.image) {
       return this.user.image;
-    } else {
+    } 
+    else {
       return 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg';
     }
   }
@@ -143,7 +147,7 @@ export class ProfileComponent {
       this.Userservice.retrieveUserById(id).subscribe({
         next: (response) => {
           this.user = response;
-          this.loadUserImage(); // Load the user image
+          //this.loadUserImage(); // Load the user image
         },
         error: (error) => {
           console.error('Error fetching user details:', error);
