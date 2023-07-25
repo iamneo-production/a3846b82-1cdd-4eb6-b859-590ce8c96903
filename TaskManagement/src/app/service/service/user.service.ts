@@ -19,7 +19,7 @@ export class UserService {
     private userAuth: UserAuthService) { }
 
   public login(LoginData: any) {
-    return this.httpClient.post("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/auth/authenticate", LoginData, { headers: this.requestHeader });
+    return this.httpClient.post("https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/auth/authenticate", LoginData, { headers: this.requestHeader });
   }
 
   registerUser(SignupData: any): Observable<any> {
@@ -37,7 +37,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>("https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/dusers");
+    return this.httpClient.get<User[]>("https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/dusers");
   }
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user-details/user-details.component';
-import { UserAuthService } from '../service/service/user-auth.service';
 import { UserService } from '../service/service/user.service';
 
 @Component({
@@ -25,7 +24,7 @@ export class SignupComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required,]
     }, { validator: this.passwordMatchValidator });
-  }
+  } 
   validateName(control: AbstractControl): { [key: string]: boolean } | null {
     const name = control.value;
     const validNameRegex = /^[A-Za-z\s]+$/;; // Matches only alphabets
@@ -56,15 +55,16 @@ export class SignupComponent implements OnInit {
 
     return null;
   }
+
   onSubmit() {
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
       return; 
     }
     this.userService.registerUser(this.signupForm.value).subscribe(
-      (data) => {   
+      (data) => {  
         console.log(this.signupForm.value);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/verification']);
       }
     );
   }

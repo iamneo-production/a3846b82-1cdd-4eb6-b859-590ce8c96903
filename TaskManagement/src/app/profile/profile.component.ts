@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 import { UserProfileService } from '../service/profile/user-profile.service';
 import { UserAuthService } from '../service/service/user-auth.service';
+import { User } from '../user-details/user-details.component'; 
+import { UserserviceService } from '../service/data/userservice.service'; 
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +32,7 @@ export class ProfileComponent {
 
   user: any = {};
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private UserProfileService:UserProfileService, private userAuthService: UserAuthService) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private UserProfileService:UserProfileService, private userAuthService: UserAuthService,private Userservice:UserserviceService) {}
 
   ngOnInit() {
     this.loadUserDetails();
@@ -139,9 +141,9 @@ export class ProfileComponent {
   }
 
   loadUserDetails() {
-    const userId = this.userAuthService.getUserId();
-    if (userId) {
-      this.UserProfileService.getUserDetails(userId).subscribe({
+    const id = this.userAuthService.getUserId();
+    if (id) {
+      this.Userservice.retrieveUserById(id).subscribe({
         next: (response) => {
           this.user = response;
           this.loadUserImage(); // Load the user image
@@ -208,7 +210,7 @@ export class ProfileComponent {
     formData.append('email', this.user.email);
     formData.append('password', this.user.password);
   
-    this.UserProfileService.updateUserDetails('userId', formData).subscribe({
+    this.Userservice.updateUser('userId', formData).subscribe({
       next: (response) => {
         console.log('User details updated successfully');
         Swal.fire('Saved successfully!', '', 'success');

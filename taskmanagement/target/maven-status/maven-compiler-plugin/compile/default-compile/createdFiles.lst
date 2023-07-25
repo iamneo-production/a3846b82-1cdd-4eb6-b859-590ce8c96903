@@ -18,6 +18,7 @@ com/project/taskmanagement/authentication/AuthenticationResponse$AuthenticationR
 com/project/taskmanagement/model/TaskStatus.class
 com/project/taskmanagement/model/Status.class
 com/project/taskmanagement/repository/ProfileRepository.class
+main/java/com/project/taskmanagement/admin/AdminData.class
 com/project/taskmanagement/repository/TokenRepository.class
 com/project/taskmanagement/authentication/RegisterRequest$RegisterRequestBuilder.class
 com/project/taskmanagement/authentication/AuthenticationController.class
