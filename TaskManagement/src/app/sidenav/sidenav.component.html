@@ -9,8 +9,6 @@
 
 
       <span class="example-spacer"></span>
-
-      <!--<button mat-button [matMenuTriggerFor]="afterMenu">Task</button>-->
       
       <button mat-button>
         <a routerLink="/dashboard" class="nav-link" mat-list-item *ngIf="isLoggedIn()"><button mat-button>Dashboard</button></a>
@@ -27,34 +25,12 @@
         <a routerLink="/signup" class="nav-link" mat-list-item *ngIf="!isLoggedIn()"><button
             mat-button>Signup</button></a>
       </button>
-
-      <!--
-      <mat-menu #afterMenu="matMenu" xPosition="after">
-        <a routerLink="/tasks" class="nav-link" mat-list-item><button mat-button>Create Task</button></a>
-        
-  <a routerLink="/tasks" class="nav-link" mat-list-item><button mat-button>Create Task</button></a>
-  <a routerLink="/view-task" class="nav-link" mat-list-item><button mat-button>View Task</button></a>
-  <a routerLink="/users" class="nav-link" mat-list-item><button mat-button>Create User</button></a>
-</mat-menu>
-
-      </mat-menu>
-
-      <button mat-button [matMenuTriggerFor]="menu">Dashboard</button>
-      <mat-menu #menu="matMenu">
-        <a routerLink="/userdetails" class="nav-link" mat-list-item><button mat-button>UserBoard</button></a>
-        <a routerLink="/taskdetails" class="nav-link" mat-list-item><button mat-button>TaskBoard</button></a>
-        <a routerLink="/summary" class="nav-link" mat-list-item><button mat-button>Summary</button></a>
-      </mat-menu>-->
-
+      
       <button mat-icon-button *ngIf="isLoggedIn()">
         <mat-icon>notifications</mat-icon>
       </button>
-
-      <!-- <button mat-icon-button>
-        <mat-icon>share</mat-icon>
-      </button>-->
       
-      <!--account icon-->
+
       <button mat-icon-button [matMenuTriggerFor]="beforeMenu" *ngIf="isLoggedIn()">
         <mat-icon>account_circle</mat-icon></button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
