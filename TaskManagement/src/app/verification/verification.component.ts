@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './verification.component.html',
   styleUrls: ['./verification.component.css']
 })
-export class VerifyComponent {
+export class VerificationComponent {
   verificationCode: string="";
   verificationMessage: string = "";
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {
