@@ -21,8 +21,7 @@ public class TaskController {
 	public Task getTaskById(@PathVariable String username,@PathVariable long id){
 		return taskservice.findById(id);
 	}
-	@DeleteMapping("/{username}/dtasks/{id}")//We can either give success or no content-choosing
-	//Response entity enables us to get specific status back
+	@DeleteMapping("/{username}/dtasks/{id}")
 	public ResponseEntity<Void> deleteTask(@PathVariable String username,
 			@PathVariable long id){
 		Task task=taskservice.deleteById(id);

@@ -6,7 +6,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    // Suppose you have a list of users stored in memory or retrieved from a database.
+
     private List<User> userList;
 
     public UserService(List<User> userList) {
@@ -23,6 +23,6 @@ public class UserService {
                 return user;
             }
         }
-        return null; // Return null if the user with the specified ID is not found.
+        return null; 
     }
 }

@@ -14,9 +14,9 @@ public class TaskService {
 		private static int idCounter=0;
 		
 		static {
-			tasks.add(new Task("My first Task","Task1",new Date(),++idCounter,"sandeep",true));
-			tasks.add(new Task("My Second Task","Task2",new Date(),++idCounter,"chenna",false));
-			tasks.add(new Task("My Third Task","Task3",new Date(),++idCounter,"sandeep",true));
+			tasks.add(new Task("UI/UX","design webpage",new Date(),++idCounter,"Pavi",true));
+			tasks.add(new Task("SQL","create database",new Date(),++idCounter,"Pavithra",false));
+			tasks.add(new Task("Springboot","learn backend",new Date(),++idCounter,"PavithraSundaram",true));
 		}
 		public List<Task> findTasks(){
 			return tasks;
@@ -36,7 +36,7 @@ public class TaskService {
 					return task;
 				}
 			}
-		
+			
 			return null;
 		}
 }
