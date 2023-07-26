@@ -13,25 +13,39 @@ export class TodoDataService {
     public http: HttpClient) { }
   private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io";
 
-  retrieveAllTodos(userId) {
-    return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
+  retrieveAllTodos(userId){
+    return this.http.get<Task[]>(`${this.baseUrl}/tasks`)
   }
-
-  deleteTodo(id: any) {
-    return this.http.delete(`${this.baseUrl}/tasks/${id}`);
+  deleteTodo(id:any){
+    return this.http.delete(`${this.baseUrl}/tasks/${id}`)
   }
-
-  createTask(task: Task): Observable<Object> {
+  updateTask(id:number,task: Task){
+    return this.http.put(`${this.baseUrl}/tasks/${id}`, task)
+  }
+  getTaskById(id: number) {
+    return this.http.get(`${this.baseUrl}/tasks/${id}`);
+  }
+  createTask(task: Task) {
     return this.http.post(`${this.baseUrl}/tasks`, task);
   }
- 
-  getTaskById(id: number) {
-    return this.http.get<Task>(`${this.baseUrl}/tasks/${id}`);
-  }
-
-  updateTask(id: number, task: Task): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/tasks/${id}`, task);
-  }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

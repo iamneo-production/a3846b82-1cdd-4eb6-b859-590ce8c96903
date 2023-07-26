@@ -10,18 +10,18 @@ export class UserserviceService{
 
   constructor(private http:HttpClient) {}
   retrieveUsers(){
-    return this.http.get<User[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`)
+    return this.http.get<User[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers`)
   }
   retrieveUserById(id:any){
-    return this.http.get<User[]>(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
+    return this.http.get<User[]>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
   }
   deleteUser(id:any){
-    return this.http.delete(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
+    return this.http.delete(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
   }
   updateUser(id:any,user:any){
-    return this.http.put(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`,user)
+    return this.http.put(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`,user)
   }
   createUser(user:any) {
-    return this.http.post(`https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/dusers`, user);
+    return this.http.post(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers`, user);
   }
 }

@@ -8,7 +8,7 @@ import { Task } from './task';
 })
 export class TaskServiceService {
 
-  private baseUrl : String = "https://8080-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io/tasks";
+  private baseUrl : String = "https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/tasks";
 
   constructor(private httpClient: HttpClient) { }
 
