@@ -1,1 +1,1 @@
-export const API_URI='https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io'
+export const API_URI='https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io'
