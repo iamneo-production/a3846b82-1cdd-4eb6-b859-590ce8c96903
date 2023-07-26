@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/user-details/user-details.component';
 import { Observable } from 'rxjs';
-
+import { API_URI } from 'src/app/app-constant';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,18 +10,18 @@ export class UserserviceService{
 
   constructor(private http:HttpClient) {}
   retrieveUsers(){
-    return this.http.get<User[]>(`https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/dusers`)
+    return this.http.get<User[]>(`${API_URI}/dusers`)
   }
   retrieveUserById(id:any){
-    return this.http.get<User[]>(`https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
+    return this.http.get<User[]>(`${API_URI}/dusers/${id}`)
   }
   deleteUser(id:any){
-    return this.http.delete(`https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`)
+    return this.http.delete(`${API_URI}/dusers/${id}`)
   }
   updateUser(id:any,user:any){
-    return this.http.put(`https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/dusers/${id}`,user)
+    return this.http.put(`${API_URI}/${id}`,user)
   }
   createUser(user:any) {
-    return this.http.post(`https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/dusers`, user);
+    return this.http.post(`${API_URI}/dusers`, user);
   }
 }

@@ -38,7 +38,6 @@ public class TaskController {
     private final UserRepository userRepository;
 
     private final TaskRepository taskRepository;
-
     /* get all tasks
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {

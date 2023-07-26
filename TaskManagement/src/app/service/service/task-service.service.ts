@@ -2,26 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from './task';
-
+import { API_URI } from 'src/app/app-constant';
 @Injectable({
   providedIn: 'root'
 })
 export class TaskServiceService {
 
-  private baseUrl : String = "https://8080-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io/tasks";
 
   constructor(private httpClient: HttpClient) { }
 
   createTask(task: Task): Observable<Object> {
-    return this.httpClient.post(`${this.baseUrl}`, task);
+    return this.httpClient.post(`${API_URI}`, task);
   }
 
   getTaskById(id: number){
-    return this.httpClient.get<Task>(`${this.baseUrl}/${id}`);
+    return this.httpClient.get<Task>(`${API_URI}/${id}`);
   }
 
   updateTask(id:number, task:Task): Observable<Object>{
-    return this.httpClient.put(`${this.baseUrl}/${id}`, task);
+    return this.httpClient.put(`${API_URI}/${id}`, task);
   }
 
 }

@@ -7,8 +7,8 @@ com/project/taskmanagement/repository/UserRepository.class
 com/project/taskmanagement/model/Token.class
 com/project/taskmanagement/authentication/AuthenticationResponse$AuthenticationResponseBuilder.class
 com/project/taskmanagement/model/TaskStatus.class
-com/project/taskmanagement/repository/TokenRepository.class
 com/project/taskmanagement/service/UserServiceInterface.class
+com/project/taskmanagement/repository/TokenRepository.class
 com/project/taskmanagement/authentication/RegisterRequest$RegisterRequestBuilder.class
 com/project/taskmanagement/authentication/AuthenticationController.class
 com/project/taskmanagement/model/Task.class
@@ -22,10 +22,10 @@ com/project/taskmanagement/authentication/AuthenticationService.class
 com/project/taskmanagement/model/User$UserBuilder.class
 com/project/taskmanagement/repository/TodoRepository.class
 com/project/taskmanagement/service/LogoutService.class
-com/project/taskmanagement/TaskmanagementApplication.class
 com/project/taskmanagement/service/TodoService.class
-com/project/taskmanagement/model/Role.class
 com/project/taskmanagement/security/SpringSecurityConfiguration.class
+com/project/taskmanagement/model/Role.class
+com/project/taskmanagement/TaskmanagementApplication.class
 com/project/taskmanagement/model/Profile.class
 com/project/taskmanagement/service/ProfileService.class
 com/project/taskmanagement/service/EmailService.class
@@ -45,5 +45,5 @@ com/project/taskmanagement/service/UserService.class
 com/project/taskmanagement/model/Priority.class
 com/project/taskmanagement/service/TaskService.class
 com/project/taskmanagement/configuration/CorsConfig.class
-com/project/taskmanagement/controller/ProfileController.class
 com/project/taskmanagement/model/ConfirmationToken.class
+com/project/taskmanagement/controller/ProfileController.class
