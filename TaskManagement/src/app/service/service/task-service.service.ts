@@ -12,7 +12,7 @@ export class TaskServiceService {
   constructor(private httpClient: HttpClient) { }
 
   createTask(task: Task): Observable<Object> {
-    return this.httpClient.post(`${API_URI}`, task);
+    return this.httpClient.post(`${API_URI}/tasks`, task);
   }
 
   getTaskById(id: number){
