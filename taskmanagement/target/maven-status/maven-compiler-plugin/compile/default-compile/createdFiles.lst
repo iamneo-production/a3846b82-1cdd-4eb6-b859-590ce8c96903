@@ -18,6 +18,7 @@ com/project/taskmanagement/model/TaskStatus.class
 com/project/taskmanagement/authentication/AuthenticationResponse$AuthenticationResponseBuilder.class
 com/project/taskmanagement/model/Status.class
 main/java/com/project/taskmanagement/admin/AdminData.class
+com/project/taskmanagement/service/UserServiceInterface.class
 com/project/taskmanagement/repository/TokenRepository.class
 com/project/taskmanagement/service/UserServiceInterface.class
 com/project/taskmanagement/authentication/RegisterRequest$RegisterRequestBuilder.class
@@ -30,6 +31,8 @@ com/project/taskmanagement/model/Task$TaskBuilder.class
 com/project/taskmanagement/configuration/JwtAuthFilter.class
 com/project/taskmanagement/authentication/AuthenticationResponse.class
 com/project/taskmanagement/controller/UserController.class
+com/project/taskmanagement/repository/ConfirmationTokenRepository.class
+com/project/taskmanagement/authentication/AuthenticationRequest$AuthenticationRequestBuilder.class
 com/project/taskmanagement/repository/ConfirmationTokenRepository.class
 com/project/taskmanagement/authentication/AuthenticationRequest$AuthenticationRequestBuilder.class
 com/project/taskmanagement/configuration/ApplicationConfig.class

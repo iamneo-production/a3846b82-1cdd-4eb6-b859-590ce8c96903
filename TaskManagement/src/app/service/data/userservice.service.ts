@@ -19,7 +19,7 @@ export class UserserviceService{
     return this.http.delete(`${API_URI}/dusers/${id}`)
   }
   updateUser(id:any,user:any){
-    return this.http.put(`${API_URI}/${id}`,user)
+    return this.http.put(`${API_URI}/dusers/${id}`,user)
   }
   createUser(user:any) {
     return this.http.post(`${API_URI}/dusers`, user);
