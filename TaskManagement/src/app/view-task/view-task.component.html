@@ -13,13 +13,12 @@
        ADD NEW TASK</a>
     </button>
   </mat-toolbar>
-
 <body>
-
   <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
 
     <div class="row">
     <!--Sorting-->
+
       <mat-form-field >
         <mat-label>Sort by</mat-label>
         <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
@@ -30,6 +29,7 @@
           <mat-option value="duedate">Due Date</mat-option>
         </mat-select>
       </mat-form-field >
+      
       <!-- Filter by Status -->
       <mat-form-field >
         <mat-label>Filter by Status</mat-label>

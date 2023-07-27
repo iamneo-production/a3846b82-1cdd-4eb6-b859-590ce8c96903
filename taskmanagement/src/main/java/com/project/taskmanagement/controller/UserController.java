@@ -2,10 +2,9 @@ package com.project.taskmanagement.controller;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
 import com.project.taskmanagement.service.UserService;
+import com.project.taskmanagement.service.UserServiceInterface;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +28,19 @@ public class UserController {
 	public final UserService userservice;
 	
     public final UserRepository userrepository;
+
+
+    private UserServiceInterface userServiceIn;
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
+        return userServiceIn.saveUser(user);
+    }
+
+    @GetMapping("/confirm-account")
+    public ResponseEntity<?> confirmUserAccount(@RequestParam("token")String confirmationToken) {
+        return userServiceIn.confirmEmail(confirmationToken);
+    }
 
 	@GetMapping("/dusers")
 	public List<User> returnAll(){
