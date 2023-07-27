@@ -20,19 +20,22 @@ public class CorsConfig implements WebMvcConfigurer {
 	private static final String POST = "POST";
 	private static final String DELETE = "DELETE";
 
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("https://8081-ddfbbbecfdfcfdedeaeaadbdbabf.project.examly.io")
-				.allowedMethods(GET, POST, PUT, DELETE).allowedHeaders("*");
-	}
-
-	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://8081-ddfbbbecfdfcfdedeaeaadbdbabf.project.examly.io"));
-		configuration.setAllowedMethods(Arrays.asList(GET, POST, PUT, DELETE, "OPTIONS"));
-		configuration.setAllowedHeaders(Arrays.asList("*"));
-		configuration.setAllowCredentials(true);
+	 @Override
+	    public void addCorsMappings(CorsRegistry registry) {
+	        registry.addMapping("/**")
+	                .allowedOrigins("https://8081-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io")
+	                .allowedMethods(GET,POST,PUT,DELETE)
+	                .allowedHeaders("*");
+	    }
+		
+	 
+	 @Bean
+	    public CorsConfigurationSource corsConfigurationSource() {
+	        CorsConfiguration configuration = new CorsConfiguration();
+	        configuration.setAllowedOrigins(Arrays.asList("https://8081-ebfbfabcfcfdedeaeaadbdbabf.project.examly.io")); 
+	        configuration.setAllowedMethods(Arrays.asList(GET, POST, PUT, DELETE, "OPTIONS")); 
+	        configuration.setAllowedHeaders(Arrays.asList("*")); 
+	        configuration.setAllowCredentials(true); 
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
