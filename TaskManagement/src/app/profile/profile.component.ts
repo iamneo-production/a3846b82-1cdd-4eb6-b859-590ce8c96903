@@ -56,15 +56,12 @@ export class ProfileComponent {
   
   
 
-  getUserImageUrl() :SafeUrl {
-    if (this.user && this.user.imagePath) {
-      const imageUrl = `${this.UserProfileService.apiUrl}/${this.user.imagePath}`;
-      return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-    }
-    else if (this.user.image) {
+  getUserImageUrl() {
+    if (this.imagePath) {
+      return URL.createObjectURL(this.imagePath);
+    } else if (this.user.image) {
       return this.user.image;
-    } 
-    else {
+    } else {
       return 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg';
     }
   }

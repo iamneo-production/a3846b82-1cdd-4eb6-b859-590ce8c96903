@@ -16,7 +16,7 @@ public class Profile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	/* 
 	@Column(name = "first_name")
 	private String firstname;
 
@@ -30,7 +30,7 @@ public class Profile {
 	private String email;
 
 	@Column(name = "password")
-	private String password;
+	private String password;  */
 
 	@Column(name = "image_path")
 	private String imagePath;
@@ -39,14 +39,14 @@ public class Profile {
 
 	}
 
-	public Profile(String firstname, String lastname, String username, String email, String password, String imagePath) {
+	public Profile(/*String firstname, String lastname, String username, String email, String password, */String imagePath) {
 		super();
 		
-		this.firstname = firstname;
+		/*this.firstname = firstname;
 		this.lastname = lastname;
 		this.username = username;
 		this.email = email;
-		this.password = password;
+		this.password = password;*/
 		this.imagePath = imagePath;
 	}
 
@@ -58,7 +58,7 @@ public class Profile {
 		this.id = id;
 	}
 
-	public String getFirstname() {
+	/*public String getFirstname() {
 		return firstname;
 	}
 
@@ -96,7 +96,7 @@ public class Profile {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
+	}*/
 
 	public String getImagePath() {
 		return imagePath;
@@ -105,11 +105,16 @@ public class Profile {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-
+	/* 
 	@Override
 	public String toString() {
 		return "Profile [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
 				+ ", email=" + email + ", password=" + password + ", imagePath=" + imagePath + "]";
+	}
+	*/
+
+	public String toString(){
+		return "Profile[id=" + id + ",imagePath=" + imagePath + "]";
 	}
 }
 
