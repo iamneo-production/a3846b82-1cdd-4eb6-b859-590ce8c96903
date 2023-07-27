@@ -137,7 +137,7 @@ id!: number;
      this.taskService.updateTask(this.id,taskDetails)
        .subscribe(data => {
          console.log(data);
-         this.router.navigate(['']);
+         this.router.navigate(['dashboard']);
        });
    }
  }
