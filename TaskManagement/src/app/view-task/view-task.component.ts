@@ -97,7 +97,7 @@ export class ViewTaskComponent implements OnInit {
   }
 
   filterTodos() {
-    if (!this.Todo) return; // Return if Todo is not initialized
+    if (!this.Todo) return; 
     if (this.selectedStatus === 'All' && !this.searchTerm) {
       this.filteredTodo = this.Todo; 
     } else {
@@ -109,7 +109,7 @@ export class ViewTaskComponent implements OnInit {
     }
   }
 
-  // Method to apply sorting
+
   sortTodos(sortBy: string) {
     this.sortedBy = sortBy;
     if (!this.Todo) return; 
@@ -118,17 +118,16 @@ export class ViewTaskComponent implements OnInit {
     });
   }
 
-  // Method to reset filtering and sorting
+ 
   resetFiltersAndSorting() {
     this.selectedStatus = 'All';
     this.filterTodos();
     this.sortTodos('id'); 
   }
 
-  // Initialize the filteredTodo with the Task
   filteredTodo: Task[] | undefined;
 
-  //create task
+
   createNewTask(){
 
     if(this.userService.matchRoles(['TEAMLEADER'])){
@@ -139,7 +138,6 @@ export class ViewTaskComponent implements OnInit {
     }
 
   }
-
 
 }
 
