@@ -3,7 +3,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.TaskStatus;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 @Repository
