@@ -48,7 +48,7 @@ export class ViewTaskComponent implements OnInit {
     this.todoService.retrieveAllTodos(this.userId).subscribe((response) => {
       console.log(response);
       this.Todo = response;
-      this.filterTodos(); 
+      this.filterTodos();  
     });
   }
 
@@ -99,7 +99,7 @@ export class ViewTaskComponent implements OnInit {
   filterTodos() {
     if (!this.Todo) return; // Return if Todo is not initialized
     if (this.selectedStatus === 'All' && !this.searchTerm) {
-      this.filteredTodo = this.Todo; // Show all tasks when no status and search term are applied
+      this.filteredTodo = this.Todo; 
     } else {
       this.filteredTodo = this.Todo.filter((todo) => {
         const statusFilter = this.selectedStatus === 'All' || todo.status === this.selectedStatus;
@@ -125,7 +125,7 @@ export class ViewTaskComponent implements OnInit {
     this.sortTodos('id'); 
   }
 
-  // Initialize the filteredTodo with the Todo
+  // Initialize the filteredTodo with the Task
   filteredTodo: Task[] | undefined;
 
   //create task

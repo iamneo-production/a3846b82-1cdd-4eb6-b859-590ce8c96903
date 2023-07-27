@@ -115,7 +115,7 @@
           <select name="Role" class="form-control" [(ngModel)]="user.role" required [disabled]="!isEditMode" #userField="ngModel">
             <option value="USER">User</option>
             <option value="TEAMLEADER">Team Lead</option>
-            <option value="ADMIN">Admin</option>
+            
           </select>
         </div>
         <div *ngIf="userField.invalid && (userField.touched || !userField.touched)" class="text-danger">
