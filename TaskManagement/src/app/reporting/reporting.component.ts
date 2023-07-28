@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Task } from '../task-details/task-details.component';
 import { TaskserviceService } from '../service/data/taskservice.service';
-
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-reporting',
