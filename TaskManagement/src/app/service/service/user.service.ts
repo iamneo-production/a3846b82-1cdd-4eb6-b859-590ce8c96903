@@ -25,7 +25,7 @@ export class UserService {
   }
 
   registerUser(SignupData: any): Observable<any> {
-    return this.httpClient.post<any>(`${API_URI}/auth/register`, SignupData);
+    return this.httpClient.post<any>(`${API_URI}/auth/register`, SignupData, { headers: this.requestHeader });
   }
 
   //roles
