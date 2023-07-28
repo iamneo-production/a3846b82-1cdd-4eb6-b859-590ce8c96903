@@ -6,6 +6,7 @@ import { User } from '../service/task/user';
 import { Role} from '../service/task/role';
 import { UserserviceService } from '../service/data/userservice.service';
 import { Status } from '../service/task/Status';
+import { CoreService } from '../core/core.service';
 
 @Component({
   selector: 'app-create-user',
@@ -26,6 +27,7 @@ export class CreateUserComponent implements OnInit {
   });
 
   constructor(
+    public _coreService: CoreService,
     private location: Location,
     private router: Router,
     private userService:UserserviceService,
@@ -84,6 +86,7 @@ export class CreateUserComponent implements OnInit {
         // Updating an existing user
         this.userService.updateUser(this.user.id,userDetails).subscribe((data: User) => {
           console.log(data);
+          this._coreService.openSnackBar('User Details Updated !!','done');
           this.router.navigate(['adminDashboard']); // Corrected route to the user board page
         });
       } else {
