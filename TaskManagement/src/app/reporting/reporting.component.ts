@@ -88,5 +88,29 @@ export class ReportingComponent implements OnInit {
     window.print();
   }
 
+  dynamicData: number[] = [64, 16];
+
+  @ViewChild('pieChartCanvas') pieChartCanvas!: ElementRef;
+
+  ngAfterViewInit() {
+    this.createPieChart();
+  }
+
+  createPieChart() {
+    const pieChartCtx = this.pieChartCanvas.nativeElement.getContext('2d');
+    new Chart(pieChartCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Completed', 'Pending'], // Add appropriate labels for each data point
+        datasets: [
+          {
+            data: this.dynamicData,
+            backgroundColor: ['green', 'red'], // Add appropriate colors for each data point
+          },
+        ],
+      },
+    });
+  }
+
 
 }
