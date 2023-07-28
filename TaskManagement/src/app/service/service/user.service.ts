@@ -4,9 +4,11 @@ import { UserAuthService } from './user-auth.service';
 import { User } from './User';
 import { Observable } from 'rxjs';
 import { API_URI } from 'src/app/app-constant';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   requestHeader = new HttpHeaders(
