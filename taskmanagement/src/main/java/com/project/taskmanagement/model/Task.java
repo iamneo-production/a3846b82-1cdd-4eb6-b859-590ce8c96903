@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -70,7 +71,7 @@ public class Task {
 	@JsonIgnore
 	private User user;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
         name = "team_member",
         joinColumns = @JoinColumn(name = "task_id"),

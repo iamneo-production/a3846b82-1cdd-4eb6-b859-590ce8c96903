@@ -112,7 +112,7 @@ export class AssignTaskComponent {
       description: this.assignTask.value.taskDescription as string,
       status: this.assignTask.value.status as TaskStatus,
       priority: this.assignTask.value.priorityOfTask as Priority,
-      dueDate: typeof this.assignTask.value.dueDate === 'string' ? new Date(this.assignTask.value.dueDate) : null,
+      dueDate: this.assignTask.value.dueDate as unknown as Date,
       user: null,
       id: this.id,
       createdDate: null,
@@ -123,7 +123,7 @@ export class AssignTaskComponent {
     this.taskService.updateTask(this.id, taskDetails)
       .subscribe(data => {
         console.log(data);
-        this.router.navigate(['']);
+        this.router.navigate(['/dashboard']);
       });
 
   }

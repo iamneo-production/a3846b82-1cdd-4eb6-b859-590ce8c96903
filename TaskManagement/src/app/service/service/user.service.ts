@@ -11,7 +11,7 @@ export class UserService {
 
   requestHeader = new HttpHeaders(
     {
-      "NO_AUTH": "True"  // means that this end point doest need any authentication
+      "NO_AUTH": "True"  
     }
   );
 
