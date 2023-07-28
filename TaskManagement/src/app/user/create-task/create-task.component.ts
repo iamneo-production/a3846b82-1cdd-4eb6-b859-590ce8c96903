@@ -8,6 +8,8 @@ import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
 import { UserService } from 'src/app/service/service/user.service';
+import { CoreService } from 'src/app/core/core.service';
+
 
 
 @Component({
@@ -45,6 +47,7 @@ export class CreateTaskComponent implements OnInit {
 
  //Constructors
  constructor(
+   public _coreService: CoreService,
    private location: Location,
    private router: Router,
    private taskService : TaskServiceService,

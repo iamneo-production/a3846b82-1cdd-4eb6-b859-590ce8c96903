@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/service/data/userservice.service';
 import { Role } from '../service/task/role';
+import { CoreService } from '../core/core.service';
 
 export class User{
   constructor(
@@ -77,7 +78,7 @@ redirect: any;
     this.userservice.deleteUser(id).subscribe((response) => {
       console.log(response);
       this.message = `Deletion of User with ID ${id} successful`;
-      this._coreService.openSnackBar('Task Deleted!!','done');
+      this._coreService.openSnackBar('User Deleted!!','done');
       this.refreshUsers();
     });
   }

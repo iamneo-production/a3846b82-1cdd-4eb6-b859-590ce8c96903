@@ -9,6 +9,7 @@ import { Priority } from 'src/app/service/service/Priority';
 import { User } from 'src/app/service/service/User';
 import { Task } from 'src/app/service/service/task';
 import { TodoDataService } from 'src/app/service/todo/todo-data.service';
+import { CoreService } from 'src/app/core/core.service';
 
 @Component({
   selector: 'app-update-task-tl',
@@ -45,6 +46,7 @@ export class UpdateTaskTLComponent {
 
   //Constructors
   constructor(
+    public _coreService: CoreService,
     private location: Location,
     private router: Router,
     private route: ActivatedRoute,
@@ -125,6 +127,7 @@ export class UpdateTaskTLComponent {
     this.tskService.updateTask(this.id,taskDetails)
       .subscribe(data => {
         console.log(data);
+        this._coreService.openSnackBar('Task Updated !!','done');
         this.router.navigate(['dashboard']);
       });
   }
