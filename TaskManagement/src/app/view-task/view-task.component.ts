@@ -11,7 +11,7 @@ import { UserService } from '../service/service/user.service';
   styleUrls: ['./view-task.component.css']
 })
 export class ViewTaskComponent implements OnInit {
-TewTaskodo: any;
+
 
   
   taskId:string;
@@ -28,7 +28,6 @@ TewTaskodo: any;
   showTaskList = true;
   showAssignTaskList = false;
   sortedBy: string = 'id';
-
 
   toggleTables(showTaskList: boolean) {
     this.showTaskList = showTaskList;
@@ -49,7 +48,7 @@ TewTaskodo: any;
     this.todoService.retrieveAllTodos(this.userId).subscribe((response) => {
       console.log(response);
       this.Todo = response;
-      this.filterTodos(); // Apply initial filtering
+      this.filterTodos();  
     });
   }
 
@@ -100,7 +99,7 @@ TewTaskodo: any;
   filterTodos() {
     if (!this.Todo) return; // Return if Todo is not initialized
     if (this.selectedStatus === 'All' && !this.searchTerm) {
-      this.filteredTodo = this.Todo; // Show all tasks when no status and search term are applied
+      this.filteredTodo = this.Todo; 
     } else {
       this.filteredTodo = this.Todo.filter((todo) => {
         const statusFilter = this.selectedStatus === 'All' || todo.status === this.selectedStatus;
@@ -113,7 +112,7 @@ TewTaskodo: any;
   // Method to apply sorting
   sortTodos(sortBy: string) {
     this.sortedBy = sortBy;
-    if (!this.Todo) return; // Return if Todo is not initialized
+    if (!this.Todo) return; 
     this.Todo.sort((a: Task, b: Task) => {
       return a[sortBy] > b[sortBy] ? 1 : -1;
     });
@@ -123,10 +122,10 @@ TewTaskodo: any;
   resetFiltersAndSorting() {
     this.selectedStatus = 'All';
     this.filterTodos();
-    this.sortTodos('id'); // Default sorting by ID
+    this.sortTodos('id'); 
   }
 
-  // Initialize the filteredTodo with the Todo
+  // Initialize the filteredTodo with the Task
   filteredTodo: Task[] | undefined;
 
   //create task

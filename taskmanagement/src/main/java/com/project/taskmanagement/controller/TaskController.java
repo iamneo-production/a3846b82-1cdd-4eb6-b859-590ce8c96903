@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
-
+import com.project.taskmanagement.model.TaskStatus;
 import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.UserRepository;
+import com.project.taskmanagement.repository.TaskRepository;
 import com.project.taskmanagement.service.TaskService;
 import com.project.taskmanagement.service.UserService;
 
@@ -36,6 +37,7 @@ public class TaskController {
 
     private final UserRepository userRepository;
 
+    private final TaskRepository taskRepository;
     /* get all tasks
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {
@@ -149,6 +151,28 @@ public class TaskController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @GetMapping("/todo-count")
+    public Long getTodoTaskCount() {
+        return taskRepository.countByStatus(TaskStatus.TODO);
+    }
+
+    // Count Inprogress tasks
+    @GetMapping("/inprogress-count")
+    public Long getInProgressTaskCount() {
+        return taskRepository.countByStatus(TaskStatus.IN_PROGRESS);
+    }
+
+    // Count Done tasks
+    @GetMapping("/done-count")
+    public Long getDoneTaskCount() {
+        return taskRepository.countByStatus(TaskStatus.DONE);
+    }
+    
+    // Count Completed tasks (Equivalent to the existing method)
+    @GetMapping("/completed-count")
+    public Long getCompletedTaskCount() {
+        return taskRepository.count();
     }
     
 }

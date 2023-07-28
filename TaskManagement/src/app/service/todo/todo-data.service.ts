@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../service/task';
 import { Observable } from 'rxjs';
-
+import { API_URI } from 'src/app/app-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +12,41 @@ export class TodoDataService {
   constructor(
     public http: HttpClient) { }
 
-  private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/";
+  //private baseUrl: String = "https://8080-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io/";
 
-  retrieveAllTodos(userId) {
-    return this.http.get<Task[]>(`${this.baseUrl}/tasks`);
+  retrieveAllTodos(userId){
+    return this.http.get<Task[]>(`${API_URI}/tasks`)
   }
-
-  deleteTodo(id: any) {
-    return this.http.delete(`${this.baseUrl}/tasks/${id}`);
+  deleteTodo(id:any){
+    return this.http.delete(`${API_URI}/tasks/${id}`)
   }
-
-  createTask(task: Task): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/tasks`, task);
+  updateTask(id:number,task: Task){
+    return this.http.put(`${API_URI}/tasks/${id}`, task)
   }
- 
   getTaskById(id: number) {
-    return this.http.get<Task>(`${this.baseUrl}/tasks/${id}`);
+    return this.http.get(`${API_URI}/tasks/${id}`);
   }
-
-  updateTask(id: number, task: Task): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/tasks/${id}`, task);
+  createTask(task: Task) {
+    return this.http.post(`${API_URI}/tasks`, task);
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
