@@ -78,36 +78,6 @@
 		
 
       <div class="form-group">
-        <label for="password">
-          <fa-icon [icon]="faLock"></fa-icon> Password:
-        </label>
-
-        <div class="password-field">
-          <input type="{{ passwordVisibility ? 'text' : 'password' }}" name="password" class="form-control"
-            [(ngModel)]="user.password" [disabled]="!isEditMode" #passwordField="ngModel" minlength="8" required
-            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-            [ngClass]="{ 'is-invalid': passwordField.invalid && (passwordField.touched || !passwordField.touched) }">
-          <fa-icon [icon]="passwordVisibility ? faEyeSlash : faEye" (click)="togglePasswordVisibility()"></fa-icon>
-        </div>
-
-        <div *ngIf="passwordField.invalid && (passwordField.touched || !passwordField.touched)" class="text-danger">
-          <ng-container *ngIf="passwordField.errors?.hasOwnProperty('required')">
-            Password is required.
-          </ng-container>
-          <ng-container *ngIf="passwordField.errors?.hasOwnProperty('pattern')">
-            Enter a valid Password.<br>
-          </ng-container>
-          <ng-container *ngIf="passwordField.errors?.hasOwnProperty('minlength')">
-            Password must be at least 8 characters long.
-          </ng-container>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="form-column">
-     
-      <div class="form-group">
         <label for="Role">
           <fa-icon [icon]="faUser"></fa-icon> Role:
         </label>
@@ -125,25 +95,9 @@
         </div>
       </div>
 
-
-      
-
-      <div class="form-group" *ngIf="isEditMode">
-        <label for="confirmPassword">
-          <fa-icon [icon]="faLock"></fa-icon> Confirm Password:
-        </label>
-        <div class="password-field">
-          <input type="{{ confirmPasswordVisibility ? 'text' : 'password' }}" name="confirmPassword"
-            class="form-control" [(ngModel)]="confirmPassword" [disabled]="!isEditMode" #confirmPasswordField="ngModel">
-          <fa-icon [icon]="confirmPasswordVisibility ? faEyeSlash : faEye"
-            (click)="toggleConfirmPasswordVisibility()"></fa-icon>
-        </div>
-        <div *ngIf="confirmPassword !== user.password && (confirmPasswordField.touched || !confirmPasswordField.touched)"
-          class="text-danger">
-          Passwords do not match.
-        </div>
-      </div> 
     </div>
+
+    
   </form>
   
   
@@ -151,7 +105,7 @@
 
       <button class="btn btn-primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</button>
 
-      <button class="btn btn-success" *ngIf="isEditMode" [disabled]="myForm.invalid || confirmPassword !== user.password"
+      <button class="btn btn-success" *ngIf="isEditMode" [disabled]="myForm.invalid"
         (click)="saveChanges()">Save Changes</button>
   
       

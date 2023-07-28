@@ -36,8 +36,8 @@
 
 .form-column {
   flex: 1 1 100%;
-  margin-right: 0;
   margin-bottom: 15px;
+  padding-left: 50px;
 }
 
 .form-group {
@@ -116,6 +116,7 @@ label {
     width: 90%;
     height: 85%;
     margin: 10% auto;
+    left: 5%;
   }
 
   .form-container {
@@ -148,8 +149,8 @@ label {
 
 @media only screen and (min-width: 1024px) and (max-width: 1024px) {
   .profile{
-    margin-top: 10%;
-    margin-left: 2%;
+    margin-top: 8%;
+    margin-left: 15%;
   }
 
   .profile-picture{
@@ -158,7 +159,7 @@ label {
   }
 
   .btn-primary,.btn-success{
-    top:1%;
+    top:-8%;
   }
   
   .btn-link{

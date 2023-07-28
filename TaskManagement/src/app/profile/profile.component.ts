@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { faUser, faEnvelope, faLock, faEye, faEyeSlash, faCamera ,faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -9,13 +9,15 @@ import { UserAuthService } from '../service/service/user-auth.service';
 import { User } from '../user-details/user-details.component'; 
 import { UserserviceService } from '../service/data/userservice.service'; 
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Observable , of} from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   confirmPassword: string;
   imagePath: File;
   isEditMode: boolean = false;
@@ -27,8 +29,6 @@ export class ProfileComponent {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   faTrashAlt=faTrashAlt;
-  passwordVisibility = false;
-  confirmPasswordVisibility = false;
   userId: string;
 
   user: any = {};
@@ -39,20 +39,12 @@ export class ProfileComponent {
     this.loadUserDetails();
   }
 
+  
+
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
-    this.passwordVisibility = false;
-    this.confirmPasswordVisibility = false;
-  }
 
-  togglePasswordVisibility() {
-    this.passwordVisibility = !this.passwordVisibility;
   }
-
-  toggleConfirmPasswordVisibility() {
-    this.confirmPasswordVisibility = !this.confirmPasswordVisibility;
-  }
-  
   
   
 
@@ -65,6 +57,8 @@ export class ProfileComponent {
       return 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg';
     }
   }
+  
+  
 
   onSelect(event) {
     let fileType = event.target.files[0].type;
@@ -145,6 +139,7 @@ export class ProfileComponent {
         next: (response) => {
           this.user = response;
           //this.loadUserImage(); // Load the user image
+         
         },
         error: (error) => {
           console.error('Error fetching user details:', error);
@@ -156,7 +151,7 @@ export class ProfileComponent {
   }
 
   loadUserImage() {
-    this.UserProfileService.getUserImage(this.user.id).subscribe({
+    this.Userservice.getUserImage(this.user.id).subscribe({
       next: (imageBlob) => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -176,7 +171,7 @@ export class ProfileComponent {
     const userToUpdate = {
       name: this.user.name,
       email: this.user.email,
-      password: this.user.password,
+      //password: this.user.password,
       role: this.user.role
     };
   
@@ -185,6 +180,7 @@ export class ProfileComponent {
         console.log('User details updated successfully');
         Swal.fire('Saved successfully!', '', 'success');
         this.loadUserDetails(); // Reload user details after successful update
+        this.storeImage(); 
       },
       error: (error) => {
         console.error('Error updating user details:', error);
@@ -198,7 +194,7 @@ export class ProfileComponent {
     const formData = new FormData();
     formData.append('file', this.imagePath);
   
-    this.UserProfileService.updateUserImage('userId', formData).subscribe({
+    this.Userservice.updateUserImage('userId', formData).subscribe({
       next: (response) => {
         console.log('User details updated successfully');
         Swal.fire('Saved successfully!', '', 'success');
