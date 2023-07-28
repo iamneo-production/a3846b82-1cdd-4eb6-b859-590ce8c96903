@@ -44,7 +44,6 @@ public class TodoController {
 	@GetMapping("/{taskname}/viewtask")
 	public Todo getTodoByTaskname (@PathVariable String taskname){
 		return todoRepository.findByTaskname(taskname).get(0);
-		
 	}
 	
 	@DeleteMapping("/viewtask/{id}")

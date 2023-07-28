@@ -136,6 +136,7 @@ export class ViewTaskComponent implements OnInit {
     else{
       this.router.navigate(['task']);
     }
+    
 
   }
 
