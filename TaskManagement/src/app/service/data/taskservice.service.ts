@@ -7,6 +7,7 @@ import { API_URI } from 'src/app/app-constant';
   providedIn: 'root'
 })
 export class TaskserviceService {
+  getChartData: any;
 
   constructor(public http: HttpClient) { }
 

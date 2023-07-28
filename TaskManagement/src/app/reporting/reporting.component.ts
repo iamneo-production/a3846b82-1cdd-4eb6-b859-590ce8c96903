@@ -27,6 +27,7 @@ export class ReportingComponent implements OnInit {
     this.getTodoTaskCount();
     this.getInProgressTaskCount();
     this.getDoneTaskCount();
+    // this.fetchChartData();
   }
 
   loadTasks() {
@@ -88,29 +89,42 @@ export class ReportingComponent implements OnInit {
     window.print();
   }
 
-  dynamicData: number[] = [64, 16];
+  pieChart: any;
+  // chartData: number[] = [];
 
-  @ViewChild('pieChartCanvas') pieChartCanvas!: ElementRef;
+  // fetchChartData() :void{
+  //   this.taskService.getChartData().subscribe(
+  //     (count: number[]) => {
+  //       this.chartData = count;
+  //       this.initializeChart();
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching chart data:', error);
+  //     }
+  //   );
+  // }
 
-  ngAfterViewInit() {
-    this.createPieChart();
-  }
+  initializeChart() {
+    const chartData = {
+      datasets: [{
+        data: [this.completedTaskCount,this.doneTaskCount],
+        backgroundColor: ['#ff6347', '#4169e1'], // Example colors, customize as needed
+      }],
+      labels: ['Label 1', 'Label 2'], // Example labels, customize as needed
+    };
 
-  createPieChart() {
-    const pieChartCtx = this.pieChartCanvas.nativeElement.getContext('2d');
-    new Chart(pieChartCtx, {
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+    };
+
+    this.pieChart = new Chart('myPieChart', {
       type: 'pie',
-      data: {
-        labels: ['Completed', 'Pending'], // Add appropriate labels for each data point
-        datasets: [
-          {
-            data: this.dynamicData,
-            backgroundColor: ['green', 'red'], // Add appropriate colors for each data point
-          },
-        ],
-      },
+      data: chartData,
+      options: chartOptions
     });
   }
+
 
 
 }
