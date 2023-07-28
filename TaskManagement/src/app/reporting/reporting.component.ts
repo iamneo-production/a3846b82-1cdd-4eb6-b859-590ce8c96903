@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Task } from '../task-details/task-details.component';
 import { TaskserviceService } from '../service/data/taskservice.service';
-
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-reporting',
@@ -27,6 +27,7 @@ export class ReportingComponent implements OnInit {
     this.getTodoTaskCount();
     this.getInProgressTaskCount();
     this.getDoneTaskCount();
+    // this.fetchChartData();
   }
 
   loadTasks() {
@@ -87,6 +88,43 @@ export class ReportingComponent implements OnInit {
   printPage() {
     window.print();
   }
+
+  pieChart: any;
+  // chartData: number[] = [];
+
+  // fetchChartData() :void{
+  //   this.taskService.getChartData().subscribe(
+  //     (count: number[]) => {
+  //       this.chartData = count;
+  //       this.initializeChart();
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching chart data:', error);
+  //     }
+  //   );
+  // }
+
+  initializeChart() {
+    const chartData = {
+      datasets: [{
+        data: [this.completedTaskCount,this.doneTaskCount],
+        backgroundColor: ['#ff6347', '#4169e1'], // Example colors, customize as needed
+      }],
+      labels: ['Label 1', 'Label 2'], // Example labels, customize as needed
+    };
+
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+    };
+
+    this.pieChart = new Chart('myPieChart', {
+      type: 'pie',
+      data: chartData,
+      options: chartOptions
+    });
+  }
+
 
 
 }
