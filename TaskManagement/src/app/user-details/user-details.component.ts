@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserserviceService } from 'src/app/service/data/userservice.service';
 import { Role } from '../service/task/role';
+import { CoreService } from '../core/core.service';
 
 export class User{
   constructor(
@@ -30,7 +31,7 @@ export class UserDetailsComponent implements OnInit {
   // Searching
   searchText: string = ''; // Default search text is empty
 redirect: any;
-  constructor(public router: Router, private userservice: UserserviceService) {}
+  constructor(public router: Router, private userservice: UserserviceService, public _coreService: CoreService,) {}
   Roles = Object.values(Role);
   ngOnInit(): void {
     this.refreshUsers();
@@ -77,6 +78,7 @@ redirect: any;
     this.userservice.deleteUser(id).subscribe((response) => {
       console.log(response);
       this.message = `Deletion of User with ID ${id} successful`;
+      this._coreService.openSnackBar('User Deleted!!','done');
       this.refreshUsers();
     });
   }
