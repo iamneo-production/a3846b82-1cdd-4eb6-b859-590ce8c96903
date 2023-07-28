@@ -73,7 +73,7 @@ redirect: any;
     });
   }
   DeleteUser(id: any) {
-    console.log(`delete Todo ${id}`);
+    console.log(`delete User ${id}`);
     this.userservice.deleteUser(id).subscribe((response) => {
       console.log(response);
       this.message = `Deletion of User with ID ${id} successful`;

@@ -125,7 +125,7 @@ export class UpdateTaskTLComponent {
     this.tskService.updateTask(this.id,taskDetails)
       .subscribe(data => {
         console.log(data);
-        this.router.navigate(['']);
+        this.router.navigate(['dashboard']);
       });
   }
 

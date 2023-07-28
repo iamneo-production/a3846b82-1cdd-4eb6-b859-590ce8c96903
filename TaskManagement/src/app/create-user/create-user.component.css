@@ -1,9 +1,6 @@
-*{
-    background-color:white;
-    border-radius: 20px;
-   }
+
    
-   h3{
+   h1{
        padding-top: 20px;
        text-align: center;
    }
@@ -47,6 +44,13 @@
      align-items: center;
      flex-direction: column;
      padding-bottom: 20px;
+     width: 50vw;
+     height: 70vh;
+     display: grid;
+     grid-template-columns: 100%;
+     border-radius: 5px;
+     background: white;
+     overflow: hidden;
      
    }
    

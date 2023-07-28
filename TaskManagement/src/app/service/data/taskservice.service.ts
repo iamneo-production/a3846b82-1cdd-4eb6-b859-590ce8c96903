@@ -11,11 +11,11 @@ export class TaskserviceService {
   constructor(public http: HttpClient) { }
 
   retrieveTasks() {
-    return this.http.get<Task[]>(`${API_URI}/dtasks`);
+    return this.http.get<Task[]>(`${API_URI}/tasks`);
   }
 
   retrieveTaskById(id: any) {
-    return this.http.get<Task[]>(`${API_URI}/dtasks/${id}`);
+    return this.http.get<Task[]>(`${API_URI}/tasks/${id}`);
   }
 
   deleteTask(id: any) {
