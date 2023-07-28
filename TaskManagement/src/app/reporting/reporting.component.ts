@@ -90,19 +90,19 @@ export class ReportingComponent implements OnInit {
   }
 
   pieChart: any;
-  // chartData: number[] = [];
+  chartData: number[] = [];
 
-  // fetchChartData() :void{
-  //   this.taskService.getChartData().subscribe(
-  //     (count: number[]) => {
-  //       this.chartData = count;
-  //       this.initializeChart();
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching chart data:', error);
-  //     }
-  //   );
-  // }
+  fetchChartData() :void{
+    this.taskService.getChartData().subscribe(
+      (count: number[]) => {
+        this.chartData = count;
+        this.initializeChart();
+      },
+      (error) => {
+        console.error('Error fetching chart data:', error);
+      }
+    );
+  }
 
   initializeChart() {
     const chartData = {
