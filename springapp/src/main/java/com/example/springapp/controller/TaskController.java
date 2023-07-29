@@ -73,15 +73,15 @@ public class TaskController {
 
     private final TaskRepository taskRepository;
 
-    /* get all tasks
+    // get all tasks
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
-    }*/
+    }
 
     //@GetMapping("/tasks/{userId}")
-    
+   /*  
     @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getTasksByUserId(@AuthenticationPrincipal User authenticatedUser) {
         // List<Task> tasks = taskService.getTasksByUserId(userId);
@@ -90,7 +90,7 @@ public class TaskController {
         List<Task> tasks = taskService.getTasksByUserId(userId);
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
-
+*/
     // get task by id
     @GetMapping("/tasks/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {

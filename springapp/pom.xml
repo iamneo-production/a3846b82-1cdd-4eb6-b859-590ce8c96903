@@ -61,6 +61,7 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		<dependency>
 =======
@@ -98,6 +99,10 @@
 		    <artifactId>jjwt-jackson</artifactId>
 		    <version>0.11.5 </version>
 		</dependency>
+		<dependency>
+>>>>>>> main
+=======
+
 		<dependency>
 >>>>>>> main
 			<groupId>org.springframework.boot</groupId>
