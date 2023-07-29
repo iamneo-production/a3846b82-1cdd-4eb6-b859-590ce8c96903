@@ -1,20 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.example.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 12.228 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
-testGetTaskAll  Time elapsed: 0.257 s  <<< FAILURE!
+Tests run: 8, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 13.64 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
+testGetTaskAll  Time elapsed: 0.28 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<403>
 	at com.example.springapp.SpringappApplicationTests.testGetTaskAll(SpringappApplicationTests.java:57)
 
-testGetUserAll  Time elapsed: 0.011 s  <<< FAILURE!
+testGetUserAll  Time elapsed: 0.018 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<403>
 	at com.example.springapp.SpringappApplicationTests.testGetUserAll(SpringappApplicationTests.java:33)
 
-testGetTaskById  Time elapsed: 0.022 s  <<< FAILURE!
+testGetTaskById  Time elapsed: 0.031 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<403>
 	at com.example.springapp.SpringappApplicationTests.testGetTaskById(SpringappApplicationTests.java:69)
 
-testGetUserById  Time elapsed: 0.005 s  <<< FAILURE!
+testGetUserById  Time elapsed: 0.023 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<403>
 	at com.example.springapp.SpringappApplicationTests.testGetUserById(SpringappApplicationTests.java:45)
 
