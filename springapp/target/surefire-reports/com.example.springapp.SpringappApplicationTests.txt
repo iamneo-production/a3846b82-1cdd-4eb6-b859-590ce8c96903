@@ -1,108 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.example.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 18.242 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
-testGetTaskAll  Time elapsed: 0.002 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
+Tests run: 8, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 12.228 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
+testGetTaskAll  Time elapsed: 0.257 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.example.springapp.SpringappApplicationTests.testGetTaskAll(SpringappApplicationTests.java:57)
 
-testGetUserAll  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
+testGetUserAll  Time elapsed: 0.011 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.example.springapp.SpringappApplicationTests.testGetUserAll(SpringappApplicationTests.java:33)
 
-testGetTaskById  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
+testGetTaskById  Time elapsed: 0.022 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.example.springapp.SpringappApplicationTests.testGetTaskById(SpringappApplicationTests.java:69)
 
-testGetUserById  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-
-test_case1  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-
-test_case2  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-
-test_case3  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-
-test_case4  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: 
-Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
-Caused by: java.lang.IllegalStateException: 
-Ambiguous mapping. Cannot map 'userController' method 
-com.example.springapp.controller.UserController#getUserImage(long)
-to {GET [/{userId}/image]}: There is already 'profileController' bean method
-com.example.springapp.controller.ProfileController#getUserImage(long) mapped.
+testGetUserById  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.example.springapp.SpringappApplicationTests.testGetUserById(SpringappApplicationTests.java:45)
 
