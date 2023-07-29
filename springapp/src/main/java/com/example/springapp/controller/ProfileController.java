@@ -1,4 +1,4 @@
-package com.project.taskmanagement.controller;
+package com.example.springapp.controller;
 
 
 
@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.taskmanagement.model.Profile;
-import com.project.taskmanagement.repository.ProfileRepository;
-import com.project.taskmanagement.service.ProfileService;
+import com.example.springapp.model.Profile;
+import com.example.springapp.repository.ProfileRepository;
+import com.example.springapp.service.ProfileService;
 
 
 import org.springframework.core.io.Resource;

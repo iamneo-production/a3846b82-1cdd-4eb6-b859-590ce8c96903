@@ -1,4 +1,4 @@
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 
 import java.io.IOException;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.taskmanagement.model.Profile;
-import com.project.taskmanagement.repository.ProfileRepository;
-import com.project.taskmanagement.repository.UserRepository;
+import com.example.springapp.model.Profile;
+import com.example.springapp.repository.ProfileRepository;
+import com.example.springapp.repository.UserRepository;
 
 
 @Service
