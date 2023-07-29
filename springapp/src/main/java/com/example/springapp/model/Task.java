@@ -1,14 +1,11 @@
-<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/model/Task.java
-<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/model/Task.java
+
 package com.example.springapp.model;
 import java.util.Date;
 import java.util.Objects;
-=======
-package com.project.taskmanagement.model;
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d:taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
-=======
-package com.example.springapp.model;
->>>>>>> main:taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
+
+
+
+
 
 import java.time.LocalDate;
 import java.util.Set;

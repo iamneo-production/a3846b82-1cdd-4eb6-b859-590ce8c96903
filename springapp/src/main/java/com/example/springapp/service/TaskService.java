@@ -7,21 +7,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/service/TaskService.java
-<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/service/TaskService.java
 import java.util.ArrayList;
 import com.example.springapp.model.Task;
-=======
+
 import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.TaskRepository;
-=======
+
 import com.example.springapp.model.Task;
 import com.example.springapp.model.User;
 import com.example.springapp.repository.TaskRepository;
->>>>>>> main:taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
-
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d:taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
 
 @Service
 public class TaskService {
@@ -38,9 +33,6 @@ public class TaskService {
 		//	String task = authentication.getTasksByUserId();
 			return taskRepository.findByUserId(userId);
 		}
-<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/service/TaskService.java
-}
-=======
 
 		
 		
@@ -67,4 +59,3 @@ public class TaskService {
 	
 }
 
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d:taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
