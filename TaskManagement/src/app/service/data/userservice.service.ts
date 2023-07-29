@@ -10,19 +10,19 @@ export class UserserviceService{
 
   constructor(private http:HttpClient) {}
   retrieveUsers(){
-    return this.http.get<User[]>(`${API_URI}/dusers`)
+    return this.http.get<User[]>(`${API_URI}/users`)
   }
   retrieveUserById(id:any){
-    return this.http.get<User[]>(`${API_URI}/dusers/${id}`)
+    return this.http.get<User[]>(`${API_URI}/users/${id}`)
   }
   deleteUser(id:any){
-    return this.http.delete(`${API_URI}/dusers/${id}`)
+    return this.http.delete(`${API_URI}/users/${id}`)
   }
   updateUser(id:any,user:any){
-    return this.http.put(`${API_URI}/dusers/${id}`,user)
+    return this.http.put(`${API_URI}/users/${id}`,user)
   }
   createUser(user:any) {
-    return this.http.post(`${API_URI}/dusers`, user);
+    return this.http.post(`${API_URI}/users`, user);
   }
 
 

@@ -39,7 +39,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${API_URI}/dusers`);
+    return this.httpClient.get<User[]>(`${API_URI}/users`);
   }
 
 }
