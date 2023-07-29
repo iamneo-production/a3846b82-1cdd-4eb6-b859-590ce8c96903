@@ -20,11 +20,6 @@ public class CorsConfig implements WebMvcConfigurer {
 	private static final String POST = "POST";
 	private static final String DELETE = "DELETE";
 
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("https://8081-dfbdbabdfcfdedeaeaadbdbabf.project.examly.io")
-				.allowedMethods(GET, POST, PUT, DELETE).allowedHeaders("*");
-	}
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
