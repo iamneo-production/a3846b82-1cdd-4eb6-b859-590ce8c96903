@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-public class UserRepository {
-    
-=======
 package com.example.springapp.repository;
 
 import java.util.Optional;
@@ -15,5 +11,4 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByName(String name);
     User findByEmailIgnoreCase(String emailId);
     Boolean existsByEmail(String email);
->>>>>>> main
 }
