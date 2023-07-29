@@ -1,4 +1,4 @@
-package com.project.taskmanagement.model;
+package com.example.springapp.model;
 
 import java.util.Date;
 import java.util.Objects;

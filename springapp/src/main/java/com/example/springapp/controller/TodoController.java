@@ -1,8 +1,8 @@
-package com.project.taskmanagement.controller;
+package com.example.springapp.controller;
 
-import com.project.taskmanagement.service.TodoService;
-import com.project.taskmanagement.repository.TodoRepository;
-import com.project.taskmanagement.model.Todo;
+import com.example.springapp.service.TodoService;
+import com.example.springapp.repository.TodoRepository;
+import com.example.springapp.model.Todo;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

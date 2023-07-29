@@ -1,13 +1,13 @@
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
-import com.project.taskmanagement.model.ConfirmationToken;
-import com.project.taskmanagement.model.User;
-import com.project.taskmanagement.repository.ConfirmationTokenRepository;
-import com.project.taskmanagement.repository.UserRepository;
+import com.example.springapp.model.ConfirmationToken;
+import com.example.springapp.model.User;
+import com.example.springapp.repository.ConfirmationTokenRepository;
+import com.example.springapp.repository.UserRepository;
 
 
 @Service

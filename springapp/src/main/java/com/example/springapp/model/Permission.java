@@ -1,4 +1,4 @@
-package com.project.taskmanagement.model;
+package com.example.springapp.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

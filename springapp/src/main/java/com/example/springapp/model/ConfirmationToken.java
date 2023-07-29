@@ -1,4 +1,4 @@
-package com.project.taskmanagement.model;
+package com.example.springapp.model;
 
 import java.util.Date;
 import java.util.UUID;
@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import com.project.taskmanagement.service.UserServiceImpl;
+import com.example.springapp.service.UserServiceImpl;
 
 @Entity
 @Table(name="confirmationToken")

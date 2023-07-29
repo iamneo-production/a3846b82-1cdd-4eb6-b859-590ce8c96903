@@ -1,8 +1,8 @@
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.project.taskmanagement.model.User;
+import com.example.springapp.model.User;
 
 public interface UserServiceInterface {
 

@@ -1,10 +1,10 @@
 
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import com.project.taskmanagement.model.Todo;
+import com.example.springapp.model.Todo;
 import org.springframework.stereotype.Service;
 
 @Service

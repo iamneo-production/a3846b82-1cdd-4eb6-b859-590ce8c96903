@@ -1,4 +1,4 @@
-package com.project.taskmanagement.authentication;
+package com.example.springapp.authentication;
 
 import java.io.IOException;
 
@@ -13,13 +13,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-import com.project.taskmanagement.model.Role;
-import com.project.taskmanagement.model.Token;
-import com.project.taskmanagement.model.TokenType;
-import com.project.taskmanagement.model.User;
-import com.project.taskmanagement.repository.TokenRepository;
-import com.project.taskmanagement.repository.UserRepository;
-import com.project.taskmanagement.service.JwtService;
+import com.example.springapp.model.Role;
+import com.example.springapp.model.Token;
+import com.example.springapp.model.TokenType;
+import com.example.springapp.model.User;
+import com.example.springapp.repository.TokenRepository;
+import com.example.springapp.repository.UserRepository;
+import com.example.springapp.service.JwtService;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

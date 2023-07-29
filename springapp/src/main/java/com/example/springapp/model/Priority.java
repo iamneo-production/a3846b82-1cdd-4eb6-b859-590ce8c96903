@@ -1,4 +1,4 @@
-package com.project.taskmanagement.model;
+package com.example.springapp.model;
 
 public enum Priority {
 

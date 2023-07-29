@@ -1,4 +1,4 @@
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 
 import java.security.Key;
 import java.util.Date;
@@ -15,7 +15,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-
+ 
 @Service
 public class JwtService {
 
