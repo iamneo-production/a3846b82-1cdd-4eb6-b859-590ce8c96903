@@ -1,4 +1,5 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/EmailService.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Profile.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/UserService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/SpringappApplication.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/LogoutService.java
@@ -7,6 +8,7 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/UserServiceImpl.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Token.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Permission.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/ProfileService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Todo.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Status.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/TaskStatus.java
@@ -22,6 +24,7 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/TodoService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/User.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/AuthenticationService.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/ProfileController.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/UserRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/configuration/WebSecurityConfiguration.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/AuthenticationResponse.java
@@ -37,3 +40,4 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/TokenType.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/configuration/JwtAuthFilter.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/TaskRepository.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/ProfileRepository.java
