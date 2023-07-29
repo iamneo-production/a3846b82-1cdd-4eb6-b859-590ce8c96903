@@ -154,9 +154,8 @@ public class TaskController {
 
     @GetMapping("/todo-count")
     public Long getTodoTaskCount() {
-        return taskRepository.countByStatus(TaskStatus.TODO);
+       return taskRepository.countByStatus(TaskStatus.TODO);
     }
-
     // Count Inprogress tasks
     @GetMapping("/inprogress-count")
     public Long getInProgressTaskCount() {
