@@ -1,0 +1,113 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<div class="container profile">
+  <div class="image-container">
+    <h2>PROFILE</h2>
+    <div class="profile-picture">
+      <img [src]="getUserImageUrl()" title="Profile Picture" height="150px" width="150px" alt="image" />
+
+      <input type="file" id="image" style="display: none"  (change)="onSelect($event)" >
+      <label class="uploadbtn" for="image">
+        <fa-icon [icon]="faCamera" size="lg"></fa-icon>
+      </label>
+    </div>
+
+    <div *ngIf="isEditMode">
+      <button class="btn btn-link remove-image-btn" *ngIf="user.image && user.imagePath" (click)="removeImage()">
+        <fa-icon [icon]="faTrashAlt" ></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <form #myForm="ngForm" class="form-container">
+    <div class="form-column">
+      
+
+
+      <div class="form-group">
+        <label for="name">
+          <fa-icon [icon]="faUser"></fa-icon> User Name:
+        </label>
+
+        <div class="user-field">
+          <input type="text" name="name" class="form-control" [(ngModel)]="user.name" required
+            [disabled]="!isEditMode" #nameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="6"
+            maxlength="30"
+            [ngClass]="{ 'is-invalid': nameField.invalid && (nameField.touched || nameField.dirty) }">
+        </div>
+
+        <div *ngIf="nameField.invalid && (nameField.touched || !nameField.touched)" class="text-danger">
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('required')">
+            User Name is required.
+          </ng-container>
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('pattern')">
+            Enter a valid User Name.
+          </ng-container>
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('minlength')">
+            User Name should be at least 6 characters long.
+          </ng-container>
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('maxlength')">
+            User Name cannot exceed 30 characters.
+          </ng-container>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">
+          <fa-icon [icon]="faEnvelope"></fa-icon> Email ID:
+        </label>
+        <div class="email">
+          <input type="email" name="email" class="form-control" [(ngModel)]="user.email" required [disabled]="!isEditMode"
+            #emailField="ngModel"
+            pattern="[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}"
+            [ngClass]="{ 'is-invalid': emailField.invalid && (emailField.touched || emailField.dirty) }">
+        </div>
+        <div *ngIf="emailField.invalid && (emailField.touched || !emailField.touched)" class="text-danger">
+          <ng-container *ngIf="emailField.errors?.hasOwnProperty('required')">
+            Email is required.
+          </ng-container>
+          <ng-container *ngIf="emailField.errors?.hasOwnProperty('pattern')">
+            Enter a valid Email ID.
+          </ng-container>
+        </div>
+      </div>
+		
+
+      <div class="form-group">
+        <label for="Role">
+          <fa-icon [icon]="faUser"></fa-icon> Role:
+        </label>
+        <div class="user-field">
+          <select name="Role" class="form-control" [(ngModel)]="user.role" required [disabled]="!isEditMode" #userField="ngModel">
+            <option value="USER">User</option>
+            <option value="TEAMLEADER">Team Lead</option>
+            
+          </select>
+        </div>
+        <div *ngIf="userField.invalid && (userField.touched || !userField.touched)" class="text-danger">
+          <ng-container *ngIf="userField.errors?.hasOwnProperty('required')">
+            Role is required.
+          </ng-container>
+        </div>
+      </div>
+
+    </div>
+
+    
+  </form>
+  
+  
+      
+
+      <button class="btn btn-primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</button>
+
+      <button class="btn btn-success" *ngIf="isEditMode" [disabled]="myForm.invalid"
+        (click)="saveChanges()">Save Changes</button>
+  
+      
+</div>
+ 
