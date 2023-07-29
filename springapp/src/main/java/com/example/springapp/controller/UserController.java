@@ -42,18 +42,18 @@ public class UserController {
         return userServiceIn.confirmEmail(confirmationToken);
     }
 
-	@GetMapping("/dusers")
+	@GetMapping("/users")
 	public List<User> returnAll(){
 		return userrepository.findAll();
 	}
 
-	@GetMapping("/dusers/{id}")
+	@GetMapping("/users/{id}")
 	public User getUserById(@PathVariable Long id){
 		Optional<User> optionaluser = userrepository.findById(id);
 		return optionaluser.orElse(null);
 	}
 
-	@DeleteMapping("/dusers/{id}")
+	@DeleteMapping("/users/{id}")
 	public ResponseEntity<Void> deleteUser(@PathVariable Long id){
 		if (userrepository.existsById(id)){
 			userrepository.deleteById(id);
@@ -62,7 +62,7 @@ public class UserController {
 		return ResponseEntity.notFound().build();
 	}
 
-	@PutMapping("/dusers/{id}")
+	@PutMapping("/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         Optional<User> optionalUser = userrepository.findById(id);
         if (optionalUser.isPresent()) {
@@ -78,7 +78,7 @@ public class UserController {
         }
     }
 	
-	@PostMapping("/dusers")
+	@PostMapping("/users")
     public ResponseEntity<Void> createUser(@RequestBody User user) {
         User createdUser = userrepository.save(user);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

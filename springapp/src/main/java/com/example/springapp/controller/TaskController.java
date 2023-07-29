@@ -29,34 +29,10 @@ import com.example.springapp.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d:taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java
+
 @RestController
 @RequiredArgsConstructor
 public class TaskController {
-<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/controller/TaskController.java
-	@Autowired
-	public TaskService taskservice;
-	
-	@GetMapping("/tasks")
-	public List<Task> retrieveAllTasks(){
-		return taskservice.findTasks();
-	}
-	@GetMapping("/users/{username}/tasks/{id}")
-	public Task getTaskById(@PathVariable String username,@PathVariable long id){
-		return taskservice.findById(id);
-	}
-	@DeleteMapping("/{username}/dtasks/{id}")//We can either give success or no content-choosing
-	//Response entity enables us to get specific status back
-	public ResponseEntity<Void> deleteTask(@PathVariable String username,
-			@PathVariable long id){
-		Task task=taskservice.deleteById(id);
-		if(task!=null) {
-			return ResponseEntity.noContent().build();
-		}
-		return ResponseEntity.notFound().build();
-	}
-}
-=======
 
     private final TaskService taskService;
 
@@ -200,4 +176,3 @@ public class TaskController {
     }
 
 }
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d:taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java
