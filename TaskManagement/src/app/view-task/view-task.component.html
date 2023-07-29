@@ -1,0 +1,172 @@
+<div class="main-body" >
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="Task List" (click)="toggleTables(true)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Task List</mat-button-toggle>
+    <mat-button-toggle value="Assign Task List" (click)="toggleTables(false)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Assign Task List</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <br><br>
+    
+  <mat-toolbar color="primary" *ngIf="showTaskList">
+    <span > ✔ Task List</span>
+    <span class="todo"></span>
+    <button mat-raised-button><a (click)="createNewTask()" class="nav-link" style="text-decoration: none; color: black;">
+       ADD NEW TASK</a>
+    </button>
+  </mat-toolbar>
+<body>
+  <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
+
+    <div class="row">
+    <!--Sorting-->
+
+      <mat-form-field >
+        <mat-label>Sort by</mat-label>
+        <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
+          <mat-option value="id">ID</mat-option>
+          <mat-option value="taskname">Task Name</mat-option>
+          <mat-option value="status">Status</mat-option>
+          <mat-option value="priority">Priority</mat-option>
+          <mat-option value="duedate">Due Date</mat-option>
+        </mat-select>
+      </mat-form-field >
+      
+      <!-- Filter by Status -->
+      <mat-form-field >
+        <mat-label>Filter by Status</mat-label>
+        <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
+          <mat-option [value]="'All'">All</mat-option>
+          <mat-option [value]="'DONE'">DONE</mat-option>
+          <mat-option [value]="'TODO'">TODO</mat-option>
+          <mat-option [value]="'IN_PROGRESS'">IN_PROGRESS</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Search" [(ngModel)]="searchTerm" (input)="filterTodos()">
+      </mat-form-field>
+    </div>
+   
+    <table class="table">
+      
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Due Date</th>
+                <th>Actions </th>
+                
+            </tr>        
+        </thead>
+        <tbody>
+           <tr *ngFor="let Todo of filteredTodo">
+                <td>{{Todo.name}}</td>
+                <td>{{Todo.description}}</td>
+                <td>{{Todo.status}}</td>
+                <td>{{Todo.priority}}</td>
+                <td>{{Todo.dueDate | date | uppercase}}</td>
+                <td>
+                  <button mat-stroked-button (click)="updateStatus(Todo.id)">Update Status</button>
+
+                <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+          
+                <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>  
+                <button mat-icon-button color="primary" (click)="viewTask(Todo.id)">
+                  <mat-icon>visibility</mat-icon>
+                </button>  
+                <button mat-stroked-button (click)="assignTask(Todo.id)" *ngIf="userService.matchRoles(['TEAMLEADER'])">Assign Task</button>
+              </td>
+            </tr>
+       </tbody>
+    </table>
+  </div>
+</body>
+
+<div *ngIf="userService.matchRoles(['TEAMLEADER'])">
+ 
+  <mat-toolbar color="primary" *ngIf="showAssignTaskList ">
+    <span > ✔ Assign Task List</span>
+    <span class="todo"></span>
+    <button mat-raised-button><a routerLink="/tasks" class="nav-link" style="text-decoration: none; color: black;">
+      ADD NEW TASK</a>
+   </button>
+  </mat-toolbar>
+  
+<body>
+
+  <div class="container-md p-3 my-3 border" *ngIf="showAssignTaskList">
+ 
+    <div class="row">
+      <!--Sorting-->
+        <mat-form-field>
+          <mat-label>Sort by</mat-label>
+          <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
+            <mat-option value="id">ID</mat-option>
+            <mat-option value="taskname">Task Name</mat-option>
+            <mat-option value="status">Status</mat-option>
+            <mat-option value="priority">Priority</mat-option>
+            <mat-option value="duedate">Due Date</mat-option>
+            <mat-option value="teammember">Team Members</mat-option>
+          </mat-select>
+        </mat-form-field >
+        <!-- Filter by Status -->
+        <mat-form-field >
+          <mat-label>Filter by Status</mat-label>
+          <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTodos()">
+            <mat-option [value]="'All'">All</mat-option>
+            <mat-option [value]="'DONE'">DONE</mat-option>
+            <mat-option [value]="'TODO'">TODO</mat-option>
+            <mat-option [value]="'IN_PROGRESS'">IN_PROGRESS</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Search" [(ngModel)]="searchTerm" (input)="filterTodos()">
+        </mat-form-field>
+      </div>
+
+    <table class="table">
+      <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Team Members</th>
+            <th>Actions </th>
+          </tr>        
+      </thead>
+      <tbody>
+         <tr *ngFor="let Todo of filteredTodo">
+              <td>{{Todo.name}}</td>
+              <td>{{Todo.description}}</td>
+              <td>{{Todo.status}}</td>
+              <td>{{Todo.priority}}</td>
+              <td>{{Todo.dueDate | date | uppercase}}</td>
+              <td>{{Todo.teamMembers}}</td>
+             
+              <td>
+               
+                <button mat-stroked-button (click)="updateStatus(Todo.id)">Update Status</button>
+               
+              <button mat-icon-button  color="primary" (click)="updateTodo(Todo.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteTodo(Todo.id)">
+                <mat-icon>delete</mat-icon>
+              </button>  
+              <button mat-icon-button color="primary">
+                <mat-icon  (click)="viewTask(Todo.id)"> visibility</mat-icon>
+              </button>  
+              </td>  
+          </tr>
+     </tbody>
+  </table>
+</div>
+  
+</body>

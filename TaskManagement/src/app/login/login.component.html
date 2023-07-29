@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="container">
+    <img src="assets/imaglogin/Page r.jpg">
+    <div class="login">
+      <h1 class="title"><strong>Login</strong></h1>
+      
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <input type="text"
+        ngModule
+        name="name"
+        id="name"
+        [(ngModel)]="formdata.name"
+        placeholder="Username"
+        class="form-control mb-3" >
+
+        <input type="password"
+        ngModule
+        name="password"
+        id="password"
+        [(ngModel)]="formdata.password"
+        placeholder="Password"
+        class="form-control mb-3">
+
+        <input type="submit"
+         value="Login"
+         class="btn btn-outline-primary form-control"
+        >
+      </form> 
+<br>
+      <div class="create">
+        <a ><strong>New User? Sign Up</strong></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
