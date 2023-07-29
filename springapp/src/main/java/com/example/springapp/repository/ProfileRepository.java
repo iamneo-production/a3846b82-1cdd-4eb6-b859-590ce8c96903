@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 
-import com.project.taskmanagement.model.Profile;
+import com.example.springapp.model.Profile;
 
 @Repository
 public interface ProfileRepository extends CrudRepository <Profile,Long>{
