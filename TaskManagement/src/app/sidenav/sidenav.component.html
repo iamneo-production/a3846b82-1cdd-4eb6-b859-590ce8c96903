@@ -25,12 +25,8 @@
         <a routerLink="/signup" class="nav-link" mat-list-item *ngIf="!isLoggedIn()"><button
             mat-button>Signup</button></a>
       </button>
-      
-      <button mat-icon-button *ngIf="isLoggedIn()">
-        <mat-icon>notifications</mat-icon>
-      </button>
-      
 
+      <!--account icon-->
       <button mat-icon-button [matMenuTriggerFor]="beforeMenu" *ngIf="isLoggedIn()">
         <mat-icon>account_circle</mat-icon></button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
