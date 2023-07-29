@@ -4,14 +4,16 @@ import { UserAuthService } from './user-auth.service';
 import { User } from './User';
 import { Observable } from 'rxjs';
 import { API_URI } from 'src/app/app-constant';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   requestHeader = new HttpHeaders(
     {
-      "NO_AUTH": "True"  // means that this end point doest need any authentication
+      "NO_AUTH": "True"  
     }
   );
 
@@ -23,7 +25,7 @@ export class UserService {
   }
 
   registerUser(SignupData: any): Observable<any> {
-    return this.httpClient.post<any>(`${API_URI}/auth/register`, SignupData);
+    return this.httpClient.post<any>(`${API_URI}/auth/register`, SignupData, { headers: this.requestHeader });
   }
 
   //roles
@@ -37,7 +39,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${API_URI}/dusers`);
+    return this.httpClient.get<User[]>(`${API_URI}/users`);
   }
 
 }
