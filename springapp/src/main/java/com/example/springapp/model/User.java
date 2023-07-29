@@ -1,47 +1,114 @@
 package com.example.springapp.model;
+
+import java.util.Collection;
 import java.util.List;
-import com.example.springapp.model.Task;
-public class User {
-    private int id;
-    private String name;
-    private String email;
-    private List<Task> tasks;
+import java.util.Set;
 
-    
-    public User(int id, String name, String email, List<Task> tasks) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.tasks = tasks;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public List<Task> getTasks() {
-        return tasks;
-    }
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-    @Override
-    public String toString() {
-        return "User [email=" + email + ", id=" + id + ", name=" + name + ", tasks=" + tasks + "]";
-    }
+import javax.persistence.Column;
+import java.util.Date;
+import java.util.Objects;
 
-    
+import javax.management.relation.RoleInfo;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="user")
+public class User implements UserDetails{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(
+			name="user_name",
+			nullable=false,
+			unique = true
+		)
+	private String name;
+	
+	@Column(
+			name="email",
+			nullable=false
+		)
+	private String email;
+	
+	@Column(
+			name="password",
+			nullable=false
+		)
+	private String password;
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
+	
+	@OneToMany
+	private List<Token> token;
+	
+	@OneToMany(mappedBy="user")
+	@JsonIgnore
+	private List<Task> tasks;
+	
+	@ManyToMany(mappedBy = "teamMembers")
+	@JsonIgnore
+	private Set<Task> task;
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return role.getAuthorities();
+	}
+
+	
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }
