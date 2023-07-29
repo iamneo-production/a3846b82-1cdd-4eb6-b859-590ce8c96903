@@ -1,0 +1,10 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+::-webkit-scrollbar
+{
+  display: none;
+}
+
+body{
+    font-family: 'Poppins',sans-serif;
+}
