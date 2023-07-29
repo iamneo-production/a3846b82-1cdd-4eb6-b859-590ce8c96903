@@ -21,10 +21,16 @@ public class CorsConfig implements WebMvcConfigurer {
 	private static final String DELETE = "DELETE";
 
 
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**").allowedOrigins("https://8081-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io")
+				.allowedMethods(GET, POST, PUT, DELETE).allowedHeaders("*");
+	}
+
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://8081-dfbdbabdfcfdedefaedfbdbebed.project.examly.io"));
+		configuration.setAllowedOrigins(Arrays.asList("https://8081-fcbffbbeecddfcfdedeaeaadbdbabf.project.examly.io"));
 		configuration.setAllowedMethods(Arrays.asList(GET, POST, PUT, DELETE, "OPTIONS"));
 		configuration.setAllowedHeaders(Arrays.asList("*"));
 		configuration.setAllowCredentials(true);
