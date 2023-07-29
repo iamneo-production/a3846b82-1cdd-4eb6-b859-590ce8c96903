@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; 
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container h1 {
+    font-size: 36px; 
+  }
+
+  .divider {
+    width: 100px;
+    height: 2px;
+    background-color: black;
+    margin: 10px 0;
+  }
