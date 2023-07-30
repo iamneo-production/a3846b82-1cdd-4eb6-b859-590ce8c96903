@@ -30,7 +30,6 @@ import com.example.springapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
 public class TaskController {
 
     private final TaskService taskService;
