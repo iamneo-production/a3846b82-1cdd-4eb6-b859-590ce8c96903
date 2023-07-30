@@ -1,4 +1,4 @@
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,7 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Service;
 
-import com.project.taskmanagement.repository.TokenRepository;
+import com.example.springapp.repository.TokenRepository;
 
 import lombok.RequiredArgsConstructor;
 

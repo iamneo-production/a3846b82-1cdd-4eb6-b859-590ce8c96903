@@ -1,17 +1,17 @@
-package com.project.taskmanagement.model;
+package com.example.springapp.model;
 
-import static com.project.taskmanagement.model.Permission.ADMIN_CREATE;
-import static com.project.taskmanagement.model.Permission.ADMIN_DELETE;
-import static com.project.taskmanagement.model.Permission.ADMIN_READ;
-import static com.project.taskmanagement.model.Permission.ADMIN_UPDATE;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_CREATE;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_DELETE;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_READ;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_UPDATE;
-import static com.project.taskmanagement.model.Permission.USER_CREATE;
-import static com.project.taskmanagement.model.Permission.USER_DELETE;
-import static com.project.taskmanagement.model.Permission.USER_READ;
-import static com.project.taskmanagement.model.Permission.USER_UPDATE;
+import static com.example.springapp.model.Permission.ADMIN_CREATE;
+import static com.example.springapp.model.Permission.ADMIN_DELETE;
+import static com.example.springapp.model.Permission.ADMIN_READ;
+import static com.example.springapp.model.Permission.ADMIN_UPDATE;
+import static com.example.springapp.model.Permission.TEAMLEADER_CREATE;
+import static com.example.springapp.model.Permission.TEAMLEADER_DELETE;
+import static com.example.springapp.model.Permission.TEAMLEADER_READ;
+import static com.example.springapp.model.Permission.TEAMLEADER_UPDATE;
+import static com.example.springapp.model.Permission.USER_CREATE;
+import static com.example.springapp.model.Permission.USER_DELETE;
+import static com.example.springapp.model.Permission.USER_READ;
+import static com.example.springapp.model.Permission.USER_UPDATE;
 
 import java.util.List;
 import java.util.Set;

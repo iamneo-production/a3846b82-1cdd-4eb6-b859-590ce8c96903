@@ -1,10 +1,14 @@
 <<<<<<< HEAD:springapp/src/main/java/com/example/springapp/model/Task.java
+<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/model/Task.java
 package com.example.springapp.model;
 import java.util.Date;
 import java.util.Objects;
 =======
 package com.project.taskmanagement.model;
 >>>>>>> 684de78033cc6c0e754351d60f9fbbb413ba9c05:taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
+=======
+package com.example.springapp.model;
+>>>>>>> main:taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,6 +25,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -76,8 +81,7 @@ public class Task {
 	@JsonIgnore
 	private User user;
 	
-	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
         name = "team_member",
         joinColumns = @JoinColumn(name = "task_id"),
@@ -85,6 +89,5 @@ public class Task {
     )
 	@JsonIgnore
     private Set<User> teamMembers;
-
 }
 

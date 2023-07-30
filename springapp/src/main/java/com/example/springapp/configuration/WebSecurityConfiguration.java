@@ -1,20 +1,20 @@
-package com.project.taskmanagement.configuration;
+package com.example.springapp.configuration;
 
-import static com.project.taskmanagement.model.Permission.ADMIN_CREATE;
-import static com.project.taskmanagement.model.Permission.ADMIN_DELETE;
-import static com.project.taskmanagement.model.Permission.ADMIN_READ;
-import static com.project.taskmanagement.model.Permission.ADMIN_UPDATE;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_READ;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_CREATE;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_DELETE;
-import static com.project.taskmanagement.model.Permission.TEAMLEADER_UPDATE;
-import static com.project.taskmanagement.model.Permission.USER_CREATE;
-import static com.project.taskmanagement.model.Permission.USER_DELETE;
-import static com.project.taskmanagement.model.Permission.USER_READ;
-import static com.project.taskmanagement.model.Permission.USER_UPDATE;
-import static com.project.taskmanagement.model.Role.ADMIN;
-import static com.project.taskmanagement.model.Role.TEAMLEADER;
-import static com.project.taskmanagement.model.Role.USER;
+import static com.example.springapp.model.Permission.ADMIN_CREATE;
+import static com.example.springapp.model.Permission.ADMIN_DELETE;
+import static com.example.springapp.model.Permission.ADMIN_READ;
+import static com.example.springapp.model.Permission.ADMIN_UPDATE;
+import static com.example.springapp.model.Permission.TEAMLEADER_READ;
+import static com.example.springapp.model.Permission.TEAMLEADER_CREATE;
+import static com.example.springapp.model.Permission.TEAMLEADER_DELETE;
+import static com.example.springapp.model.Permission.TEAMLEADER_UPDATE;
+import static com.example.springapp.model.Permission.USER_CREATE;
+import static com.example.springapp.model.Permission.USER_DELETE;
+import static com.example.springapp.model.Permission.USER_READ;
+import static com.example.springapp.model.Permission.USER_UPDATE;
+import static com.example.springapp.model.Role.ADMIN;
+import static com.example.springapp.model.Role.TEAMLEADER;
+import static com.example.springapp.model.Role.USER;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
@@ -53,8 +53,8 @@ public class WebSecurityConfiguration {
 		.csrf().disable()
 		.cors()
 		.and()
-		//.authorizeHttpRequests().antMatchers("/**").permitAll()
-		.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
+		.authorizeHttpRequests().antMatchers("/**").permitAll()
+		/* .authorizeHttpRequests().antMatchers("/auth/**").permitAll()
 		.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAMLEADER.name())
 		.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
 		.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
@@ -66,7 +66,7 @@ public class WebSecurityConfiguration {
 		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_UPDATE.name())
 		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_CREATE.name())
 		.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_DELETE.name())
-
+*/
 		.anyRequest() 
 		.authenticated()
 		.and()
@@ -88,4 +88,3 @@ public class WebSecurityConfiguration {
 	}
 
 }
-

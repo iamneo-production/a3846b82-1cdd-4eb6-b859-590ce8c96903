@@ -13,13 +13,12 @@
        ADD NEW TASK</a>
     </button>
   </mat-toolbar>
-
 <body>
-
   <div class="container-md p-3 my-3 border" *ngIf="showTaskList">
 
     <div class="row">
     <!--Sorting-->
+
       <mat-form-field >
         <mat-label>Sort by</mat-label>
         <mat-select #sortSelect (selectionChange)="sortTodos(sortSelect.value)">
@@ -30,6 +29,7 @@
           <mat-option value="duedate">Due Date</mat-option>
         </mat-select>
       </mat-form-field >
+      
       <!-- Filter by Status -->
       <mat-form-field >
         <mat-label>Filter by Status</mat-label>
@@ -111,7 +111,6 @@
             <mat-option value="status">Status</mat-option>
             <mat-option value="priority">Priority</mat-option>
             <mat-option value="duedate">Due Date</mat-option>
-            <mat-option value="teammember">Team Members</mat-option>
           </mat-select>
         </mat-form-field >
         <!-- Filter by Status -->
@@ -137,7 +136,6 @@
             <th>Status</th>
             <th>Priority</th>
             <th>Due Date</th>
-            <th>Team Members</th>
             <th>Actions </th>
           </tr>        
       </thead>
@@ -148,7 +146,6 @@
               <td>{{Todo.status}}</td>
               <td>{{Todo.priority}}</td>
               <td>{{Todo.dueDate | date | uppercase}}</td>
-              <td>{{Todo.teamMembers}}</td>
              
               <td>
                

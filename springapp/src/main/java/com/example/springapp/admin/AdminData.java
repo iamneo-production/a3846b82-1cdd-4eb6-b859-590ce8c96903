@@ -1,11 +1,11 @@
-package main.java.com.project.taskmanagement.admin;
+package main.example.springapp.admin;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.project.taskmanagement.model.Role;
-import com.project.taskmanagement.model.User;
-import com.project.taskmanagement.repository.UserRepository;
+import com.example.springapp.model.Role;
+import com.example.springapp.model.User;
+import com.example.springapp.repository.UserRepository;
 import org.springframework.stereotype.Component;
 import lombok.RequiredArgsConstructor;
 

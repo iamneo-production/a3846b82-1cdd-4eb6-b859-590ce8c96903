@@ -1,4 +1,4 @@
-package com.project.taskmanagement.model;
+package com.example.springapp.model;
 
 import java.util.Collection;
 import java.util.List;
@@ -60,6 +60,18 @@ public class User implements UserDetails{
 			nullable=false
 		)
 	private String password;
+
+	@Column(name = "image_path") // New field for storing the image path
+    private String imagePath;
+	
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -79,6 +91,7 @@ public class User implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return role.getAuthorities();
 	}
+
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub

@@ -1,12 +1,12 @@
-package com.project.taskmanagement.service;
+package com.example.springapp.service;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import com.project.taskmanagement.model.Status;
-import com.project.taskmanagement.model.Role;
-import com.project.taskmanagement.model.User;
-import com.project.taskmanagement.model.Task;
-import com.project.taskmanagement.repository.UserRepository;
+import com.example.springapp.model.Status;
+import com.example.springapp.model.Role;
+import com.example.springapp.model.User;
+import com.example.springapp.model.Task;
+import com.example.springapp.repository.UserRepository;
 
 
 import org.springframework.stereotype.Service;

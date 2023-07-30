@@ -1,4 +1,4 @@
-package com.project.taskmanagement.authentication;
+package com.example.springapp.authentication;
 
 import java.io.IOException;
 

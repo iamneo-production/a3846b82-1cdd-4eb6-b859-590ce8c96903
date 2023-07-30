@@ -8,12 +8,18 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 <<<<<<< HEAD:springapp/src/main/java/com/example/springapp/service/TaskService.java
+<<<<<<< HEAD:springapp/src/main/java/com/example/springapp/service/TaskService.java
 import java.util.ArrayList;
 import com.example.springapp.model.Task;
 =======
 import com.project.taskmanagement.model.Task;
 import com.project.taskmanagement.model.User;
 import com.project.taskmanagement.repository.TaskRepository;
+=======
+import com.example.springapp.model.Task;
+import com.example.springapp.model.User;
+import com.example.springapp.repository.TaskRepository;
+>>>>>>> main:taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
 
 >>>>>>> 684de78033cc6c0e754351d60f9fbbb413ba9c05:taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
 

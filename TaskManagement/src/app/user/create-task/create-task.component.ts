@@ -37,9 +37,7 @@ export class CreateTaskComponent implements OnInit {
  //priority from enum
  taskPriority = Object.values(Priority);
 
- //selected members
- selectedMembers: User[]=[];
- id !: number | null;
+  id !: number | null;
 
 
 

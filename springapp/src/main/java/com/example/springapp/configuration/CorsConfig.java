@@ -1,4 +1,4 @@
-package com.project.taskmanagement.configuration;
+package com.example.springapp.configuration;
 
 import java.util.Arrays;
 
@@ -20,16 +20,17 @@ public class CorsConfig implements WebMvcConfigurer {
 	private static final String POST = "POST";
 	private static final String DELETE = "DELETE";
 
+
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io")
+		registry.addMapping("/**").allowedOrigins("https://8080-ebfbfabcfcfdedefaedfbdbebed.project.examly.io")
 				.allowedMethods(GET, POST, PUT, DELETE).allowedHeaders("*");
 	}
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://8081-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io"));
+		configuration.setAllowedOrigins(Arrays.asList("https://8080-ebfbfabcfcfdedefaedfbdbebed.project.examly.io"));
 		configuration.setAllowedMethods(Arrays.asList(GET, POST, PUT, DELETE, "OPTIONS"));
 		configuration.setAllowedHeaders(Arrays.asList("*"));
 		configuration.setAllowCredentials(true);
@@ -39,3 +40,13 @@ public class CorsConfig implements WebMvcConfigurer {
 		return source;
 	}
 }
+
+
+
+
+
+
+
+
+
+
