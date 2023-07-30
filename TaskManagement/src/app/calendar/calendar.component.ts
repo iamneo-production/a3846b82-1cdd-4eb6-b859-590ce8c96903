@@ -1,22 +1,34 @@
-import { Component } from '@angular/core';
-import {ChangeDetectionStrategy,ViewChild,TemplateRef,OnInit,} from '@angular/core';
-import {startOfDay,endOfDay,subDays,addDays,endOfMonth,isSameDay,isSameMonth,addHours,} from 'date-fns';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import {
+  startOfDay,
+  endOfDay,
+  subDays,
+  addDays,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  addHours,
+} from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent,CalendarView,} from 'angular-calendar';
-import { EventColor } from 'calendar-utils';
-import { CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent,
+  CalendarView,
+} from 'angular-calendar';
+import { TodoDataService } from '../service/todo/todo-data.service';
+import { Task } from 'src/app/view-task/view-task.component';
 
 @Component({
   selector: 'app-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
 })
-export class CalendarComponent implements OnInit{
-  ngOnInit(): void {
-
-  }
+export class CalendarComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
@@ -29,7 +41,6 @@ export class CalendarComponent implements OnInit{
     action: string;
     event: CalendarEvent;
   };
-
 
   actions: CalendarEventAction[] = [
     {
@@ -51,45 +62,51 @@ export class CalendarComponent implements OnInit{
 
   refresh = new Subject<void>();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      //color: { ...colors.red },
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      //color: { ...colors.yellow },
-      actions: this.actions,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      //color: colors.red,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  events: CalendarEvent<any>[] = [];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private todoService: TodoDataService,
+    private datePipe: DatePipe 
+  ) {}
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+  ngOnInit(): void {
+    this.retrieveAllTodos();
+  }
+
+  userId:number;
+  
+  retrieveAllTodos() {
+    this.todoService.retrieveAllTodos(this.userId).subscribe(
+      (todos: Task[]) => {
+        this.events = todos.map((todo) => ({
+          title: todo.name,
+          start: new Date(todo.dueDate),
+          end: new Date(this.datePipe.transform(todo.dueDate, 'yyyy-MM-dd')), // Keep the end property as a Date object
+          actions: this.actions,
+          resizable: {
+            beforeStart: true,
+            afterEnd: true,
+          },
+          draggable: true,
+        }));
+        this.refresh.next();
+      },
+      (error) => {
+        console.error('Error fetching tasks:', error);
+      }
+    );
+  }
+
+  dayClicked({
+    date,
+    events,
+  }: {
+    date: Date;
+    events: CalendarEvent[];
+  }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -123,7 +140,7 @@ export class CalendarComponent implements OnInit{
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modalService.open(this.modalContent, { size: 'lg' });
   }
 
   addEvent(): void {

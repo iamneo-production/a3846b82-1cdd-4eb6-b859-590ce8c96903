@@ -6,3 +6,26 @@
 .todo{
     flex: 1 1 auto;
 }
+.container {
+    width: 650px;
+}
+
+/* Custom CSS for table alignment */
+.custom-table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-collapse: collapse;
+}
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.custom-table th {
+  background-color: #f0f0f0;
+}
