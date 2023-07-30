@@ -1,0 +1,38 @@
+<body>
+  <h2 class="heading">Report</h2>
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Total Tasks</h2>
+          <h1 class="pending">{{ completedTaskCount }}</h1>
+          <p><button class="button" [routerLink]="['/taskmanagement/completed']">View Completed Tasks</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">TODO Tasks</h2>
+          <h1 class="pending">{{ todoTaskCount }}</h1>
+          <p><button class="button" [routerLink]="['/taskmanagement/pending']">View Pending Tasks</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Completed tasks</h2>
+          <h1 class="overdue">{{ doneTaskCount }}</h1>
+          <p><button class="button" [routerLink]="['/taskmanagement/overdue']">View Overdue Tasks</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="print">
+    <button (click)="printPage()">Print Report</button>
+  </div>
+
+</body>
