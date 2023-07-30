@@ -1,6 +1,7 @@
 package com.example.springapp.model;
 import java.util.Date;
 import java.util.Objects;
+<<<<<<< HEAD
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -31,6 +32,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="tasks")
+=======
+
+>>>>>>> parent of c83de8e (changed)
 public class Task {
 	private String taskdescription;
 	private String taskname;
@@ -102,6 +106,7 @@ public class Task {
 	}
 	
 	
+<<<<<<< HEAD
 	@Enumerated(EnumType.STRING)
 	private Priority priority;
 	
@@ -119,4 +124,6 @@ public class Task {
     )
 	@JsonIgnore
     private Set<User> teamMembers;
+=======
+>>>>>>> parent of c83de8e (changed)
 }
