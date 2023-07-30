@@ -62,10 +62,17 @@ export class SignupComponent implements OnInit {
       return; 
     }
     this.userService.registerUser(this.signupForm.value).subscribe(
-      (data) => {  
-        console.log(this.signupForm.value);
+      (response) => {
+        // Handle success response
+        console.log(response);
+        // Redirect to success page or show success message
         this.router.navigate(['/verification']);
-      }
-    );
-  }
+      },
+      (error: any) => {
+        // Handle error response
+        this.router.navigate(['/verification']);
+        console.error(error);
+        // Show error message to the user
+  })
+}
 }

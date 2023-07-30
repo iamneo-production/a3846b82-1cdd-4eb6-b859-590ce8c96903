@@ -38,10 +38,8 @@ public class UserServiceImpl implements UserServiceInterface {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("To confirm your account, please click here: "
-        + "http://localhost:4200/verify-account"
-        + "<br/>"
-        + "OTP : " + confirmationToken.getConfirmationToken());
+        mailMessage.setText("To confirm your account, please enter the OTP: "
+        + "\n\nOTP: " + confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());

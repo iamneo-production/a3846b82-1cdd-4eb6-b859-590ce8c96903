@@ -1,0 +1,5 @@
+com/example/springapp/controller/TaskController.class
+com/example/springapp/SpringappApplication.class
+com/example/springapp/service/TaskService.class
+com/example/springapp/model/Task.class
+com/example/springapp/repository/TaskRepository.class
