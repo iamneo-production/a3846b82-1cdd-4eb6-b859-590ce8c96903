@@ -10,9 +10,9 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Todo.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Status.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/TaskStatus.java
-/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/RegisterRequest.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/TaskService.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/configuration/CorsConfig.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/ConfirmationTokenRespository.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/TokenRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/UserController.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/Task.java
@@ -27,11 +27,11 @@
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/AuthenticationResponse.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/admin/AdminData.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/TodoRepository.java
+/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/ResgisterRequest.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/service/UserServiceInterface.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/ConfirmationToken.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/security/SpringSecurityConfiguration.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/AuthenticationController.java
-/home/coder/project/workspace/springapp/src/main/java/com/example/springapp/repository/ConfirmationTokenRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/controller/TodoController.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/authentication/AuthenticationRequest.java
 /home/coder/project/workspace/springapp/src/main/java/com/example/springapp/model/TokenType.java
