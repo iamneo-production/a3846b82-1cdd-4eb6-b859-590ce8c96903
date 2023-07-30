@@ -1,0 +1,59 @@
+
+   h1{
+       padding-top: 20px;
+       text-align: center;
+   }
+   
+   .forms{
+       padding-left:50px ;
+       padding-right: 50px;
+   }
+   
+   table {
+       border-collapse: collapse;
+      
+     }
+   
+   th {
+       color: #333;
+       padding: 10px;
+       text-align: center; 
+       background-color: #f5f5f5;
+   }
+   
+   td {
+       border-bottom: 1px solid #ddd;
+       padding: 10px;
+   }
+   
+   .text-color{
+       color: #6c6c6c;
+   }
+   
+   .required-indicator{
+       color: red;
+   }
+   
+   .content{
+       width: 70%;
+   }
+   .container{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     padding-bottom: 20px;
+     width: 50vw;
+     height: 120vh;
+     display: grid;
+     grid-template-columns: 100%;
+     border-radius: 5px;
+     background: white;
+     overflow: hidden;
+     
+   }
+   
+   .spacing{
+       margin-right: 10px;
+   }
+   

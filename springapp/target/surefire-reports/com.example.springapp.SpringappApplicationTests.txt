@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.example.springapp.SpringappApplicationTests
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 13.713 s <<< FAILURE! - in com.example.springapp.SpringappApplicationTests
 testGetTaskAll  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
@@ -42,3 +43,6 @@ java.lang.IllegalStateException: Failed to load ApplicationContext
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskRepository' defined in com.example.springapp.repository.TaskRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Not a managed type: class com.example.springapp.model.Task
 Caused by: java.lang.IllegalArgumentException: Not a managed type: class com.example.springapp.model.Task
 
+=======
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.816 s - in com.example.springapp.SpringappApplicationTests
+>>>>>>> 29511dcd9eda291c9fb2860a00bdb7631e6cd841
