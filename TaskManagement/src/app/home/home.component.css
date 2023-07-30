@@ -1,0 +1,37 @@
+.container {
+    width: 65vw;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "login";
+    border-radius: 5px;
+    background: white;
+    overflow: hidden;
+    margin-bottom: 20px;
+    text-align: center;
+    color:rgba(87, 84, 84, 0.99);
+  }
+ 
+
+.container img{
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 30px;
+  width: 65%;
+  margin-left: 30px;
+  height:fit-content;
+  display:flex;
+}
+
+.main-body{
+  padding-top:20px ;
+  margin: 0 auto;
+  max-width: 1248px;
+}
+.todo{
+  flex: 1 1 auto;
+}
+button{
+  float: right;
+}

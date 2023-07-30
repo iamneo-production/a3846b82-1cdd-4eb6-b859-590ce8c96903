@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../user-details/user-details.component';
+import { UserService } from '../service/service/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,9 +11,10 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup | any;
+  user:User[];
 
-
-  constructor(private formBuilder: FormBuilder,private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private router: Router,
+              private userService:UserService) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -21,7 +24,7 @@ export class SignupComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required,]
     }, { validator: this.passwordMatchValidator });
-  }
+  } 
   validateName(control: AbstractControl): { [key: string]: boolean } | null {
     const name = control.value;
     const validNameRegex = /^[A-Za-z\s]+$/;; // Matches only alphabets
@@ -52,12 +55,17 @@ export class SignupComponent implements OnInit {
 
     return null;
   }
+
   onSubmit() {
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
-      return;
+      return; 
     }
-    this.router.navigate(['/home']);
-    console.log(this.signupForm.value);
+    this.userService.registerUser(this.signupForm.value).subscribe(
+      (data) => {  
+        console.log(this.signupForm.value);
+        this.router.navigate(['/login']);
+      }
+    );
   }
 }
