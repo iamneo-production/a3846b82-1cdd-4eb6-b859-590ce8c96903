@@ -19,19 +19,11 @@ export class UserService {
     private userAuth: UserAuthService) { }
 
   public login(LoginData: any) {
-<<<<<<< HEAD
-    return this.httpClient.post("https://8081-daacccaccfeeefcfdedeaeaadbdbabf.project.examly.io/auth/authenticate", LoginData, { headers: this.requestHeader });
-  }
-
-  registerUser(SignupData: any): Observable<any> {
-    return this.httpClient.post<any>(`https://8081-daacccaccfeeefcfdedeaeaadbdbabf.project.examly.io/auth/register`, SignupData);
-=======
     return this.httpClient.post(`${API_URI}/auth/authenticate`, LoginData, { headers: this.requestHeader });
   }
 
   registerUser(SignupData: any): Observable<any> {
     return this.httpClient.post<any>(`${API_URI}/auth/register`, SignupData);
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d
   }
 
   //roles
@@ -45,11 +37,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-<<<<<<< HEAD
-    return this.httpClient.get<User[]>("https://8081-daacccaccfeeefcfdedeaeaadbdbabf.project.examly.io/dusers");
-=======
     return this.httpClient.get<User[]>(`${API_URI}/dusers`);
->>>>>>> c186abd56538dad7a548cb6ada3d309a5e42c70d
   }
 
 }
