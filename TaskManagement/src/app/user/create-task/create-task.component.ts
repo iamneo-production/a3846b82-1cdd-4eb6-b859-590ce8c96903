@@ -15,7 +15,6 @@ import { UserService } from 'src/app/service/service/user.service';
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.css']
 })
-
 export class CreateTaskComponent implements OnInit {
 
  //task

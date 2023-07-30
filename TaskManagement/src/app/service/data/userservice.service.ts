@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/user-details/user-details.component';
 import { Observable } from 'rxjs';
 import { API_URI } from 'src/app/app-constant';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,19 +11,19 @@ export class UserserviceService{
 
   constructor(private http:HttpClient) {}
   retrieveUsers(){
-    return this.http.get<User[]>(`${API_URI}/users`)
+    return this.http.get<User[]>(`${API_URI}/dusers`)
   }
   retrieveUserById(id:any){
-    return this.http.get<User[]>(`${API_URI}/users/${id}`)
+    return this.http.get<User[]>(`${API_URI}/dusers/${id}`)
   }
   deleteUser(id:any){
-    return this.http.delete(`${API_URI}/users/${id}`)
+    return this.http.delete(`${API_URI}/dusers/${id}`)
   }
   updateUser(id:any,user:any){
-    return this.http.put(`${API_URI}/users/${id}`,user)
+    return this.http.put(`${API_URI}/dusers/${id}`,user)
   }
   createUser(user:any) {
-    return this.http.post(`${API_URI}/users`, user);
+    return this.http.post(`${API_URI}/dusers`, user);
   }
 
 
