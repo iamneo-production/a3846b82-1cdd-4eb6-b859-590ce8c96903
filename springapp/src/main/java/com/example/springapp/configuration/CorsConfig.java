@@ -23,22 +23,14 @@ public class CorsConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-<<<<<<< HEAD:taskmanagement/src/main/java/com/project/taskmanagement/configuration/CorsConfig.java
-		registry.addMapping("/**").allowedOrigins("https://8081-daacccaccfeeefcfdedeaeaadbdbabf.project.examly.io")
-=======
-		registry.addMapping("/**").allowedOrigins("https://8080-ebfbfabcfcfdedefaedfbdbebed.project.examly.io")
->>>>>>> 29511dcd9eda291c9fb2860a00bdb7631e6cd841:springapp/src/main/java/com/example/springapp/configuration/CorsConfig.java
+		registry.addMapping("/**").allowedOrigins("https://8080-daacccaccfeeefcfdedefaedfbdbebed.project.examly.io")
 				.allowedMethods(GET, POST, PUT, DELETE).allowedHeaders("*");
 	}
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-<<<<<<< HEAD:taskmanagement/src/main/java/com/project/taskmanagement/configuration/CorsConfig.java
-		configuration.setAllowedOrigins(Arrays.asList("https://8081-daacccaccfeeefcfdedeaeaadbdbabf.project.examly.io"));
-=======
-		configuration.setAllowedOrigins(Arrays.asList("https://8080-ebfbfabcfcfdedefaedfbdbebed.project.examly.io"));
->>>>>>> 29511dcd9eda291c9fb2860a00bdb7631e6cd841:springapp/src/main/java/com/example/springapp/configuration/CorsConfig.java
+		configuration.setAllowedOrigins(Arrays.asList("https://8080-daacccaccfeeefcfdedefaedfbdbebed.project.examly.io"));
 		configuration.setAllowedMethods(Arrays.asList(GET, POST, PUT, DELETE, "OPTIONS"));
 		configuration.setAllowedHeaders(Arrays.asList("*"));
 		configuration.setAllowCredentials(true);
