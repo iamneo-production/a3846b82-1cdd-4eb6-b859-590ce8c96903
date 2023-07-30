@@ -1,8 +1,9 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    width: 60%; 
+    width: 100%; 
     padding-top: 50px;
     margin: auto;
+    
 }
 
 .heading{
@@ -20,7 +21,7 @@ body{
 
 .column{
     float: left;
-    width: 55%;
+    width: 90%;
     margin-top: 50px;
     margin-left: 5%;
     margin-bottom: 16px;
@@ -56,18 +57,17 @@ body{
 
 .pending{
     color: #7b1fa2;
+    padding-top: 3%;
     text-align: center !important;
 }
 
-.progress{
+.total{
     color: rgb(225, 225, 5);
+    padding-top: 3%;
     text-align: center !important;
 }
 
-.overdue{
-    color: red;
-    text-align: center !important;
-}
+
 
 .button {
     border: none;

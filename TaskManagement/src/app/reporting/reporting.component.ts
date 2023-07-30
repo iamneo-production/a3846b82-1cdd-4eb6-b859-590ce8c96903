@@ -27,7 +27,7 @@ export class ReportingComponent implements OnInit {
     this.getTodoTaskCount();
     this.getInProgressTaskCount();
     this.getDoneTaskCount();
-    // this.fetchChartData();
+    this.fetchChartData();
   }
 
   loadTasks() {
