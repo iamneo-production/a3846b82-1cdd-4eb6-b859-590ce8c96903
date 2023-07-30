@@ -1,4 +1,4 @@
-package main.example.springapp.admin;
+package com.example.springapp.admin;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
