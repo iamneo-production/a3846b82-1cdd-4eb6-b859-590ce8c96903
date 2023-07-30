@@ -40,9 +40,6 @@ export class UpdateStatusTLComponent {
  //selected members
  selectedMembers: User[]=[];
 
- //For data tranfer from create-task  to assign-task comp
-
-
  //Constructors
  constructor(
    private location: Location,
@@ -137,7 +134,7 @@ id!: number;
      this.taskService.updateTask(this.id,taskDetails)
        .subscribe(data => {
          console.log(data);
-         this.router.navigate(['']);
+         this.router.navigate(['/dashboard']);
        });
    }
  }

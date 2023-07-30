@@ -62,6 +62,7 @@ export class SignupComponent implements OnInit {
       return; 
     }
     this.userService.registerUser(this.signupForm.value).subscribe(
+<<<<<<< HEAD
       (response) => {
         // Handle success response
         console.log(response);
@@ -76,3 +77,12 @@ export class SignupComponent implements OnInit {
   })
 }
 }
+=======
+      (data) => {  
+        console.log(this.signupForm.value);
+        this.router.navigate(['/login']);
+      }
+    );
+  }
+}
+>>>>>>> 29511dcd9eda291c9fb2860a00bdb7631e6cd841

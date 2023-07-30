@@ -45,7 +45,7 @@
      flex-direction: column;
      padding-bottom: 20px;
      width: 50vw;
-     height: 90vh;
+     height: 130vh;
      display: grid;
      grid-template-columns: 100%;
      border-radius: 5px;
@@ -66,5 +66,5 @@
    
    .btn1{
        width: 40%;
-       background-color: blue;
+       background-color:  #3f51b5;
    }

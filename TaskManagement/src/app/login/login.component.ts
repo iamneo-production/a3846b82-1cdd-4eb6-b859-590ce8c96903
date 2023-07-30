@@ -21,6 +21,12 @@ export class LoginComponent {
   ngOnInit(): void {
       
   }
+
+  signUp(){
+    this.router.navigate(['/signup']);
+
+
+  }
  
   onSubmit(form:any){
     this.userService.login(form.value).subscribe(
