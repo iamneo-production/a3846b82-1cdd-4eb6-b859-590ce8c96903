@@ -116,7 +116,7 @@ export class CreateTaskComponent implements OnInit {
  onReset() {
    this.createTask.reset();
  }
-
+ 
  //Cancel button method
  onCancel() {
    this.location.back();
