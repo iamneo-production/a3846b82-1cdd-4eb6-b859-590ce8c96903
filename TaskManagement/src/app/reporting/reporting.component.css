@@ -98,3 +98,12 @@ body{
 .todo{
     flex: 1 1 auto;
 }
+
+.print{
+    width: 300px; 
+    padding-top: 50px;
+    margin: auto;
+    text-align: center !important;
+    
+    
+}

@@ -6,13 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserAuthService {
 
-  private currentUser: any;
-
-
   constructor() { }
-
-  
-  
 
   public setRoles(role:[]){
     localStorage.setItem('role',JSON.stringify(role));
@@ -44,17 +38,16 @@ export class UserAuthService {
     return localStorage.getItem('email');
   }
 
+   //setId
+   public setUserId(userId: number | null ): void{
+    localStorage.setItem('userId',JSON.stringify(userId));
+  }
+
   //get id
   public getUserId(): number | null{
     const userIdString = localStorage.getItem('userId') ;
       return JSON.parse(userIdString) ;
   }
-
-  //setId
-  public setUserId(userId: number | null ): void{
-    localStorage.setItem('userId',JSON.stringify(userId));
-  }
-
 
   //clear method -- to clear the local storage
   public clear(){

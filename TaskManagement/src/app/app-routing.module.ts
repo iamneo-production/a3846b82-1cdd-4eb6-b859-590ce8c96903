@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserDetailsComponent } from './user-details/user-details.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UpdateTaskComponent } from './user/update-task/update-task.component';
@@ -21,64 +20,65 @@ import { UpdateTaskTLComponent } from './teamLeader/update-task-tl/update-task-t
 import { UpdateStatusTLComponent } from './teamLeader/update-status-tl/update-status-tl.component';
 import { AssignTaskComponent } from './teamLeader/assign-task/assign-task.component';
 import { authGuard } from './auth_guard/auth.guard';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes =
-  [   
+  [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: "home", component: HomeComponent },
-    { path: "signup", component: SignupComponent }, 
+    { path: "signup", component: SignupComponent },
     { path: "profile", component: ProfileComponent },
     { path: "login", component: LoginComponent },
     { path: "verification", component: VerificationComponent },
-    { path: "forbidden", component:ForbiddenComponent},
+    { path: "forbidden", component: ForbiddenComponent },
 
     //ADMIN
      { path: "adminDashboard", component: UserDetailsComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
-    { path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
+     { path: "users", component: CreateUserComponent,canActivate:[authGuard],data:{role:['ADMIN']}  },
      //{ path: "users", component: CreateUserComponent},
 
     //TEAMLEADER AND USER
-    { path: "events", component: CalendarComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
-    { path: "report", component: ReportingComponent,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']}},
-    { path: "dashboard", component:ViewTaskComponent ,canActivate:[authGuard],data:{role:['TEAMLEADER','USER']} },
-  
+    { path: "events", component: CalendarComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER', 'USER'] } },
+    { path: "report", component: ReportingComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER', 'USER'] } },
+    { path: "dashboard", component: ViewTaskComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER', 'USER'] } },
+
     //TEAM LEADER
-    {path: 'tasks',component:CreateTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
-    {path:'tasks/:id/update', component:UpdateTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
-    {path:'tasks/:id/status', component:UpdateStatusTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
-    {path:'tasks/:id/view', component:ViewTaskTLComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
-    {path:'tasks/:id/assign', component:AssignTaskComponent,canActivate:[authGuard],data:{role:['TEAMLEADER']}},
+    { path: 'tasks', component: CreateTaskTLComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER'] } },
+    { path: 'tasks/:id/update', component: UpdateTaskTLComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER'] } },
+    { path: 'tasks/:id/status', component: UpdateStatusTLComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER'] } },
+    { path: 'tasks/:id/view', component: ViewTaskTLComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER'] } },
+    { path: 'tasks/:id/assign', component: AssignTaskComponent, canActivate: [authGuard], data: { role: ['TEAMLEADER'] } },
 
     //USER
-    {path: 'task' ,component:CreateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
-    {path:'task/:id/update', component:UpdateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
-    {path:'task/:id/status', component:UpdateStatusComponent,canActivate:[authGuard],data:{role:['USER']}},
-    {path:'task/:id/view', component:ViewComponent,canActivate:[authGuard],data:{role:['USER']}},
+    { path: 'task', component: CreateTaskComponent, canActivate: [authGuard], data: { role: ['USER'] } },
+    { path: 'task/:id/update', component: UpdateTaskComponent, canActivate: [authGuard], data: { role: ['USER'] } },
+    { path: 'task/:id/status', component: UpdateStatusComponent, canActivate: [authGuard], data: { role: ['USER'] } },
+    { path: 'task/:id/view', component: ViewComponent, canActivate: [authGuard], data: { role: ['USER'] } },
 
 
-   // { path: "task", component: ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']} },
-//USER AND TEAMLEADER
-  //  { path: "events", component: CalendarComponent },
-   // { path: "report", component: ReportingComponent},
+    // { path: "task", component: ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']} },
+    //USER AND TEAMLEADER
+    //  { path: "events", component: CalendarComponent },
+    // { path: "report", component: ReportingComponent},
     //{ path: "dashboard", component:ViewTaskComponent },
- //USER
+    //USER
 
-   // {path: 'task' ,component:CreateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
+    // {path: 'task' ,component:CreateTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
     //{path: 'task' ,component:CreateTaskComponent},
     //{path:'task/:id/', component:ViewTaskComponent,canActivate:[authGuard],data:{role:['USER']}},
-   // {path:'task/:id/update', component:UpdateTaskComponent},
-   // {path:'task/:id/status', component:UpdateStatusComponent},
+    // {path:'task/:id/update', component:UpdateTaskComponent},
+    // {path:'task/:id/status', component:UpdateStatusComponent},
     //{path:'task/:id/view', component:ViewComponent},
-   // TEAMLEADER
-  //  {path: 'tasks',component:CreateTaskTLComponent},
-   // {path:'tasks/:id/view', component:ViewTaskTLComponent},
-  //  {path:'tasks/:id/update', component:UpdateTaskTLComponent},
-  //  {path:'tasks/:id/status', component:UpdateStatusTLComponent},
-  //  {path:'tasks/:id/view', component:ViewTaskTLComponent},
-   // {path:'tasks/:id/assign', component:AssignTaskComponent},
+    // TEAMLEADER
+    //  {path: 'tasks',component:CreateTaskTLComponent},
+    // {path:'tasks/:id/view', component:ViewTaskTLComponent},
+    //  {path:'tasks/:id/update', component:UpdateTaskTLComponent},
+    //  {path:'tasks/:id/status', component:UpdateStatusTLComponent},
+    //  {path:'tasks/:id/view', component:ViewTaskTLComponent},
+    // {path:'tasks/:id/assign', component:AssignTaskComponent},
   ];
 
-  
+
 
 
 @NgModule({

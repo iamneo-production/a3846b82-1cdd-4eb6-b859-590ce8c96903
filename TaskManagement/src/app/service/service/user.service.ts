@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
 import { User } from './User';
 import { Observable } from 'rxjs';
+import { API_URI } from 'src/app/app-constant';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   requestHeader = new HttpHeaders(
     {
-      "NO_AUTH": "True"  // means that this end point doest need any authentication
+      "NO_AUTH": "True"  
     }
   );
 
@@ -19,11 +21,11 @@ export class UserService {
     private userAuth: UserAuthService) { }
 
   public login(LoginData: any) {
-    return this.httpClient.post("https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/auth/authenticate", LoginData, { headers: this.requestHeader });
+    return this.httpClient.post(`${API_URI}/auth/authenticate`, LoginData, { headers: this.requestHeader });
   }
 
   registerUser(SignupData: any): Observable<any> {
-    return this.httpClient.post<any>(`https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/auth/register`, SignupData);
+    return this.httpClient.post<any>(`${API_URI}/auth/register`, SignupData, { headers: this.requestHeader });
   }
 
   //roles
@@ -37,7 +39,7 @@ export class UserService {
 
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>("https://8080-bccadfbfbabceddbdfcfdedeaeaadbdbabf.project.examly.io/dusers");
+    return this.httpClient.get<User[]>(`${API_URI}/dusers`);
   }
 
 }
