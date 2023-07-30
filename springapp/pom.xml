@@ -43,7 +43,6 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
-<<<<<<< HEAD
 		<dependency>
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-security</artifactId>
@@ -73,8 +72,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-=======
->>>>>>> parent of c83de8e (changed)
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
