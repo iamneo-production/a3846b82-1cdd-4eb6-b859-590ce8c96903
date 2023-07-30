@@ -1,12 +1,18 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TokenRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TaskRepository.java
+<<<<<<< HEAD
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationResponse.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/JwtService.java
+=======
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/JwtService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationResponse.java
+>>>>>>> 3c7bb9ad8df03f4dca8d87e76489d54a0b1f82e5
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/admin/AdminData.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Role.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/ConfirmationTokenRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/UserServiceImpl.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TaskController.java
+<<<<<<< HEAD
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/EmailService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Permission.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/security/SpringSecurityConfiguration.java
@@ -23,11 +29,29 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Token.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/CorsConfig.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/User.java
+=======
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Permission.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/EmailService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/security/SpringSecurityConfiguration.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationRequest.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/TodoController.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationController.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Status.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/ConfirmationToken.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TaskService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/UserService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/JwtAuthFilter.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Token.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/AuthenticationService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/User.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/CorsConfig.java
+>>>>>>> 3c7bb9ad8df03f4dca8d87e76489d54a0b1f82e5
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/LogoutService.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/UserRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Task.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/repository/TodoRepository.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Priority.java
+<<<<<<< HEAD
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/WebSecurityConfiguration.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/TaskStatus.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/TaskmanagementApplication.java
@@ -35,5 +59,14 @@
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/UserController.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/RegisterRequest.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TodoService.java
+=======
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/TaskStatus.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/WebSecurityConfiguration.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/TaskmanagementApplication.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/Todo.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/controller/UserController.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/service/TodoService.java
+/home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/authentication/RegisterRequest.java
+>>>>>>> 3c7bb9ad8df03f4dca8d87e76489d54a0b1f82e5
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/configuration/ApplicationConfig.java
 /home/coder/project/workspace/taskmanagement/src/main/java/com/project/taskmanagement/model/TokenType.java

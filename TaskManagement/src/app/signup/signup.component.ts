@@ -62,6 +62,22 @@ export class SignupComponent implements OnInit {
       return; 
     }
     this.userService.registerUser(this.signupForm.value).subscribe(
+<<<<<<< HEAD
+      (response) => {
+        // Handle success response
+        console.log(response);
+        // Redirect to success page or show success message
+        this.router.navigate(['/verification']);
+      },
+      (error: any) => {
+        // Handle error response
+        this.router.navigate(['/verification']);
+        console.error(error);
+        // Show error message to the user
+  })
+}
+}
+=======
       (data) => {  
         console.log(this.signupForm.value);
         this.router.navigate(['/login']);
@@ -69,3 +85,4 @@ export class SignupComponent implements OnInit {
     );
   }
 }
+>>>>>>> 29511dcd9eda291c9fb2860a00bdb7631e6cd841
