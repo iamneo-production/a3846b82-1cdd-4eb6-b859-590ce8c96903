@@ -138,7 +138,7 @@ public class UserController {
                 String imagePath = user.getImagePath();
                 deleteImageFile(imagePath);
 
-                // Update the user entity with a null image path
+                
                 user.setImagePath(null);
                 userrepository.save(user);
 
