@@ -1,188 +1,113 @@
-
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  
-  </head>
-  
-  
-  <div class="container profile">
-    <div class="image-container">
-      <h2>PROFILE</h2>
-      <div class="profile-picture">
-        <img [src]="selectedImage || url" title="Profile Picture" height="150px" width="150px" />
-  
-        <input type="file" id="img" style="display: none" (change)="onSelect($event)" #imageInput>
-        <label class="uploadbtn" for="img">
-          <fa-icon [icon]="faCamera" size="lg"></fa-icon>
-        </label>
-      </div>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<div class="container profile">
+  <div class="image-container">
+    <h2>PROFILE</h2>
+    <div class="profile-picture">
+      <img [src]="getUserImageUrl()" title="Profile Picture" height="150px" width="150px" alt="image" />
+
+      <input type="file" id="image" style="display: none"  (change)="onSelect($event)" >
+      <label class="uploadbtn" for="image">
+        <fa-icon [icon]="faCamera" size="lg"></fa-icon>
+      </label>
     </div>
-  
-    <form #myForm="ngForm" class="form-container">
-      <div class="form-column">
-        <div class="form-group">
-          <label for="firstName">
-            <fa-icon [icon]="faUser"></fa-icon> First Name:
-          </label>
-  
-          <div class="user-field">
-            <input type="text" name="firstName" class="form-control" [(ngModel)]="firstName" required
-              [disabled]="!isEditMode" #firstNameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$"
-              minlength="2" maxlength="30"
-              [ngClass]="{ 'is-invalid': firstNameField.invalid && (firstNameField.touched || firstNameField.dirty) }">
-          </div>
-  
-          <div *ngIf="firstNameField.invalid && (firstNameField.touched || !firstNameField.touched)" class="text-danger">
-            <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('required')">
-              First Name is required.
-            </ng-container>
-            <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('pattern')">
-              Enter a valid First Name.
-            </ng-container>
-            <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('minlength')">
-              First Name should be at least 2 characters long.
-            </ng-container>
-            <ng-container *ngIf="firstNameField.errors?.hasOwnProperty('maxlength')">
-              First Name cannot exceed 30 characters.
-            </ng-container>
-          </div>
-        </div>
-  
-  
-       <div class="form-group">
-          <label for="username">
-            <fa-icon [icon]="faUser"></fa-icon> User Name:
-          </label>
-  
-          <div class="user-field">
-            <input type="text" name="username" class="form-control" [(ngModel)]="username" required
-              [disabled]="!isEditMode" #usernameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="6"
-              maxlength="30"
-              [ngClass]="{ 'is-invalid': usernameField.invalid && (usernameField.touched || usernameField.dirty) }">
-          </div>
-  
-          <div *ngIf="usernameField.invalid && (usernameField.touched || !usernameField.touched)" class="text-danger">
-            <ng-container *ngIf="usernameField.errors?.hasOwnProperty('required')">
-              User Name is required.
-            </ng-container>
-            <ng-container *ngIf="usernameField.errors?.hasOwnProperty('pattern')">
-              Enter a valid User Name.
-            </ng-container>
-            <ng-container *ngIf="usernameField.errors?.hasOwnProperty('minlength')">
-              User Name should be at least 6 characters long.
-            </ng-container>
-            <ng-container *ngIf="usernameField.errors?.hasOwnProperty('maxlength')">
-              User Name cannot exceed 30 characters.
-            </ng-container>
-          </div>
-        </div>
-          
-  
-        <div class="form-group">
-          <label for="password">
-            <fa-icon [icon]="faLock"></fa-icon> Password:
-          </label>
-  
-          <div class="password-field">
-            <input type="{{ passwordVisibility ? 'text' : 'password' }}" name="password" class="form-control"
-              [(ngModel)]="password" [disabled]="!isEditMode" #passwordField="ngModel" minlength="8" required
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-              [ngClass]="{ 'is-invalid': passwordField.invalid && (passwordField.touched || !passwordField.touched) }">
-            <fa-icon [icon]="passwordVisibility ? faEyeSlash : faEye" (click)="togglePasswordVisibility()"></fa-icon>
-          </div>
-  
-          <div *ngIf="passwordField.invalid && (passwordField.touched || !passwordField.touched)" class="text-danger">
-            <ng-container *ngIf="passwordField.errors?.hasOwnProperty('required')">
-              Password is required.
-            </ng-container>
-            <ng-container *ngIf="passwordField.errors?.hasOwnProperty('pattern')">
-              Enter a valid Password.<br>
-            </ng-container>
-            <ng-container *ngIf="passwordField.errors?.hasOwnProperty('minlength')">
-              Password must be at least 8 characters long.
-            </ng-container>
-          </div>
-        </div>
-  
-      </div>
-  
-      <div class="form-column">
-        <div class="form-group">
-          <label for="lastName">
-            <fa-icon [icon]="faUser"></fa-icon> Last Name:
-          </label>
-  
-          <div class="user-field">
-            <input type="text" name="lastName" class="form-control" [(ngModel)]="lastName" required
-              [disabled]="!isEditMode" #lastNameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="2"
-              maxlength="30"
-              [ngClass]="{ 'is-invalid': lastNameField.invalid && (lastNameField.touched || lastNameField.dirty) }">
-          </div>
-  
-          <div *ngIf="lastNameField.invalid && (lastNameField.touched || !lastNameField.touched)" class="text-danger">
-            <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('required')">
-              Last Name is required.
-            </ng-container>
-            <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('pattern')">
-              Enter a valid Last Name.
-            </ng-container>
-            <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('minlength')">
-              Last Name should be at least 2 characters long.
-            </ng-container>
-            <ng-container *ngIf="lastNameField.errors?.hasOwnProperty('maxlength')">
-              Last Name cannot exceed 30 characters.
-            </ng-container>
-          </div>
-        </div>
-  
-  
-        <div class="form-group">
-          <label for="email">
-            <fa-icon [icon]="faEnvelope"></fa-icon> Email ID:
-          </label>
-          <div class="email">
-            <input type="email" name="email" class="form-control" [(ngModel)]="email" required [disabled]="!isEditMode"
-              #emailField="ngModel"
-              pattern="[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}"
-              [ngClass]="{ 'is-invalid': emailField.invalid && (emailField.touched || emailField.dirty) }">
-          </div>
-          <div *ngIf="emailField.invalid && (emailField.touched || !emailField.touched)" class="text-danger">
-            <ng-container *ngIf="emailField.errors?.hasOwnProperty('required')">
-              Email is required.
-            </ng-container>
-            <ng-container *ngIf="emailField.errors?.hasOwnProperty('pattern')">
-              Enter a valid Email ID.
-            </ng-container>
-          </div>
-        </div>
-  
-        <div class="form-group" *ngIf="isEditMode">
-          <label for="confirmPassword">
-            <fa-icon [icon]="faLock"></fa-icon> Confirm Password:
-          </label>
-          <div class="password-field">
-            <input type="{{ confirmPasswordVisibility ? 'text' : 'password' }}" name="confirmPassword"
-              class="form-control" [(ngModel)]="confirmPassword" [disabled]="!isEditMode" #confirmPasswordField="ngModel">
-            <fa-icon [icon]="confirmPasswordVisibility ? faEyeSlash : faEye"
-              (click)="toggleConfirmPasswordVisibility()"></fa-icon>
-          </div>
-          <div *ngIf="confirmPassword !== password && (confirmPasswordField.touched || !confirmPasswordField.touched)"
-            class="text-danger">
-            Passwords do not match.
-          </div>
-        </div>
-      </div>
-    </form>
-  
-  
-        <button class="btn btn-primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</button>
-  
-        <button class="btn btn-success" *ngIf="isEditMode" [disabled]="myForm.invalid || confirmPassword !== password"
-          (click)="saveChanges()">Save Changes</button>
-        
-    
-        
+
+    <div *ngIf="isEditMode">
+      <button class="btn btn-link remove-image-btn" *ngIf="user.image && user.imagePath" (click)="removeImage()">
+        <fa-icon [icon]="faTrashAlt" ></fa-icon>
+      </button>
+    </div>
   </div>
+
+  <form #myForm="ngForm" class="form-container">
+    <div class="form-column">
       
+
+
+      <div class="form-group">
+        <label for="name">
+          <fa-icon [icon]="faUser"></fa-icon> User Name:
+        </label>
+
+        <div class="user-field">
+          <input type="text" name="name" class="form-control" [(ngModel)]="user.name" required
+            [disabled]="!isEditMode" #nameField="ngModel" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" minlength="6"
+            maxlength="30"
+            [ngClass]="{ 'is-invalid': nameField.invalid && (nameField.touched || nameField.dirty) }">
+        </div>
+
+        <div *ngIf="nameField.invalid && (nameField.touched || !nameField.touched)" class="text-danger">
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('required')">
+            User Name is required.
+          </ng-container>
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('pattern')">
+            Enter a valid User Name.
+          </ng-container>
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('minlength')">
+            User Name should be at least 6 characters long.
+          </ng-container>
+          <ng-container *ngIf="nameField.errors?.hasOwnProperty('maxlength')">
+            User Name cannot exceed 30 characters.
+          </ng-container>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">
+          <fa-icon [icon]="faEnvelope"></fa-icon> Email ID:
+        </label>
+        <div class="email">
+          <input type="email" name="email" class="form-control" [(ngModel)]="user.email" required [disabled]="!isEditMode"
+            #emailField="ngModel"
+            pattern="[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}"
+            [ngClass]="{ 'is-invalid': emailField.invalid && (emailField.touched || emailField.dirty) }">
+        </div>
+        <div *ngIf="emailField.invalid && (emailField.touched || !emailField.touched)" class="text-danger">
+          <ng-container *ngIf="emailField.errors?.hasOwnProperty('required')">
+            Email is required.
+          </ng-container>
+          <ng-container *ngIf="emailField.errors?.hasOwnProperty('pattern')">
+            Enter a valid Email ID.
+          </ng-container>
+        </div>
+      </div>
+		
+
+      <div class="form-group">
+        <label for="Role">
+          <fa-icon [icon]="faUser"></fa-icon> Role:
+        </label>
+        <div class="user-field">
+          <select name="Role" class="form-control" [(ngModel)]="user.role" required [disabled]="!isEditMode" #userField="ngModel">
+            <option value="USER">User</option>
+            <option value="TEAMLEADER">Team Lead</option>
+            
+          </select>
+        </div>
+        <div *ngIf="userField.invalid && (userField.touched || !userField.touched)" class="text-danger">
+          <ng-container *ngIf="userField.errors?.hasOwnProperty('required')">
+            Role is required.
+          </ng-container>
+        </div>
+      </div>
+
+    </div>
+
+    
+  </form>
   
+  
+      
+
+      <button class="btn btn-primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Edit</button>
+
+      <button class="btn btn-success" *ngIf="isEditMode" [disabled]="myForm.invalid"
+        (click)="saveChanges()">Save Changes</button>
+  
+      
+</div>
+ 

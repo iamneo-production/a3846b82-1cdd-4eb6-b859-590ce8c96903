@@ -84,15 +84,17 @@ export class CreateUserComponent implements OnInit {
         // Updating an existing user
         this.userService.updateUser(this.user.id,userDetails).subscribe((data: User) => {
           console.log(data);
-          this.router.navigate(['userdetails']); // Corrected route to the user board page
+          this.router.navigate(['adminDashboard']); // Corrected route to the user board page
         });
       } else {
         // Creating a new user
         this.userService.createUser(userDetails).subscribe((data: User) => {
           console.log(data);
-          this.router.navigate(['userdetails']); // Corrected route to the user board page
+          this.router.navigate(['adminDashboard']); // Corrected route to the user board page
         });
-        this.createUser.reset();
+        this.createUser.reset(
+          
+        );
       }
     }
   }

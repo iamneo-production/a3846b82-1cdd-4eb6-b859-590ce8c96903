@@ -15,6 +15,10 @@ export class ReportingComponent implements OnInit {
   doneTaskCount: number;
   tasks: Task[] = [];
 
+  
+
+
+
   constructor(private taskService: TaskserviceService) {}
 
   ngOnInit(): void {
@@ -79,4 +83,10 @@ export class ReportingComponent implements OnInit {
       }
     );
   }
+
+  printPage() {
+    window.print();
+  }
+
+
 }
