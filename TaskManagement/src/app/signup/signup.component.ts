@@ -10,7 +10,7 @@ import { UserService } from '../service/service/user.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  signupForm: FormGroup | any;
+  signupForm!: FormGroup ;
   user:User[];
 
   constructor(private formBuilder: FormBuilder,private router: Router,
