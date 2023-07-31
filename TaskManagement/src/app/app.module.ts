@@ -126,10 +126,6 @@ import { DatePipe } from '@angular/common';
     MatOptionModule,
     MatSelectModule,
     MatSnackBarModule
-    
-
-    
-
   ],
   providers: [DatePipe,UserserviceService,
     UserProfileService,
