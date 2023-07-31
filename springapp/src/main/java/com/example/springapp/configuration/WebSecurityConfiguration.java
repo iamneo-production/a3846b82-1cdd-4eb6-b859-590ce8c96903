@@ -53,8 +53,8 @@ public class WebSecurityConfiguration {
 		.csrf().disable()
 		.cors()
 		.and()
-		.authorizeHttpRequests().antMatchers("/**").permitAll()
-		/* .authorizeHttpRequests().antMatchers("/auth/**").permitAll()
+	    //.authorizeHttpRequests().antMatchers("/**").permitAll()
+		.authorizeHttpRequests().antMatchers("/auth/**").permitAll()
 		.antMatchers("/users/**").hasAnyRole(ADMIN.name(),TEAMLEADER.name())
 		.antMatchers(GET,"/users/**").hasAnyAuthority(ADMIN_READ.name(),TEAMLEADER_READ.name())
 		.antMatchers(PUT,"/users/**").hasAuthority(ADMIN_UPDATE.name())
@@ -66,7 +66,7 @@ public class WebSecurityConfiguration {
 		.antMatchers(PUT,"/tasks").hasAnyAuthority(USER_UPDATE.name(),TEAMLEADER_UPDATE.name())
 		.antMatchers(POST,"/tasks").hasAnyAuthority(USER_CREATE.name(),TEAMLEADER_CREATE.name())
 		.antMatchers(DELETE,"/tasks").hasAnyAuthority(USER_DELETE.name(),TEAMLEADER_DELETE.name())
-*/
+
 		.anyRequest() 
 		.authenticated()
 		.and()

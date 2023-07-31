@@ -23,14 +23,14 @@ public class CorsConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedOrigins("https://8080-ebfbfabcfcfdedefaedfbdbebed.project.examly.io")
+		registry.addMapping("/**").allowedOrigins("https://8081-fabfeddeaeebbdfcfdedeaeaadbdbabf.project.examly.io")
 				.allowedMethods(GET, POST, PUT, DELETE).allowedHeaders("*");
 	}
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://8080-ebfbfabcfcfdedefaedfbdbebed.project.examly.io"));
+		configuration.setAllowedOrigins(Arrays.asList("https://8081-fabfeddeaeebbdfcfdedeaeaadbdbabf.project.examly.io"));
 		configuration.setAllowedMethods(Arrays.asList(GET, POST, PUT, DELETE, "OPTIONS"));
 		configuration.setAllowedHeaders(Arrays.asList("*"));
 		configuration.setAllowCredentials(true);
