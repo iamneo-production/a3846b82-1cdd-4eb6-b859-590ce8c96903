@@ -1,5 +1,5 @@
-com/example/springapp/service/TaskService.class
 com/example/springapp/service/JwtService.class
+com/example/springapp/service/TaskService.class
 com/example/springapp/authentication/AuthenticationRequest.class
 com/example/springapp/service/UserService.class
 com/example/springapp/model/Permission.class
@@ -17,8 +17,8 @@ main/example/springapp/admin/AdminData.class
 com/example/springapp/security/SpringSecurityConfiguration.class
 com/example/springapp/model/Token$TokenBuilder.class
 com/example/springapp/configuration/CorsConfig.class
-com/example/springapp/controller/TaskController.class
 com/example/springapp/authentication/RegisterRequest$RegisterRequestBuilder.class
+com/example/springapp/controller/TaskController.class
 com/example/springapp/service/TodoService.class
 com/example/springapp/controller/UserController.class
 com/example/springapp/model/Token.class
