@@ -12,11 +12,11 @@ public class TaskService {
 	private static List<Task> tasks=new ArrayList<>();
 		private static int idCounter=0;
 		
-		static {
+		/*static {
 			tasks.add(new Task("My first Task","Task1",new Date(),++idCounter,"Hema",true));
 			tasks.add(new Task("My Second Task","Task2",new Date(),++idCounter,"Priya",false));
 			tasks.add(new Task("My Third Task","Task3",new Date(),++idCounter,"Hema",true));
-		}
+		}*/
 		public List<Task> findTasks(){
 			return tasks;
 		}
